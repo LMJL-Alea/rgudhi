@@ -4,6 +4,8 @@
 # `rgudhi`
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/astamm/rgudhi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/astamm/rgudhi/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of `rgudhi` is to provide an R interface to the Python package
