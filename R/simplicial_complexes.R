@@ -17,7 +17,7 @@
 #'
 #' @export
 #' @examples
-#' n <- 20
+#' n <- 10
 #' X_list <- replicate(n, runif(2), simplify = FALSE)
 #' X_matrix <- Reduce(rbind, X_list, init = numeric())
 #' ac_matrix <- alpha_complex(points = X_matrix)
@@ -37,7 +37,18 @@ alpha_complex <- function(points, precision = "safe") {
     cli::cli_abort("{.code points} must be either a matrix or a list or an OFF file.")
 }
 
+#' Plot persistence diagrams
+#'
+#' @param diagram A persistent diagram.
+#'
 #' @export
+#' @examples
+#' n <- 10
+#' X <- replicate(n, runif(2), simplify = FALSE)
+#' ac <- alpha_complex(points = X)
+#' st <- ac$create_simplex_tree()
+#' dgm <- st$persistence()
+#' plot_persistence_diagram(dgm)
 plot_persistence_diagram <- function(diagram) {
   gd$plot_persistence_diagram(diagram)
   plt$show()

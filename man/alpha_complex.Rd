@@ -26,7 +26,7 @@ have a filtration value strictly greater than a given alpha squared value are
 not inserted into the complex.
 }
 \examples{
-n <- 20
+n <- 10
 X_list <- replicate(n, runif(2), simplify = FALSE)
 X_matrix <- Reduce(rbind, X_list, init = numeric())
 ac_matrix <- alpha_complex(points = X_matrix)

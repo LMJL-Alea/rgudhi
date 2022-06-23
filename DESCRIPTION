@@ -20,4 +20,9 @@ Config/reticulate:
   )
 Imports: 
     cli,
-    fs
+    fs,
+    reticulate
+Suggests: 
+    testthat (>= 3.0.0),
+    withr
+Config/testthat/edition: 3
