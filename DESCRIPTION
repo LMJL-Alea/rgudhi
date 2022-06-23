@@ -21,6 +21,7 @@ Config/reticulate:
 Imports: 
     cli,
     fs,
+    R6,
     reticulate
 Suggests: 
     testthat (>= 3.0.0),
