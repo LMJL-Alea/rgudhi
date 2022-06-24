@@ -8,5 +8,5 @@ gd <- NULL
   # use superassignment to update global reference to matplotlib.pyplot
   plt <<- reticulate::import("matplotlib.pyplot", delay_load = TRUE)
   # use superassignment to update global reference to gudhi
-  gd <<- reticulate::import("gudhi", delay_load = TRUE)
+  gd <<- reticulate::import("gudhi", delay_load = TRUE, convert = TRUE)
 }

@@ -177,9 +177,9 @@ available.
 \if{latex}{\out{\hypertarget{method-SimplexTree-compute_persistence}{}}}
 \subsection{Method \code{compute_persistence()}}{
 This function computes the persistence of the simplicial
-complex, so it can be accessed through \code{persistent_betti_numbers()},
-\code{persistence_pairs()}, etc. This function is equivalent to
-\code{persistence()} when you do not want the list that \code{persistence()}
+complex, so it can be accessed through \verb{$persistent_betti_numbers()},
+\verb{$persistence_pairs()}, etc. This function is equivalent to
+\verb{$persistence()} when you do not want the list that \verb{$persistence()}
 returns.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$compute_persistence(
@@ -220,8 +220,8 @@ complex.
 
 \subsection{Details}{
 This function is not constant time because it can recompute
-dimension if required (can be triggered by \code{remove_maximal_simplex()}
-or \code{prune_above_filtration()} methods for instance).
+dimension if required (can be triggered by \verb{$remove_maximal_simplex()}
+or \verb{$prune_above_filtration()} methods for instance).
 }
 
 \subsection{Returns}{
@@ -317,10 +317,8 @@ coefficient field. Must be a prime number. Defaults to \code{11L}. Maximum
 is \code{46337L}.}
 
 \item{\code{min_persistence}}{A numeric value specifying the minimum persistence
-value (i.e., the absolute value of the difference between the
-persistence diagram point coordinates) to take into account (strictly
-greater than \code{min_persistence}). Defaults to \code{0.0}. Set
-\code{min_persistence = -1.0} to see all values.}
+value to take into account (strictly greater than \code{min_persistence}).
+Defaults to \code{0.0}. Set \code{min_persistence = -1.0} to see all values.}
 }
 \if{html}{\out{</div>}}
 }
@@ -434,7 +432,8 @@ of a list of vertices.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A generator with tuples(simplex, filtration) pointing to the
+A list of length-2 lists with components \code{simplex} (integer
+vector) and \code{filtration} (numeric value) corresponding to the
 (simplicies of the) boundary of a simplex.
 }
 }

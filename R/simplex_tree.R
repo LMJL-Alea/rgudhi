@@ -87,9 +87,9 @@ SimplexTree <- R6::R6Class(
     },
 
     #' @description This function computes the persistence of the simplicial
-    #'   complex, so it can be accessed through `persistent_betti_numbers()`,
-    #'   `persistence_pairs()`, etc. This function is equivalent to
-    #'   `persistence()` when you do not want the list that `persistence()`
+    #'   complex, so it can be accessed through `$persistent_betti_numbers()`,
+    #'   `$persistence_pairs()`, etc. This function is equivalent to
+    #'   `$persistence()` when you do not want the list that `$persistence()`
     #'   returns.
     compute_persistence = function(homology_coeff_field = 11,
                                    min_persistence = 0.0,
@@ -106,8 +106,8 @@ SimplexTree <- R6::R6Class(
     #'   complex.
     #'
     #' @details This function is not constant time because it can recompute
-    #'   dimension if required (can be triggered by `remove_maximal_simplex()`
-    #'   or `prune_above_filtration()` methods for instance).
+    #'   dimension if required (can be triggered by `$remove_maximal_simplex()`
+    #'   or `$prune_above_filtration()` methods for instance).
     #'
     #' @return An integer value storing the simplicial complex dimension.
     #'
@@ -170,15 +170,6 @@ SimplexTree <- R6::R6Class(
     #' This notebook explains how to compute an extension of persistence called
     #' extended persistence.
     #'
-    #' @param homology_coeff_field An integer value specifying the homology
-    #'   coefficient field. Must be a prime number. Defaults to `11L`. Maximum
-    #'   is `46337L`.
-    #' @param min_persistence A numeric value specifying the minimum persistence
-    #'   value (i.e., the absolute value of the difference between the
-    #'   persistence diagram point coordinates) to take into account (strictly
-    #'   greater than `min_persistence`). Defaults to `0.0`. Set
-    #'   `min_persistence = -1.0` to see all values.
-    #'
     #' @return A list of four persistence diagrams in the format described in
     #'   `$persistence()`. The first one is `Ordinary`, the second one is
     #'   `Relative`, the third one is `Extended+` and the fourth one is
@@ -201,7 +192,7 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return A numeric value storing the filtration value for the input N-simplex.
     filtration = function(simplex) {
-      private$m_PythonClass$filtration(simplex = simplex)
+      private$m_PythonClass$filtration(simplex)
     },
 
     #' @description This function returns if the N-simplex was found in the
@@ -210,7 +201,7 @@ SimplexTree <- R6::R6Class(
     #' @return A boolean storing whether the input N-simplex was found in the
     #'   simplicial complex.
     find = function(simplex) {
-      private$m_PythonClass$find(simplex = simplex)
+      private$m_PythonClass$find(simplex)
     },
 
     #' @description Assuming this is a flag complex, this function returns the
@@ -238,10 +229,13 @@ SimplexTree <- R6::R6Class(
     #'   can also be obtained as `itertools.combinations(simplex, len(simplex) -
     #'   1)`.
     #'
-    #' @return A generator with tuples(simplex, filtration) pointing to the
+    #' @return A list of length-2 lists with components `simplex` (integer
+    #'   vector) and `filtration` (numeric value) corresponding to the
     #'   (simplicies of the) boundary of a simplex.
     get_boundaries = function(simplex) {
-      private$m_PythonClass$get_boundaries(simplex = simplex)
+      itb <- private$m_PythonClass$get_boundaries(simplex)
+      res <- reticulate::iterate(itb)
+      purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
     },
 
     #' @description This function returns the cofaces of a given N-simplex with

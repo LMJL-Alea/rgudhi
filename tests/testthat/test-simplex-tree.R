@@ -8,4 +8,7 @@ test_that("Class `SimplexTree` works", {
   st$compute_persistence()
   expect_true(all(st$betti_numbers() == c(1, 0)))
   expect_equal(st$dimension(), 2)
+  expect_snapshot(st$filtration(1:2))
+  expect_true(st$find(1:2))
+  expect_snapshot(st$get_boundaries(1:2))
 })
