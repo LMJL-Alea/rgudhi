@@ -27,9 +27,7 @@ jobs:
           needs: coverage
 
       - name: Install Miniconda
-        run: |
-          Rscript -e "install.packages(reticulate)"
-          Rscript -e "reticulate::install_miniconda()"
+        run: Rscript -e "reticulate::install_miniconda()"
       - if: runner.os == 'macOS'
         run: echo "options(reticulate.conda_binary = reticulate:::miniconda_conda())" >> .Rprofile
 
