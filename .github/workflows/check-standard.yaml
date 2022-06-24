@@ -44,9 +44,8 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: Setup Miniconda
+      - name: Setup Python dependencies
         run: |
-          Rscript -e 'reticulate::install_miniconda()'
           Rscript -e 'reticulate::conda_create("r-reticulate")'
           Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
           Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'

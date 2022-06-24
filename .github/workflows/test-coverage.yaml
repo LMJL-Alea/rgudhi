@@ -26,9 +26,8 @@ jobs:
           extra-packages: any::covr
           needs: coverage
 
-      - name: Setup Miniconda
+      - name: Setup Python dependencies
         run: |
-          Rscript -e 'reticulate::install_miniconda()'
           Rscript -e 'reticulate::conda_create("r-reticulate")'
           Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
 
