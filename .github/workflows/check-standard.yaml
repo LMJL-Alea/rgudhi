@@ -44,10 +44,11 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: Install Miniconda
-        run: Rscript -e "reticulate::install_miniconda()"
-      - if: runner.os == 'macOS'
-        run: echo "options(reticulate.conda_binary = reticulate:::miniconda_conda())" >> .Rprofile
+      - name: Setup Miniconda
+        run: |
+          Rscript -e 'reticulate::install_miniconda()'
+          Rscript -e 'reticulate::conda_create("r-reticulate")'
+          Rscript -e 'reticulate::conda_install("gudhi")'
 
       - uses: r-lib/actions/check-r-package@v2
         with:
