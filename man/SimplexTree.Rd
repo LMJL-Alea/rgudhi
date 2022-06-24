@@ -21,6 +21,16 @@ version of the simplex tree.
 ## ------------------------------------------------
 
 st <- SimplexTree$new()
+
+## ------------------------------------------------
+## Method `SimplexTree$dimension`
+## ------------------------------------------------
+
+n <- 10
+X <- replicate(n, runif(2), simplify = FALSE)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$dimension()
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -30,6 +40,34 @@ st <- SimplexTree$new()
 \item \href{#method-SimplexTree-betti_numbers}{\code{SimplexTree$betti_numbers()}}
 \item \href{#method-SimplexTree-collapse_edges}{\code{SimplexTree$collapse_edges()}}
 \item \href{#method-SimplexTree-compute_persistence}{\code{SimplexTree$compute_persistence()}}
+\item \href{#method-SimplexTree-dimension}{\code{SimplexTree$dimension()}}
+\item \href{#method-SimplexTree-expansion}{\code{SimplexTree$expansion()}}
+\item \href{#method-SimplexTree-extend_filtration}{\code{SimplexTree$extend_filtration()}}
+\item \href{#method-SimplexTree-extended_persistence}{\code{SimplexTree$extended_persistence()}}
+\item \href{#method-SimplexTree-filtration}{\code{SimplexTree$filtration()}}
+\item \href{#method-SimplexTree-find}{\code{SimplexTree$find()}}
+\item \href{#method-SimplexTree-flag_persistence_generators}{\code{SimplexTree$flag_persistence_generators()}}
+\item \href{#method-SimplexTree-get_boundaries}{\code{SimplexTree$get_boundaries()}}
+\item \href{#method-SimplexTree-get_cofaces}{\code{SimplexTree$get_cofaces()}}
+\item \href{#method-SimplexTree-get_filtration}{\code{SimplexTree$get_filtration()}}
+\item \href{#method-SimplexTree-get_simplices}{\code{SimplexTree$get_simplices()}}
+\item \href{#method-SimplexTree-get_skeleton}{\code{SimplexTree$get_skeleton()}}
+\item \href{#method-SimplexTree-get_star}{\code{SimplexTree$get_star()}}
+\item \href{#method-SimplexTree-insert}{\code{SimplexTree$insert()}}
+\item \href{#method-SimplexTree-lower_star_persistence_generators}{\code{SimplexTree$lower_star_persistence_generators()}}
+\item \href{#method-SimplexTree-make_filtration_non_decreasing}{\code{SimplexTree$make_filtration_non_decreasing()}}
+\item \href{#method-SimplexTree-num_simplices}{\code{SimplexTree$num_simplices()}}
+\item \href{#method-SimplexTree-num_vertices}{\code{SimplexTree$num_vertices()}}
+\item \href{#method-SimplexTree-persistence}{\code{SimplexTree$persistence()}}
+\item \href{#method-SimplexTree-persistence_intervals_in_dimension}{\code{SimplexTree$persistence_intervals_in_dimension()}}
+\item \href{#method-SimplexTree-persistence_pairs}{\code{SimplexTree$persistence_pairs()}}
+\item \href{#method-SimplexTree-persistent_betti_numbers}{\code{SimplexTree$persistent_betti_numbers()}}
+\item \href{#method-SimplexTree-prune_above_filtration}{\code{SimplexTree$prune_above_filtration()}}
+\item \href{#method-SimplexTree-remove_maximal_simplex}{\code{SimplexTree$remove_maximal_simplex()}}
+\item \href{#method-SimplexTree-reset_filtration}{\code{SimplexTree$reset_filtration()}}
+\item \href{#method-SimplexTree-set_dimension}{\code{SimplexTree$set_dimension()}}
+\item \href{#method-SimplexTree-upper_bound_dimension}{\code{SimplexTree$upper_bound_dimension()}}
+\item \href{#method-SimplexTree-write_persistence_diagram}{\code{SimplexTree$write_persistence_diagram()}}
 \item \href{#method-SimplexTree-clone}{\code{SimplexTree$clone()}}
 }
 }
@@ -166,6 +204,664 @@ Defaults to \code{0.0}. Set \code{min_persistence = -1.0} to see all values.}
 homology for the maximal dimension in the complex is computed
 (\code{persistence_dim_max = TRUE}). If \code{FALSE}, it is ignored. Defaults to
 \code{FALSE}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-dimension"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-dimension}{}}}
+\subsection{Method \code{dimension()}}{
+This function returns the dimension of the simplicial
+complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$dimension()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+This function is not constant time because it can recompute
+dimension if required (can be triggered by \code{remove_maximal_simplex()}
+or \code{prune_above_filtration()} methods for instance).
+}
+
+\subsection{Returns}{
+An integer value storing the simplicial complex dimension.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- replicate(n, runif(2), simplify = FALSE)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$dimension()
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-expansion"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-expansion}{}}}
+\subsection{Method \code{expansion()}}{
+Expands the simplex tree containing only its one skeleton
+until dimension \code{max_dim}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$expansion(max_dim)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{max_dim}}{An integer value specifying the maximal dimension to
+expented the simplex tree to.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+The expanded simplicial complex until dimension \code{d} attached to
+a graph \code{G} is the maximal simplicial complex of dimension at most \code{d}
+admitting the graph \code{G} as 1-skeleton. The filtration value assigned to
+a simplex is the maximal filtration value of one of its edges.
+
+The simplex tree must contain no simplex of dimension bigger than 1 when
+calling the method.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-extend_filtration"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-extend_filtration}{}}}
+\subsection{Method \code{extend_filtration()}}{
+Extend filtration for computing extended persistence. This
+function only uses the filtration values at the 0-dimensional
+simplices, and computes the extended persistence diagram induced by the
+lower-star filtration computed with these values.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$extend_filtration()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Note that after calling this function, the filtration values are
+actually modified within the simplex tree. The method
+\verb{$extended_persistence()} retrieves the original values.
+
+Note that this code creates an extra vertex internally, so you should
+make sure that the simplex tree does not contain a vertex with the
+largest possible value (i.e., \code{4294967295}).
+
+This notebook explains how to compute an extension of persistence called
+extended persistence.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-extended_persistence"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-extended_persistence}{}}}
+\subsection{Method \code{extended_persistence()}}{
+This function retrieves good values for extended
+persistence, and separate the diagrams into the Ordinary, Relative,
+Extended+ and Extended- subdiagrams.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$extended_persistence(
+  homology_coeff_field = 11,
+  min_persistence = 0
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{homology_coeff_field}}{An integer value specifying the homology
+coefficient field. Must be a prime number. Defaults to \code{11L}. Maximum
+is \code{46337L}.}
+
+\item{\code{min_persistence}}{A numeric value specifying the minimum persistence
+value (i.e., the absolute value of the difference between the
+persistence diagram point coordinates) to take into account (strictly
+greater than \code{min_persistence}). Defaults to \code{0.0}. Set
+\code{min_persistence = -1.0} to see all values.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+The coordinates of the persistence diagram points might be a
+little different than the original filtration values due to the
+internal transformation (scaling to \link{-2,-1}) that is performed on these
+values during the computation of extended persistence.
+
+This notebook explains how to compute an extension of persistence called
+extended persistence.
+}
+
+\subsection{Returns}{
+A list of four persistence diagrams in the format described in
+\verb{$persistence()}. The first one is \code{Ordinary}, the second one is
+\code{Relative}, the third one is \verb{Extended+} and the fourth one is
+\verb{Extended-}. See
+https://link.springer.com/article/10.1007/s10208-008-9027-z and/or
+section 2.2 in
+https://link.springer.com/article/10.1007/s10208-017-9370-z for a
+description of these subtypes.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-filtration"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-filtration}{}}}
+\subsection{Method \code{filtration()}}{
+This function returns the filtration value for a given N-simplex in this simplicial complex, or +infinity if it is not in the complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$filtration(simplex)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+of a list of vertices.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A numeric value storing the filtration value for the input N-simplex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-find"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-find}{}}}
+\subsection{Method \code{find()}}{
+This function returns if the N-simplex was found in the
+simplicial complex or not.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$find(simplex)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+of a list of vertices.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A boolean storing whether the input N-simplex was found in the
+simplicial complex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-flag_persistence_generators"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-flag_persistence_generators}{}}}
+\subsection{Method \code{flag_persistence_generators()}}{
+Assuming this is a flag complex, this function returns the
+persistence pairs, where each simplex is replaced with the vertices of
+the edges that gave it its filtration value.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$flag_persistence_generators()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list with the following components:
+\itemize{
+\item An \verb{n x 3} integer matrix containing the regular persistence pairs of
+dimension 0, with one vertex for birth and two for death;
+\item A list of \verb{m x 4} integer matrices containing the other regular
+persistence pairs, grouped by dimension, with 2 vertices per extremity;
+\item An \verb{l x ?} integer matrix containing the connected components, with one
+vertex each;
+\item A list of \verb{k x 2} integer matrices containing the other essential
+features, grouped by dimension, with 2 vertices for birth.
+}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-get_boundaries"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-get_boundaries}{}}}
+\subsection{Method \code{get_boundaries()}}{
+This function returns a generator with the boundaries of a
+given N-simplex. If you do not need the filtration values, the boundary
+can also be obtained as \code{itertools.combinations(simplex, len(simplex) - 1)}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_boundaries(simplex)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+of a list of vertices.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A generator with tuples(simplex, filtration) pointing to the
+(simplicies of the) boundary of a simplex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-get_cofaces"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-get_cofaces}{}}}
+\subsection{Method \code{get_cofaces()}}{
+This function returns the cofaces of a given N-simplex with
+a given codimension.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_cofaces(simplex, codimension)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+of a list of vertices.}
+
+\item{\code{codimension}}{An integer value specifying the codimension. If
+\code{codimension = 0}, all cofaces are returned (equivalent of
+\verb{$get_star()} function).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list of 2-component lists of the form \verb{(simplex, filtration)}
+storing the (simplices of the) cofaces of a simplex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-get_filtration"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-get_filtration}{}}}
+\subsection{Method \code{get_filtration()}}{
+This function returns a generator with simplices and their
+given filtration values sorted by increasing filtration values.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_filtration()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A generator with \code{tuples(simplex, filtration)} pointing to the
+simplices sorted by increasing filtration values.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-get_simplices"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-get_simplices}{}}}
+\subsection{Method \code{get_simplices()}}{
+This function returns a generator with simplices and their
+given filtration values.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_simplices()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A generator with \code{tuples(simplex, filtration)} pointing to the
+simplices.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-get_skeleton"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-get_skeleton}{}}}
+\subsection{Method \code{get_skeleton()}}{
+This function returns a generator with the (simplices of
+the) skeleton of a maximum given dimension.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_skeleton(dimension)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{dimension}}{A integer value specifying the skeleton dimension value.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A generator with \code{tuples(simplex, filtration)} pointing to the (simplices of the) skeleton of a maximum dimension.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-get_star"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-get_star}{}}}
+\subsection{Method \code{get_star()}}{
+This function returns the star of a given N-simplex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_star(simplex)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+of a list of vertices.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list of 2-component lists of the form \verb{(simplex, filtration)}
+storing the (simplices of the) star of a simplex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-insert"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-insert}{}}}
+\subsection{Method \code{insert()}}{
+This function inserts the given N-simplex and its subfaces
+with the given filtration value. If some of those simplices are already
+present with a higher filtration value, their filtration value is
+lowered.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$insert(simplex, filtration = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+of a list of vertices.}
+
+\item{\code{filtration}}{A numeric value specifying the filtration value of the
+simplex. Defaults to \code{0.0}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A boolean set to \code{TRUE} if the simplex was not yet in the complex
+or \code{FALSE} otherwise (whatever its original filtration value).
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-lower_star_persistence_generators"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-lower_star_persistence_generators}{}}}
+\subsection{Method \code{lower_star_persistence_generators()}}{
+Assuming this is a lower-star filtration, this function
+returns the persistence pairs, where each simplex is replaced with the
+vertex that gave it its filtration value.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$lower_star_persistence_generators()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list with the following components:
+\itemize{
+\item A list of \verb{n x 2} integer matrices containing the regular persistence
+pairs, grouped by dimension, with one vertex per extremity;
+\item A list of \verb{m x ?} integer matrices containing the essential features,
+grouped by dimension, with one vertex each.
+}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-make_filtration_non_decreasing"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-make_filtration_non_decreasing}{}}}
+\subsection{Method \code{make_filtration_non_decreasing()}}{
+This function ensures that each simplex has a higher
+filtration value than its faces by increasing the filtration values.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$make_filtration_non_decreasing()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A boolean set to \code{TRUE} if any filtration value was modified or
+to \code{FALSE} if the filtration was already non-decreasing.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-num_simplices"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-num_simplices}{}}}
+\subsection{Method \code{num_simplices()}}{
+This function returns the number of simplices of the
+simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$num_simplices()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+An integer value storing the number of simplices in the
+simplicial complex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-num_vertices"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-num_vertices}{}}}
+\subsection{Method \code{num_vertices()}}{
+This function returns the number of vertices of the
+simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$num_vertices()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+An integer value storing the number of vertices in the simplicial
+complex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-persistence"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-persistence}{}}}
+\subsection{Method \code{persistence()}}{
+This function computes and returns the persistence of the
+simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$persistence(
+  homology_coeff_field = 11,
+  min_persistence = 0,
+  persistence_dim_max = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{homology_coeff_field}}{An integer value specifying the homology
+coefficient field. Must be a prime number. Defaults to \code{11L}. Maximum
+is \code{46337L}.}
+
+\item{\code{min_persistence}}{A numeric value specifying the minimum persistence
+value to take into account (strictly greater than \code{min_persistence}).
+Defaults to \code{0.0}. Set \code{min_persistence = -1.0} to see all values.}
+
+\item{\code{persistence_dim_max}}{A boolean specifying whether the persistent
+homology for the maximal dimension in the complex is computed
+(\code{persistence_dim_max = TRUE}). If \code{FALSE}, it is ignored. Defaults to
+\code{FALSE}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list of \code{pairs(dimension, pair(birth, death))} storing the
+persistence of the simplicial complex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-persistence_intervals_in_dimension"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-persistence_intervals_in_dimension}{}}}
+\subsection{Method \code{persistence_intervals_in_dimension()}}{
+This function returns the persistence intervals of the
+simplicial complex in a specific dimension.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$persistence_intervals_in_dimension(dimension)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{dimension}}{An integer value specifying the desired dimension.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \verb{? x 2} numeric matrix storing the persistence intervals.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-persistence_pairs"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-persistence_pairs}{}}}
+\subsection{Method \code{persistence_pairs()}}{
+This function returns a list of persistence birth and death
+simplices pairs.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$persistence_pairs()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list of pairs of integer vectors storing a list of persistence
+simplices intervals.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-persistent_betti_numbers"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-persistent_betti_numbers}{}}}
+\subsection{Method \code{persistent_betti_numbers()}}{
+This function returns the persistent Betti numbers of the
+simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$persistent_betti_numbers(from_value, to_value)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{from_value}}{A numeric value specifying the persistence birth limit to be added in the numbers (\verb{persistent birth <= from_value}).}
+
+\item{\code{to_value}}{A numeric value specifying the persistence death limit to be added in the numbers (\verb{persistent death > to_value}).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+An integer vector storing the persistent Betti numbers.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-prune_above_filtration"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-prune_above_filtration}{}}}
+\subsection{Method \code{prune_above_filtration()}}{
+Prune above filtration value given as parameter.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$prune_above_filtration(filtration)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{filtration}}{A numeric value specifying the maximum threshold value.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Note that the dimension of the simplicial complex may be lower
+after calling \code{prune_above_filtration()} than it was before. However,
+\code{upper_bound_dimension()} will return the old value, which remains a
+valid upper bound. If you care, you can call \code{dimension()} method to
+recompute the exact dimension.
+}
+
+\subsection{Returns}{
+A boolean set to \code{TRUE} if the filtration has been modified or to
+\code{FALSE} otherwise.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-remove_maximal_simplex"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-remove_maximal_simplex}{}}}
+\subsection{Method \code{remove_maximal_simplex()}}{
+This function removes a given maximal N-simplex from the
+simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$remove_maximal_simplex(simplex)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+of a list of vertices.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+The dimension of the simplicial complex may be lower after
+calling \verb{$remove_maximal_simplex()} than it was before. However,
+\verb{$upper_bound_dimension()} method will return the old value, which
+remains a valid upper bound. If you care, you can call \verb{$dimension()}
+to recompute the exact dimension.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-reset_filtration"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-reset_filtration}{}}}
+\subsection{Method \code{reset_filtration()}}{
+This function resets the filtration value of all the
+simplices of dimension at least \code{min_dim}. Resets all the simplex tree
+when \code{min_dim = 0L}. \code{reset_filtration} may break the filtration
+property with \code{min_dim > 0}, and it is the user’s responsibility to
+make it a valid filtration (using a large enough \code{filtration} value, or
+calling \verb{$make_filtration_non_decreasing()} afterwards for instance).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$reset_filtration(filtration, min_dim = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{filtration}}{A numeric value specyfing the filtration threshold.}
+
+\item{\code{min_dim}}{An integer value specifying the minimal dimension.
+Defaults to \code{0L}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-set_dimension"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-set_dimension}{}}}
+\subsection{Method \code{set_dimension()}}{
+This function sets the dimension of the simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$set_dimension(dimension)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{dimension}}{An integer value specifying the dimension.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+This function must be used with caution because it disables
+dimension recomputation when required (this recomputation can be
+triggered by \verb{$remove_maximal_simplex()} or
+\verb{$prune_above_filtration()}).
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-upper_bound_dimension"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-upper_bound_dimension}{}}}
+\subsection{Method \code{upper_bound_dimension()}}{
+This function returns a valid dimension upper bound of the
+simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$upper_bound_dimension()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+An integer value storing an upper bound on the dimension of the
+simplicial complex.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SimplexTree-write_persistence_diagram"></a>}}
+\if{latex}{\out{\hypertarget{method-SimplexTree-write_persistence_diagram}{}}}
+\subsection{Method \code{write_persistence_diagram()}}{
+This function writes the persistence intervals of the
+simplicial complex in a user given file name.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$write_persistence_diagram(persistence_file)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{persistence_file}}{A string specifying the name of the file.}
 }
 \if{html}{\out{</div>}}
 }

@@ -5,7 +5,7 @@ test_that("Class `AlphaComplex` works with list input", {
   })
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  expect_snapshot(ac$get_point(1))
+  expect_true(all(ac$get_point(0) == X[[1]]))
 })
 
 test_that("Class `AlphaComplex` works with matrix input", {
@@ -15,5 +15,5 @@ test_that("Class `AlphaComplex` works with matrix input", {
   })
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  expect_snapshot(ac$get_point(1))
+  expect_true(all(ac$get_point(0) == X[1, ]))
 })
