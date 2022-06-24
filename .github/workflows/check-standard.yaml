@@ -46,9 +46,11 @@ jobs:
 
       - name: Setup Python dependencies
         run: |
+          Rscript -e 'reticulate::install_miniconda()'
           Rscript -e 'reticulate::conda_create("r-reticulate")'
           Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
           Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
+          Rscript -e 'reticulate::use_condaenv("r-reticulate")'
 
       - uses: r-lib/actions/check-r-package@v2
         with:
