@@ -75,7 +75,7 @@ SimplexTree <- R6::R6Class(
     #'   the simplex tree from the remaining edges. A good candidate is to build
     #'   a simplex tree on top of a RipsComplex of dimension 1 before collapsing
     #'   edges (cf. rips_complex_edge_collapse_example.py). For implementation
-    #'   details, please refer to [6].
+    #'   details, please refer to `[6]`.
     #'
     #' @details It requires `Eigen >= 3.1.0` and an exception is thrown if not
     #'   available.
@@ -164,7 +164,7 @@ SimplexTree <- R6::R6Class(
     #'
     #' @details The coordinates of the persistence diagram points might be a
     #'   little different than the original filtration values due to the
-    #'   internal transformation (scaling to [-2,-1]) that is performed on these
+    #'   internal transformation (scaling to `[-2,-1]`) that is performed on these
     #'   values during the computation of extended persistence.
     #'
     #' This notebook explains how to compute an extension of persistence called
@@ -235,7 +235,7 @@ SimplexTree <- R6::R6Class(
     get_boundaries = function(simplex) {
       itb <- private$m_PythonClass$get_boundaries(simplex)
       res <- reticulate::iterate(itb)
-      purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      purrr::map(res, purrr::set_names, nm = c("simplex", "filtration"))
     },
 
     #' @description This function returns the cofaces of a given N-simplex with

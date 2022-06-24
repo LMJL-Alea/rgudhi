@@ -78,6 +78,7 @@ AlphaComplex <- R6::R6Class(
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
     #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
     #' ac$get_point(1)
     get_point = function(vertex) {
       if (!private$m_ComputedSimplexTree)

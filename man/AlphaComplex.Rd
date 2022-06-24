@@ -43,6 +43,7 @@ st <- ac$create_simplex_tree()
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
 ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
 ac$get_point(1)
 }
 \section{Methods}{
@@ -158,6 +159,7 @@ vertex.
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
 ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
 ac$get_point(1)
 }
 \if{html}{\out{</div>}}

@@ -153,7 +153,7 @@ collapse edges (simplices of higher dimension are ignored) and resets
 the simplex tree from the remaining edges. A good candidate is to build
 a simplex tree on top of a RipsComplex of dimension 1 before collapsing
 edges (cf. rips_complex_edge_collapse_example.py). For implementation
-details, please refer to \link{6}.
+details, please refer to \verb{[6]}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$collapse_edges(nb_iterations = 1)}\if{html}{\out{</div>}}
 }
@@ -325,7 +325,7 @@ Defaults to \code{0.0}. Set \code{min_persistence = -1.0} to see all values.}
 \subsection{Details}{
 The coordinates of the persistence diagram points might be a
 little different than the original filtration values due to the
-internal transformation (scaling to \link{-2,-1}) that is performed on these
+internal transformation (scaling to \verb{[-2,-1]}) that is performed on these
 values during the computation of extended persistence.
 
 This notebook explains how to compute an extension of persistence called

@@ -21,6 +21,7 @@ Config/reticulate:
 Imports: 
     cli,
     fs,
+    purrr,
     R6,
     reticulate
 Suggests: 
