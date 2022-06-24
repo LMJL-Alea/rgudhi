@@ -6,7 +6,8 @@
 \description{
 AlphaComplex is a simplicial complex constructed from the
 finite cells of a Delaunay Triangulation.
-
+}
+\details{
 The filtration value of each simplex is computed as the square of the
 circumradius of the simplex if the circumsphere is empty (the simplex is then
 said to be Gabriel), and as the minimum of the filtration values of the
@@ -32,14 +33,24 @@ ac_list <- AlphaComplex$new(points = X_list)
 
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-ac <- AlphaComplex$new(points = X_list)
+ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
+
+## ------------------------------------------------
+## Method `AlphaComplex$get_point`
+## ------------------------------------------------
+
+n <- 10
+X <- replicate(n, runif(2), simplify = FALSE)
+ac <- AlphaComplex$new(points = X)
+ac$get_point(1)
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-AlphaComplex-new}{\code{AlphaComplex$new()}}
 \item \href{#method-AlphaComplex-create_simplex_tree}{\code{AlphaComplex$create_simplex_tree()}}
+\item \href{#method-AlphaComplex-get_point}{\code{AlphaComplex$get_point()}}
 \item \href{#method-AlphaComplex-clone}{\code{AlphaComplex$clone()}}
 }
 }
@@ -64,7 +75,7 @@ one of \code{"fast"}, \code{"safe"} or \code{"exact"}. Defaults to \code{"safe"}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A new \code{AlphaComplex} object.
+A \code{\link{AlphaComplex}} object storing the Alpha complex.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -107,14 +118,47 @@ compute the filtration values).}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A simplex tree created from the Delaunay Triangulation.
+A \code{\link{SimplexTree}} object storing the computed simplex
+tree.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-ac <- AlphaComplex$new(points = X_list)
+ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-AlphaComplex-get_point"></a>}}
+\if{latex}{\out{\hypertarget{method-AlphaComplex-get_point}{}}}
+\subsection{Method \code{get_point()}}{
+This function returns the point corresponding to a given vertex from the SimplexTree.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{AlphaComplex$get_point(vertex)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{vertex}}{An integer value specifying the desired vertex.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A numeric vector storing the point corresponding to the input
+vertex.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- replicate(n, runif(2), simplify = FALSE)
+ac <- AlphaComplex$new(points = X)
+ac$get_point(1)
 }
 \if{html}{\out{</div>}}
 

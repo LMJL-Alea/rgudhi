@@ -3,7 +3,7 @@
 #' @description  AlphaComplex is a simplicial complex constructed from the
 #'   finite cells of a Delaunay Triangulation.
 #'
-#' The filtration value of each simplex is computed as the square of the
+#' @details The filtration value of each simplex is computed as the square of the
 #' circumradius of the simplex if the circumsphere is empty (the simplex is then
 #' said to be Gabriel), and as the minimum of the filtration values of the
 #' codimension 1 cofaces that make it not Gabriel otherwise. All simplices that
@@ -21,7 +21,7 @@ AlphaComplex <- R6::R6Class(
     #' @param precision A string specifying the alpha complex precision. Can be
     #'   one of `"fast"`, `"safe"` or `"exact"`. Defaults to `"safe"`.
     #'
-    #' @return A new `AlphaComplex` object.
+    #' @return A \code{\link{AlphaComplex}} object storing the Alpha complex.
     #'
     #' @examples
     #' n <- 10
@@ -31,9 +31,9 @@ AlphaComplex <- R6::R6Class(
     #' ac_list <- AlphaComplex$new(points = X_list)
     initialize = function(points, precision = "safe") {
       if (inherits(points, "matrix") || inherits(points, "list"))
-        private$py_class <- gd$AlphaComplex(points = points)
+        private$m_PythonClass <- gd$AlphaComplex(points = points)
       else if (is.character(points) && fs::path_ext(points) == "off")
-        private$py_class <- gd$AlphaComplex(off_file = points, precision = precision)
+        private$m_PythonClass <- gd$AlphaComplex(off_file = points, precision = precision)
       else
         cli::cli_abort("{.code points} must be either a matrix or a list or an OFF file.")
     },
@@ -49,23 +49,44 @@ AlphaComplex <- R6::R6Class(
     #'   (`default_filtration_value = TRUE`). Defaults to `FALSE` (which means
     #'   compute the filtration values).
     #'
-    #' @return A simplex tree created from the Delaunay Triangulation.
+    #' @return A \code{\link{SimplexTree}} object storing the computed simplex
+    #'   tree.
     #'
     #' @examples
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
-    #' ac <- AlphaComplex$new(points = X_list)
+    #' ac <- AlphaComplex$new(points = X)
     #' st <- ac$create_simplex_tree()
     create_simplex_tree = function(max_alpha_square = Inf,
                                    default_filtration_value = FALSE) {
-      if (is.null(private$py_class))
-        cli::cli_abort("Not possible.")
-      py_st <- private$py_class$create_simplex_tree(
+      py_st <- private$m_PythonClass$create_simplex_tree(
         max_alpha_square = max_alpha_square,
         default_filtration_value = default_filtration_value
       )
+      private$m_ComputedSimplexTree <- TRUE
       SimplexTree$new(py_class = py_st)
+    },
+
+    #' @description This function returns the point corresponding to a given vertex from the SimplexTree.
+    #'
+    #' @param vertex An integer value specifying the desired vertex.
+    #'
+    #' @return A numeric vector storing the point corresponding to the input
+    #'   vertex.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- replicate(n, runif(2), simplify = FALSE)
+    #' ac <- AlphaComplex$new(points = X)
+    #' ac$get_point(1)
+    get_point = function(vertex) {
+      if (!private$m_ComputedSimplexTree)
+        cli::cli_abort("You first need to generate the simplex tree by calling the {.code $create_simplex_tree()} method.")
+      private$m_PythonClass$get_point(vertex)
     }
   ),
-  private = list(py_class = NULL)
+  private = list(
+    m_PythonClass = NULL,
+    m_ComputedSimplexTree = FALSE
+  )
 )
