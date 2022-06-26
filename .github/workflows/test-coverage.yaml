@@ -26,12 +26,17 @@ jobs:
           extra-packages: any::covr
           needs: coverage
 
-      - name: Setup Python dependencies
+      - name: Install Miniconda
         run: |
           Rscript -e 'reticulate::install_miniconda()'
+      - if: runner.os == 'macOS'
+        run: echo "options(reticulate.conda_binary = reticulate:::miniconda_conda())" >> .Rprofile
+
+      - name: Setup Python dependencies
+        run: |
           Rscript -e 'reticulate::conda_create("r-reticulate")'
+          Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
           Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
-          Rscript -e 'reticulate::use_condaenv("r-reticulate")'
 
       - name: Test coverage
         run: covr::codecov(quiet = FALSE)
