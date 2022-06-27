@@ -33,6 +33,16 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
+      - name: Install Miniconda
+        run: |
+          Rscript -e 'reticulate::install_miniconda()'
+
+      - name: Setup Python dependencies
+        run: |
+          Rscript -e 'reticulate::conda_create("r-reticulate")'
+          Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
+          Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
+
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
