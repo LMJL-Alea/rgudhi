@@ -35,8 +35,7 @@ devtools::install_github("astamm/rgudhi")
 library(rgudhi)
 n <- 20
 X <- replicate(n, runif(2), simplify = FALSE)
-ac <- alpha_complex(points = X)
+ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 dgm <- st$persistence()
-plot_persistence_diagram(dgm)
 ```
