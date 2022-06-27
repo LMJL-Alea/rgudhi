@@ -2,5 +2,3 @@
 
 export(AlphaComplex)
 export(SimplexTree)
-export(alpha_complex)
-export(plot_persistence_diagram)
