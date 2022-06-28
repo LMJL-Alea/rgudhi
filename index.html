@@ -73,19 +73,19 @@
 </h2>
 <p>You can install the development version of <code>rgudhi</code> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"astamm/rgudhi"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"astamm/rgudhi"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example-persistence-diagram-using-an-alpha-complex">Example: Persistence diagram using an Alpha complex<a class="anchor" aria-label="anchor" href="#example-persistence-diagram-using-an-alpha-complex"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/astamm/rgudhi" class="external-link">rgudhi</a></span><span class="op">)</span>
-<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span>
-<span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span>
-<span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span>
-<span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/astamm/rgudhi" class="external-link">rgudhi</a></span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
+<span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
