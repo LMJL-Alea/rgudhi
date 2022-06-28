@@ -89,7 +89,7 @@ which uses the Python class constructor instead.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A new \code{SimplexTree} object.
+A new \code{\link{SimplexTree}} object.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}

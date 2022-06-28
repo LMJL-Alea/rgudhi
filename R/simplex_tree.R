@@ -31,7 +31,7 @@ SimplexTree <- R6::R6Class(
     #' @param py_class A Python `SimplexTree` class object. Defaults to `NULL`
     #'   which uses the Python class constructor instead.
     #'
-    #' @return A new `SimplexTree` object.
+    #' @return A new \code{\link{SimplexTree}} object.
     #'
     #' @examples
     #' st <- SimplexTree$new()
@@ -235,7 +235,7 @@ SimplexTree <- R6::R6Class(
     get_boundaries = function(simplex) {
       itb <- private$m_PythonClass$get_boundaries(simplex)
       res <- reticulate::iterate(itb)
-      purrr::map(res, purrr::set_names, nm = c("simplex", "filtration"))
+      purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
     },
 
     #' @description This function returns the cofaces of a given N-simplex with

@@ -23,7 +23,8 @@ Imports:
     fs,
     purrr,
     R6,
-    reticulate
+    reticulate,
+    rlang
 Suggests: 
     covr,
     testthat (>= 3.0.0),
