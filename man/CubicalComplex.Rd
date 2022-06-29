@@ -16,6 +16,25 @@ analysis.
 
 X <- matrix(rnorm(20), nrow = 10)
 cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc
+
+## ------------------------------------------------
+## Method `CubicalComplex$betti_numbers`
+## ------------------------------------------------
+
+X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$betti_numbers()
+
+## ------------------------------------------------
+## Method `CubicalComplex$cofaces_of_persistence_pairs`
+## ------------------------------------------------
+
+X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$cofaces_of_persistence_pairs()
 
 ## ------------------------------------------------
 ## Method `CubicalComplex$dimension`
@@ -40,6 +59,24 @@ cc$num_simplices()
 X <- matrix(rnorm(20), nrow = 10)
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$persistence()
+
+## ------------------------------------------------
+## Method `CubicalComplex$persistence_intervals_in_dimension`
+## ------------------------------------------------
+
+X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$persistence_intervals_in_dimension(0)
+
+## ------------------------------------------------
+## Method `CubicalComplex$persistent_betti_numbers`
+## ------------------------------------------------
+
+X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$persistent_betti_numbers(0, 1)
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -51,6 +88,8 @@ cc$persistence()
 \item \href{#method-CubicalComplex-dimension}{\code{CubicalComplex$dimension()}}
 \item \href{#method-CubicalComplex-num_simplices}{\code{CubicalComplex$num_simplices()}}
 \item \href{#method-CubicalComplex-persistence}{\code{CubicalComplex$persistence()}}
+\item \href{#method-CubicalComplex-persistence_intervals_in_dimension}{\code{CubicalComplex$persistence_intervals_in_dimension()}}
+\item \href{#method-CubicalComplex-persistent_betti_numbers}{\code{CubicalComplex$persistent_betti_numbers()}}
 \item \href{#method-CubicalComplex-clone}{\code{CubicalComplex$clone()}}
 }
 }
@@ -94,6 +133,7 @@ A new \code{\link{CubicalComplex}} object.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
 cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc
 }
 \if{html}{\out{</div>}}
 
@@ -117,6 +157,17 @@ infinity filtration cubes are not removed from the complex.
 \subsection{Returns}{
 An integer vector storing the Betti numbers.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$betti_numbers()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CubicalComplex-cofaces_of_persistence_pairs"></a>}}
@@ -153,14 +204,24 @@ lists of integer arrays. The first list contains the regular
 persistence pairs, grouped by dimension. It contains numpy arrays of
 shape \verb{[number_of_persistence_points, 2]}. The indices of the arrays in
 the list correspond to the homological dimensions, and the integers of
-each row in each array correspond to: (index of positive
-top-dimensional cell, index of negative top-dimensional cell). The
+each row in each array correspond to: \verb{(index of positive top-dimensional cell, index of negative top-dimensional cell)}. The
 second list contains the essential features, grouped by dimension. It
 contains numpy arrays of shape \verb{[number_of_persistence_points, 1]}. The
 indices of the arrays in the list correspond to the homological
 dimensions, and the integers of each row in each array correspond to:
-(index of positive top-dimensional cell).
+\verb{(index of positive top-dimensional cell)}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$cofaces_of_persistence_pairs()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CubicalComplex-compute_persistence"></a>}}
@@ -263,17 +324,83 @@ Defaults to \code{0.0}. Set \code{min_persistence = -1.0} to see all values.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A list of length-2 lists with components:
-\itemize{
-\item \code{dimension}: An integer value storing the dimension;
-\item \code{barcode}: A length-2 numeric vector storing the birth and death.
-}
+A \code{\link[tibble]{tibble}} listing all persistence feature
+summarised by 3 variables: \code{dimension}, \code{birth} and \code{death}.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$persistence()
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CubicalComplex-persistence_intervals_in_dimension"></a>}}
+\if{latex}{\out{\hypertarget{method-CubicalComplex-persistence_intervals_in_dimension}{}}}
+\subsection{Method \code{persistence_intervals_in_dimension()}}{
+This function returns the persistence intervals of the
+complex in a specific dimension.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CubicalComplex$persistence_intervals_in_dimension(dimension)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{dimension}}{An integer value specifying the desired dimension.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{\link[tibble]{tibble}} storing the persistence intervals
+by row.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$persistence_intervals_in_dimension(0)
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CubicalComplex-persistent_betti_numbers"></a>}}
+\if{latex}{\out{\hypertarget{method-CubicalComplex-persistent_betti_numbers}{}}}
+\subsection{Method \code{persistent_betti_numbers()}}{
+This function returns the persistent Betti numbers of the
+complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CubicalComplex$persistent_betti_numbers(from_value, to_value)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{from_value}}{A numeric value specifying the persistence birth limit
+to be added in the numbers (\verb{persistent birth <= from_value}).}
+
+\item{\code{to_value}}{A numeric value specifying the persistence death limit to
+be added in the numbers (\verb{persistent death > to_value}).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+An integer vector storing the persistent Betti numbers.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{X <- matrix(rnorm(20), nrow = 10)
+cc <- CubicalComplex$new(top_dimensional_cells = X)
+cc$compute_persistence()
+cc$persistent_betti_numbers(0, 1)
 }
 \if{html}{\out{</div>}}
 

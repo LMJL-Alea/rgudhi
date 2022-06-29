@@ -24,7 +24,8 @@ Imports:
     purrr,
     R6,
     reticulate,
-    rlang
+    rlang,
+    tibble
 Suggests: 
     covr,
     testthat (>= 3.0.0),

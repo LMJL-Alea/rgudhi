@@ -33,6 +33,7 @@ CubicalComplex <- R6::R6Class(
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
     #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc
     initialize = function(perseus_file,
                           top_dimensional_cells,
                           dimensions = NULL,
@@ -70,6 +71,12 @@ CubicalComplex <- R6::R6Class(
     #'   infinity filtration cubes are not removed from the complex.
     #'
     #' @return An integer vector storing the Betti numbers.
+    #'
+    #' @examples
+    #' X <- matrix(rnorm(20), nrow = 10)
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()
+    #' cc$betti_numbers()
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -101,14 +108,22 @@ CubicalComplex <- R6::R6Class(
     #'   persistence pairs, grouped by dimension. It contains numpy arrays of
     #'   shape `[number_of_persistence_points, 2]`. The indices of the arrays in
     #'   the list correspond to the homological dimensions, and the integers of
-    #'   each row in each array correspond to: (index of positive
-    #'   top-dimensional cell, index of negative top-dimensional cell). The
+    #'   each row in each array correspond to: `(index of positive
+    #'   top-dimensional cell, index of negative top-dimensional cell)`. The
     #'   second list contains the essential features, grouped by dimension. It
     #'   contains numpy arrays of shape `[number_of_persistence_points, 1]`. The
     #'   indices of the arrays in the list correspond to the homological
     #'   dimensions, and the integers of each row in each array correspond to:
-    #'   (index of positive top-dimensional cell).
+    #'   `(index of positive top-dimensional cell)`.
+    #'
+    #' @examples
+    #' X <- matrix(rnorm(20), nrow = 10)
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()
+    #' cc$cofaces_of_persistence_pairs()
     cofaces_of_persistence_pairs = function() {
+      if (!private$m_ComputedPersistence)
+        cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
       private$m_PythonClass$cofaces_of_persistence_pairs()
     },
 
@@ -123,6 +138,7 @@ CubicalComplex <- R6::R6Class(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence
       )
+      private$m_ComputedPersistence <- TRUE
     },
 
     #' @description This function returns the dimension of the complex.
@@ -153,10 +169,8 @@ CubicalComplex <- R6::R6Class(
     #' @description This function computes and returns the persistence of the
     #'   complex.
     #'
-    #' @return A list of length-2 lists with components:
-    #'
-    #' - `dimension`: An integer value storing the dimension;
-    #' - `barcode`: A length-2 numeric vector storing the birth and death.
+    #' @return A \code{\link[tibble]{tibble}} listing all persistence feature
+    #'   summarised by 3 variables: `dimension`, `birth` and `death`.
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
@@ -170,7 +184,65 @@ CubicalComplex <- R6::R6Class(
       )
       l <- purrr::map(l, purrr::simplify_all)
       l <- purrr::map(l, purrr::set_names, nm = c("dimension", "barcode"))
-      l
+
+      l_dim <- purrr::map(l, "dimension")
+      l_dim <- purrr::map(l_dim, rlang::set_names, nm = "dimension")
+      l_dim <- purrr::transpose(l_dim)
+      l_dim <- purrr::simplify_all(l_dim)
+      l_dim <- tibble::as_tibble(l_dim)
+
+      l_bar <- purrr::map(l, "barcode")
+      l_bar <- purrr::map(l_bar, rlang::set_names, nm = c("birth", "death"))
+      l_bar <- purrr::transpose(l_bar)
+      l_bar <- purrr::simplify_all(l_bar)
+      l_bar <- tibble::as_tibble(l_bar)
+
+      tibble::tibble(l_dim, l_bar)
+    },
+
+    #' @description This function returns the persistence intervals of the
+    #'   complex in a specific dimension.
+    #'
+    #' @param dimension An integer value specifying the desired dimension.
+    #'
+    #' @return A \code{\link[tibble]{tibble}} storing the persistence intervals
+    #'   by row.
+    #'
+    #' @examples
+    #' X <- matrix(rnorm(20), nrow = 10)
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()
+    #' cc$persistence_intervals_in_dimension(0)
+    persistence_intervals_in_dimension = function(dimension) {
+      if (!private$m_ComputedPersistence)
+        cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
+      M <- private$m_PythonClass$persistence_intervals_in_dimension(dimension)
+      colnames(M) <- c("birth", "death")
+      tibble::as_tibble(M)
+    },
+
+    #' @description This function returns the persistent Betti numbers of the
+    #'   complex.
+    #'
+    #' @param from_value A numeric value specifying the persistence birth limit
+    #'   to be added in the numbers (`persistent birth <= from_value`).
+    #' @param to_value A numeric value specifying the persistence death limit to
+    #'   be added in the numbers (`persistent death > to_value`).
+    #'
+    #' @return An integer vector storing the persistent Betti numbers.
+    #'
+    #' @examples
+    #' X <- matrix(rnorm(20), nrow = 10)
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()
+    #' cc$persistent_betti_numbers(0, 1)
+    persistent_betti_numbers = function(from_value, to_value) {
+      if (!private$m_ComputedPersistence)
+        cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
+      private$m_PythonClass$persistent_betti_numbers(
+        from_value = from_value,
+        to_value = to_value
+      )
     }
   ),
   private = list(
