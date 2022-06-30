@@ -138,7 +138,8 @@ st <- ac$create_simplex_tree()
 \if{html}{\out{<a id="method-AlphaComplex-get_point"></a>}}
 \if{latex}{\out{\hypertarget{method-AlphaComplex-get_point}{}}}
 \subsection{Method \code{get_point()}}{
-This function returns the point corresponding to a given vertex from the SimplexTree.
+This function returns the point corresponding to a given
+vertex from the SimplexTree.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AlphaComplex$get_point(vertex)}\if{html}{\out{</div>}}
 }

@@ -122,7 +122,7 @@ specifying cell filtration values.}
 dimensional cells. Defaults to \code{NULL}.}
 
 \item{\code{py_class}}{An existing \code{CubicalComplex} Python class. Defaults to
-\code{NULL}.}
+\code{NULL} which uses the Python class constructor instead.}
 }
 \if{html}{\out{</div>}}
 }

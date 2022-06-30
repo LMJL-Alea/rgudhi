@@ -67,7 +67,8 @@ AlphaComplex <- R6::R6Class(
       SimplexTree$new(py_class = py_st)
     },
 
-    #' @description This function returns the point corresponding to a given vertex from the SimplexTree.
+    #' @description This function returns the point corresponding to a given
+    #'   vertex from the SimplexTree.
     #'
     #' @param vertex An integer value specifying the desired vertex.
     #'

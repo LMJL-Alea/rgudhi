@@ -26,7 +26,7 @@ CubicalComplex <- R6::R6Class(
     #' @param dimensions An integer vector specifying the number of top
     #'   dimensional cells. Defaults to `NULL`.
     #' @param py_class An existing `CubicalComplex` Python class. Defaults to
-    #'   `NULL`.
+    #'   `NULL` which uses the Python class constructor instead.
     #'
     #' @return A new \code{\link{CubicalComplex}} object.
     #'
