@@ -2,4 +2,5 @@
 
 export(AlphaComplex)
 export(CubicalComplex)
+export(PeriodicCubicalComplex)
 export(SimplexTree)
