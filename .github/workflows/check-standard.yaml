@@ -44,6 +44,11 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
+      - if: runner.os == 'windows'
+        name: Install Python
+        run: |
+          Rscript -e 'reticulate::install_python()'
+
       - name: Install Miniconda
         run: |
           Rscript -e 'reticulate::install_miniconda()'
