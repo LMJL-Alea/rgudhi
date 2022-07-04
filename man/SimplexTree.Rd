@@ -156,7 +156,8 @@ X <- lapply(
 )
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
-st$get_boundaries(c(0, 2, 6))
+splx <- st$get_simplices()$simplex[[1]]
+st$get_boundaries(splx)
 
 ## ------------------------------------------------
 ## Method `SimplexTree$get_cofaces`
@@ -766,7 +767,8 @@ X <- lapply(
 )
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
-st$get_boundaries(c(0, 2, 6))
+splx <- st$get_simplices()$simplex[[1]]
+st$get_boundaries(splx)
 }
 \if{html}{\out{</div>}}
 

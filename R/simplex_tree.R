@@ -356,7 +356,8 @@ SimplexTree <- R6::R6Class(
     #' )
     #' ac <- AlphaComplex$new(points = X)
     #' st <- ac$create_simplex_tree()
-    #' st$get_boundaries(c(0, 2, 6))
+    #' splx <- st$get_simplices()$simplex[[1]]
+    #' st$get_boundaries(splx)
     get_boundaries = function(simplex) {
       itb <- private$m_PythonClass$get_boundaries(simplex)
       res <- reticulate::iterate(itb)
