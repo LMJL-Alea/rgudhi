@@ -23,6 +23,7 @@ Imports:
     fs,
     purrr,
     R6,
+    Rdpack,
     reticulate,
     rlang,
     tibble
@@ -31,3 +32,4 @@ Suggests:
     testthat (>= 3.0.0),
     withr
 Config/testthat/edition: 3
+RdMacros: Rdpack
