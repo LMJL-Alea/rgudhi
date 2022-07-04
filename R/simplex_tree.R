@@ -334,7 +334,6 @@ SimplexTree <- R6::R6Class(
     #' ac <- AlphaComplex$new(points = X)
     #' st <- ac$create_simplex_tree()
     #' st$compute_persistence()
-    #' st$flag_persistence_generators()
     flag_persistence_generators = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
