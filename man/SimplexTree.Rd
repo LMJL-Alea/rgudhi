@@ -144,7 +144,6 @@ X <- lapply(
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 st$compute_persistence()
-st$flag_persistence_generators()
 
 ## ------------------------------------------------
 ## Method `SimplexTree$get_boundaries`
@@ -728,7 +727,6 @@ X <- lapply(
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 st$compute_persistence()
-st$flag_persistence_generators()
 }
 \if{html}{\out{</div>}}
 
