@@ -590,7 +590,8 @@ corresponding filtration value in column <code>filtration</code>.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">st</span><span class="op">$</span><span class="fu">get_boundaries</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<span><span class="va">splx</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">get_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">simplex</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="va">st</span><span class="op">$</span><span class="fu">get_boundaries</span><span class="op">(</span><span class="va">splx</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -1296,8 +1297,14 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">st</span><span class="op">$</span><span class="fu">get_boundaries</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in py_iterate(it, f):</span> RuntimeError: simplex not found - cannot find boundaries</span>
+<span class="r-in"><span><span class="va">splx</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">get_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">simplex</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">st</span><span class="op">$</span><span class="fu">get_boundaries</span><span class="op">(</span><span class="va">splx</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      0.117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      1    </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$get_cofaces`</span></span></span>
