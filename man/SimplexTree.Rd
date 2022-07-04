@@ -21,16 +21,198 @@ version of the simplex tree.
 ## ------------------------------------------------
 
 st <- SimplexTree$new()
+st
+
+## ------------------------------------------------
+## Method `SimplexTree$assign_filtration`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$filtration(1)
+st$assign_filtration(1, 0.8)
+st$filtration(1)
+
+## ------------------------------------------------
+## Method `SimplexTree$betti_numbers`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$compute_persistence()
+st$betti_numbers()
+
+## ------------------------------------------------
+## Method `SimplexTree$collapse_edges`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$collapse_edges()
 
 ## ------------------------------------------------
 ## Method `SimplexTree$dimension`
 ## ------------------------------------------------
 
 n <- 10
-X <- replicate(n, runif(2), simplify = FALSE)
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 st$dimension()
+
+## ------------------------------------------------
+## Method `SimplexTree$expansion`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$expansion(2)
+
+## ------------------------------------------------
+## Method `SimplexTree$extended_persistence`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$extend_filtration()
+st$extended_persistence()
+
+## ------------------------------------------------
+## Method `SimplexTree$filtration`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$filtration(0)
+st$filtration(1:2)
+
+## ------------------------------------------------
+## Method `SimplexTree$find`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$find(0)
+
+## ------------------------------------------------
+## Method `SimplexTree$flag_persistence_generators`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$compute_persistence()
+st$flag_persistence_generators()
+
+## ------------------------------------------------
+## Method `SimplexTree$get_boundaries`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_boundaries(c(0, 2, 6))
+
+## ------------------------------------------------
+## Method `SimplexTree$get_cofaces`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_cofaces(1:2, 0)
+
+## ------------------------------------------------
+## Method `SimplexTree$get_filtration`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_filtration()
+
+## ------------------------------------------------
+## Method `SimplexTree$get_simplices`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_simplices()
+
+## ------------------------------------------------
+## Method `SimplexTree$persistence`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$persistence()
+}
+\references{
+\insertAllCited{}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -94,6 +276,7 @@ A new \code{\link{SimplexTree}} object.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{st <- SimplexTree$new()
+st
 }
 \if{html}{\out{</div>}}
 
@@ -113,10 +296,10 @@ N-simplex.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 
-\item{\code{filtration}}{A numeric value specifying the new filtration value}
+\item{\code{filtration}}{A numeric value specifying the new filtration value.}
 }
 \if{html}{\out{</div>}}
 }
@@ -124,9 +307,27 @@ of a list of vertices.}
 Beware that after this operation, the structure may not be a
 valid filtration anymore, a simplex could have a lower filtration value
 than one of its faces. Callers are responsible for fixing this (with
-more \code{assign_filtration()} or \code{make_filtration_non_decreasing()} for
-instance) before calling any function that relies on the filtration
-property, like \code{persistence()}.
+more calls to the \verb{$assign_filtration()} method or a call to the
+\verb{$make_filtration_non_decreasing()} method for instance) before calling
+any function that relies on the filtration property, such as
+\code{persistence()}.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$filtration(1)
+st$assign_filtration(1, 0.8)
+st$filtration(1)
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -143,6 +344,22 @@ complex.
 \subsection{Returns}{
 An integer vector storing the Betti numbers.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$compute_persistence()
+st$betti_numbers()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-collapse_edges"></a>}}
@@ -151,9 +368,10 @@ An integer vector storing the Betti numbers.
 Assuming the simplex tree is a 1-skeleton graph, this method
 collapse edges (simplices of higher dimension are ignored) and resets
 the simplex tree from the remaining edges. A good candidate is to build
-a simplex tree on top of a RipsComplex of dimension 1 before collapsing
-edges (cf. rips_complex_edge_collapse_example.py). For implementation
-details, please refer to \verb{[6]}.
+a simplex tree on top of a \code{RipsComplex} of dimension 1 before
+collapsing edges as done in this \href{https://gudhi.inria.fr/python/latest/_downloads/c82779c19a4ebcf1f96e8e390fe8fdd4/rips_complex_edge_collapse_example.py}{Python example}.
+For implementation details, please refer to
+\insertCite{boissonnat2020edge;textual}{rgudhi}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$collapse_edges(nb_iterations = 1)}\if{html}{\out{</div>}}
 }
@@ -169,6 +387,25 @@ collapse iterations to perform. Defaults to \code{1L}.}
 \subsection{Details}{
 It requires \verb{Eigen >= 3.1.0} and an exception is thrown if not
 available.
+
+\strong{References}
+
+\insertAllCited{}
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$collapse_edges()
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -230,7 +467,10 @@ An integer value storing the simplicial complex dimension.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
-X <- replicate(n, runif(2), simplify = FALSE)
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 st$dimension()
@@ -268,6 +508,21 @@ The simplex tree must contain no simplex of dimension bigger than 1 when
 calling the method.
 }
 
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$expansion(2)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-extend_filtration"></a>}}
@@ -290,8 +545,10 @@ Note that this code creates an extra vertex internally, so you should
 make sure that the simplex tree does not contain a vertex with the
 largest possible value (i.e., \code{4294967295}).
 
-This notebook explains how to compute an extension of persistence called
-extended persistence.
+This
+\href{https://github.com/GUDHI/TDA-tutorial/blob/master/Tuto-GUDHI-extended-persistence.ipynb}{notebook}
+explains how to compute an extension of persistence called extended
+persistence.
 }
 
 }
@@ -336,18 +593,36 @@ extended persistence.
 A list of four persistence diagrams in the format described in
 \verb{$persistence()}. The first one is \code{Ordinary}, the second one is
 \code{Relative}, the third one is \verb{Extended+} and the fourth one is
-\verb{Extended-}. See
-https://link.springer.com/article/10.1007/s10208-008-9027-z and/or
-section 2.2 in
-https://link.springer.com/article/10.1007/s10208-017-9370-z for a
-description of these subtypes.
+\verb{Extended-}. See this
+\href{https://link.springer.com/article/10.1007/s10208-008-9027-z}{article}
+and/or Section 2.2 in this
+\href{https://link.springer.com/article/10.1007/s10208-017-9370-z}{article}
+for a description of these subtypes.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$extend_filtration()
+st$extended_persistence()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-filtration"></a>}}
 \if{latex}{\out{\hypertarget{method-SimplexTree-filtration}{}}}
 \subsection{Method \code{filtration()}}{
-This function returns the filtration value for a given N-simplex in this simplicial complex, or +infinity if it is not in the complex.
+This function returns the filtration value for a given
+N-simplex in this simplicial complex, or +infinity if it is not in the
+complex.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$filtration(simplex)}\if{html}{\out{</div>}}
 }
@@ -355,14 +630,31 @@ This function returns the filtration value for a given N-simplex in this simplic
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A numeric value storing the filtration value for the input N-simplex.
+A numeric value storing the filtration value for the input
+N-simplex.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$filtration(0)
+st$filtration(1:2)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-find"></a>}}
@@ -377,7 +669,7 @@ simplicial complex or not.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 }
 \if{html}{\out{</div>}}
@@ -386,6 +678,21 @@ of a list of vertices.}
 A boolean storing whether the input N-simplex was found in the
 simplicial complex.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$find(0)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-flag_persistence_generators"></a>}}
@@ -411,14 +718,30 @@ vertex each;
 features, grouped by dimension, with 2 vertices for birth.
 }
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$compute_persistence()
+st$flag_persistence_generators()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-get_boundaries"></a>}}
 \if{latex}{\out{\hypertarget{method-SimplexTree-get_boundaries}{}}}
 \subsection{Method \code{get_boundaries()}}{
-This function returns a generator with the boundaries of a
-given N-simplex. If you do not need the filtration values, the boundary
-can also be obtained as \code{itertools.combinations(simplex, len(simplex) - 1)}.
+For a given N-simplex, this function returns a list of
+simplices of dimension N-1 corresponding to the boundaries of the
+N-simplex.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_boundaries(simplex)}\if{html}{\out{</div>}}
 }
@@ -426,16 +749,31 @@ can also be obtained as \code{itertools.combinations(simplex, len(simplex) - 1)}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A list of length-2 lists with components \code{simplex} (integer
-vector) and \code{filtration} (numeric value) corresponding to the
-(simplicies of the) boundary of a simplex.
+A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+boundary of the input N-simplex in column \code{simplex} along with their
+corresponding filtration value in column \code{filtration}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_boundaries(c(0, 2, 6))
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-get_cofaces"></a>}}
@@ -450,7 +788,7 @@ a given codimension.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 
 \item{\code{codimension}}{An integer value specifying the codimension. If
@@ -460,39 +798,87 @@ of a list of vertices.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A list of 2-component lists of the form \verb{(simplex, filtration)}
-storing the (simplices of the) cofaces of a simplex.
+A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+cofaces of the input N-simplex in column \code{simplex} along with their
+corresponding filtration value in column \code{filtration}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_cofaces(1:2, 0)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-get_filtration"></a>}}
 \if{latex}{\out{\hypertarget{method-SimplexTree-get_filtration}{}}}
 \subsection{Method \code{get_filtration()}}{
-This function returns a generator with simplices and their
+This function retrieves the list of simplices and their
 given filtration values sorted by increasing filtration values.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_filtration()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
-A generator with \code{tuples(simplex, filtration)} pointing to the
-simplices sorted by increasing filtration values.
+A \code{\link[tibble]{tibble}} listing the simplicies in column
+\code{simplex} along with their corresponding filtration value in column
+\code{filtration}, in increasing order of filtration value.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_filtration()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-get_simplices"></a>}}
 \if{latex}{\out{\hypertarget{method-SimplexTree-get_simplices}{}}}
 \subsection{Method \code{get_simplices()}}{
-This function returns a generator with simplices and their
+This function retrieves the list of simplices and their
 given filtration values.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$get_simplices()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
-A generator with \code{tuples(simplex, filtration)} pointing to the
-simplices.
+A \code{\link[tibble]{tibble}} listing the simplicies in column
+\code{simplex} along with their corresponding filtration value in column
+\code{filtration}, in increasing order of filtration value.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$get_simplices()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-get_skeleton"></a>}}
@@ -512,7 +898,8 @@ the) skeleton of a maximum given dimension.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A generator with \code{tuples(simplex, filtration)} pointing to the (simplices of the) skeleton of a maximum dimension.
+A generator with \code{tuples(simplex, filtration)} pointing to the
+(simplices of the) skeleton of a maximum dimension.
 }
 }
 \if{html}{\out{<hr>}}
@@ -527,7 +914,7 @@ This function returns the star of a given N-simplex.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 }
 \if{html}{\out{</div>}}
@@ -552,7 +939,7 @@ lowered.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 
 \item{\code{filtration}}{A numeric value specifying the filtration value of the
@@ -664,9 +1051,24 @@ homology for the maximal dimension in the complex is computed
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A list of \code{pairs(dimension, pair(birth, death))} storing the
-persistence of the simplicial complex.
+A \code{\link[tibble]{tibble}} listing all persistence feature
+summarised by 3 variables: \code{dimension}, \code{birth} and \code{death}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+st$persistence()
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-persistence_intervals_in_dimension"></a>}}
@@ -769,7 +1171,7 @@ simplicial complex.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{simplex}}{A integer vector representing the N-simplex in the form
+\item{\code{simplex}}{An integer vector representing the N-simplex in the form
 of a list of vertices.}
 }
 \if{html}{\out{</div>}}

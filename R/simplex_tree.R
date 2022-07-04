@@ -9,7 +9,7 @@
 #' @details This class is a filtered, with keys, and non contiguous vertices
 #'   version of the simplex tree.
 #'
-#' @param simplex A integer vector representing the N-simplex in the form
+#' @param simplex An integer vector representing the N-simplex in the form
 #'   of a list of vertices.
 #' @param homology_coeff_field An integer value specifying the homology
 #'   coefficient field. Must be a prime number. Defaults to `11L`. Maximum
@@ -21,6 +21,9 @@
 #'   homology for the maximal dimension in the complex is computed
 #'   (`persistence_dim_max = TRUE`). If `FALSE`, it is ignored. Defaults to
 #'   `FALSE`.
+#'
+#' @references
+#'   \insertAllCited{}
 #'
 #' @export
 SimplexTree <- R6::R6Class(
@@ -35,6 +38,7 @@ SimplexTree <- R6::R6Class(
     #'
     #' @examples
     #' st <- SimplexTree$new()
+    #' st
     initialize = function(py_class = NULL) {
       if (is.null(py_class))
         private$m_PythonClass <- gd$SimplexTree()
@@ -48,12 +52,31 @@ SimplexTree <- R6::R6Class(
     #' @details Beware that after this operation, the structure may not be a
     #'   valid filtration anymore, a simplex could have a lower filtration value
     #'   than one of its faces. Callers are responsible for fixing this (with
-    #'   more `assign_filtration()` or `make_filtration_non_decreasing()` for
-    #'   instance) before calling any function that relies on the filtration
-    #'   property, like `persistence()`.
+    #'   more calls to the `$assign_filtration()` method or a call to the
+    #'   `$make_filtration_non_decreasing()` method for instance) before calling
+    #'   any function that relies on the filtration property, such as
+    #'   `persistence()`.
     #'
-    #' @param filtration A numeric value specifying the new filtration value
+    #' @param filtration A numeric value specifying the new filtration value.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$filtration(1)
+    #' st$assign_filtration(1, 0.8)
+    #' st$filtration(1)
     assign_filtration = function(simplex, filtration) {
+      if (!self$find(simplex)) {
+        cli::cli_alert_warning("The input simplex {simplex} is not currently included in the simplex tree. Nothing to do.")
+        return()
+      }
+      if (length(simplex) == 1)
+        simplex <- list(simplex)
       private$m_PythonClass$assign_filtration(
         simplex = simplex,
         filtration = filtration
@@ -64,6 +87,17 @@ SimplexTree <- R6::R6Class(
     #'   complex.
     #'
     #' @return An integer vector storing the Betti numbers.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$compute_persistence()
+    #' st$betti_numbers()
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -73,15 +107,31 @@ SimplexTree <- R6::R6Class(
     #' @description Assuming the simplex tree is a 1-skeleton graph, this method
     #'   collapse edges (simplices of higher dimension are ignored) and resets
     #'   the simplex tree from the remaining edges. A good candidate is to build
-    #'   a simplex tree on top of a RipsComplex of dimension 1 before collapsing
-    #'   edges (cf. rips_complex_edge_collapse_example.py). For implementation
-    #'   details, please refer to `[6]`.
+    #'   a simplex tree on top of a `RipsComplex` of dimension 1 before
+    #'   collapsing edges as done in this [Python
+    #'   example](https://gudhi.inria.fr/python/latest/_downloads/c82779c19a4ebcf1f96e8e390fe8fdd4/rips_complex_edge_collapse_example.py).
+    #'    For implementation details, please refer to
+    #'   \insertCite{boissonnat2020edge;textual}{rgudhi}.
     #'
     #' @details It requires `Eigen >= 3.1.0` and an exception is thrown if not
     #'   available.
     #'
+    #' **References**
+    #'
+    #' \insertAllCited{}
+    #'
     #' @param nb_iterations An integer value specifying the number of edge
     #'   collapse iterations to perform. Defaults to `1L`.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$collapse_edges()
     collapse_edges = function(nb_iterations = 1) {
       private$m_PythonClass$collapse_edges(nb_iterations = nb_iterations)
     },
@@ -113,7 +163,10 @@ SimplexTree <- R6::R6Class(
     #'
     #' @examples
     #' n <- 10
-    #' X <- replicate(n, runif(2), simplify = FALSE)
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
     #' ac <- AlphaComplex$new(points = X)
     #' st <- ac$create_simplex_tree()
     #' st$dimension()
@@ -134,8 +187,18 @@ SimplexTree <- R6::R6Class(
     #'
     #' @param max_dim An integer value specifying the maximal dimension to
     #'   expented the simplex tree to.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$expansion(2)
     expansion = function(max_dim) {
-      private$m_PythonClass$dimension(max_dim = max_dim)
+      private$m_PythonClass$expansion(max_dim)
     },
 
     #' @description Extend filtration for computing extended persistence. This
@@ -151,8 +214,10 @@ SimplexTree <- R6::R6Class(
     #' make sure that the simplex tree does not contain a vertex with the
     #' largest possible value (i.e., `4294967295`).
     #'
-    #' This notebook explains how to compute an extension of persistence called
-    #' extended persistence.
+    #' This
+    #' [notebook](https://github.com/GUDHI/TDA-tutorial/blob/master/Tuto-GUDHI-extended-persistence.ipynb)
+    #' explains how to compute an extension of persistence called extended
+    #' persistence.
     extend_filtration = function() {
       private$m_PythonClass$extend_filtration()
       private$m_ComputedExtendedFiltration <- TRUE
@@ -173,25 +238,54 @@ SimplexTree <- R6::R6Class(
     #' @return A list of four persistence diagrams in the format described in
     #'   `$persistence()`. The first one is `Ordinary`, the second one is
     #'   `Relative`, the third one is `Extended+` and the fourth one is
-    #'   `Extended-`. See
-    #'   https://link.springer.com/article/10.1007/s10208-008-9027-z and/or
-    #'   section 2.2 in
-    #'   https://link.springer.com/article/10.1007/s10208-017-9370-z for a
-    #'   description of these subtypes.
+    #'   `Extended-`. See this
+    #'   [article](https://link.springer.com/article/10.1007/s10208-008-9027-z)
+    #'   and/or Section 2.2 in this
+    #'   [article](https://link.springer.com/article/10.1007/s10208-017-9370-z)
+    #'   for a description of these subtypes.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$extend_filtration()
+    #' st$extended_persistence()
     extended_persistence = function(homology_coeff_field = 11,
                                     min_persistence = 0.0) {
       if (!private$m_ComputedExtendedFiltration)
         cli::cli_abort("You first need to extend the filtration by calling the {.code $extend_filtration()} method.")
-      private$m_PythonClass$extended_persistence(
+      l <- private$m_PythonClass$extended_persistence(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence
       )
+      names(l) <- c("Ordinary", "Relative", "Extended+", "Extended-")
+      l
     },
 
-    #' @description This function returns the filtration value for a given N-simplex in this simplicial complex, or +infinity if it is not in the complex.
+    #' @description This function returns the filtration value for a given
+    #'   N-simplex in this simplicial complex, or +infinity if it is not in the
+    #'   complex.
     #'
-    #' @return A numeric value storing the filtration value for the input N-simplex.
+    #' @return A numeric value storing the filtration value for the input
+    #'   N-simplex.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$filtration(0)
+    #' st$filtration(1:2)
     filtration = function(simplex) {
+      if (length(simplex) == 1)
+        simplex <- list(simplex)
       private$m_PythonClass$filtration(simplex)
     },
 
@@ -200,7 +294,19 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return A boolean storing whether the input N-simplex was found in the
     #'   simplicial complex.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$find(0)
     find = function(simplex) {
+      if (length(simplex) == 1)
+        simplex <- list(simplex)
       private$m_PythonClass$find(simplex)
     },
 
@@ -218,24 +324,47 @@ SimplexTree <- R6::R6Class(
     #' vertex each;
     #' - A list of `k x 2` integer matrices containing the other essential
     #' features, grouped by dimension, with 2 vertices for birth.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$compute_persistence()
+    #' st$flag_persistence_generators()
     flag_persistence_generators = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
       private$m_PythonClass$flag_persistence_generators()
     },
 
-    #' @description This function returns a generator with the boundaries of a
-    #'   given N-simplex. If you do not need the filtration values, the boundary
-    #'   can also be obtained as `itertools.combinations(simplex, len(simplex) -
-    #'   1)`.
+    #' @description For a given N-simplex, this function returns a list of
+    #'   simplices of dimension N-1 corresponding to the boundaries of the
+    #'   N-simplex.
     #'
-    #' @return A list of length-2 lists with components `simplex` (integer
-    #'   vector) and `filtration` (numeric value) corresponding to the
-    #'   (simplicies of the) boundary of a simplex.
+    #' @return A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+    #'   boundary of the input N-simplex in column `simplex` along with their
+    #'   corresponding filtration value in column `filtration`.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_boundaries(c(0, 2, 6))
     get_boundaries = function(simplex) {
       itb <- private$m_PythonClass$get_boundaries(simplex)
       res <- reticulate::iterate(itb)
-      purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      res <- purrr::transpose(res)
+      res$filtration <- purrr::flatten_dbl(res$filtration)
+      tibble::as_tibble(res)
     },
 
     #' @description This function returns the cofaces of a given N-simplex with
@@ -245,31 +374,78 @@ SimplexTree <- R6::R6Class(
     #'   `codimension = 0`, all cofaces are returned (equivalent of
     #'   `$get_star()` function).
     #'
-    #' @return A list of 2-component lists of the form `(simplex, filtration)`
-    #'   storing the (simplices of the) cofaces of a simplex.
+    #' @return A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+    #'   cofaces of the input N-simplex in column `simplex` along with their
+    #'   corresponding filtration value in column `filtration`.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_cofaces(1:2, 0)
     get_cofaces = function(simplex, codimension) {
-      private$m_PythonClass$get_cofaces(
+      res <- private$m_PythonClass$get_cofaces(
         simplex = simplex,
         codimension = codimension
       )
+      res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      res <- purrr::transpose(res)
+      res$filtration <- purrr::flatten_dbl(res$filtration)
+      tibble::as_tibble(res)
     },
 
-    #' @description This function returns a generator with simplices and their
+    #' @description This function retrieves the list of simplices and their
     #'   given filtration values sorted by increasing filtration values.
     #'
-    #' @return A generator with `tuples(simplex, filtration)` pointing to the
-    #'   simplices sorted by increasing filtration values.
+    #' @return A \code{\link[tibble]{tibble}} listing the simplicies in column
+    #'   `simplex` along with their corresponding filtration value in column
+    #'   `filtration`, in increasing order of filtration value.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_filtration()
     get_filtration = function() {
-      private$m_PythonClass$get_filtration()
+      itb <- private$m_PythonClass$get_filtration()
+      res <- reticulate::iterate(itb)
+      res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      res <- purrr::transpose(res)
+      res$filtration <- purrr::flatten_dbl(res$filtration)
+      tibble::as_tibble(res)
     },
 
-    #' @description This function returns a generator with simplices and their
+    #' @description This function retrieves the list of simplices and their
     #'   given filtration values.
     #'
-    #' @return A generator with `tuples(simplex, filtration)` pointing to the
-    #'   simplices.
+    #' @return A \code{\link[tibble]{tibble}} listing the simplicies in column
+    #'   `simplex` along with their corresponding filtration value in column
+    #'   `filtration`, in increasing order of filtration value.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_simplices()
     get_simplices = function() {
-      private$m_PythonClass$get_simplices()
+      itb <- private$m_PythonClass$get_simplices()
+      res <- reticulate::iterate(itb)
+      res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      res <- purrr::transpose(res)
+      res$filtration <- purrr::flatten_dbl(res$filtration)
+      tibble::as_tibble(res)
     },
 
     #' @description This function returns a generator with the (simplices of
@@ -277,9 +453,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @param dimension A integer value specifying the skeleton dimension value.
     #'
-    #' @return A generator with `tuples(simplex, filtration)` pointing to the (simplices of the) skeleton of a maximum dimension.
+    #' @return A generator with `tuples(simplex, filtration)` pointing to the
+    #'   (simplices of the) skeleton of a maximum dimension.
     get_skeleton = function(dimension) {
-      private$m_PythonClass$get_skeleton(dimension = dimension)
+      itb <- private$m_PythonClass$get_skeleton(dimension = dimension)
+      reticulate::iterate(itb)
     },
 
     #' @description This function returns the star of a given N-simplex.
@@ -353,16 +531,42 @@ SimplexTree <- R6::R6Class(
     #' @description This function computes and returns the persistence of the
     #'   simplicial complex.
     #'
-    #' @return A list of `pairs(dimension, pair(birth, death))` storing the
-    #'   persistence of the simplicial complex.
+    #' @return A \code{\link[tibble]{tibble}} listing all persistence feature
+    #'   summarised by 3 variables: `dimension`, `birth` and `death`.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$persistence()
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0,
                            persistence_dim_max = FALSE) {
-      private$m_PythonClass$persistence(
+      l <- private$m_PythonClass$persistence(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence,
         persistence_dim_max = persistence_dim_max
       )
+      l <- purrr::map(l, purrr::simplify_all)
+      l <- purrr::map(l, purrr::set_names, nm = c("dimension", "barcode"))
+
+      l_dim <- purrr::map(l, "dimension")
+      l_dim <- purrr::map(l_dim, rlang::set_names, nm = "dimension")
+      l_dim <- purrr::transpose(l_dim)
+      l_dim <- purrr::simplify_all(l_dim)
+      l_dim <- tibble::as_tibble(l_dim)
+
+      l_bar <- purrr::map(l, "barcode")
+      l_bar <- purrr::map(l_bar, rlang::set_names, nm = c("birth", "death"))
+      l_bar <- purrr::transpose(l_bar)
+      l_bar <- purrr::simplify_all(l_bar)
+      l_bar <- tibble::as_tibble(l_bar)
+
+      tibble::tibble(l_dim, l_bar)
     },
 
     #' @description This function returns the persistence intervals of the
