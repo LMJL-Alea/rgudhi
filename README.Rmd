@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 [![check-standard](https://github.com/astamm/rgudhi/workflows/R-CMD-check/badge.svg)](https://github.com/astamm/rgudhi/actions)
 [![test-coverage](https://github.com/astamm/rgudhi/workflows/test-coverage/badge.svg)](https://github.com/astamm/rgudhi/actions)
 [![Codecov test coverage](https://codecov.io/gh/astamm/rgudhi/branch/master/graph/badge.svg)](https://app.codecov.io/gh/astamm/rgudhi?branch=master)
+[![pkgdown](https://github.com/astamm/rgudhi/workflows/pkgdown/badge.svg)](https://github.com/astamm/rgudhi/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/rgudhi)](https://CRAN.R-project.org/package=rgudhi)
 <!-- badges: end -->
 
 The goal of `rgudhi` is to provide an R interface to the Python package [gudhi](https://gudhi.inria.fr/python/latest/). The [GUDHI](https://gudhi.inria.fr) library is a generic open source C++ library, with a Python interface, for Topological Data Analysis (TDA) and Higher Dimensional Geometry Understanding. The library offers state-of-the-art data structures and algorithms to construct simplicial complexes and compute persistent homology.
@@ -41,4 +43,5 @@ X <- replicate(n, runif(2), simplify = FALSE)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 dgm <- st$persistence()
+dgm
 ```
