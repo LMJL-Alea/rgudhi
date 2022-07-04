@@ -85,7 +85,22 @@
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">replicate</a></span><span class="op">(</span><span class="va">n</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">dgm</span></span>
+<span><span class="co">#&gt; # A tibble: 33 × 3</span></span>
+<span><span class="co">#&gt;    dimension  birth  death</span></span>
+<span><span class="co">#&gt;        &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1         1 0.0363 0.0480</span></span>
+<span><span class="co">#&gt;  2         1 0.0284 0.0397</span></span>
+<span><span class="co">#&gt;  3         1 0.0247 0.0314</span></span>
+<span><span class="co">#&gt;  4         1 0.0297 0.0338</span></span>
+<span><span class="co">#&gt;  5         1 0.0250 0.0292</span></span>
+<span><span class="co">#&gt;  6         1 0.0196 0.0224</span></span>
+<span><span class="co">#&gt;  7         1 0.0200 0.0220</span></span>
+<span><span class="co">#&gt;  8         1 0.0379 0.0393</span></span>
+<span><span class="co">#&gt;  9         1 0.0462 0.0475</span></span>
+<span><span class="co">#&gt; 10         1 0.0307 0.0316</span></span>
+<span><span class="co">#&gt; # … with 23 more rows</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -128,6 +143,8 @@
 <li><a href="https://github.com/astamm/rgudhi/actions" class="external-link"><img src="https://github.com/astamm/rgudhi/workflows/R-CMD-check/badge.svg" alt="check-standard"></a></li>
 <li><a href="https://github.com/astamm/rgudhi/actions" class="external-link"><img src="https://github.com/astamm/rgudhi/workflows/test-coverage/badge.svg" alt="test-coverage"></a></li>
 <li><a href="https://app.codecov.io/gh/astamm/rgudhi?branch=master" class="external-link"><img src="https://codecov.io/gh/astamm/rgudhi/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/astamm/rgudhi/actions" class="external-link"><img src="https://github.com/astamm/rgudhi/workflows/pkgdown/badge.svg" alt="pkgdown"></a></li>
+<li><a href="https://CRAN.R-project.org/package=rgudhi" class="external-link"><img src="https://www.r-pkg.org/badges/version/rgudhi" alt="CRAN status"></a></li>
 </ul>
 </div>
 
