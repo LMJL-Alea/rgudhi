@@ -211,9 +211,6 @@ ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 st$persistence()
 }
-\references{
-\insertAllCited{}
-}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

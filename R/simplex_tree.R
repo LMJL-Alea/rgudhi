@@ -22,9 +22,6 @@
 #'   (`persistence_dim_max = TRUE`). If `FALSE`, it is ignored. Defaults to
 #'   `FALSE`.
 #'
-#' @references
-#'   \insertAllCited{}
-#'
 #' @export
 SimplexTree <- R6::R6Class(
   classname = "SimplexTree",
