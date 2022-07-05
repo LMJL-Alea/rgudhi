@@ -45,7 +45,8 @@ jobs:
           needs: check
 
       - name: Install Package + deps
-        run: remotes::install_local(dependencies = TRUE, force = TRUE)
+        run: |
+          Rscript -e 'remotes::install_local(dependencies = TRUE, force = TRUE)'
 
       - name: Install Miniconda
         run: |
@@ -53,9 +54,9 @@ jobs:
 
       - name: Setup Python dependencies
         run: |
-          reticulate::conda_create("r-reticulate")
-          reticulate::conda_install("matplotlib", envname = "r-reticulate")
-          reticulate::conda_install("gudhi", envname = "r-reticulate")
+          Rscript -e 'reticulate::conda_create("r-reticulate")'
+          Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
+          Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
 
       - uses: r-lib/actions/check-r-package@v2
         with:
