@@ -1,6 +1,6 @@
 #' R6 Class for Alpha Complex
 #'
-#' @description  AlphaComplex is a simplicial complex constructed from the
+#' @description AlphaComplex is a simplicial complex constructed from the
 #'   finite cells of a Delaunay Triangulation.
 #'
 #' @details The filtration value of each simplex is computed as the square of the
