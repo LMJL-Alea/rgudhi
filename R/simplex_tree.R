@@ -113,7 +113,7 @@ SimplexTree <- R6::R6Class(
     #' @details It requires `Eigen >= 3.1.0` and an exception is thrown if not
     #'   available.
     #'
-    #' **References**
+    #' ## References
     #'
     #' \insertAllCited{}
     #'

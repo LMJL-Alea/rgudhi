@@ -384,10 +384,10 @@ collapse iterations to perform. Defaults to \code{1L}.}
 \subsection{Details}{
 It requires \verb{Eigen >= 3.1.0} and an exception is thrown if not
 available.
-
-\strong{References}
+\subsection{References}{
 
 \insertAllCited{}
+}
 }
 
 \subsection{Examples}{
