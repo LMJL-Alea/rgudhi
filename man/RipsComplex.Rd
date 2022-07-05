@@ -16,10 +16,12 @@ given distance function, or a distance matrix.
 ## ------------------------------------------------
 
 n <- 10
-X_list <- replicate(n, runif(2), simplify = FALSE)
-X_matrix <- Reduce(rbind, X_list, init = numeric())
-rc_matrix <- RipsComplex$new(points = X_matrix)
-rc_list <- RipsComplex$new(points = X_list)
+Xl <- replicate(n, runif(2), simplify = FALSE)
+rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
+Xm <- Reduce(rbind, Xl, init = numeric())
+rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
+D <- dist(Xm)
+rc3 <- RipsComplex$new(data = D)
 
 ## ------------------------------------------------
 ## Method `RipsComplex$create_simplex_tree`
@@ -27,8 +29,8 @@ rc_list <- RipsComplex$new(points = X_list)
 
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-rc <- RipsComplex$new(points = X)
-st <- rc$create_simplex_tree()
+rc <- RipsComplex$new(data = X, max_edge_length = 1)
+st <- rc$create_simplex_tree(1)
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -50,11 +52,15 @@ st <- rc$create_simplex_tree()
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{points}}{Either a \verb{n x d} matrix or a length-\code{n} list of
-\code{d}-dimensional vectors or a file with extension \code{.off}.}
+\item{\code{data}}{Either a \verb{n x d} matrix or a length-\code{n} list of
+\code{d}-dimensional vectors or a distance matrix stored as a
+\code{\link[stats]{dist}} object.}
 
-\item{\code{precision}}{A string specifying the alpha complex precision. Can be
-one of \code{"fast"}, \code{"safe"} or \code{"exact"}. Defaults to \code{"safe"}.}
+\item{\code{max_edge_length}}{A numeric value specifying the Rips value.}
+
+\item{\code{sparse}}{A numeric value specifying the approximation parameter
+epsilon for buidling a sparse Rips complex. Defaults to \code{NULL} which
+builds an exact Rips complex.}
 }
 \if{html}{\out{</div>}}
 }
@@ -64,10 +70,12 @@ A \code{\link{RipsComplex}} object storing the Rips complex.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
-X_list <- replicate(n, runif(2), simplify = FALSE)
-X_matrix <- Reduce(rbind, X_list, init = numeric())
-rc_matrix <- RipsComplex$new(points = X_matrix)
-rc_list <- RipsComplex$new(points = X_list)
+Xl <- replicate(n, runif(2), simplify = FALSE)
+rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
+Xm <- Reduce(rbind, Xl, init = numeric())
+rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
+D <- dist(Xm)
+rc3 <- RipsComplex$new(data = D)
 }
 \if{html}{\out{</div>}}
 
@@ -98,8 +106,8 @@ tree.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-rc <- RipsComplex$new(points = X)
-st <- rc$create_simplex_tree()
+rc <- RipsComplex$new(data = X, max_edge_length = 1)
+st <- rc$create_simplex_tree(1)
 }
 \if{html}{\out{</div>}}
 

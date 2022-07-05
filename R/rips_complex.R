@@ -11,19 +11,24 @@ RipsComplex <- R6::R6Class(
   public = list(
     #' @description `RipsComplex` constructor.
     #'
-    #' @param points Either a `n x d` matrix or a length-`n` list of
-    #'   `d`-dimensional vectors or a file with extension `.off`.
-    #' @param precision A string specifying the alpha complex precision. Can be
-    #'   one of `"fast"`, `"safe"` or `"exact"`. Defaults to `"safe"`.
+    #' @param data Either a `n x d` matrix or a length-`n` list of
+    #'   `d`-dimensional vectors or a distance matrix stored as a
+    #'   \code{\link[stats]{dist}} object.
+    #' @param max_edge_length A numeric value specifying the Rips value.
+    #' @param sparse A numeric value specifying the approximation parameter
+    #'   epsilon for buidling a sparse Rips complex. Defaults to `NULL` which
+    #'   builds an exact Rips complex.
     #'
     #' @return A \code{\link{RipsComplex}} object storing the Rips complex.
     #'
     #' @examples
     #' n <- 10
-    #' X_list <- replicate(n, runif(2), simplify = FALSE)
-    #' X_matrix <- Reduce(rbind, X_list, init = numeric())
-    #' rc_matrix <- RipsComplex$new(points = X_matrix)
-    #' rc_list <- RipsComplex$new(points = X_list)
+    #' Xl <- replicate(n, runif(2), simplify = FALSE)
+    #' rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
+    #' Xm <- Reduce(rbind, Xl, init = numeric())
+    #' rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
+    #' D <- dist(Xm)
+    #' rc3 <- RipsComplex$new(data = D)
     initialize = function(data, max_edge_length = NULL, sparse = NULL) {
       if (inherits(data, "matrix") || inherits(data, "list")) {
         if (is.null(max_edge_length))
@@ -35,7 +40,7 @@ RipsComplex <- R6::R6Class(
         )
       } else if (inherits(data, "dist"))
         private$m_PythonClass <- gd$RipsComplex(
-          distance_matrix = data,
+          distance_matrix = as.matrix(data),
           sparse = sparse
         )
       else
@@ -51,8 +56,8 @@ RipsComplex <- R6::R6Class(
     #' @examples
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
-    #' rc <- RipsComplex$new(points = X)
-    #' st <- rc$create_simplex_tree()
+    #' rc <- RipsComplex$new(data = X, max_edge_length = 1)
+    #' st <- rc$create_simplex_tree(1)
     create_simplex_tree = function(max_dimension) {
       py_st <- private$m_PythonClass$create_simplex_tree(
         max_dimension = max_dimension
