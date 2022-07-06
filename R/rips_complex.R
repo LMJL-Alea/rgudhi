@@ -63,7 +63,9 @@ RipsComplex <- R6::R6Class(
         max_dimension = max_dimension
       )
       private$m_ComputedSimplexTree <- TRUE
-      SimplexTree$new(py_class = py_st)
+      st <- SimplexTree$new(py_class = py_st)
+      st$set_is_flag(TRUE)
+      st
     }
   ),
   private = list(
