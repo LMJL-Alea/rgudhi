@@ -9,4 +9,5 @@
 library(testthat)
 library(rgudhi)
 
-test_check("rgudhi")
+if (identical(Sys.getenv("NOT_CRAN"), "true"))
+  test_check("rgudhi")
