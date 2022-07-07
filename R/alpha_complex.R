@@ -30,6 +30,7 @@ AlphaComplex <- R6::R6Class(
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac_matrix <- AlphaComplex$new(points = X_matrix)
     #'   ac_list <- AlphaComplex$new(points = X_list)
+    #'   ac_list
     #' }
     initialize = function(points, precision = "safe") {
       if (inherits(points, "matrix") || inherits(points, "list"))

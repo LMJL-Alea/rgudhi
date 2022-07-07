@@ -27,6 +27,7 @@ X_matrix <- Reduce(rbind, X_list, init = numeric())
 if (reticulate::py_module_available("gudhi")) {
   ac_matrix <- AlphaComplex$new(points = X_matrix)
   ac_list <- AlphaComplex$new(points = X_list)
+  ac_list
 }
 
 ## ------------------------------------------------
@@ -92,6 +93,7 @@ X_matrix <- Reduce(rbind, X_list, init = numeric())
 if (reticulate::py_module_available("gudhi")) {
   ac_matrix <- AlphaComplex$new(points = X_matrix)
   ac_list <- AlphaComplex$new(points = X_list)
+  ac_list
 }
 }
 \if{html}{\out{</div>}}
