@@ -20,9 +20,9 @@ version of the simplex tree.
 ## Method `SimplexTree$new`
 ## ------------------------------------------------
 
-\dontrun{
-st <- SimplexTree$new()
-st
+if (reticulate::py_module_available("gudhi")) {
+  st <- SimplexTree$new()
+  st
 }
 
 ## ------------------------------------------------
@@ -34,10 +34,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$set_is_flag(TRUE)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$set_is_flag(TRUE)
 }
 
 ## ------------------------------------------------
@@ -49,12 +49,12 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$filtration(1)
-st$assign_filtration(1, 0.8)
-st$filtration(1)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$filtration(1)
+  st$assign_filtration(1, 0.8)
+  st$filtration(1)
 }
 
 ## ------------------------------------------------
@@ -66,11 +66,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$compute_persistence()
-st$betti_numbers()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$betti_numbers()
 }
 
 ## ------------------------------------------------
@@ -82,10 +82,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$collapse_edges()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$collapse_edges()
 }
 
 ## ------------------------------------------------
@@ -97,10 +97,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$dimension()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$dimension()
 }
 
 ## ------------------------------------------------
@@ -112,10 +112,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$expansion(2)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$expansion(2)
 }
 
 ## ------------------------------------------------
@@ -127,11 +127,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$extend_filtration()
-st$extended_persistence()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$extend_filtration()
+  st$extended_persistence()
 }
 
 ## ------------------------------------------------
@@ -143,11 +143,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$filtration(0)
-st$filtration(1:2)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$filtration(0)
+  st$filtration(1:2)
 }
 
 ## ------------------------------------------------
@@ -159,10 +159,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$find(0)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$find(0)
 }
 
 ## ------------------------------------------------
@@ -174,11 +174,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-rc <- RipsComplex$new(data = X, max_edge_length = 1)
-st <- rc$create_simplex_tree(1)
-st$compute_persistence()
-st$flag_persistence_generators()
+if (reticulate::py_module_available("gudhi")) {
+  rc <- RipsComplex$new(data = X, max_edge_length = 1)
+  st <- rc$create_simplex_tree(1)
+  st$compute_persistence()
+  st$flag_persistence_generators()
 }
 
 ## ------------------------------------------------
@@ -190,11 +190,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-splx <- st$get_simplices()$simplex[[1]]
-st$get_boundaries(splx)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  splx <- st$get_simplices()$simplex[[1]]
+  st$get_boundaries(splx)
 }
 
 ## ------------------------------------------------
@@ -206,10 +206,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$get_cofaces(1:2, 0)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_cofaces(1:2, 0)
 }
 
 ## ------------------------------------------------
@@ -221,10 +221,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$get_filtration()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_filtration()
 }
 
 ## ------------------------------------------------
@@ -236,10 +236,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$get_simplices()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_simplices()
 }
 
 ## ------------------------------------------------
@@ -251,10 +251,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$persistence()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$persistence()
 }
 }
 \section{Methods}{
@@ -319,9 +319,9 @@ A new \code{\link{SimplexTree}} object.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{
-st <- SimplexTree$new()
-st
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  st <- SimplexTree$new()
+  st
 }
 }
 \if{html}{\out{</div>}}
@@ -361,10 +361,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$set_is_flag(TRUE)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$set_is_flag(TRUE)
 }
 }
 \if{html}{\out{</div>}}
@@ -409,12 +409,12 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$filtration(1)
-st$assign_filtration(1, 0.8)
-st$filtration(1)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$filtration(1)
+  st$assign_filtration(1, 0.8)
+  st$filtration(1)
 }
 }
 \if{html}{\out{</div>}}
@@ -442,11 +442,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$compute_persistence()
-st$betti_numbers()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$betti_numbers()
 }
 }
 \if{html}{\out{</div>}}
@@ -493,10 +493,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$collapse_edges()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$collapse_edges()
 }
 }
 \if{html}{\out{</div>}}
@@ -566,10 +566,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$dimension()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$dimension()
 }
 }
 \if{html}{\out{</div>}}
@@ -612,10 +612,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$expansion(2)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$expansion(2)
 }
 }
 \if{html}{\out{</div>}}
@@ -705,11 +705,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$extend_filtration()
-st$extended_persistence()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$extend_filtration()
+  st$extended_persistence()
 }
 }
 \if{html}{\out{</div>}}
@@ -747,11 +747,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$filtration(0)
-st$filtration(1:2)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$filtration(0)
+  st$filtration(1:2)
 }
 }
 \if{html}{\out{</div>}}
@@ -788,10 +788,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$find(0)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$find(0)
 }
 }
 \if{html}{\out{</div>}}
@@ -830,11 +830,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-rc <- RipsComplex$new(data = X, max_edge_length = 1)
-st <- rc$create_simplex_tree(1)
-st$compute_persistence()
-st$flag_persistence_generators()
+if (reticulate::py_module_available("gudhi")) {
+  rc <- RipsComplex$new(data = X, max_edge_length = 1)
+  st <- rc$create_simplex_tree(1)
+  st$compute_persistence()
+  st$flag_persistence_generators()
 }
 }
 \if{html}{\out{</div>}}
@@ -873,11 +873,11 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-splx <- st$get_simplices()$simplex[[1]]
-st$get_boundaries(splx)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  splx <- st$get_simplices()$simplex[[1]]
+  st$get_boundaries(splx)
 }
 }
 \if{html}{\out{</div>}}
@@ -919,10 +919,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$get_cofaces(1:2, 0)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_cofaces(1:2, 0)
 }
 }
 \if{html}{\out{</div>}}
@@ -952,10 +952,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$get_filtration()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_filtration()
 }
 }
 \if{html}{\out{</div>}}
@@ -985,10 +985,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$get_simplices()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_simplices()
 }
 }
 \if{html}{\out{</div>}}
@@ -1177,10 +1177,10 @@ X <- lapply(
   seq(0, 2 * pi, len = n),
   function(.x) c(cos(.x), sin(.x))
 )
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-st$persistence()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$persistence()
 }
 }
 \if{html}{\out{</div>}}

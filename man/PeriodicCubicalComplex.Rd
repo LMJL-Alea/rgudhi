@@ -15,9 +15,9 @@ analysis.
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc
 }
 
 ## ------------------------------------------------
@@ -25,10 +25,10 @@ cc
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$betti_numbers()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$betti_numbers()
 }
 
 ## ------------------------------------------------
@@ -36,10 +36,10 @@ cc$betti_numbers()
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$cofaces_of_persistence_pairs()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$cofaces_of_persistence_pairs()
 }
 
 ## ------------------------------------------------
@@ -47,9 +47,9 @@ cc$cofaces_of_persistence_pairs()
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$dimension()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$dimension()
 }
 
 ## ------------------------------------------------
@@ -57,9 +57,9 @@ cc$dimension()
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$num_simplices()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$num_simplices()
 }
 
 ## ------------------------------------------------
@@ -67,9 +67,9 @@ cc$num_simplices()
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$persistence()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$persistence()
 }
 
 ## ------------------------------------------------
@@ -77,10 +77,10 @@ cc$persistence()
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$persistence_intervals_in_dimension(0)
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$persistence_intervals_in_dimension(0)
 }
 
 ## ------------------------------------------------
@@ -88,10 +88,10 @@ cc$persistence_intervals_in_dimension(0)
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$persistent_betti_numbers(0, 1)
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$persistent_betti_numbers(0, 1)
 }
 }
 \section{Methods}{
@@ -152,9 +152,9 @@ A new \code{\link{PeriodicCubicalComplex}} object.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc
 }
 }
 \if{html}{\out{</div>}}
@@ -182,10 +182,10 @@ An integer vector storing the Betti numbers.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$betti_numbers()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$betti_numbers()
 }
 }
 \if{html}{\out{</div>}}
@@ -238,10 +238,10 @@ dimensions, and the integers of each row in each array correspond to:
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$cofaces_of_persistence_pairs()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$cofaces_of_persistence_pairs()
 }
 }
 \if{html}{\out{</div>}}
@@ -294,9 +294,9 @@ An integer value giving the complex dimension.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$dimension()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$dimension()
 }
 }
 \if{html}{\out{</div>}}
@@ -320,9 +320,9 @@ An integer value giving the number of all cubes in the complex.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$num_simplices()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$num_simplices()
 }
 }
 \if{html}{\out{</div>}}
@@ -363,9 +363,9 @@ summarised by 3 variables: \code{dimension}, \code{birth} and \code{death}.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$persistence()
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$persistence()
 }
 }
 \if{html}{\out{</div>}}
@@ -397,10 +397,10 @@ by row.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$persistence_intervals_in_dimension(0)
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$persistence_intervals_in_dimension(0)
 }
 }
 \if{html}{\out{</div>}}
@@ -435,10 +435,10 @@ An integer vector storing the persistent Betti numbers.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
-\dontrun{
-cc <- CubicalComplex$new(top_dimensional_cells = X)
-cc$compute_persistence()
-cc$persistent_betti_numbers(0, 1)
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CubicalComplex$new(top_dimensional_cells = X)
+  cc$compute_persistence()
+  cc$persistent_betti_numbers(0, 1)
 }
 }
 \if{html}{\out{</div>}}

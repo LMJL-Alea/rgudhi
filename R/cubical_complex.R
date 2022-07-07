@@ -32,9 +32,9 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc
     #' }
     initialize = function(perseus_file,
                           top_dimensional_cells,
@@ -76,10 +76,10 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc$compute_persistence()
-    #' cc$betti_numbers()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc$compute_persistence()
+    #'   cc$betti_numbers()
     #' }
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
@@ -122,10 +122,10 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc$compute_persistence()
-    #' cc$cofaces_of_persistence_pairs()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc$compute_persistence()
+    #'   cc$cofaces_of_persistence_pairs()
     #' }
     cofaces_of_persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
@@ -153,9 +153,9 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc$dimension()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc$dimension()
     #' }
     dimension = function() {
       private$m_PythonClass$dimension()
@@ -168,9 +168,9 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc$num_simplices()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc$num_simplices()
     #' }
     num_simplices = function() {
       private$m_PythonClass$num_simplices()
@@ -184,9 +184,9 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc$persistence()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc$persistence()
     #' }
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0) {
@@ -222,10 +222,10 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc$compute_persistence()
-    #' cc$persistence_intervals_in_dimension(0)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc$compute_persistence()
+    #'   cc$persistence_intervals_in_dimension(0)
     #' }
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
@@ -247,10 +247,10 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @examples
     #' X <- matrix(rnorm(20), nrow = 10)
-    #' \dontrun{
-    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #' cc$compute_persistence()
-    #' cc$persistent_betti_numbers(0, 1)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #'   cc$compute_persistence()
+    #'   cc$persistent_betti_numbers(0, 1)
     #' }
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)

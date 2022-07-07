@@ -24,16 +24,16 @@ RipsComplex <- R6::R6Class(
     #' @examples
     #' n <- 10
     #' Xl <- replicate(n, runif(2), simplify = FALSE)
-    #' \dontrun{
-    #' rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
     #' }
     #' Xm <- Reduce(rbind, Xl, init = numeric())
-    #' \dontrun{
-    #' rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
     #' }
     #' D <- dist(Xm)
-    #' \dontrun{
-    #' rc3 <- RipsComplex$new(data = D)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   rc3 <- RipsComplex$new(data = D)
     #' }
     initialize = function(data, max_edge_length = NULL, sparse = NULL) {
       if (inherits(data, "matrix") || inherits(data, "list")) {
@@ -62,9 +62,9 @@ RipsComplex <- R6::R6Class(
     #' @examples
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
-    #' \dontrun{
-    #' rc <- RipsComplex$new(data = X, max_edge_length = 1)
-    #' st <- rc$create_simplex_tree(1)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   rc <- RipsComplex$new(data = X, max_edge_length = 1)
+    #'   st <- rc$create_simplex_tree(1)
     #' }
     create_simplex_tree = function(max_dimension) {
       py_st <- private$m_PythonClass$create_simplex_tree(

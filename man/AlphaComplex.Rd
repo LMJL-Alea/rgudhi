@@ -36,9 +36,9 @@ if (reticulate::py_module_available("gudhi")) {
 
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
 }
 
 ## ------------------------------------------------
@@ -47,10 +47,10 @@ st <- ac$create_simplex_tree()
 
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-ac$get_point(1)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  ac$get_point(1)
 }
 }
 \section{Methods}{
@@ -136,9 +136,9 @@ tree.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
 }
 }
 \if{html}{\out{</div>}}
@@ -171,10 +171,10 @@ vertex.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
-\dontrun{
-ac <- AlphaComplex$new(points = X)
-st <- ac$create_simplex_tree()
-ac$get_point(1)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  ac$get_point(1)
 }
 }
 \if{html}{\out{</div>}}

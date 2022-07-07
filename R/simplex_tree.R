@@ -34,9 +34,9 @@ SimplexTree <- R6::R6Class(
     #' @return A new \code{\link{SimplexTree}} object.
     #'
     #' @examples
-    #' \dontrun{
-    #' st <- SimplexTree$new()
-    #' st
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   st <- SimplexTree$new()
+    #'   st
     #' }
     initialize = function(py_class = NULL) {
       if (is.null(py_class))
@@ -62,10 +62,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$set_is_flag(TRUE)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$set_is_flag(TRUE)
     #' }
     set_is_flag = function(val) {
       private$m_IsFlag <- val
@@ -90,12 +90,12 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$filtration(1)
-    #' st$assign_filtration(1, 0.8)
-    #' st$filtration(1)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$filtration(1)
+    #'   st$assign_filtration(1, 0.8)
+    #'   st$filtration(1)
     #' }
     assign_filtration = function(simplex, filtration) {
       if (!self$find(simplex)) {
@@ -121,11 +121,11 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$compute_persistence()
-    #' st$betti_numbers()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$compute_persistence()
+    #'   st$betti_numbers()
     #' }
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
@@ -158,10 +158,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$collapse_edges()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$collapse_edges()
     #' }
     collapse_edges = function(nb_iterations = 1) {
       private$m_PythonClass$collapse_edges(nb_iterations = nb_iterations)
@@ -198,10 +198,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$dimension()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$dimension()
     #' }
     dimension = function() {
       private$m_PythonClass$dimension()
@@ -227,10 +227,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$expansion(2)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$expansion(2)
     #' }
     expansion = function(max_dim) {
       private$m_PythonClass$expansion(max_dim)
@@ -285,11 +285,11 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$extend_filtration()
-    #' st$extended_persistence()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$extend_filtration()
+    #'   st$extended_persistence()
     #' }
     extended_persistence = function(homology_coeff_field = 11,
                                     min_persistence = 0.0) {
@@ -316,11 +316,11 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$filtration(0)
-    #' st$filtration(1:2)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$filtration(0)
+    #'   st$filtration(1:2)
     #' }
     filtration = function(simplex) {
       if (length(simplex) == 1)
@@ -340,10 +340,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$find(0)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$find(0)
     #' }
     find = function(simplex) {
       if (length(simplex) == 1)
@@ -372,11 +372,11 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' rc <- RipsComplex$new(data = X, max_edge_length = 1)
-    #' st <- rc$create_simplex_tree(1)
-    #' st$compute_persistence()
-    #' st$flag_persistence_generators()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   rc <- RipsComplex$new(data = X, max_edge_length = 1)
+    #'   st <- rc$create_simplex_tree(1)
+    #'   st$compute_persistence()
+    #'   st$flag_persistence_generators()
     #' }
     flag_persistence_generators = function() {
       if (!private$m_IsFlag)
@@ -400,11 +400,11 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' splx <- st$get_simplices()$simplex[[1]]
-    #' st$get_boundaries(splx)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   splx <- st$get_simplices()$simplex[[1]]
+    #'   st$get_boundaries(splx)
     #' }
     get_boundaries = function(simplex) {
       itb <- private$m_PythonClass$get_boundaries(simplex)
@@ -432,10 +432,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$get_cofaces(1:2, 0)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$get_cofaces(1:2, 0)
     #' }
     get_cofaces = function(simplex, codimension) {
       res <- private$m_PythonClass$get_cofaces(
@@ -461,10 +461,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$get_filtration()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$get_filtration()
     #' }
     get_filtration = function() {
       itb <- private$m_PythonClass$get_filtration()
@@ -488,10 +488,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$get_simplices()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$get_simplices()
     #' }
     get_simplices = function() {
       itb <- private$m_PythonClass$get_simplices()
@@ -594,10 +594,10 @@ SimplexTree <- R6::R6Class(
     #'   seq(0, 2 * pi, len = n),
     #'   function(.x) c(cos(.x), sin(.x))
     #' )
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' st$persistence()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$persistence()
     #' }
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0,

@@ -58,9 +58,9 @@ AlphaComplex <- R6::R6Class(
     #' @examples
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
     #' }
     create_simplex_tree = function(max_alpha_square = Inf,
                                    default_filtration_value = FALSE) {
@@ -83,10 +83,10 @@ AlphaComplex <- R6::R6Class(
     #' @examples
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
-    #' \dontrun{
-    #' ac <- AlphaComplex$new(points = X)
-    #' st <- ac$create_simplex_tree()
-    #' ac$get_point(1)
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   ac$get_point(1)
     #' }
     get_point = function(vertex) {
       if (!private$m_ComputedSimplexTree)
