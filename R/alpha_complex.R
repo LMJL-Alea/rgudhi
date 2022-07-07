@@ -27,8 +27,10 @@ AlphaComplex <- R6::R6Class(
     #' n <- 10
     #' X_list <- replicate(n, runif(2), simplify = FALSE)
     #' X_matrix <- Reduce(rbind, X_list, init = numeric())
+    #' \dontrun{
     #' ac_matrix <- AlphaComplex$new(points = X_matrix)
     #' ac_list <- AlphaComplex$new(points = X_list)
+    #' }
     initialize = function(points, precision = "safe") {
       if (inherits(points, "matrix") || inherits(points, "list"))
         private$m_PythonClass <- gd$AlphaComplex(points = points)
@@ -55,8 +57,10 @@ AlphaComplex <- R6::R6Class(
     #' @examples
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
+    #' \dontrun{
     #' ac <- AlphaComplex$new(points = X)
     #' st <- ac$create_simplex_tree()
+    #' }
     create_simplex_tree = function(max_alpha_square = Inf,
                                    default_filtration_value = FALSE) {
       py_st <- private$m_PythonClass$create_simplex_tree(
@@ -78,9 +82,11 @@ AlphaComplex <- R6::R6Class(
     #' @examples
     #' n <- 10
     #' X <- replicate(n, runif(2), simplify = FALSE)
+    #' \dontrun{
     #' ac <- AlphaComplex$new(points = X)
     #' st <- ac$create_simplex_tree()
     #' ac$get_point(1)
+    #' }
     get_point = function(vertex) {
       if (!private$m_ComputedSimplexTree)
         cli::cli_abort("You first need to generate the simplex tree by calling the {.code $create_simplex_tree()} method.")

@@ -17,11 +17,17 @@ given distance function, or a distance matrix.
 
 n <- 10
 Xl <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
+}
 Xm <- Reduce(rbind, Xl, init = numeric())
+\dontrun{
 rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
+}
 D <- dist(Xm)
+\dontrun{
 rc3 <- RipsComplex$new(data = D)
+}
 
 ## ------------------------------------------------
 ## Method `RipsComplex$create_simplex_tree`
@@ -29,8 +35,10 @@ rc3 <- RipsComplex$new(data = D)
 
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 rc <- RipsComplex$new(data = X, max_edge_length = 1)
 st <- rc$create_simplex_tree(1)
+}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -71,11 +79,17 @@ A \code{\link{RipsComplex}} object storing the Rips complex.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 Xl <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
+}
 Xm <- Reduce(rbind, Xl, init = numeric())
+\dontrun{
 rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
+}
 D <- dist(Xm)
+\dontrun{
 rc3 <- RipsComplex$new(data = D)
+}
 }
 \if{html}{\out{</div>}}
 
@@ -106,8 +120,10 @@ tree.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 rc <- RipsComplex$new(data = X, max_edge_length = 1)
 st <- rc$create_simplex_tree(1)
+}
 }
 \if{html}{\out{</div>}}
 

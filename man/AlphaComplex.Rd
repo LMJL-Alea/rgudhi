@@ -24,8 +24,10 @@ not inserted into the complex.
 n <- 10
 X_list <- replicate(n, runif(2), simplify = FALSE)
 X_matrix <- Reduce(rbind, X_list, init = numeric())
+\dontrun{
 ac_matrix <- AlphaComplex$new(points = X_matrix)
 ac_list <- AlphaComplex$new(points = X_list)
+}
 
 ## ------------------------------------------------
 ## Method `AlphaComplex$create_simplex_tree`
@@ -33,8 +35,10 @@ ac_list <- AlphaComplex$new(points = X_list)
 
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
+}
 
 ## ------------------------------------------------
 ## Method `AlphaComplex$get_point`
@@ -42,9 +46,11 @@ st <- ac$create_simplex_tree()
 
 n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 ac$get_point(1)
+}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -83,8 +89,10 @@ A \code{\link{AlphaComplex}} object storing the Alpha complex.
 \preformatted{n <- 10
 X_list <- replicate(n, runif(2), simplify = FALSE)
 X_matrix <- Reduce(rbind, X_list, init = numeric())
+\dontrun{
 ac_matrix <- AlphaComplex$new(points = X_matrix)
 ac_list <- AlphaComplex$new(points = X_list)
+}
 }
 \if{html}{\out{</div>}}
 
@@ -126,8 +134,10 @@ tree.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
+}
 }
 \if{html}{\out{</div>}}
 
@@ -159,9 +169,11 @@ vertex.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- replicate(n, runif(2), simplify = FALSE)
+\dontrun{
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 ac$get_point(1)
+}
 }
 \if{html}{\out{</div>}}
 

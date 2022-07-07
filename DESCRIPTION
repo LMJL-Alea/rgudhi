@@ -1,10 +1,10 @@
 Package: rgudhi
-Title: An R Interface to gudhi
+Title: An R Interface to GUDHI
 Version: 0.0.0.9000
 Authors@R:
   person("Aymeric", "Stamm", , "aymeric.stamm@math.cnrs.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8725-3654"))
-Description: Provides an R interface to the Python package gudhi.
+Description: Provides an R interface to the Python package GUDHI.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

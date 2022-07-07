@@ -4,9 +4,9 @@
 \name{rgudhi-package}
 \alias{rgudhi}
 \alias{rgudhi-package}
-\title{rgudhi: An R Interface to gudhi}
+\title{rgudhi: An R Interface to GUDHI}
 \description{
-Provides an R interface to the Python package gudhi.
+Provides an R interface to the Python package GUDHI.
 }
 \seealso{
 Useful links:

@@ -15,68 +15,84 @@ analysis.
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc
+}
 
 ## ------------------------------------------------
 ## Method `PeriodicCubicalComplex$betti_numbers`
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$betti_numbers()
+}
 
 ## ------------------------------------------------
 ## Method `PeriodicCubicalComplex$cofaces_of_persistence_pairs`
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$cofaces_of_persistence_pairs()
+}
 
 ## ------------------------------------------------
 ## Method `PeriodicCubicalComplex$dimension`
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$dimension()
+}
 
 ## ------------------------------------------------
 ## Method `PeriodicCubicalComplex$num_simplices`
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$num_simplices()
+}
 
 ## ------------------------------------------------
 ## Method `PeriodicCubicalComplex$persistence`
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$persistence()
+}
 
 ## ------------------------------------------------
 ## Method `PeriodicCubicalComplex$persistence_intervals_in_dimension`
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$persistence_intervals_in_dimension(0)
+}
 
 ## ------------------------------------------------
 ## Method `PeriodicCubicalComplex$persistent_betti_numbers`
 ## ------------------------------------------------
 
 X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$persistent_betti_numbers(0, 1)
+}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -136,8 +152,10 @@ A new \code{\link{PeriodicCubicalComplex}} object.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc
+}
 }
 \if{html}{\out{</div>}}
 
@@ -164,9 +182,11 @@ An integer vector storing the Betti numbers.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$betti_numbers()
+}
 }
 \if{html}{\out{</div>}}
 
@@ -218,9 +238,11 @@ dimensions, and the integers of each row in each array correspond to:
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$cofaces_of_persistence_pairs()
+}
 }
 \if{html}{\out{</div>}}
 
@@ -272,8 +294,10 @@ An integer value giving the complex dimension.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$dimension()
+}
 }
 \if{html}{\out{</div>}}
 
@@ -296,8 +320,10 @@ An integer value giving the number of all cubes in the complex.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$num_simplices()
+}
 }
 \if{html}{\out{</div>}}
 
@@ -337,8 +363,10 @@ summarised by 3 variables: \code{dimension}, \code{birth} and \code{death}.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$persistence()
+}
 }
 \if{html}{\out{</div>}}
 
@@ -369,9 +397,11 @@ by row.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$persistence_intervals_in_dimension(0)
+}
 }
 \if{html}{\out{</div>}}
 
@@ -405,9 +435,11 @@ An integer vector storing the persistent Betti numbers.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{X <- matrix(rnorm(20), nrow = 10)
+\dontrun{
 cc <- CubicalComplex$new(top_dimensional_cells = X)
 cc$compute_persistence()
 cc$persistent_betti_numbers(0, 1)
+}
 }
 \if{html}{\out{</div>}}
 
