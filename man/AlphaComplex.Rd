@@ -24,9 +24,9 @@ not inserted into the complex.
 n <- 10
 X_list <- replicate(n, runif(2), simplify = FALSE)
 X_matrix <- Reduce(rbind, X_list, init = numeric())
-\dontrun{
-ac_matrix <- AlphaComplex$new(points = X_matrix)
-ac_list <- AlphaComplex$new(points = X_list)
+if (reticulate::py_module_available("gudhi")) {
+  ac_matrix <- AlphaComplex$new(points = X_matrix)
+  ac_list <- AlphaComplex$new(points = X_list)
 }
 
 ## ------------------------------------------------
@@ -89,9 +89,9 @@ A \code{\link{AlphaComplex}} object storing the Alpha complex.
 \preformatted{n <- 10
 X_list <- replicate(n, runif(2), simplify = FALSE)
 X_matrix <- Reduce(rbind, X_list, init = numeric())
-\dontrun{
-ac_matrix <- AlphaComplex$new(points = X_matrix)
-ac_list <- AlphaComplex$new(points = X_list)
+if (reticulate::py_module_available("gudhi")) {
+  ac_matrix <- AlphaComplex$new(points = X_matrix)
+  ac_list <- AlphaComplex$new(points = X_list)
 }
 }
 \if{html}{\out{</div>}}
