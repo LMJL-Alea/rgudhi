@@ -36,24 +36,27 @@ devtools::install_github("astamm/rgudhi")
 
 ``` r
 library(rgudhi)
-n <- 20
-X <- replicate(n, runif(2), simplify = FALSE)
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n), 
+  function(.x) c(cos(.x), sin(.x))
+)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
-dgm <- st$persistence()
-dgm
-#> # A tibble: 33 × 3
-#>    dimension  birth  death
-#>        <int>  <dbl>  <dbl>
-#>  1         1 0.0363 0.0480
-#>  2         1 0.0284 0.0397
-#>  3         1 0.0247 0.0314
-#>  4         1 0.0297 0.0338
-#>  5         1 0.0250 0.0292
-#>  6         1 0.0196 0.0224
-#>  7         1 0.0200 0.0220
-#>  8         1 0.0379 0.0393
-#>  9         1 0.0462 0.0475
-#> 10         1 0.0307 0.0316
-#> # … with 23 more rows
+st$persistence()
+#> # A tibble: 12 × 3
+#>    dimension birth      death
+#>        <int> <dbl>      <dbl>
+#>  1         1 0.117   1.00e+ 0
+#>  2         1 1       1   e+ 0
+#>  3         0 0     Inf       
+#>  4         0 0       1.17e- 1
+#>  5         0 0       1.17e- 1
+#>  6         0 0       1.17e- 1
+#>  7         0 0       1.17e- 1
+#>  8         0 0       1.17e- 1
+#>  9         0 0       1.17e- 1
+#> 10         0 0       1.17e- 1
+#> 11         0 0       1.17e- 1
+#> 12         0 0       1.50e-32
 ```

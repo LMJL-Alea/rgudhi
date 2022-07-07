@@ -38,10 +38,12 @@ devtools::install_github("astamm/rgudhi")
 
 ```{r example}
 library(rgudhi)
-n <- 20
-X <- replicate(n, runif(2), simplify = FALSE)
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n), 
+  function(.x) c(cos(.x), sin(.x))
+)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
-dgm <- st$persistence()
-dgm
+st$persistence()
 ```
