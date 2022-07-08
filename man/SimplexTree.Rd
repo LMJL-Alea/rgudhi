@@ -69,8 +69,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$betti_numbers()
+  st$compute_persistence()$betti_numbers()
 }
 
 ## ------------------------------------------------
@@ -177,8 +176,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   rc <- RipsComplex$new(data = X, max_edge_length = 1)
   st <- rc$create_simplex_tree(1)
-  st$compute_persistence()
-  st$flag_persistence_generators()
+  st$compute_persistence()$flag_persistence_generators()
 }
 
 ## ------------------------------------------------
@@ -285,7 +283,7 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   st$insert(1:2)
-  st$insert(1:3)
+  st$insert(1:3, chainable = FALSE)
 }
 
 ## ------------------------------------------------
@@ -300,8 +298,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$lower_star_persistence_generators()
+  st$compute_persistence()$lower_star_persistence_generators()
 }
 
 ## ------------------------------------------------
@@ -376,8 +373,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$persistence_intervals_in_dimension(1)
+  st$compute_persistence()$persistence_intervals_in_dimension(1)
 }
 
 ## ------------------------------------------------
@@ -392,8 +388,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$persistence_pairs()
+  st$compute_persistence()$persistence_pairs()
 }
 
 ## ------------------------------------------------
@@ -408,8 +403,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$persistent_betti_numbers(0, 0.1)
+  st$compute_persistence()$persistent_betti_numbers(0, 0.1)
 }
 
 ## ------------------------------------------------
@@ -500,7 +494,7 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   f <- fs::file_temp(ext = ".dgm")
-  st$write_persistence_diagram(f)
+  st$compute_persistence()$write_persistence_diagram(f)
   fs::file_delete(f)
 }
 }
@@ -601,6 +595,9 @@ field to \code{FALSE} by default and this method specifically allows to
 overwrite this default value.
 }
 
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -649,6 +646,9 @@ any function that relies on the filtration property, such as
 \code{persistence()}.
 }
 
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -692,8 +692,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$betti_numbers()
+  st$compute_persistence()$betti_numbers()
 }
 }
 \if{html}{\out{</div>}}
@@ -733,6 +732,9 @@ available.
 }
 }
 
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -785,6 +787,9 @@ homology for the maximal dimension in the complex is computed
 \code{FALSE}.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
 }
 }
 \if{html}{\out{<hr>}}
@@ -852,6 +857,9 @@ The simplex tree must contain no simplex of dimension bigger than 1 when
 calling the method.
 }
 
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -897,6 +905,9 @@ explains how to compute an extension of persistence called extended
 persistence.
 }
 
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-extended_persistence"></a>}}
@@ -1080,8 +1091,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   rc <- RipsComplex$new(data = X, max_edge_length = 1)
   st <- rc$create_simplex_tree(1)
-  st$compute_persistence()
-  st$flag_persistence_generators()
+  st$compute_persistence()$flag_persistence_generators()
 }
 }
 \if{html}{\out{</div>}}
@@ -1332,7 +1342,7 @@ with the given filtration value. If some of those simplices are already
 present with a higher filtration value, their filtration value is
 lowered.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$insert(simplex, filtration = 0)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$insert(simplex, filtration = 0, chainable = TRUE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1343,12 +1353,18 @@ of a list of vertices.}
 
 \item{\code{filtration}}{A numeric value specifying the filtration value of the
 simplex. Defaults to \code{0.0}.}
+
+\item{\code{chainable}}{A boolean specifying whether the method should return the
+class itself, hence allowing its use in pipe chaining. Defaults to \code{TRUE},
+which enables chaining.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A boolean set to \code{TRUE} if the simplex was not yet in the complex
-or \code{FALSE} otherwise (whatever its original filtration value).
+The updated \code{\link{SimplexTree}} class itself invisibly if
+\code{chainable} is set to \code{TRUE} (default behavior), or a boolean set to
+\code{TRUE} if the simplex was not yet in the complex or \code{FALSE} otherwise
+(whatever its original filtration value).
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1361,7 +1377,7 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   st$insert(1:2)
-  st$insert(1:3)
+  st$insert(1:3, chainable = FALSE)
 }
 }
 \if{html}{\out{</div>}}
@@ -1399,8 +1415,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$lower_star_persistence_generators()
+  st$compute_persistence()$lower_star_persistence_generators()
 }
 }
 \if{html}{\out{</div>}}
@@ -1415,12 +1430,23 @@ if (reticulate::py_module_available("gudhi")) {
 This function ensures that each simplex has a higher
 filtration value than its faces by increasing the filtration values.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$make_filtration_non_decreasing()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$make_filtration_non_decreasing(chainable = TRUE)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{chainable}}{A boolean specifying whether the method should return the
+class itself, hence allowing its use in pipe chaining. Defaults to \code{TRUE},
+which enables chaining.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
-A boolean set to \code{TRUE} if any filtration value was modified or
-to \code{FALSE} if the filtration was already non-decreasing.
+The updated \code{\link{SimplexTree}} class itself invisibly if
+\code{chainable} is set to \code{TRUE} (default behavior), or a boolean set to
+\code{TRUE} if any filtration value was modified or to \code{FALSE} if the
+filtration was already non-decreasing.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1589,8 +1615,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$persistence_intervals_in_dimension(1)
+  st$compute_persistence()$persistence_intervals_in_dimension(1)
 }
 }
 \if{html}{\out{</div>}}
@@ -1622,8 +1647,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$persistence_pairs()
+  st$compute_persistence()$persistence_pairs()
 }
 }
 \if{html}{\out{</div>}}
@@ -1665,8 +1689,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
-  st$compute_persistence()
-  st$persistent_betti_numbers(0, 0.1)
+  st$compute_persistence()$persistent_betti_numbers(0, 0.1)
 }
 }
 \if{html}{\out{</div>}}
@@ -1680,13 +1703,17 @@ if (reticulate::py_module_available("gudhi")) {
 \subsection{Method \code{prune_above_filtration()}}{
 Prune above filtration value given as parameter.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$prune_above_filtration(filtration)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SimplexTree$prune_above_filtration(filtration, chainable = TRUE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{filtration}}{A numeric value specifying the maximum threshold value.}
+
+\item{\code{chainable}}{A boolean specifying whether the method should return the
+class itself, hence allowing its use in pipe chaining. Defaults to \code{TRUE},
+which enables chaining.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1699,8 +1726,9 @@ recompute the exact dimension.
 }
 
 \subsection{Returns}{
-A boolean set to \code{TRUE} if the filtration has been modified or to
-\code{FALSE} otherwise.
+The updated \code{\link{SimplexTree}} class itself invisibly if
+\code{chainable} is set to \code{TRUE} (default behavior), or a boolean set to
+\code{TRUE} if the filtration has been modified or to \code{FALSE} otherwise.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1746,6 +1774,9 @@ remains a valid upper bound. If you care, you can call \verb{$dimension()}
 to recompute the exact dimension.
 }
 
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -1788,6 +1819,9 @@ Defaults to \code{0L}.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -1829,6 +1863,9 @@ triggered by \verb{$remove_maximal_simplex()} or
 \verb{$prune_above_filtration()}).
 }
 
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -1896,6 +1933,9 @@ simplicial complex in a user given file name.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The updated \code{\link{SimplexTree}} class itself invisibly.
+}
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
@@ -1907,7 +1947,7 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   f <- fs::file_temp(ext = ".dgm")
-  st$write_persistence_diagram(f)
+  st$compute_persistence()$write_persistence_diagram(f)
   fs::file_delete(f)
 }
 }

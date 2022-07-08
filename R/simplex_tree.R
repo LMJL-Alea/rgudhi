@@ -21,6 +21,9 @@
 #'   homology for the maximal dimension in the complex is computed
 #'   (`persistence_dim_max = TRUE`). If `FALSE`, it is ignored. Defaults to
 #'   `FALSE`.
+#' @param chainable A boolean specifying whether the method should return the
+#'   class itself, hence allowing its use in pipe chaining. Defaults to `TRUE`,
+#'   which enables chaining.
 #'
 #' @export
 SimplexTree <- R6::R6Class(
@@ -56,6 +59,8 @@ SimplexTree <- R6::R6Class(
     #' @param val A boolean specifying whether the simplex tree is a flag
     #'   complex.
     #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
+    #'
     #' @examples
     #' n <- 10
     #' X <- lapply(
@@ -69,6 +74,7 @@ SimplexTree <- R6::R6Class(
     #' }
     set_is_flag = function(val) {
       private$m_IsFlag <- val
+      invisible(self)
     },
 
     #' @description This function assigns a new filtration value to a given
@@ -83,6 +89,8 @@ SimplexTree <- R6::R6Class(
     #'   `persistence()`.
     #'
     #' @param filtration A numeric value specifying the new filtration value.
+    #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
     #' @examples
     #' n <- 10
@@ -108,6 +116,7 @@ SimplexTree <- R6::R6Class(
         simplex = simplex,
         filtration = filtration
       )
+      invisible(self)
     },
 
     #' @description This function returns the Betti numbers of the simplicial
@@ -124,8 +133,7 @@ SimplexTree <- R6::R6Class(
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()
-    #'   st$betti_numbers()
+    #'   st$compute_persistence()$betti_numbers()
     #' }
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
@@ -152,6 +160,8 @@ SimplexTree <- R6::R6Class(
     #' @param nb_iterations An integer value specifying the number of edge
     #'   collapse iterations to perform. Defaults to `1L`.
     #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
+    #'
     #' @examples
     #' n <- 10
     #' X <- lapply(
@@ -165,6 +175,7 @@ SimplexTree <- R6::R6Class(
     #' }
     collapse_edges = function(nb_iterations = 1) {
       private$m_PythonClass$collapse_edges(nb_iterations = nb_iterations)
+      invisible(self)
     },
 
     #' @description This function computes the persistence of the simplicial
@@ -172,6 +183,8 @@ SimplexTree <- R6::R6Class(
     #'   `$persistence_pairs()`, etc. This function is equivalent to
     #'   `$persistence()` when you do not want the list that `$persistence()`
     #'   returns.
+    #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     compute_persistence = function(homology_coeff_field = 11,
                                    min_persistence = 0.0,
                                    persistence_dim_max = FALSE) {
@@ -222,6 +235,8 @@ SimplexTree <- R6::R6Class(
     #' @param max_dim An integer value specifying the maximal dimension to
     #'   expented the simplex tree to.
     #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
+    #'
     #' @examples
     #' n <- 10
     #' X <- lapply(
@@ -235,6 +250,7 @@ SimplexTree <- R6::R6Class(
     #' }
     expansion = function(max_dim) {
       private$m_PythonClass$expansion(max_dim)
+      invisible(self)
     },
 
     #' @description Extend filtration for computing extended persistence. This
@@ -254,9 +270,12 @@ SimplexTree <- R6::R6Class(
     #' [notebook](https://github.com/GUDHI/TDA-tutorial/blob/master/Tuto-GUDHI-extended-persistence.ipynb)
     #' explains how to compute an extension of persistence called extended
     #' persistence.
+    #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     extend_filtration = function() {
       private$m_PythonClass$extend_filtration()
       private$m_ComputedExtendedFiltration <- TRUE
+      invisible(self)
     },
 
     #' @description This function retrieves good values for extended
@@ -376,8 +395,7 @@ SimplexTree <- R6::R6Class(
     #' if (reticulate::py_module_available("gudhi")) {
     #'   rc <- RipsComplex$new(data = X, max_edge_length = 1)
     #'   st <- rc$create_simplex_tree(1)
-    #'   st$compute_persistence()
-    #'   st$flag_persistence_generators()
+    #'   st$compute_persistence()$flag_persistence_generators()
     #' }
     flag_persistence_generators = function() {
       if (!private$m_IsFlag)
@@ -565,8 +583,10 @@ SimplexTree <- R6::R6Class(
     #' @param filtration A numeric value specifying the filtration value of the
     #'   simplex. Defaults to `0.0`.
     #'
-    #' @return A boolean set to `TRUE` if the simplex was not yet in the complex
-    #'   or `FALSE` otherwise (whatever its original filtration value).
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly if
+    #'   `chainable` is set to `TRUE` (default behavior), or a boolean set to
+    #'   `TRUE` if the simplex was not yet in the complex or `FALSE` otherwise
+    #'   (whatever its original filtration value).
     #'
     #' @examples
     #' n <- 10
@@ -578,13 +598,16 @@ SimplexTree <- R6::R6Class(
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
     #'   st$insert(1:2)
-    #'   st$insert(1:3)
+    #'   st$insert(1:3, chainable = FALSE)
     #' }
-    insert = function(simplex, filtration = 0.0) {
-      private$m_PythonClass$insert(
+    insert = function(simplex, filtration = 0.0, chainable = TRUE) {
+      res <- private$m_PythonClass$insert(
         simplex = simplex,
         filtration = filtration
       )
+
+      if (chainable) return(invisible(self))
+      res
     },
 
     #' @description Assuming this is a lower-star filtration, this function
@@ -607,8 +630,7 @@ SimplexTree <- R6::R6Class(
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()
-    #'   st$lower_star_persistence_generators()
+    #'   st$compute_persistence()$lower_star_persistence_generators()
     #' }
     lower_star_persistence_generators = function() {
       if (!private$m_ComputedPersistence)
@@ -619,8 +641,10 @@ SimplexTree <- R6::R6Class(
     #' @description This function ensures that each simplex has a higher
     #'   filtration value than its faces by increasing the filtration values.
     #'
-    #' @return A boolean set to `TRUE` if any filtration value was modified or
-    #'   to `FALSE` if the filtration was already non-decreasing.
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly if
+    #'   `chainable` is set to `TRUE` (default behavior), or a boolean set to
+    #'   `TRUE` if any filtration value was modified or to `FALSE` if the
+    #'   filtration was already non-decreasing.
     #'
     #' @examples
     #' n <- 10
@@ -633,8 +657,11 @@ SimplexTree <- R6::R6Class(
     #'   st <- ac$create_simplex_tree()
     #'   st$make_filtration_non_decreasing()
     #' }
-    make_filtration_non_decreasing = function() {
-      private$m_PythonClass$make_filtration_non_decreasing()
+    make_filtration_non_decreasing = function(chainable = TRUE) {
+      res <- private$m_PythonClass$make_filtration_non_decreasing()
+
+      if (chainable) return(invisible(self))
+      res
     },
 
     #' @description This function returns the number of simplices of the
@@ -739,8 +766,7 @@ SimplexTree <- R6::R6Class(
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()
-    #'   st$persistence_intervals_in_dimension(1)
+    #'   st$compute_persistence()$persistence_intervals_in_dimension(1)
     #' }
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
@@ -764,8 +790,7 @@ SimplexTree <- R6::R6Class(
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()
-    #'   st$persistence_pairs()
+    #'   st$compute_persistence()$persistence_pairs()
     #' }
     persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
@@ -792,8 +817,7 @@ SimplexTree <- R6::R6Class(
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()
-    #'   st$persistent_betti_numbers(0, 0.1)
+    #'   st$compute_persistence()$persistent_betti_numbers(0, 0.1)
     #' }
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)
@@ -814,8 +838,9 @@ SimplexTree <- R6::R6Class(
     #'
     #' @param filtration A numeric value specifying the maximum threshold value.
     #'
-    #' @return A boolean set to `TRUE` if the filtration has been modified or to
-    #'   `FALSE` otherwise.
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly if
+    #'   `chainable` is set to `TRUE` (default behavior), or a boolean set to
+    #'   `TRUE` if the filtration has been modified or to `FALSE` otherwise.
     #'
     #' @examples
     #' n <- 10
@@ -828,8 +853,10 @@ SimplexTree <- R6::R6Class(
     #'   st <- ac$create_simplex_tree()
     #'   st$prune_above_filtration(0.12)
     #' }
-    prune_above_filtration = function(filtration) {
-      private$m_PythonClass$prune_above_filtration(filtration)
+    prune_above_filtration = function(filtration, chainable = TRUE) {
+      res <- private$m_PythonClass$prune_above_filtration(filtration)
+      if (chainable) return(invisible(self))
+      res
     },
 
     #' @description This function removes a given maximal N-simplex from the
@@ -840,6 +867,8 @@ SimplexTree <- R6::R6Class(
     #'   `$upper_bound_dimension()` method will return the old value, which
     #'   remains a valid upper bound. If you care, you can call `$dimension()`
     #'   to recompute the exact dimension.
+    #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
     #' @examples
     #' n <- 10
@@ -854,6 +883,7 @@ SimplexTree <- R6::R6Class(
     #' }
     remove_maximal_simplex = function(simplex) {
       private$m_PythonClass$remove_maximal_simplex(simplex)
+      invisible(self)
     },
 
     #' @description This function resets the filtration value of all the
@@ -866,6 +896,8 @@ SimplexTree <- R6::R6Class(
     #' @param filtration A numeric value specyfing the filtration threshold.
     #' @param min_dim An integer value specifying the minimal dimension.
     #'   Defaults to `0L`.
+    #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
     #' @examples
     #' n <- 10
@@ -883,6 +915,7 @@ SimplexTree <- R6::R6Class(
         filtration = filtration,
         min_dim = min_dim
       )
+      invisible(self)
     },
 
     #' @description This function sets the dimension of the simplicial complex.
@@ -893,6 +926,8 @@ SimplexTree <- R6::R6Class(
     #'   `$prune_above_filtration()`).
     #'
     #' @param dimension An integer value specifying the dimension.
+    #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
     #' @examples
     #' n <- 10
@@ -907,6 +942,7 @@ SimplexTree <- R6::R6Class(
     #' }
     set_dimension = function(dimension) {
       private$m_PythonClass$set_dimension(dimension)
+      invisible(self)
     },
 
     #' @description This function returns a valid dimension upper bound of the
@@ -935,6 +971,8 @@ SimplexTree <- R6::R6Class(
     #'
     #' @param persistence_file A string specifying the name of the file.
     #'
+    #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
+    #'
     #' @examples
     #' n <- 10
     #' X <- lapply(
@@ -945,13 +983,14 @@ SimplexTree <- R6::R6Class(
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
     #'   f <- fs::file_temp(ext = ".dgm")
-    #'   st$write_persistence_diagram(f)
+    #'   st$compute_persistence()$write_persistence_diagram(f)
     #'   fs::file_delete(f)
     #' }
     write_persistence_diagram = function(persistence_file) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
       private$m_PythonClass$write_persistence_diagram(persistence_file)
+      invisible(self)
     }
   ),
   private = list(
