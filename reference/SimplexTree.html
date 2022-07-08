@@ -159,6 +159,10 @@ overwrite this default value.</p>
 </div>
 
 <div class="section">
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
+<div class="section">
 <h4 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
@@ -206,6 +210,10 @@ any function that relies on the filtration property, such as
 </div>
 
 <div class="section">
+<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
+<div class="section">
 <h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
@@ -231,7 +239,7 @@ complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
 <p>An integer vector storing the Betti numbers.</p>
 </div>
 <div class="section">
@@ -244,8 +252,7 @@ complex.</p><div class="section">
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -287,6 +294,10 @@ In <em>SoCG 2020-36th International Symposium on Computational Geometry</em>.</p
 
 </div>
 
+<div class="section">
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
 <div class="section">
 <h4 id="examples-4">Examples<a class="anchor" aria-label="anchor" href="#examples-4"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
@@ -340,6 +351,10 @@ homology for the maximal dimension in the complex is computed
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SimplexTree-dimension"></a><div class="section">
 <h3 id="method-dimension-">Method <code>dimension()</code><a class="anchor" aria-label="anchor" href="#method-dimension-"></a></h3>
@@ -357,7 +372,7 @@ or <code>$prune_above_filtration()</code> methods for instance).</p>
 </div>
 
 <div class="section">
-<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
 <p>An integer value storing the simplicial complex dimension.</p>
 </div>
 <div class="section">
@@ -403,6 +418,10 @@ calling the method.</p>
 </div>
 
 <div class="section">
+<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
+<div class="section">
 <h4 id="examples-6">Examples<a class="anchor" aria-label="anchor" href="#examples-6"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
@@ -441,6 +460,10 @@ explains how to compute an extension of persistence called extended
 persistence.</p>
 </div>
 
+<div class="section">
+<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SimplexTree-extended_persistence"></a><div class="section">
 <h3 id="method-extended-persistence-">Method <code>extended_persistence()</code><a class="anchor" aria-label="anchor" href="#method-extended-persistence-"></a></h3>
@@ -481,7 +504,7 @@ extended persistence.</p>
 </div>
 
 <div class="section">
-<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
 <p>A list of four persistence diagrams in the format described in
 <code>$persistence()</code>. The first one is <code>Ordinary</code>, the second one is
 <code>Relative</code>, the third one is <code>Extended+</code> and the fourth one is
@@ -526,7 +549,7 @@ of a list of vertices.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
 <p>A numeric value storing the filtration value for the input
 N-simplex.</p>
 </div>
@@ -564,7 +587,7 @@ of a list of vertices.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
 <p>A boolean storing whether the input N-simplex was found in the
 simplicial complex.</p>
 </div>
@@ -593,7 +616,7 @@ the edges that gave it its filtration value.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
+<h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
 <p>A list with the following components:</p><ul><li><p>An <code>n x 3</code> integer matrix containing the regular persistence pairs of
 dimension 0, with one vertex for birth and two for death;</p></li>
 <li><p>A list of <code>m x 4</code> integer matrices containing the other regular
@@ -613,8 +636,7 @@ features, grouped by dimension, with 2 vertices for birth.</p></li>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">rc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/RipsComplex.html">RipsComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>data <span class="op">=</span> <span class="va">X</span>, max_edge_length <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">rc</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">flag_persistence_generators</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">flag_persistence_generators</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -638,7 +660,7 @@ of a list of vertices.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<h4 id="returns-13">Returns<a class="anchor" aria-label="anchor" href="#returns-13"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the (simplicies of the)
 boundary of the input N-simplex in column <code>simplex</code> along with their
 corresponding filtration value in column <code>filtration</code>.</p>
@@ -683,7 +705,7 @@ of a list of vertices.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
+<h4 id="returns-14">Returns<a class="anchor" aria-label="anchor" href="#returns-14"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the (simplicies of the)
 cofaces of the input N-simplex in column <code>simplex</code> along with their
 corresponding filtration value in column <code>filtration</code>.</p>
@@ -712,7 +734,7 @@ given filtration values sorted by increasing filtration values.</p><div class="s
 </div>
 
 <div class="section">
-<h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
+<h4 id="returns-15">Returns<a class="anchor" aria-label="anchor" href="#returns-15"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the simplicies in column
 <code>simplex</code> along with their corresponding filtration value in column
 <code>filtration</code>, in increasing order of filtration value.</p>
@@ -741,7 +763,7 @@ given filtration values.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
+<h4 id="returns-16">Returns<a class="anchor" aria-label="anchor" href="#returns-16"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the simplicies in column
 <code>simplex</code> along with their corresponding filtration value in column
 <code>filtration</code>, in increasing order of filtration value.</p>
@@ -778,7 +800,7 @@ the) skeleton of a maximum given dimension.</p><div class="section">
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
+<h4 id="returns-17">Returns<a class="anchor" aria-label="anchor" href="#returns-17"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the (simplicies of the)
 skeleton of a maximum dimension in column <code>simplex</code> along with their
 corresponding filtration value in column <code>filtration</code>.</p>
@@ -815,7 +837,7 @@ of a list of vertices.</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
+<h4 id="returns-18">Returns<a class="anchor" aria-label="anchor" href="#returns-18"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the (simplicies of the)
 star of a simplex in column <code>simplex</code> along with their corresponding
 filtration value in column <code>filtration</code>.</p>
@@ -842,7 +864,7 @@ with the given filtration value. If some of those simplices are already
 present with a higher filtration value, their filtration value is
 lowered.</p><div class="section">
 <h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SimplexTree</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="va">simplex</span>, filtration <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SimplexTree</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="va">simplex</span>, filtration <span class="op">=</span> <span class="fl">0</span>, chainable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -857,12 +879,20 @@ of a list of vertices.</p></dd>
 simplex. Defaults to <code>0.0</code>.</p></dd>
 
 
+<dt><code>chainable</code></dt>
+<dd><p>A boolean specifying whether the method should return the
+class itself, hence allowing its use in pipe chaining. Defaults to <code>TRUE</code>,
+which enables chaining.</p></dd>
+
+
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-13">Returns<a class="anchor" aria-label="anchor" href="#returns-13"></a></h4>
-<p>A boolean set to <code>TRUE</code> if the simplex was not yet in the complex
-or <code>FALSE</code> otherwise (whatever its original filtration value).</p>
+<h4 id="returns-19">Returns<a class="anchor" aria-label="anchor" href="#returns-19"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly if
+<code>chainable</code> is set to <code>TRUE</code> (default behavior), or a boolean set to
+<code>TRUE</code> if the simplex was not yet in the complex or <code>FALSE</code> otherwise
+(whatever its original filtration value).</p>
 </div>
 <div class="section">
 <h4 id="examples-17">Examples<a class="anchor" aria-label="anchor" href="#examples-17"></a></h4>
@@ -875,7 +905,7 @@ or <code>FALSE</code> otherwise (whatever its original filtration value).</p>
 <span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, chainable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -890,7 +920,7 @@ vertex that gave it its filtration value.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-14">Returns<a class="anchor" aria-label="anchor" href="#returns-14"></a></h4>
+<h4 id="returns-20">Returns<a class="anchor" aria-label="anchor" href="#returns-20"></a></h4>
 <p>A list with the following components:</p><ul><li><p>A list of <code>n x 2</code> integer matrices containing the regular persistence
 pairs, grouped by dimension, with one vertex per extremity;</p></li>
 <li><p>A list of <code>m x ?</code> integer matrices containing the essential features,
@@ -906,8 +936,7 @@ grouped by dimension, with one vertex each.</p></li>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">lower_star_persistence_generators</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">lower_star_persistence_generators</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -917,13 +946,25 @@ grouped by dimension, with one vertex each.</p></li>
 <p>This function ensures that each simplex has a higher
 filtration value than its faces by increasing the filtration values.</p><div class="section">
 <h4 id="usage-21">Usage<a class="anchor" aria-label="anchor" href="#usage-21"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SimplexTree</span><span class="op">$</span><span class="fu">make_filtration_non_decreasing</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SimplexTree</span><span class="op">$</span><span class="fu">make_filtration_non_decreasing</span><span class="op">(</span>chainable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="returns-15">Returns<a class="anchor" aria-label="anchor" href="#returns-15"></a></h4>
-<p>A boolean set to <code>TRUE</code> if any filtration value was modified or
-to <code>FALSE</code> if the filtration was already non-decreasing.</p>
+<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>chainable</code></dt>
+<dd><p>A boolean specifying whether the method should return the
+class itself, hence allowing its use in pipe chaining. Defaults to <code>TRUE</code>,
+which enables chaining.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-21">Returns<a class="anchor" aria-label="anchor" href="#returns-21"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly if
+<code>chainable</code> is set to <code>TRUE</code> (default behavior), or a boolean set to
+<code>TRUE</code> if any filtration value was modified or to <code>FALSE</code> if the
+filtration was already non-decreasing.</p>
 </div>
 <div class="section">
 <h4 id="examples-19">Examples<a class="anchor" aria-label="anchor" href="#examples-19"></a></h4>
@@ -949,7 +990,7 @@ simplicial complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-16">Returns<a class="anchor" aria-label="anchor" href="#returns-16"></a></h4>
+<h4 id="returns-22">Returns<a class="anchor" aria-label="anchor" href="#returns-22"></a></h4>
 <p>An integer value storing the number of simplices in the
 simplicial complex.</p>
 </div>
@@ -977,7 +1018,7 @@ simplicial complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-17">Returns<a class="anchor" aria-label="anchor" href="#returns-17"></a></h4>
+<h4 id="returns-23">Returns<a class="anchor" aria-label="anchor" href="#returns-23"></a></h4>
 <p>An integer value storing the number of vertices in the simplicial
 complex.</p>
 </div>
@@ -1009,7 +1050,7 @@ simplicial complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>homology_coeff_field</code></dt>
 <dd><p>An integer value specifying the homology
 coefficient field. Must be a prime number. Defaults to <code>11L</code>. Maximum
@@ -1032,7 +1073,7 @@ homology for the maximal dimension in the complex is computed
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-18">Returns<a class="anchor" aria-label="anchor" href="#returns-18"></a></h4>
+<h4 id="returns-24">Returns<a class="anchor" aria-label="anchor" href="#returns-24"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing all persistence feature
 summarised by 3 variables: <code>dimension</code>, <code>birth</code> and <code>death</code>.</p>
 </div>
@@ -1060,7 +1101,7 @@ simplicial complex in a specific dimension.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
+<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>dimension</code></dt>
 <dd><p>An integer value specifying the desired dimension.</p></dd>
 
@@ -1068,7 +1109,7 @@ simplicial complex in a specific dimension.</p><div class="section">
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-19">Returns<a class="anchor" aria-label="anchor" href="#returns-19"></a></h4>
+<h4 id="returns-25">Returns<a class="anchor" aria-label="anchor" href="#returns-25"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> storing the persistence intervals
 for the required dimension in two columns <code>birth</code> and <code>death</code>.</p>
 </div>
@@ -1082,8 +1123,7 @@ for the required dimension in two columns <code>birth</code> and <code>death</co
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1097,7 +1137,7 @@ simplices pairs.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-20">Returns<a class="anchor" aria-label="anchor" href="#returns-20"></a></h4>
+<h4 id="returns-26">Returns<a class="anchor" aria-label="anchor" href="#returns-26"></a></h4>
 <p>A list of pairs of integer vectors storing a list of persistence
 simplices intervals.</p>
 </div>
@@ -1111,8 +1151,7 @@ simplices intervals.</p>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">persistence_pairs</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_pairs</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1126,7 +1165,7 @@ simplicial complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>from_value</code></dt>
 <dd><p>A numeric value specifying the persistence birth limit
 to be added in the numbers (<code>persistent birth &lt;= from_value</code>).</p></dd>
@@ -1140,7 +1179,7 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-21">Returns<a class="anchor" aria-label="anchor" href="#returns-21"></a></h4>
+<h4 id="returns-27">Returns<a class="anchor" aria-label="anchor" href="#returns-27"></a></h4>
 <p>An integer vector storing the persistent Betti numbers.</p>
 </div>
 <div class="section">
@@ -1153,8 +1192,7 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1163,13 +1201,19 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <h3 id="method-prune-above-filtration-">Method <code>prune_above_filtration()</code><a class="anchor" aria-label="anchor" href="#method-prune-above-filtration-"></a></h3>
 <p>Prune above filtration value given as parameter.</p><div class="section">
 <h4 id="usage-28">Usage<a class="anchor" aria-label="anchor" href="#usage-28"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SimplexTree</span><span class="op">$</span><span class="fu">prune_above_filtration</span><span class="op">(</span><span class="va">filtration</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SimplexTree</span><span class="op">$</span><span class="fu">prune_above_filtration</span><span class="op">(</span><span class="va">filtration</span>, chainable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
+<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>filtration</code></dt>
 <dd><p>A numeric value specifying the maximum threshold value.</p></dd>
+
+
+<dt><code>chainable</code></dt>
+<dd><p>A boolean specifying whether the method should return the
+class itself, hence allowing its use in pipe chaining. Defaults to <code>TRUE</code>,
+which enables chaining.</p></dd>
 
 
 </dl><p></p></div>
@@ -1184,9 +1228,10 @@ recompute the exact dimension.</p>
 </div>
 
 <div class="section">
-<h4 id="returns-22">Returns<a class="anchor" aria-label="anchor" href="#returns-22"></a></h4>
-<p>A boolean set to <code>TRUE</code> if the filtration has been modified or to
-<code>FALSE</code> otherwise.</p>
+<h4 id="returns-28">Returns<a class="anchor" aria-label="anchor" href="#returns-28"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly if
+<code>chainable</code> is set to <code>TRUE</code> (default behavior), or a boolean set to
+<code>TRUE</code> if the filtration has been modified or to <code>FALSE</code> otherwise.</p>
 </div>
 <div class="section">
 <h4 id="examples-26">Examples<a class="anchor" aria-label="anchor" href="#examples-26"></a></h4>
@@ -1212,7 +1257,7 @@ simplicial complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
+<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>simplex</code></dt>
 <dd><p>An integer vector representing the N-simplex in the form
 of a list of vertices.</p></dd>
@@ -1229,6 +1274,10 @@ remains a valid upper bound. If you care, you can call <code>$dimension()</code>
 to recompute the exact dimension.</p>
 </div>
 
+<div class="section">
+<h4 id="returns-29">Returns<a class="anchor" aria-label="anchor" href="#returns-29"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
 <div class="section">
 <h4 id="examples-27">Examples<a class="anchor" aria-label="anchor" href="#examples-27"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
@@ -1257,7 +1306,7 @@ calling <code>$make_filtration_non_decreasing()</code> afterwards for instance).
 </div>
 
 <div class="section">
-<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
+<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>filtration</code></dt>
 <dd><p>A numeric value specyfing the filtration threshold.</p></dd>
 
@@ -1268,6 +1317,10 @@ Defaults to <code>0L</code>.</p></dd>
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-30">Returns<a class="anchor" aria-label="anchor" href="#returns-30"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
 </div>
 <div class="section">
 <h4 id="examples-28">Examples<a class="anchor" aria-label="anchor" href="#examples-28"></a></h4>
@@ -1292,7 +1345,7 @@ Defaults to <code>0L</code>.</p></dd>
 </div>
 
 <div class="section">
-<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
+<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>dimension</code></dt>
 <dd><p>An integer value specifying the dimension.</p></dd>
 
@@ -1307,6 +1360,10 @@ triggered by <code>$remove_maximal_simplex()</code> or
 <code>$prune_above_filtration()</code>).</p>
 </div>
 
+<div class="section">
+<h4 id="returns-31">Returns<a class="anchor" aria-label="anchor" href="#returns-31"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
+</div>
 <div class="section">
 <h4 id="examples-29">Examples<a class="anchor" aria-label="anchor" href="#examples-29"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
@@ -1331,7 +1388,7 @@ simplicial complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-23">Returns<a class="anchor" aria-label="anchor" href="#returns-23"></a></h4>
+<h4 id="returns-32">Returns<a class="anchor" aria-label="anchor" href="#returns-32"></a></h4>
 <p>An integer value storing an upper bound on the dimension of the
 simplicial complex.</p>
 </div>
@@ -1359,12 +1416,16 @@ simplicial complex in a user given file name.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
+<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>persistence_file</code></dt>
 <dd><p>A string specifying the name of the file.</p></dd>
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-33">Returns<a class="anchor" aria-label="anchor" href="#returns-33"></a></h4>
+<p>The updated <code>SimplexTree</code> class itself invisibly.</p>
 </div>
 <div class="section">
 <h4 id="examples-31">Examples<a class="anchor" aria-label="anchor" href="#examples-31"></a></h4>
@@ -1377,7 +1438,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">f</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_temp.html" class="external-link">file_temp</a></span><span class="op">(</span>ext <span class="op">=</span> <span class="st">".dgm"</span><span class="op">)</span></span>
-<span>  <span class="va">st</span><span class="op">$</span><span class="fu">write_persistence_diagram</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">write_persistence_diagram</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span>  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/delete.html" class="external-link">file_delete</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -1391,7 +1452,7 @@ simplicial complex in a user given file name.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
+<h4 id="arguments-23">Arguments<a class="anchor" aria-label="anchor" href="#arguments-23"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -1435,16 +1496,16 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span>     get_skeleton: function (dimension) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     get_star: function (simplex) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (py_class = NULL) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     insert: function (simplex, filtration = 0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     insert: function (simplex, filtration = 0, chainable = TRUE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     lower_star_persistence_generators: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     make_filtration_non_decreasing: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     make_filtration_non_decreasing: function (chainable = TRUE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_simplices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_vertices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistence: function (homology_coeff_field = 11, min_persistence = 0, persistence_dim_max = FALSE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistence_intervals_in_dimension: function (dimension) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistence_pairs: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistent_betti_numbers: function (from_value, to_value) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     prune_above_filtration: function (filtration) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     prune_above_filtration: function (filtration, chainable = TRUE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     remove_maximal_simplex: function (simplex) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     reset_filtration: function (filtration, min_dim = 0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_dimension: function (dimension) </span>
@@ -1502,8 +1563,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 0</span>
 <span class="r-in"><span></span></span>
@@ -1626,8 +1686,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">rc</span> <span class="op">&lt;-</span> <span class="va"><a href="RipsComplex.html">RipsComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>data <span class="op">=</span> <span class="va">X</span>, max_edge_length <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">rc</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">flag_persistence_generators</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">flag_persistence_generators</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       [,1] [,2] [,3]</span>
@@ -1812,7 +1871,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, chainable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 <span class="r-in"><span></span></span>
@@ -1828,8 +1887,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">lower_star_persistence_generators</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">lower_star_persistence_generators</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
@@ -1871,7 +1929,6 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">make_filtration_non_decreasing</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$num_simplices`</span></span></span>
@@ -1948,8 +2005,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   birth death</span>
@@ -1970,8 +2026,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">persistence_pairs</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_pairs</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
@@ -2090,8 +2145,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9 0</span>
 <span class="r-in"><span></span></span>
@@ -2109,7 +2163,6 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">prune_above_filtration</span><span class="op">(</span><span class="fl">0.12</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$remove_maximal_simplex`</span></span></span>
@@ -2185,11 +2238,9 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">f</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/file_temp.html" class="external-link">file_temp</a></span><span class="op">(</span>ext <span class="op">=</span> <span class="st">".dgm"</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">write_persistence_diagram</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">write_persistence_diagram</span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/delete.html" class="external-link">file_delete</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in st$write_persistence_diagram(f):</span> You first need to compute the persistence by calling the</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> `$compute_persistence()` method.</span>
 </code></pre></div>
     </div>
   </div>
