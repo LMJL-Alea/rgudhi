@@ -779,9 +779,24 @@ the) skeleton of a maximum given dimension.</p><div class="section">
 </div>
 <div class="section">
 <h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
-<p>A generator with <code>tuples(simplex, filtration)</code> pointing to the
-(simplices of the) skeleton of a maximum dimension.</p>
+<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the (simplicies of the)
+skeleton of a maximum dimension in column <code>simplex</code> along with their
+corresponding filtration value in column <code>filtration</code>.</p>
 </div>
+<div class="section">
+<h4 id="examples-15">Examples<a class="anchor" aria-label="anchor" href="#examples-15"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
+<span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_skeleton</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-SimplexTree-get_star"></a><div class="section">
 <h3 id="method-get-star-">Method <code>get_star()</code><a class="anchor" aria-label="anchor" href="#method-get-star-"></a></h3>
@@ -801,9 +816,24 @@ of a list of vertices.</p></dd>
 </div>
 <div class="section">
 <h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
-<p>A list of 2-component lists of the form <code>(simplex, filtration)</code>
-storing the (simplices of the) star of a simplex.</p>
+<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing the (simplicies of the)
+star of a simplex in column <code>simplex</code> along with their corresponding
+filtration value in column <code>filtration</code>.</p>
 </div>
+<div class="section">
+<h4 id="examples-16">Examples<a class="anchor" aria-label="anchor" href="#examples-16"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
+<span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_star</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-SimplexTree-insert"></a><div class="section">
 <h3 id="method-insert-">Method <code>insert()</code><a class="anchor" aria-label="anchor" href="#method-insert-"></a></h3>
@@ -834,6 +864,21 @@ simplex. Defaults to <code>0.0</code>.</p></dd>
 <p>A boolean set to <code>TRUE</code> if the simplex was not yet in the complex
 or <code>FALSE</code> otherwise (whatever its original filtration value).</p>
 </div>
+<div class="section">
+<h4 id="examples-17">Examples<a class="anchor" aria-label="anchor" href="#examples-17"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
+<span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-SimplexTree-lower_star_persistence_generators"></a><div class="section">
 <h3 id="method-lower-star-persistence-generators-">Method <code>lower_star_persistence_generators()</code><a class="anchor" aria-label="anchor" href="#method-lower-star-persistence-generators-"></a></h3>
@@ -851,6 +896,20 @@ pairs, grouped by dimension, with one vertex per extremity;</p></li>
 <li><p>A list of <code>m x ?</code> integer matrices containing the essential features,
 grouped by dimension, with one vertex each.</p></li>
 </ul></div>
+<div class="section">
+<h4 id="examples-18">Examples<a class="anchor" aria-label="anchor" href="#examples-18"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
+<span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">st</span><span class="op">$</span><span class="fu">lower_star_persistence_generators</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-SimplexTree-make_filtration_non_decreasing"></a><div class="section">
 <h3 id="method-make-filtration-non-decreasing-">Method <code>make_filtration_non_decreasing()</code><a class="anchor" aria-label="anchor" href="#method-make-filtration-non-decreasing-"></a></h3>
@@ -935,7 +994,7 @@ homology for the maximal dimension in the complex is computed
 summarised by 3 variables: <code>dimension</code>, <code>birth</code> and <code>death</code>.</p>
 </div>
 <div class="section">
-<h4 id="examples-15">Examples<a class="anchor" aria-label="anchor" href="#examples-15"></a></h4>
+<h4 id="examples-19">Examples<a class="anchor" aria-label="anchor" href="#examples-19"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
@@ -1514,6 +1573,88 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">&lt;int [3]&gt;</span>   1   <span style="color: #949494;">e</span>+ 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">&lt;int [2]&gt;</span>   1   <span style="color: #949494;">e</span>+ 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 25 more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `SimplexTree$get_skeleton`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_skeleton</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `SimplexTree$get_star`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_star</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      0.117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">&lt;int [3]&gt;</span>      1.00 </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `SimplexTree$insert`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `SimplexTree$lower_star_persistence_generators`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">lower_star_persistence_generators</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in st$lower_star_persistence_generators():</span> You first need to compute the persistence by calling the</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> `$compute_persistence()` method.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$persistence`</span></span></span>

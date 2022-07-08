@@ -467,13 +467,14 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   11    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]    8   17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   13   12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   19    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   17    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -508,13 +509,14 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   dimension birth   death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         0 -<span style="color: #BB0000;">2.32</span> <span style="color: #BB0000;">Inf</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         0 -<span style="color: #BB0000;">1.03</span>   0.760</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>         0 -<span style="color: #BB0000;">1.59</span>  -<span style="color: #BB0000;">0.918</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>         0 -<span style="color: #BB0000;">1.01</span>  -<span style="color: #BB0000;">0.400</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dimension   birth   death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         0 -<span style="color: #BB0000;">1.65</span>   <span style="color: #BB0000;">Inf</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         0 -<span style="color: #BB0000;">1.44</span>     0.816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>         0  0.097<span style="text-decoration: underline;">1</span>   1.22 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>         0 -<span style="color: #BB0000;">1.24</span>    -<span style="color: #BB0000;">0.702</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>         0 -<span style="color: #BB0000;">0.242</span>    0.221</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$persistence_intervals_in_dimension`</span></span></span>
@@ -527,11 +529,11 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   birth   death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> -<span style="color: #BB0000;">2.03</span>  -<span style="color: #BB0000;">0.537</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> -<span style="color: #BB0000;">1.20</span>   0.586</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> -<span style="color: #BB0000;">2.68</span> <span style="color: #BB0000;">Inf</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    birth    death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> -<span style="color: #BB0000;">1.31</span>    0.080<span style="text-decoration: underline;">4</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> -<span style="color: #BB0000;">0.220</span>   1.29  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> -<span style="color: #BB0000;">1.69</span>  <span style="color: #BB0000;">Inf</span>     </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$persistent_betti_numbers`</span></span></span>
@@ -543,7 +545,7 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 0 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 0 0</span>
 </code></pre></div>
     </div>
   </div>
