@@ -243,6 +243,67 @@ if (reticulate::py_module_available("gudhi")) {
 }
 
 ## ------------------------------------------------
+## Method `SimplexTree$get_skeleton`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_skeleton(0)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$get_star`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_star(1:2)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$insert`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$insert(1:2)
+  st$insert(1:3)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$lower_star_persistence_generators`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$lower_star_persistence_generators()
+}
+
+## ------------------------------------------------
 ## Method `SimplexTree$persistence`
 ## ------------------------------------------------
 
@@ -1014,9 +1075,27 @@ the) skeleton of a maximum given dimension.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A generator with \code{tuples(simplex, filtration)} pointing to the
-(simplices of the) skeleton of a maximum dimension.
+A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+skeleton of a maximum dimension in column \code{simplex} along with their
+corresponding filtration value in column \code{filtration}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_skeleton(0)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-get_star"></a>}}
@@ -1036,9 +1115,27 @@ of a list of vertices.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A list of 2-component lists of the form \verb{(simplex, filtration)}
-storing the (simplices of the) star of a simplex.
+A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+star of a simplex in column \code{simplex} along with their corresponding
+filtration value in column \code{filtration}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$get_star(1:2)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-insert"></a>}}
@@ -1067,6 +1164,24 @@ simplex. Defaults to \code{0.0}.}
 A boolean set to \code{TRUE} if the simplex was not yet in the complex
 or \code{FALSE} otherwise (whatever its original filtration value).
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$insert(1:2)
+  st$insert(1:3)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-lower_star_persistence_generators"></a>}}
@@ -1088,6 +1203,23 @@ pairs, grouped by dimension, with one vertex per extremity;
 grouped by dimension, with one vertex each.
 }
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$lower_star_persistence_generators()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-make_filtration_non_decreasing"></a>}}

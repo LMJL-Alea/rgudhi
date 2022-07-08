@@ -507,19 +507,53 @@ SimplexTree <- R6::R6Class(
     #'
     #' @param dimension A integer value specifying the skeleton dimension value.
     #'
-    #' @return A generator with `tuples(simplex, filtration)` pointing to the
-    #'   (simplices of the) skeleton of a maximum dimension.
+    #' @return A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+    #'   skeleton of a maximum dimension in column `simplex` along with their
+    #'   corresponding filtration value in column `filtration`.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$get_skeleton(0)
+    #' }
     get_skeleton = function(dimension) {
-      itb <- private$m_PythonClass$get_skeleton(dimension = dimension)
-      reticulate::iterate(itb)
+      itb <- private$m_PythonClass$get_skeleton(dimension)
+      res <- reticulate::iterate(itb)
+      res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      res <- purrr::transpose(res)
+      res$filtration <- purrr::flatten_dbl(res$filtration)
+      tibble::as_tibble(res)
     },
 
     #' @description This function returns the star of a given N-simplex.
     #'
-    #' @return A list of 2-component lists of the form `(simplex, filtration)`
-    #'   storing the (simplices of the) star of a simplex.
+    #' @return A \code{\link[tibble]{tibble}} listing the (simplicies of the)
+    #'   star of a simplex in column `simplex` along with their corresponding
+    #'   filtration value in column `filtration`.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$get_star(1:2)
+    #' }
     get_star = function(simplex) {
-      private$m_PythonClass$get_star(simplex = simplex)
+      res <- private$m_PythonClass$get_star(simplex)
+      res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
+      res <- purrr::transpose(res)
+      res$filtration <- purrr::flatten_dbl(res$filtration)
+      tibble::as_tibble(res)
     },
 
     #' @description This function inserts the given N-simplex and its subfaces
@@ -532,6 +566,19 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return A boolean set to `TRUE` if the simplex was not yet in the complex
     #'   or `FALSE` otherwise (whatever its original filtration value).
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$insert(1:2)
+    #'   st$insert(1:3)
+    #' }
     insert = function(simplex, filtration = 0.0) {
       private$m_PythonClass$insert(
         simplex = simplex,
@@ -549,6 +596,18 @@ SimplexTree <- R6::R6Class(
     #' pairs, grouped by dimension, with one vertex per extremity;
     #' - A list of `m x ?` integer matrices containing the essential features,
     #' grouped by dimension, with one vertex each.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   ac <- AlphaComplex$new(points = X)
+    #'   st <- ac$create_simplex_tree()
+    #'   st$lower_star_persistence_generators()
+    #' }
     lower_star_persistence_generators = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
