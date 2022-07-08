@@ -300,7 +300,53 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
+  st$compute_persistence()
   st$lower_star_persistence_generators()
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$make_filtration_non_decreasing`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$make_filtration_non_decreasing()
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$num_simplices`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$num_simplices()
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$num_vertices`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$num_vertices()
 }
 
 ## ------------------------------------------------
@@ -316,6 +362,146 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   st$persistence()
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$persistence_intervals_in_dimension`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$persistence_intervals_in_dimension(1)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$persistence_pairs`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$persistence_pairs()
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$persistent_betti_numbers`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$persistent_betti_numbers(0, 0.1)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$prune_above_filtration`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$prune_above_filtration(0.12)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$remove_maximal_simplex`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$remove_maximal_simplex(1:2)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$reset_filtration`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$reset_filtration(0.1)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$set_dimension`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$set_dimension(1)
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$upper_bound_dimension`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$upper_bound_dimension()
+}
+
+## ------------------------------------------------
+## Method `SimplexTree$write_persistence_diagram`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  f <- fs::file_temp(ext = ".dgm")
+  st$write_persistence_diagram(f)
+  fs::file_delete(f)
 }
 }
 \section{Methods}{
@@ -1213,6 +1399,7 @@ X <- lapply(
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
+  st$compute_persistence()
   st$lower_star_persistence_generators()
 }
 }
@@ -1235,6 +1422,23 @@ filtration value than its faces by increasing the filtration values.
 A boolean set to \code{TRUE} if any filtration value was modified or
 to \code{FALSE} if the filtration was already non-decreasing.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$make_filtration_non_decreasing()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-num_simplices"></a>}}
@@ -1250,6 +1454,23 @@ simplicial complex.
 An integer value storing the number of simplices in the
 simplicial complex.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$num_simplices()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-num_vertices"></a>}}
@@ -1265,6 +1486,23 @@ simplicial complex.
 An integer value storing the number of vertices in the simplicial
 complex.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$num_vertices()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-persistence"></a>}}
@@ -1338,8 +1576,27 @@ simplicial complex in a specific dimension.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A \verb{? x 2} numeric matrix storing the persistence intervals.
+A \code{\link[tibble]{tibble}} storing the persistence intervals
+for the required dimension in two columns \code{birth} and \code{death}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$persistence_intervals_in_dimension(1)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-persistence_pairs"></a>}}
@@ -1355,6 +1612,24 @@ simplices pairs.
 A list of pairs of integer vectors storing a list of persistence
 simplices intervals.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$persistence_pairs()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-persistent_betti_numbers"></a>}}
@@ -1369,15 +1644,35 @@ simplicial complex.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{from_value}}{A numeric value specifying the persistence birth limit to be added in the numbers (\verb{persistent birth <= from_value}).}
+\item{\code{from_value}}{A numeric value specifying the persistence birth limit
+to be added in the numbers (\verb{persistent birth <= from_value}).}
 
-\item{\code{to_value}}{A numeric value specifying the persistence death limit to be added in the numbers (\verb{persistent death > to_value}).}
+\item{\code{to_value}}{A numeric value specifying the persistence death limit to
+be added in the numbers (\verb{persistent death > to_value}).}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
 An integer vector storing the persistent Betti numbers.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$compute_persistence()
+  st$persistent_betti_numbers(0, 0.1)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-prune_above_filtration"></a>}}
@@ -1407,6 +1702,23 @@ recompute the exact dimension.
 A boolean set to \code{TRUE} if the filtration has been modified or to
 \code{FALSE} otherwise.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$prune_above_filtration(0.12)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-remove_maximal_simplex"></a>}}
@@ -1434,6 +1746,23 @@ remains a valid upper bound. If you care, you can call \verb{$dimension()}
 to recompute the exact dimension.
 }
 
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$remove_maximal_simplex(1:2)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-reset_filtration"></a>}}
@@ -1459,6 +1788,23 @@ Defaults to \code{0L}.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$reset_filtration(0.1)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-set_dimension"></a>}}
@@ -1483,6 +1829,23 @@ triggered by \verb{$remove_maximal_simplex()} or
 \verb{$prune_above_filtration()}).
 }
 
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$set_dimension(1)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-upper_bound_dimension"></a>}}
@@ -1498,6 +1861,23 @@ simplicial complex.
 An integer value storing an upper bound on the dimension of the
 simplicial complex.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  st$upper_bound_dimension()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-write_persistence_diagram"></a>}}
@@ -1516,6 +1896,25 @@ simplicial complex in a user given file name.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+if (reticulate::py_module_available("gudhi")) {
+  ac <- AlphaComplex$new(points = X)
+  st <- ac$create_simplex_tree()
+  f <- fs::file_temp(ext = ".dgm")
+  st$write_persistence_diagram(f)
+  fs::file_delete(f)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-clone"></a>}}
