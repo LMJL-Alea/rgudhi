@@ -116,6 +116,8 @@ SimplexTree <- R6::R6Class(
         simplex = simplex,
         filtration = filtration
       )
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
     },
 
@@ -175,6 +177,8 @@ SimplexTree <- R6::R6Class(
     #' }
     collapse_edges = function(nb_iterations = 1) {
       private$m_PythonClass$collapse_edges(nb_iterations = nb_iterations)
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
     },
 
@@ -250,6 +254,8 @@ SimplexTree <- R6::R6Class(
     #' }
     expansion = function(max_dim) {
       private$m_PythonClass$expansion(max_dim)
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
     },
 
@@ -275,6 +281,7 @@ SimplexTree <- R6::R6Class(
     extend_filtration = function() {
       private$m_PythonClass$extend_filtration()
       private$m_ComputedExtendedFiltration <- TRUE
+      private$m_ComputedPersistence <- FALSE
       invisible(self)
     },
 
@@ -606,6 +613,9 @@ SimplexTree <- R6::R6Class(
         filtration = filtration
       )
 
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
+
       if (chainable) return(invisible(self))
       res
     },
@@ -659,6 +669,9 @@ SimplexTree <- R6::R6Class(
     #' }
     make_filtration_non_decreasing = function(chainable = TRUE) {
       res <- private$m_PythonClass$make_filtration_non_decreasing()
+
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
 
       if (chainable) return(invisible(self))
       res
@@ -855,6 +868,8 @@ SimplexTree <- R6::R6Class(
     #' }
     prune_above_filtration = function(filtration, chainable = TRUE) {
       res <- private$m_PythonClass$prune_above_filtration(filtration)
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
       if (chainable) return(invisible(self))
       res
     },
@@ -883,6 +898,8 @@ SimplexTree <- R6::R6Class(
     #' }
     remove_maximal_simplex = function(simplex) {
       private$m_PythonClass$remove_maximal_simplex(simplex)
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
     },
 
@@ -915,6 +932,8 @@ SimplexTree <- R6::R6Class(
         filtration = filtration,
         min_dim = min_dim
       )
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
     },
 
@@ -942,6 +961,8 @@ SimplexTree <- R6::R6Class(
     #' }
     set_dimension = function(dimension) {
       private$m_PythonClass$set_dimension(dimension)
+      private$m_ComputedPersistence <- FALSE
+      private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
     },
 
