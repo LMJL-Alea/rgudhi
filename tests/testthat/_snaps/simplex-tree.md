@@ -179,3 +179,56 @@
       
       
 
+---
+
+    Code
+      st$persistence()
+    Output
+      # A tibble: 3 x 3
+        dimension birth death
+            <int> <dbl> <dbl>
+      1         1    -1     2
+      2         0    -3   Inf
+      3         0    -2     1
+
+---
+
+    Code
+      st$persistence_intervals_in_dimension(0)
+    Output
+      # A tibble: 2 x 2
+        birth death
+        <dbl> <dbl>
+      1    -2     1
+      2    -3   Inf
+
+---
+
+    Code
+      st$persistence_pairs()
+    Output
+      [[1]]
+      [[1]][[1]]
+      [1] 2
+      
+      [[1]][[2]]
+      [1] 10  1
+      
+      
+      [[2]]
+      [[2]][[1]]
+      [1] 2 1
+      
+      [[2]][[2]]
+      [1] 10  9  8
+      
+      
+      [[3]]
+      [[3]][[1]]
+      [1] 10
+      
+      [[3]][[2]]
+      list()
+      
+      
+
