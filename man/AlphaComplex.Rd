@@ -22,12 +22,15 @@ not inserted into the complex.
 ## ------------------------------------------------
 
 n <- 10
-X_list <- replicate(n, runif(2), simplify = FALSE)
-X_matrix <- Reduce(rbind, X_list, init = numeric())
+Xl <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+Xm <- Reduce(rbind, Xl, init = numeric())
 if (reticulate::py_module_available("gudhi")) {
-  ac_matrix <- AlphaComplex$new(points = X_matrix)
-  ac_list <- AlphaComplex$new(points = X_list)
-  ac_list
+  acm <- AlphaComplex$new(points = Xm)
+  acl <- AlphaComplex$new(points = Xl)
+  acl
 }
 
 ## ------------------------------------------------
@@ -35,7 +38,10 @@ if (reticulate::py_module_available("gudhi")) {
 ## ------------------------------------------------
 
 n <- 10
-X <- replicate(n, runif(2), simplify = FALSE)
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
@@ -46,7 +52,10 @@ if (reticulate::py_module_available("gudhi")) {
 ## ------------------------------------------------
 
 n <- 10
-X <- replicate(n, runif(2), simplify = FALSE)
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
@@ -88,12 +97,15 @@ A \code{\link{AlphaComplex}} object storing the Alpha complex.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
-X_list <- replicate(n, runif(2), simplify = FALSE)
-X_matrix <- Reduce(rbind, X_list, init = numeric())
+Xl <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+Xm <- Reduce(rbind, Xl, init = numeric())
 if (reticulate::py_module_available("gudhi")) {
-  ac_matrix <- AlphaComplex$new(points = X_matrix)
-  ac_list <- AlphaComplex$new(points = X_list)
-  ac_list
+  acm <- AlphaComplex$new(points = Xm)
+  acl <- AlphaComplex$new(points = Xl)
+  acl
 }
 }
 \if{html}{\out{</div>}}
@@ -135,7 +147,10 @@ tree.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
-X <- replicate(n, runif(2), simplify = FALSE)
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
@@ -170,7 +185,10 @@ vertex.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
-X <- replicate(n, runif(2), simplify = FALSE)
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
