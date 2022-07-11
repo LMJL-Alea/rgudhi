@@ -6,13 +6,15 @@
 \description{
 The simplex tree is an efficient and flexible data structure for
 representing general (filtered) simplicial complexes. The data structure is
-described in Jean-Daniel Boissonnat and Clément Maria. The Simplex Tree: An
-Efficient Data Structure for General Simplicial Complexes. Algorithmica,
-pages 1–22, 2014.
+described in \insertCite{boissonnat2014simplex;textual}{rgudhi}.
 }
 \details{
 This class is a filtered, with keys, and non contiguous vertices
 version of the simplex tree.
+\subsection{References}{
+
+\insertAllCited{}
+}
 }
 \examples{
 

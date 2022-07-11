@@ -24,6 +24,7 @@ Imports:
     purrr,
     R6,
     Rdpack,
+    readr,
     reticulate,
     rlang,
     tibble

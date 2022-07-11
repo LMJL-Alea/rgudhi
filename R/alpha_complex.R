@@ -38,8 +38,10 @@ AlphaComplex <- R6::R6Class(
     initialize = function(points, precision = "safe") {
       if (inherits(points, "matrix") || inherits(points, "list"))
         private$m_PythonClass <- gd$AlphaComplex(points = points)
-      else if (is.character(points) && fs::path_ext(points) == "off")
-        private$m_PythonClass <- gd$AlphaComplex(off_file = points, precision = precision)
+      else if (is.character(points) && fs::path_ext(points) == "off") {
+        points <- read_off_file(points)
+        self$initialize(points = points)
+      }
       else
         cli::cli_abort("{.code points} must be either a matrix or a list or an OFF file.")
     },
