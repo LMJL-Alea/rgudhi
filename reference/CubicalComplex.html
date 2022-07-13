@@ -28,7 +28,7 @@ analysis."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/astamm/rgudhi/" class="external-link">
+  <a href="https://github.com/LMJL-Alea/rgudhi/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -43,7 +43,7 @@ analysis."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>R6 Class for Cubical Complex</h1>
-    <small class="dont-index">Source: <a href="https://github.com/astamm/rgudhi/blob/HEAD/R/complex-cubical.R" class="external-link"><code>R/complex-cubical.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LMJL-Alea/rgudhi/blob/HEAD/R/complex-cubical.R" class="external-link"><code>R/complex-cubical.R</code></a></small>
     <div class="hidden name"><code>CubicalComplex.Rd</code></div>
     </div>
 
@@ -458,13 +458,14 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    6    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   11   14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    5   16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   12    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   18    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -499,13 +500,12 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   dimension  birth   death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         0 -<span style="color: #BB0000;">2.20</span>  <span style="color: #BB0000;">Inf</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         0 -<span style="color: #BB0000;">1.28</span>   -<span style="color: #BB0000;">0.918</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>         0 -<span style="color: #BB0000;">0.924</span>  -<span style="color: #BB0000;">0.570</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>         0 -<span style="color: #BB0000;">0.574</span>  -<span style="color: #BB0000;">0.400</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dimension  birth    death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         0 -<span style="color: #BB0000;">1.18</span>  <span style="color: #BB0000;">Inf</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         0 -<span style="color: #BB0000;">1.17</span>    0.051<span style="text-decoration: underline;">7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>         0 -<span style="color: #BB0000;">0.132</span>   0.045<span style="text-decoration: underline;">9</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$persistence_intervals_in_dimension`</span></span></span>
@@ -517,13 +517,14 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 4 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    birth    death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> -<span style="color: #BB0000;">0.521</span>  -<span style="color: #BB0000;">0.180</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> -<span style="color: #BB0000;">0.587</span>   0.014<span style="text-decoration: underline;">5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> -<span style="color: #BB0000;">0.500</span>   0.795 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> -<span style="color: #BB0000;">0.708</span> <span style="color: #BB0000;">Inf</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    birth   death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> -<span style="color: #BB0000;">1.77</span>   -<span style="color: #BB0000;">0.476</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> -<span style="color: #BB0000;">0.271</span>   0.352</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> -<span style="color: #BB0000;">0.649</span>   0.705</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> -<span style="color: #BB0000;">0.860</span>   0.774</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> -<span style="color: #BB0000;">2.25</span>  <span style="color: #BB0000;">Inf</span>    </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$persistent_betti_numbers`</span></span></span>
