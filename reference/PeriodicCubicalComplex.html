@@ -43,7 +43,7 @@ and image analysis."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>R6 Class for Periodic Cubical Complex</h1>
-    <small class="dont-index">Source: <a href="https://github.com/LMJL-Alea/rgudhi/blob/HEAD/R/complex-cubical-periodic.R" class="external-link"><code>R/complex-cubical-periodic.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/LMJL-Alea/rgudhi/blob/HEAD/R/complex-cubical.R" class="external-link"><code>R/complex-cubical.R</code></a></small>
     <div class="hidden name"><code>PeriodicCubicalComplex.Rd</code></div>
     </div>
 
@@ -54,6 +54,10 @@ and image analysis.</p>
     </div>
 
 
+    <div id="super-class">
+    <h2>Super class</h2>
+    <p><code><a href="CubicalComplex.html">rgudhi::CubicalComplex</a></code> -&gt; <code>PeriodicCubicalComplex</code></p>
+    </div>
     <div id="methods">
     <h2>Methods</h2>
     
@@ -61,16 +65,16 @@ and image analysis.</p>
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-PeriodicCubicalComplex-new"><code>PeriodicCubicalComplex$new()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-betti_numbers"><code>PeriodicCubicalComplex$betti_numbers()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-cofaces_of_persistence_pairs"><code>PeriodicCubicalComplex$cofaces_of_persistence_pairs()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-compute_persistence"><code>PeriodicCubicalComplex$compute_persistence()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-dimension"><code>PeriodicCubicalComplex$dimension()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-num_simplices"><code>PeriodicCubicalComplex$num_simplices()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-persistence"><code>PeriodicCubicalComplex$persistence()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-persistence_intervals_in_dimension"><code>PeriodicCubicalComplex$persistence_intervals_in_dimension()</code></a></p></li>
-<li><p><a href="#method-PeriodicCubicalComplex-persistent_betti_numbers"><code>PeriodicCubicalComplex$persistent_betti_numbers()</code></a></p></li>
 <li><p><a href="#method-PeriodicCubicalComplex-clone"><code>PeriodicCubicalComplex$clone()</code></a></p></li>
-</ul></div><p></p><hr><a id="method-PeriodicCubicalComplex-new"></a><div class="section">
+</ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="betti_numbers"><a href="CubicalComplex.html#method-betti_numbers"><code>rgudhi::CubicalComplex$betti_numbers()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="cofaces_of_persistence_pairs"><a href="CubicalComplex.html#method-cofaces_of_persistence_pairs"><code>rgudhi::CubicalComplex$cofaces_of_persistence_pairs()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="compute_persistence"><a href="CubicalComplex.html#method-compute_persistence"><code>rgudhi::CubicalComplex$compute_persistence()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="dimension"><a href="CubicalComplex.html#method-dimension"><code>rgudhi::CubicalComplex$dimension()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="num_simplices"><a href="CubicalComplex.html#method-num_simplices"><code>rgudhi::CubicalComplex$num_simplices()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="persistence"><a href="CubicalComplex.html#method-persistence"><code>rgudhi::CubicalComplex$persistence()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="persistence_intervals_in_dimension"><a href="CubicalComplex.html#method-persistence_intervals_in_dimension"><code>rgudhi::CubicalComplex$persistence_intervals_in_dimension()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="persistent_betti_numbers"><a href="CubicalComplex.html#method-persistent_betti_numbers"><code>rgudhi::CubicalComplex$persistent_betti_numbers()</code></a></span></li>
+</ul></details></p><hr><a id="method-PeriodicCubicalComplex-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Constructor from either <code>top_dimensional_cells</code> (and
 possibly <code>dimensions</code>) or from a Perseus-style file name.</p><div class="section">
@@ -132,309 +136,15 @@ Defaults to <code>NULL</code> which uses the Python class constructor instead.</
 </div>
 
 
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-betti_numbers"></a><div class="section">
-<h3 id="method-betti-numbers-">Method <code>betti_numbers()</code><a class="anchor" aria-label="anchor" href="#method-betti-numbers-"></a></h3>
-<p>This function returns the Betti numbers of the complex.</p><div class="section">
-<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h4>
-<p>The <code>$betti_numbers()</code> method always returns <code>[1, 0, 0, ...]</code> as
-infinity filtration cubes are not removed from the complex.</p>
-</div>
-
-<div class="section">
-<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
-<p>An integer vector storing the Betti numbers.</p>
-</div>
-<div class="section">
-<h4 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PeriodicCubicalComplex.html">PeriodicCubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span>
-<span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-cofaces_of_persistence_pairs"></a><div class="section">
-<h3 id="method-cofaces-of-persistence-pairs-">Method <code>cofaces_of_persistence_pairs()</code><a class="anchor" aria-label="anchor" href="#method-cofaces-of-persistence-pairs-"></a></h3>
-<p>A persistence interval is described by a pair of cells, one
-that creates the feature and one that kills it. The filtration values
-of those 2 cells give coordinates for a point in a persistence diagram,
-or a bar in a barcode. Structurally, in the cubical complexes provided
-here, the filtration value of any cell is the minimum of the filtration
-values of the maximal cells that contain it. Connecting persistence
-diagram coordinates to the corresponding value in the input (i.e. the
-filtration values of the top-dimensional cells) is useful for
-differentiation purposes.</p><div class="section">
-<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">cofaces_of_persistence_pairs</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="details-1">Details<a class="anchor" aria-label="anchor" href="#details-1"></a></h4>
-<p>This function returns a list of pairs of top-dimensional cells
-corresponding to the persistence birth and death cells of the
-filtration. The cells are represented by their indices in the input
-list of top-dimensional cells (and not their indices in the internal
-data structure that includes non-maximal cells). Note that when two
-adjacent top-dimensional cells have the same filtration value, we
-arbitrarily return one of the two when calling the function on one of
-their common faces.</p>
-</div>
-
-<div class="section">
-<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
-<p>The top-dimensional cells/cofaces of the positive and negative
-cells, together with the corresponding homological dimension, in two
-lists of integer arrays. The first list contains the regular
-persistence pairs, grouped by dimension. It contains numpy arrays of
-shape <code>[number_of_persistence_points, 2]</code>. The indices of the arrays in
-the list correspond to the homological dimensions, and the integers of
-each row in each array correspond to: <code>(index of positive top-dimensional cell, index of negative top-dimensional cell)</code>. The
-second list contains the essential features, grouped by dimension. It
-contains numpy arrays of shape <code>[number_of_persistence_points, 1]</code>. The
-indices of the arrays in the list correspond to the homological
-dimensions, and the integers of each row in each array correspond to:
-<code>(index of positive top-dimensional cell)</code>.</p>
-</div>
-<div class="section">
-<h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PeriodicCubicalComplex.html">PeriodicCubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span>
-<span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">cofaces_of_persistence_pairs</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-compute_persistence"></a><div class="section">
-<h3 id="method-compute-persistence-">Method <code>compute_persistence()</code><a class="anchor" aria-label="anchor" href="#method-compute-persistence-"></a></h3>
-<p>This method computes the persistence of the complex, so it
-can be accessed through <code>$persistent_betti_numbers()</code>,
-<code>$persistence_intervals_in_dimension()</code>, etc. It is equivalent to the
-<code>$persistence()</code> method when you do not want the list <code>$persistence()</code>
-returns.</p><div class="section">
-<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span></span>
-<span>  homology_coeff_field <span class="op">=</span> <span class="fl">11</span>,</span>
-<span>  min_persistence <span class="op">=</span> <span class="fl">0</span></span>
-<span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>homology_coeff_field</code></dt>
-<dd><p>An integer value specifying the homology
-coefficient field. Must be a prime number. Defaults to <code>11L</code>. Maximum
-is <code>46337L</code>.</p></dd>
-
-
-<dt><code>min_persistence</code></dt>
-<dd><p>A numeric value specifying the minimum persistence
-value to take into account (strictly greater than <code>min_persistence</code>).
-Defaults to <code>0.0</code>. Set <code>min_persistence = -1.0</code> to see all values.</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
-<p>The updated <code>PeriodicCubicalComplex</code> class itself invisibly.</p>
-</div>
-
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-dimension"></a><div class="section">
-<h3 id="method-dimension-">Method <code>dimension()</code><a class="anchor" aria-label="anchor" href="#method-dimension-"></a></h3>
-<p>This function returns the dimension of the complex.</p><div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">dimension</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
-<p>An integer value giving the complex dimension.</p>
-</div>
-<div class="section">
-<h4 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PeriodicCubicalComplex.html">PeriodicCubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span>
-<span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">dimension</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-num_simplices"></a><div class="section">
-<h3 id="method-num-simplices-">Method <code>num_simplices()</code><a class="anchor" aria-label="anchor" href="#method-num-simplices-"></a></h3>
-<p>This function returns the number of all cubes in the
-complex.</p><div class="section">
-<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">num_simplices</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
-<p>An integer value giving the number of all cubes in the complex.</p>
-</div>
-<div class="section">
-<h4 id="examples-4">Examples<a class="anchor" aria-label="anchor" href="#examples-4"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PeriodicCubicalComplex.html">PeriodicCubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span>
-<span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">num_simplices</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-persistence"></a><div class="section">
-<h3 id="method-persistence-">Method <code>persistence()</code><a class="anchor" aria-label="anchor" href="#method-persistence-"></a></h3>
-<p>This function computes and returns the persistence of the
-complex.</p><div class="section">
-<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span></span>
-<span>  homology_coeff_field <span class="op">=</span> <span class="fl">11</span>,</span>
-<span>  min_persistence <span class="op">=</span> <span class="fl">0</span></span>
-<span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>homology_coeff_field</code></dt>
-<dd><p>An integer value specifying the homology
-coefficient field. Must be a prime number. Defaults to <code>11L</code>. Maximum
-is <code>46337L</code>.</p></dd>
-
-
-<dt><code>min_persistence</code></dt>
-<dd><p>A numeric value specifying the minimum persistence
-value to take into account (strictly greater than <code>min_persistence</code>).
-Defaults to <code>0.0</code>. Set <code>min_persistence = -1.0</code> to see all values.</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
-<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing all persistence feature
-summarised by 3 variables: <code>dimension</code>, <code>birth</code> and <code>death</code>.</p>
-</div>
-<div class="section">
-<h4 id="examples-5">Examples<a class="anchor" aria-label="anchor" href="#examples-5"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PeriodicCubicalComplex.html">PeriodicCubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span>
-<span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-persistence_intervals_in_dimension"></a><div class="section">
-<h3 id="method-persistence-intervals-in-dimension-">Method <code>persistence_intervals_in_dimension()</code><a class="anchor" aria-label="anchor" href="#method-persistence-intervals-in-dimension-"></a></h3>
-<p>This function returns the persistence intervals of the
-complex in a specific dimension.</p><div class="section">
-<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="va">dimension</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>dimension</code></dt>
-<dd><p>An integer value specifying the desired dimension.</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
-<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> storing the persistence intervals
-by row.</p>
-</div>
-<div class="section">
-<h4 id="examples-6">Examples<a class="anchor" aria-label="anchor" href="#examples-6"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PeriodicCubicalComplex.html">PeriodicCubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span>
-<span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-PeriodicCubicalComplex-persistent_betti_numbers"></a><div class="section">
-<h3 id="method-persistent-betti-numbers-">Method <code>persistent_betti_numbers()</code><a class="anchor" aria-label="anchor" href="#method-persistent-betti-numbers-"></a></h3>
-<p>This function returns the persistent Betti numbers of the
-complex.</p><div class="section">
-<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="va">from_value</span>, <span class="va">to_value</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>from_value</code></dt>
-<dd><p>A numeric value specifying the persistence birth limit
-to be added in the numbers (<code>persistent birth &lt;= from_value</code>).</p></dd>
-
-
-<dt><code>to_value</code></dt>
-<dd><p>A numeric value specifying the persistence death limit to
-be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
-<p>An integer vector storing the persistent Betti numbers.</p>
-</div>
-<div class="section">
-<h4 id="examples-7">Examples<a class="anchor" aria-label="anchor" href="#examples-7"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/PeriodicCubicalComplex.html">PeriodicCubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span>
-<span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
 </div><p></p><hr><a id="method-PeriodicCubicalComplex-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
+<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -463,6 +173,7 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span>  <span class="va">pcc</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;PeriodicCubicalComplex&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Inherits from: &lt;CubicalComplex&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     betti_numbers: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
@@ -477,128 +188,6 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistence: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_PythonClass: gudhi.periodic_cubical_complex.PeriodicCubicalComplex, python.builtin.object</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$betti_numbers`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span></span>
-<span class="r-in"><span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 1 0</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$cofaces_of_persistence_pairs`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span></span>
-<span class="r-in"><span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">cofaces_of_persistence_pairs</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$dimension`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span></span>
-<span class="r-in"><span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">dimension</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$num_simplices`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span></span>
-<span class="r-in"><span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">num_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 100</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$persistence`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span></span>
-<span class="r-in"><span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   dimension birth death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         1     1   <span style="color: #BB0000;">Inf</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         0     0   <span style="color: #BB0000;">Inf</span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$persistence_intervals_in_dimension`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span></span>
-<span class="r-in"><span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   birth death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     0   <span style="color: #BB0000;">Inf</span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `PeriodicCubicalComplex$persistent_betti_numbers`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span> <span class="op">&lt;-</span> <span class="va">PeriodicCubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    top_dimensional_cells <span class="op">=</span> <span class="va">X</span>,</span></span>
-<span class="r-in"><span>    periodic_dimensions <span class="op">=</span> <span class="cn">TRUE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">pcc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 0 0</span>
 </code></pre></div>
     </div>
   </div>
