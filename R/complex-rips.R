@@ -23,11 +23,14 @@ RipsComplex <- R6::R6Class(
     #'
     #' @examples
     #' n <- 10
-    #' Xl <- replicate(n, runif(2), simplify = FALSE)
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   rc1 <- RipsComplex$new(data = Xl, max_edge_length = 1)
+    #'   rc1 <- RipsComplex$new(data = X, max_edge_length = 1)
     #' }
-    #' Xm <- Reduce(rbind, Xl, init = numeric())
+    #' Xm <- Reduce(rbind, X, init = numeric())
     #' if (reticulate::py_module_available("gudhi")) {
     #'   rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
     #' }
@@ -61,7 +64,10 @@ RipsComplex <- R6::R6Class(
     #'
     #' @examples
     #' n <- 10
-    #' X <- replicate(n, runif(2), simplify = FALSE)
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
     #' if (reticulate::py_module_available("gudhi")) {
     #'   rc <- RipsComplex$new(data = X, max_edge_length = 1)
     #'   st <- rc$create_simplex_tree(1)
