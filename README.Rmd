@@ -16,10 +16,10 @@ knitr::opts_chunk$set(
 # `rgudhi`
 
 <!-- badges: start -->
-[![check-standard](https://github.com/astamm/rgudhi/workflows/R-CMD-check/badge.svg)](https://github.com/astamm/rgudhi/actions)
-[![test-coverage](https://github.com/astamm/rgudhi/workflows/test-coverage/badge.svg)](https://github.com/astamm/rgudhi/actions)
-[![Codecov test coverage](https://codecov.io/gh/astamm/rgudhi/branch/master/graph/badge.svg)](https://app.codecov.io/gh/astamm/rgudhi?branch=master)
-[![pkgdown](https://github.com/astamm/rgudhi/workflows/pkgdown/badge.svg)](https://github.com/astamm/rgudhi/actions)
+[![check-standard](https://github.com/LMJL-Alea/rgudhi/workflows/R-CMD-check/badge.svg)](https://github.com/LMJL-Alea/rgudhi/actions)
+[![test-coverage](https://github.com/LMJL-Alea/rgudhi/workflows/test-coverage/badge.svg)](https://github.com/LMJL-Alea/rgudhi/actions)
+[![Codecov test coverage](https://codecov.io/gh/LMJL-Alea/rgudhi/branch/master/graph/badge.svg)](https://app.codecov.io/gh/LMJL-Alea/rgudhi?branch=master)
+[![pkgdown](https://github.com/LMJL-Alea/rgudhi/workflows/pkgdown/badge.svg)](https://github.com/LMJL-Alea/rgudhi/actions)
 [![CRAN status](https://www.r-pkg.org/badges/version/rgudhi)](https://CRAN.R-project.org/package=rgudhi)
 <!-- badges: end -->
 
@@ -31,7 +31,7 @@ You can install the development version of `rgudhi` from [GitHub](https://github
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("astamm/rgudhi")
+devtools::install_github("LMJL-Alea/rgudhi")
 ```
 
 ## Example: Persistence diagram using an Alpha complex
