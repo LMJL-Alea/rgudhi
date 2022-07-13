@@ -31,7 +31,8 @@ CubicalComplex <- R6::R6Class(
     #' @return A new \code{\link{CubicalComplex}} object.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
     #'   cc
@@ -75,11 +76,11 @@ CubicalComplex <- R6::R6Class(
     #' @return An integer vector storing the Betti numbers.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$betti_numbers()
+    #'   cc$compute_persistence()$betti_numbers()
     #' }
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
@@ -121,11 +122,11 @@ CubicalComplex <- R6::R6Class(
     #'   `(index of positive top-dimensional cell)`.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$cofaces_of_persistence_pairs()
+    #'   cc$compute_persistence()$cofaces_of_persistence_pairs()
     #' }
     cofaces_of_persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
@@ -138,6 +139,8 @@ CubicalComplex <- R6::R6Class(
     #'   `$persistence_intervals_in_dimension()`, etc. It is equivalent to the
     #'   `$persistence()` method when you do not want the list `$persistence()`
     #'   returns.
+    #'
+    #' @return The updated \code{\link{CubicalComplex}} class itself invisibly.
     compute_persistence = function(homology_coeff_field = 11,
                                    min_persistence = 0.0) {
       private$m_PythonClass$compute_persistence(
@@ -145,6 +148,7 @@ CubicalComplex <- R6::R6Class(
         min_persistence = min_persistence
       )
       private$m_ComputedPersistence <- TRUE
+      invisible(self)
     },
 
     #' @description This function returns the dimension of the complex.
@@ -152,7 +156,8 @@ CubicalComplex <- R6::R6Class(
     #' @return An integer value giving the complex dimension.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
     #'   cc$dimension()
@@ -167,7 +172,8 @@ CubicalComplex <- R6::R6Class(
     #' @return An integer value giving the number of all cubes in the complex.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
     #'   cc$num_simplices()
@@ -183,7 +189,8 @@ CubicalComplex <- R6::R6Class(
     #'   summarised by 3 variables: `dimension`, `birth` and `death`.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
     #'   cc$persistence()
@@ -221,11 +228,11 @@ CubicalComplex <- R6::R6Class(
     #'   by row.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$persistence_intervals_in_dimension(0)
+    #'   cc$compute_persistence()$persistence_intervals_in_dimension(0)
     #' }
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
@@ -246,11 +253,11 @@ CubicalComplex <- R6::R6Class(
     #' @return An integer vector storing the persistent Betti numbers.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$persistent_betti_numbers(0, 1)
+    #'   cc$compute_persistence()$persistent_betti_numbers(0, 1)
     #' }
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)
