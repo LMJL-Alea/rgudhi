@@ -1,8 +1,8 @@
 #' R6 Class for Periodic Cubical Complex
 #'
-#' @description The PeriodicCubicalComplex is an example of a structured complex
-#'   useful in computational mathematics (specially rigorous numerics) and image
-#'   analysis.
+#' @description The `PeriodicCubicalComplex` class is an example of a structured
+#'   complex useful in computational mathematics (specially rigorous numerics)
+#'   and image analysis.
 #'
 #' @param homology_coeff_field An integer value specifying the homology
 #'   coefficient field. Must be a prime number. Defaults to `11L`. Maximum
@@ -33,10 +33,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #' @return A new \code{\link{PeriodicCubicalComplex}} object.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc
     #' }
     initialize = function(perseus_file,
                           top_dimensional_cells,
@@ -49,6 +53,8 @@ PeriodicCubicalComplex <- R6::R6Class(
           top_dimensional_cells = {
             rlang::check_required(periodic_dimensions)
             dims <- dim(top_dimensional_cells)
+            if (length(periodic_dimensions) == 1)
+              periodic_dimensions <- list(periodic_dimensions)
             if (!rlang::is_null(dims)) {
               private$m_PythonClass <- gd$PeriodicCubicalComplex(
                 top_dimensional_cells = top_dimensional_cells,
@@ -81,11 +87,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #' @return An integer vector storing the Betti numbers.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$betti_numbers()
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc$compute_persistence()$betti_numbers()
     #' }
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
@@ -127,11 +136,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #'   `(index of positive top-dimensional cell)`.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$cofaces_of_persistence_pairs()
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc$compute_persistence()$cofaces_of_persistence_pairs()
     #' }
     cofaces_of_persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
@@ -144,6 +156,8 @@ PeriodicCubicalComplex <- R6::R6Class(
     #'   `$persistence_intervals_in_dimension()`, etc. It is equivalent to the
     #'   `$persistence()` method when you do not want the list `$persistence()`
     #'   returns.
+    #'
+    #' @return The updated \code{\link{PeriodicCubicalComplex}} class itself invisibly.
     compute_persistence = function(homology_coeff_field = 11,
                                    min_persistence = 0.0) {
       private$m_PythonClass$compute_persistence(
@@ -151,6 +165,7 @@ PeriodicCubicalComplex <- R6::R6Class(
         min_persistence = min_persistence
       )
       private$m_ComputedPersistence <- TRUE
+      invisible(self)
     },
 
     #' @description This function returns the dimension of the complex.
@@ -158,10 +173,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #' @return An integer value giving the complex dimension.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$dimension()
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc$dimension()
     #' }
     dimension = function() {
       private$m_PythonClass$dimension()
@@ -173,10 +192,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #' @return An integer value giving the number of all cubes in the complex.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$num_simplices()
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc$num_simplices()
     #' }
     num_simplices = function() {
       private$m_PythonClass$num_simplices()
@@ -189,10 +212,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #'   summarised by 3 variables: `dimension`, `birth` and `death`.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$persistence()
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc$persistence()
     #' }
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0) {
@@ -227,11 +254,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #'   by row.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$persistence_intervals_in_dimension(0)
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc$compute_persistence()$persistence_intervals_in_dimension(0)
     #' }
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
@@ -252,11 +282,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #' @return An integer vector storing the persistent Betti numbers.
     #'
     #' @examples
-    #' X <- matrix(rnorm(20), nrow = 10)
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()
-    #'   cc$persistent_betti_numbers(0, 1)
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc$compute_persistence()$persistent_betti_numbers(0, 1)
     #' }
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)
