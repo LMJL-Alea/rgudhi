@@ -273,3 +273,80 @@ CubicalComplex <- R6::R6Class(
     m_ComputedPersistence = FALSE
   )
 )
+
+#' R6 Class for Periodic Cubical Complex
+#'
+#' @description The `PeriodicCubicalComplex` class is an example of a structured
+#'   complex useful in computational mathematics (specially rigorous numerics)
+#'   and image analysis.
+#'
+#' @export
+PeriodicCubicalComplex <- R6::R6Class(
+  classname = "PeriodicCubicalComplex",
+  inherit = CubicalComplex,
+  public = list(
+    #' @description Constructor from either `top_dimensional_cells` (and
+    #'   possibly `dimensions`) or from a Perseus-style file name.
+    #'
+    #' @param perseus_file A character string specifying the path to a
+    #'   Perseus-style file name.
+    #' @param top_dimensional_cells Either a numeric vector (in which case,
+    #'   `dimensions` should be provided as well) or a multidimensional array
+    #'   specifying cell filtration values.
+    #' @param periodic_dimensions A logical vector specifying the periodicity
+    #'   value of the top dimensional cells.
+    #' @param dimensions An integer vector specifying the number of top
+    #'   dimensional cells. Defaults to `NULL`.
+    #' @param py_class An existing `PeriodicCubicalComplex` Python class.
+    #'   Defaults to `NULL` which uses the Python class constructor instead.
+    #'
+    #' @return A new \code{\link{PeriodicCubicalComplex}} object.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   pcc <- PeriodicCubicalComplex$new(
+    #'     top_dimensional_cells = X,
+    #'     periodic_dimensions = TRUE
+    #'   )
+    #'   pcc
+    #' }
+    initialize = function(perseus_file,
+                          top_dimensional_cells,
+                          periodic_dimensions,
+                          dimensions = NULL,
+                          py_class = NULL) {
+      if (rlang::is_null(py_class)) {
+        switch(
+          rlang::check_exclusive(top_dimensional_cells, perseus_file),
+          top_dimensional_cells = {
+            rlang::check_required(periodic_dimensions)
+            dims <- dim(top_dimensional_cells)
+            if (length(periodic_dimensions) == 1)
+              periodic_dimensions <- list(periodic_dimensions)
+            if (!rlang::is_null(dims)) {
+              private$m_PythonClass <- gd$PeriodicCubicalComplex(
+                top_dimensional_cells = top_dimensional_cells,
+                periodic_dimensions = periodic_dimensions
+              )
+            } else {
+              private$m_PythonClass <- gd$PeriodicCubicalComplex(
+                dimensions = dimensions,
+                top_dimensional_cells = top_dimensional_cells,
+                periodic_dimensions = periodic_dimensions
+              )
+            }
+          },
+          perseus_file = {
+            private$m_PythonClass <- gd$PeriodicCubicalComplex(
+              perseus_file = perseus_file
+            )
+          }
+        )
+      }
+      else
+        private$m_PythonClass <- py_class
+    }
+  )
+)
