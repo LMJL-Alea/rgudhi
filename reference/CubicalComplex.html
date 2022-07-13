@@ -114,7 +114,8 @@ dimensional cells. Defaults to <code>NULL</code>.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span></span>
@@ -141,11 +142,11 @@ infinity filtration cubes are not removed from the complex.</p>
 </div>
 <div class="section">
 <h4 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -194,11 +195,11 @@ dimensions, and the integers of each row in each array correspond to:
 </div>
 <div class="section">
 <h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">cofaces_of_persistence_pairs</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">cofaces_of_persistence_pairs</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -233,6 +234,10 @@ Defaults to <code>0.0</code>. Set <code>min_persistence = -1.0</code> to see all
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<p>The updated <code>CubicalComplex</code> class itself invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-CubicalComplex-dimension"></a><div class="section">
 <h3 id="method-dimension-">Method <code>dimension()</code><a class="anchor" aria-label="anchor" href="#method-dimension-"></a></h3>
@@ -242,12 +247,13 @@ Defaults to <code>0.0</code>. Set <code>min_persistence = -1.0</code> to see all
 </div>
 
 <div class="section">
-<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
 <p>An integer value giving the complex dimension.</p>
 </div>
 <div class="section">
 <h4 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">dimension</span><span class="op">(</span><span class="op">)</span></span>
@@ -264,12 +270,13 @@ complex.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
 <p>An integer value giving the number of all cubes in the complex.</p>
 </div>
 <div class="section">
 <h4 id="examples-4">Examples<a class="anchor" aria-label="anchor" href="#examples-4"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">num_simplices</span><span class="op">(</span><span class="op">)</span></span>
@@ -302,13 +309,14 @@ Defaults to <code>0.0</code>. Set <code>min_persistence = -1.0</code> to see all
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> listing all persistence feature
 summarised by 3 variables: <code>dimension</code>, <code>birth</code> and <code>death</code>.</p>
 </div>
 <div class="section">
 <h4 id="examples-5">Examples<a class="anchor" aria-label="anchor" href="#examples-5"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span>
@@ -333,17 +341,17 @@ complex in a specific dimension.</p><div class="section">
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
+<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
 <p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> storing the persistence intervals
 by row.</p>
 </div>
 <div class="section">
 <h4 id="examples-6">Examples<a class="anchor" aria-label="anchor" href="#examples-6"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -371,16 +379,16 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
 <p>An integer vector storing the persistent Betti numbers.</p>
 </div>
 <div class="section">
 <h4 id="examples-7">Examples<a class="anchor" aria-label="anchor" href="#examples-7"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CubicalComplex.html">CubicalComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -412,7 +420,8 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$new`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span></span></span>
@@ -437,11 +446,11 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$betti_numbers`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 0 0</span>
 <span class="r-in"><span></span></span>
@@ -449,22 +458,18 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$cofaces_of_persistence_pairs`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">cofaces_of_persistence_pairs</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">cofaces_of_persistence_pairs</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]    1    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   18    6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -472,7 +477,8 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$dimension`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">dimension</span><span class="op">(</span><span class="op">)</span></span></span>
@@ -483,7 +489,8 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$num_simplices`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">num_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
@@ -494,46 +501,41 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$persistence`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   dimension birth    death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         0 -<span style="color: #BB0000;">1.64</span> <span style="color: #BB0000;">Inf</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>         0 -<span style="color: #BB0000;">1.36</span>   0.041<span style="text-decoration: underline;">8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>         0 -<span style="color: #BB0000;">1.38</span>  -<span style="color: #BB0000;">0.239</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>         0 -<span style="color: #BB0000;">1.30</span>  -<span style="color: #BB0000;">0.765</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>         0 -<span style="color: #BB0000;">1.01</span>  -<span style="color: #BB0000;">0.702</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   dimension birth death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>         0     0   <span style="color: #BB0000;">Inf</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$persistence_intervals_in_dimension`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    birth    death</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> -<span style="color: #BB0000;">0.311</span>  -<span style="color: #BB0000;">0.052</span><span style="color: #BB0000; text-decoration: underline;">8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> -<span style="color: #BB0000;">0.683</span>   1.37  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> -<span style="color: #BB0000;">1.72</span>  <span style="color: #BB0000;">Inf</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   birth death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     0   <span style="color: #BB0000;">Inf</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$persistent_betti_numbers`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CubicalComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>top_dimensional_cells <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 0 0</span>
 </code></pre></div>
