@@ -101,3 +101,63 @@ WitnessComplex <- R6::R6Class(
     m_ComputedSimplexTree = FALSE
   )
 )
+
+#' R6 Class for Strong Witness Complex
+#'
+#' @inherit WitnessComplex description
+#' @details The class constructs a (strong) witness complex for a given table of
+#'   nearest landmarks with respect to witnesses.
+#'
+#' @export
+StrongWitnessComplex <- R6::R6Class(
+  classname = "StrongWitnessComplex",
+  inherit = WitnessComplex,
+  public = list(
+    #' @description `StrongWitnessComplex` constructor.
+    #'
+    #' @param nearest_landmark_table A list of \code{\link[tibble]{tibble}}s
+    #'   specifying for each *witness* `w`, the ordered list of nearest
+    #'   landmarks with id in column `nearest_landmark` and distance to `w` in
+    #'   column `distance`.
+    #'
+    #' @return A \code{\link{StrongWitnessComplex}} object storing the strong
+    #'   Witness complex.
+    #'
+    #' @examples
+    #' set.seed(1234)
+    #' l <- list(
+    #'   tibble::tibble(
+    #'     nearest_landmark = sample.int(10),
+    #'     distance = sort(rexp(10))
+    #'   ),
+    #'   tibble::tibble(
+    #'     nearest_landmark = sample.int(10),
+    #'     distance = sort(rexp(10))
+    #'   )
+    #' )
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
+    #'   wc
+    #' }
+    initialize = function(nearest_landmark_table) {
+      if (!rlang::is_list(nearest_landmark_table))
+        cli::cli_abort("The input should be a list.")
+      for (t in nearest_landmark_table) {
+        if (!tibble::is_tibble(t))
+          cli::cli_abort("All elements of the input list should be tibbles.")
+        if (!all(c("nearest_landmark", "distance") == names(t)))
+          cli::cli_abort("All elements of the input list should be tibbles with exactly the two column {.code nearest_landmark} and {.code distance}.")
+      }
+
+      nearest_landmark_table <- purrr::map(
+        .x = nearest_landmark_table,
+        .f = purrr::array_tree,
+        margin = 1
+      )
+
+      private$m_PythonClass <- gd$StrongWitnessComplex(
+        nearest_landmark_table = nearest_landmark_table
+      )
+    }
+  )
+)
