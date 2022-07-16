@@ -5,6 +5,9 @@
 #'   threshold. Edge length is computed from a user given point cloud with a
 #'   given distance function, or a distance matrix.
 #'
+#' @author Clément Maria, Pawel Dlotko, Vincent Rouvreau, Marc Glisse, Yuichi
+#'   Ike
+#'
 #' @export
 RipsComplex <- R6::R6Class(
   classname = "RipsComplex",

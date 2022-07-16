@@ -24,6 +24,9 @@ if (reticulate::py_module_available("gudhi")) {
   pcc
 }
 }
+\author{
+Pawel Dlotko
+}
 \section{Super class}{
 \code{\link[rgudhi:CubicalComplex]{rgudhi::CubicalComplex}} -> \code{PeriodicCubicalComplex}
 }

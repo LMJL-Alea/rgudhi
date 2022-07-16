@@ -4,16 +4,16 @@
 \alias{AlphaComplex}
 \title{R6 Class for Alpha Complex}
 \description{
-AlphaComplex is a simplicial complex constructed from the
-finite cells of a Delaunay Triangulation.
+AlphaComplex is a simplicial complex constructed from the finite
+cells of a Delaunay Triangulation.
 }
 \details{
-The filtration value of each simplex is computed as the square of the
-circumradius of the simplex if the circumsphere is empty (the simplex is then
-said to be Gabriel), and as the minimum of the filtration values of the
-codimension 1 cofaces that make it not Gabriel otherwise. All simplices that
-have a filtration value strictly greater than a given alpha squared value are
-not inserted into the complex.
+The filtration value of each simplex is computed as the square of
+the circumradius of the simplex if the circumsphere is empty (the simplex
+is then said to be Gabriel), and as the minimum of the filtration values of
+the codimension 1 cofaces that make it not Gabriel otherwise. All simplices
+that have a filtration value strictly greater than a given alpha squared
+value are not inserted into the complex.
 }
 \examples{
 
@@ -61,6 +61,9 @@ if (reticulate::py_module_available("gudhi")) {
   st <- ac$create_simplex_tree()
   ac$get_point(1)
 }
+}
+\author{
+Vincent Rouvreau
 }
 \section{Methods}{
 \subsection{Public methods}{

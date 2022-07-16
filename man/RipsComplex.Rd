@@ -46,6 +46,10 @@ if (reticulate::py_module_available("gudhi")) {
   st <- rc$create_simplex_tree(1)
 }
 }
+\author{
+Clément Maria, Pawel Dlotko, Vincent Rouvreau, Marc Glisse, Yuichi
+Ike
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

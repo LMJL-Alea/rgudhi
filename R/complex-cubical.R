@@ -11,6 +11,8 @@
 #'   value to take into account (strictly greater than `min_persistence`).
 #'   Defaults to `0.0`. Set `min_persistence = -1.0` to see all values.
 #'
+#' @author Pawel Dlotko
+#'
 #' @export
 CubicalComplex <- R6::R6Class(
   classname = "CubicalComplex",
@@ -279,6 +281,8 @@ CubicalComplex <- R6::R6Class(
 #' @description The `PeriodicCubicalComplex` class is an example of a structured
 #'   complex useful in computational mathematics (specially rigorous numerics)
 #'   and image analysis.
+#'
+#' @author Pawel Dlotko
 #'
 #' @export
 PeriodicCubicalComplex <- R6::R6Class(

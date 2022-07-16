@@ -21,6 +21,7 @@ Config/reticulate:
 Imports: 
     cli,
     fs,
+    mathjaxr,
     purrr,
     R6,
     Rdpack,
@@ -33,4 +34,4 @@ Suggests:
     testthat (>= 3.0.0),
     withr
 Config/testthat/edition: 3
-RdMacros: Rdpack
+RdMacros: Rdpack, mathjaxr

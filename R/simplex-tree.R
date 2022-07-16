@@ -27,6 +27,8 @@
 #'   class itself, hence allowing its use in pipe chaining. Defaults to `TRUE`,
 #'   which enables chaining.
 #'
+#' @author Clément Maria
+#'
 #' @export
 SimplexTree <- R6::R6Class(
   classname = "SimplexTree",

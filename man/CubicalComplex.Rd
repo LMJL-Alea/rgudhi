@@ -98,6 +98,9 @@ if (reticulate::py_module_available("gudhi")) {
   cc$compute_persistence()$persistent_betti_numbers(0, 1)
 }
 }
+\author{
+Pawel Dlotko
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
