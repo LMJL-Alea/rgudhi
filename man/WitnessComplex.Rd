@@ -25,11 +25,11 @@ nearest landmarks with respect to witnesses.
 
 set.seed(1234)
 l <- list(
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   ),
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   )
@@ -45,11 +45,11 @@ if (reticulate::py_module_available("gudhi")) {
 
 set.seed(1234)
 l <- list(
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   ),
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   )
@@ -98,11 +98,11 @@ complex.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{set.seed(1234)
 l <- list(
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   ),
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   )
@@ -141,11 +141,11 @@ tree created from the Delaunay triangulation.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{set.seed(1234)
 l <- list(
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   ),
-  tibble(
+  tibble::tibble(
     nearest_landmark = sample.int(10),
     distance = sort(rexp(10))
   )

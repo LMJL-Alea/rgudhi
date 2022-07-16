@@ -31,11 +31,11 @@ WitnessComplex <- R6::R6Class(
     #' @examples
     #' set.seed(1234)
     #' l <- list(
-    #'   tibble(
+    #'   tibble::tibble(
     #'     nearest_landmark = sample.int(10),
     #'     distance = sort(rexp(10))
     #'   ),
-    #'   tibble(
+    #'   tibble::tibble(
     #'     nearest_landmark = sample.int(10),
     #'     distance = sort(rexp(10))
     #'   )
@@ -74,11 +74,11 @@ WitnessComplex <- R6::R6Class(
     #' @examples
     #' set.seed(1234)
     #' l <- list(
-    #'   tibble(
+    #'   tibble::tibble(
     #'     nearest_landmark = sample.int(10),
     #'     distance = sort(rexp(10))
     #'   ),
-    #'   tibble(
+    #'   tibble::tibble(
     #'     nearest_landmark = sample.int(10),
     #'     distance = sort(rexp(10))
     #'   )
