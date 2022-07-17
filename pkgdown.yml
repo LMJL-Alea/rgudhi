@@ -2,7 +2,7 @@ pandoc: 2.14.2
 pkgdown: 2.0.5
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-07-17T14:22Z
+last_built: 2022-07-17T16:20Z
 urls:
   reference: https://lmjl-alea.github.io/rgudhi/reference
   article: https://lmjl-alea.github.io/rgudhi/articles
