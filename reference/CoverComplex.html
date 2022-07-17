@@ -101,6 +101,8 @@ of the GIC.</p>
 <li><p><a href="#method-CoverComplex-create_simplex_tree"><code>CoverComplex$create_simplex_tree()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-find_simplices"><code>CoverComplex$find_simplices()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-plot_dot"><code>CoverComplex$plot_dot()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-plot_off"><code>CoverComplex$plot_off()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-read_point_cloud"><code>CoverComplex$read_point_cloud()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-clone"><code>CoverComplex$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-CoverComplex-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
@@ -330,15 +332,89 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 </div>
 
 
-</div><p></p><hr><a id="method-CoverComplex-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-CoverComplex-plot_off"></a><div class="section">
+<h3 id="method-plot-off-">Method <code>plot_off()</code><a class="anchor" aria-label="anchor" href="#method-plot-off-"></a></h3>
+<p>Creates a <code>.off</code> file called <code>_sc.off</code> for 3D visualization,
+which contains the 2-skeleton of the GIC. This function assumes that
+the cover has been computed with Voronoi. If data points are in 1D or
+2D, the remaining coordinates of the points embedded in 3D are set to
+0.</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">plot_off</span><span class="op">(</span>dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>dir</code></dt>
+<dd><p>A character string specifying the path to a directory into
+which the <code>.off</code> file will be saved. Defaults to current working
+directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-9">Examples<a class="anchor" aria-label="anchor" href="#examples-9"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-read_point_cloud"></a><div class="section">
+<h3 id="method-read-point-cloud-">Method <code>read_point_cloud()</code><a class="anchor" aria-label="anchor" href="#method-read-point-cloud-"></a></h3>
+<p>Reads and stores the input point cloud from a <code>.(n)OFF</code>
+file.</p><div class="section">
+<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">off_file</span>, chainable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>off_file</code></dt>
+<dd><p>A character string specifying the location of the
+<code>.(n)OFF</code> file to read the point cloud from.</p></dd>
+
+
+<dt><code>chainable</code></dt>
+<dd><p>A boolean specyfing whether the method should be
+chainable in which case it returns invisibly the class itself. Defaults
+to <code>TRUE</code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly if
+<code>chainable = TRUE</code> or a boolean storing the read file status.</p>
+</div>
+<div class="section">
+<h4 id="examples-10">Examples<a class="anchor" aria-label="anchor" href="#examples-10"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -373,6 +449,8 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span>     find_simplices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     plot_dot: function (dir = getwd()) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     plot_off: function (dir = getwd()) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     read_point_cloud: function (off_file, chainable = TRUE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedBootstrapDistribution: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistenceDiagram: FALSE</span>
@@ -453,6 +531,27 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$plot_off`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$read_point_cloud`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
