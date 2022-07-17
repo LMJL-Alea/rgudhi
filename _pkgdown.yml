@@ -1,0 +1,27 @@
+url: https://lmjl-alea.github.io/rgudhi/
+template:
+  bootstrap: 5
+
+reference:
+  - title: Data structures for cell complexes
+  - subtitle: Cubical complexes
+    contents:
+    - CubicalComplex
+    - PeriodicCubicalComplex
+  - subtitle: Simplicial complexes
+    contents:
+    - SimplexTree
+  - title: Filtrations and reconstructions
+  - subtitle: Alpha complex
+    contents:
+    - AlphaComplex
+  - subtitle: Rips complex
+    contents:
+    - RipsComplex
+  - subtitle: Witness complex
+    contents:
+    - WitnessComplex
+    - StrongWitnessComplex
+  - subtitle: Cover complexes
+    contents:
+    - CoverComplex
