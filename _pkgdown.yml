@@ -5,10 +5,16 @@ template:
 reference:
   - title: Data structures for cell complexes
   - subtitle: Cubical complexes
+    desc: >
+      The cubical complex represents a grid as a cell complex with cells
+      of all dimensions.
     contents:
     - CubicalComplex
     - PeriodicCubicalComplex
   - subtitle: Simplicial complexes
+    desc: >
+      The simplex tree is an efficient and flexible data structure for
+      representing general (filtered) simplicial complexes.
     contents:
     - SimplexTree
   - title: Filtrations and reconstructions

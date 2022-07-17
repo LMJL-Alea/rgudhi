@@ -12,7 +12,8 @@ Provides an R interface to the Python package GUDHI.
 Useful links:
 \itemize{
   \item \url{https://github.com/LMJL-Alea/rgudhi}
-  \item Report bugs at \url{https://github.com/LMJL-Alea/rgudhi/issues}
+  \item \url{https://lmjl-alea.github.io/rgudhi/}
+  \item Report bugs at \url{https://github.com/lmjl-alea/rgudhi/issues}
 }
 
 }
