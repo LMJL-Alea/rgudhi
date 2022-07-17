@@ -7,6 +7,7 @@
 #'
 #' @author Clément Maria, Pawel Dlotko, Vincent Rouvreau, Marc Glisse, Yuichi
 #'   Ike
+#' @family filtrations and reconstructions
 #'
 #' @export
 RipsComplex <- R6::R6Class(

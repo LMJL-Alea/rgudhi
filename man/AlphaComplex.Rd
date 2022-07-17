@@ -62,9 +62,16 @@ if (reticulate::py_module_available("gudhi")) {
   ac$get_point(1)
 }
 }
+\seealso{
+Other filtrations and reconstructions: 
+\code{\link{CoverComplex}},
+\code{\link{RipsComplex}},
+\code{\link{WitnessComplex}}
+}
 \author{
 Vincent Rouvreau
 }
+\concept{filtrations and reconstructions}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

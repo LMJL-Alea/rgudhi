@@ -46,10 +46,17 @@ if (reticulate::py_module_available("gudhi")) {
   st <- rc$create_simplex_tree(1)
 }
 }
+\seealso{
+Other filtrations and reconstructions: 
+\code{\link{AlphaComplex}},
+\code{\link{CoverComplex}},
+\code{\link{WitnessComplex}}
+}
 \author{
 Clément Maria, Pawel Dlotko, Vincent Rouvreau, Marc Glisse, Yuichi
 Ike
 }
+\concept{filtrations and reconstructions}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

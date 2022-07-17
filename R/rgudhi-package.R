@@ -7,5 +7,6 @@
 #' @importFrom Rdpack reprompt
 #' @importFrom rlang set_names
 #' @importFrom tibble tibble
+#' @importFrom withr with_seed
 ## usethis namespace: end
 NULL

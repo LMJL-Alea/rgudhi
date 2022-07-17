@@ -28,10 +28,10 @@ Imports:
     readr,
     reticulate,
     rlang,
-    tibble
+    tibble,
+    withr
 Suggests: 
     covr,
-    testthat (>= 3.0.0),
-    withr
+    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 RdMacros: Rdpack, mathjaxr

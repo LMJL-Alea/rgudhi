@@ -19,17 +19,18 @@ nearest landmarks with respect to witnesses.
 ## Method `StrongWitnessComplex$new`
 ## ------------------------------------------------
 
-set.seed(1234)
-l <- list(
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
-  ),
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
+withr::with_seed(1234, {
+  l <- list(
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    ),
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    )
   )
-)
+})
 if (reticulate::py_module_available("gudhi")) {
   wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
   wc
@@ -77,17 +78,18 @@ Witness complex.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{set.seed(1234)
-l <- list(
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
-  ),
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
+\preformatted{withr::with_seed(1234, {
+  l <- list(
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    ),
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    )
   )
-)
+})
 if (reticulate::py_module_available("gudhi")) {
   wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
   wc

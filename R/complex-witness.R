@@ -13,6 +13,7 @@
 #' \insertAllCited{}
 #'
 #' @author Siargey Kachanovich
+#' @family filtrations and reconstructions
 #'
 #' @export
 WitnessComplex <- R6::R6Class(
@@ -29,17 +30,18 @@ WitnessComplex <- R6::R6Class(
     #'   complex.
     #'
     #' @examples
-    #' set.seed(1234)
-    #' l <- list(
-    #'   tibble::tibble(
-    #'     nearest_landmark = sample.int(10),
-    #'     distance = sort(rexp(10))
-    #'   ),
-    #'   tibble::tibble(
-    #'     nearest_landmark = sample.int(10),
-    #'     distance = sort(rexp(10))
+    #' withr::with_seed(1234, {
+    #'   l <- list(
+    #'     tibble::tibble(
+    #'       nearest_landmark = sample.int(10),
+    #'       distance = sort(rexp(10))
+    #'     ),
+    #'     tibble::tibble(
+    #'       nearest_landmark = sample.int(10),
+    #'       distance = sort(rexp(10))
+    #'     )
     #'   )
-    #' )
+    #' })
     #' if (reticulate::py_module_available("gudhi")) {
     #'   wc <- WitnessComplex$new(nearest_landmark_table = l)
     #'   wc
@@ -72,17 +74,18 @@ WitnessComplex <- R6::R6Class(
     #'   tree created from the Delaunay triangulation.
     #'
     #' @examples
-    #' set.seed(1234)
-    #' l <- list(
-    #'   tibble::tibble(
-    #'     nearest_landmark = sample.int(10),
-    #'     distance = sort(rexp(10))
-    #'   ),
-    #'   tibble::tibble(
-    #'     nearest_landmark = sample.int(10),
-    #'     distance = sort(rexp(10))
+    #' withr::with_seed(1234, {
+    #'   l <- list(
+    #'     tibble::tibble(
+    #'       nearest_landmark = sample.int(10),
+    #'       distance = sort(rexp(10))
+    #'     ),
+    #'     tibble::tibble(
+    #'       nearest_landmark = sample.int(10),
+    #'       distance = sort(rexp(10))
+    #'     )
     #'   )
-    #' )
+    #' })
     #' if (reticulate::py_module_available("gudhi")) {
     #'   wc <- WitnessComplex$new(nearest_landmark_table = l)
     #'   st <- wc$create_simplex_tree()
@@ -124,17 +127,18 @@ StrongWitnessComplex <- R6::R6Class(
     #'   Witness complex.
     #'
     #' @examples
-    #' set.seed(1234)
-    #' l <- list(
-    #'   tibble::tibble(
-    #'     nearest_landmark = sample.int(10),
-    #'     distance = sort(rexp(10))
-    #'   ),
-    #'   tibble::tibble(
-    #'     nearest_landmark = sample.int(10),
-    #'     distance = sort(rexp(10))
+    #' withr::with_seed(1234, {
+    #'   l <- list(
+    #'     tibble::tibble(
+    #'       nearest_landmark = sample.int(10),
+    #'       distance = sort(rexp(10))
+    #'     ),
+    #'     tibble::tibble(
+    #'       nearest_landmark = sample.int(10),
+    #'       distance = sort(rexp(10))
+    #'     )
     #'   )
-    #' )
+    #' })
     #' if (reticulate::py_module_available("gudhi")) {
     #'   wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
     #'   wc

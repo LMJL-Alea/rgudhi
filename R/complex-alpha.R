@@ -11,6 +11,7 @@
 #'   value are not inserted into the complex.
 #'
 #' @author Vincent Rouvreau
+#' @family filtrations and reconstructions
 #'
 #' @export
 AlphaComplex <- R6::R6Class(

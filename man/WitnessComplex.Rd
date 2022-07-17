@@ -23,17 +23,18 @@ nearest landmarks with respect to witnesses.
 ## Method `WitnessComplex$new`
 ## ------------------------------------------------
 
-set.seed(1234)
-l <- list(
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
-  ),
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
+withr::with_seed(1234, {
+  l <- list(
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    ),
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    )
   )
-)
+})
 if (reticulate::py_module_available("gudhi")) {
   wc <- WitnessComplex$new(nearest_landmark_table = l)
   wc
@@ -43,26 +44,34 @@ if (reticulate::py_module_available("gudhi")) {
 ## Method `WitnessComplex$create_simplex_tree`
 ## ------------------------------------------------
 
-set.seed(1234)
-l <- list(
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
-  ),
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
+withr::with_seed(1234, {
+  l <- list(
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    ),
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    )
   )
-)
+})
 if (reticulate::py_module_available("gudhi")) {
   wc <- WitnessComplex$new(nearest_landmark_table = l)
   st <- wc$create_simplex_tree()
   st$num_vertices()
 }
 }
+\seealso{
+Other filtrations and reconstructions: 
+\code{\link{AlphaComplex}},
+\code{\link{CoverComplex}},
+\code{\link{RipsComplex}}
+}
 \author{
 Siargey Kachanovich
 }
+\concept{filtrations and reconstructions}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -96,17 +105,18 @@ complex.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{set.seed(1234)
-l <- list(
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
-  ),
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
+\preformatted{withr::with_seed(1234, {
+  l <- list(
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    ),
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    )
   )
-)
+})
 if (reticulate::py_module_available("gudhi")) {
   wc <- WitnessComplex$new(nearest_landmark_table = l)
   wc
@@ -139,17 +149,18 @@ tree created from the Delaunay triangulation.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{set.seed(1234)
-l <- list(
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
-  ),
-  tibble::tibble(
-    nearest_landmark = sample.int(10),
-    distance = sort(rexp(10))
+\preformatted{withr::with_seed(1234, {
+  l <- list(
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    ),
+    tibble::tibble(
+      nearest_landmark = sample.int(10),
+      distance = sort(rexp(10))
+    )
   )
-)
+})
 if (reticulate::py_module_available("gudhi")) {
   wc <- WitnessComplex$new(nearest_landmark_table = l)
   st <- wc$create_simplex_tree()
