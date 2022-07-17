@@ -106,6 +106,27 @@ if (reticulate::py_module_available("gudhi")) {
     cc$plot_dot()
   })
 }
+
+## ------------------------------------------------
+## Method `CoverComplex$plot_off`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  withr::with_tempdir({
+    cc$plot_dot()
+  })
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$read_point_cloud`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+  cc$read_point_cloud(url)
+}
 }
 \seealso{
 Other filtrations and reconstructions: 
@@ -129,6 +150,8 @@ Mathieu Carrière
 \item \href{#method-CoverComplex-create_simplex_tree}{\code{CoverComplex$create_simplex_tree()}}
 \item \href{#method-CoverComplex-find_simplices}{\code{CoverComplex$find_simplices()}}
 \item \href{#method-CoverComplex-plot_dot}{\code{CoverComplex$plot_dot()}}
+\item \href{#method-CoverComplex-plot_off}{\code{CoverComplex$plot_off()}}
+\item \href{#method-CoverComplex-read_point_cloud}{\code{CoverComplex$read_point_cloud()}}
 \item \href{#method-CoverComplex-clone}{\code{CoverComplex$clone()}}
 }
 }
@@ -383,6 +406,84 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
   withr::with_tempdir({
     cc$plot_dot()
   })
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-plot_off"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-plot_off}{}}}
+\subsection{Method \code{plot_off()}}{
+Creates a \code{.off} file called \verb{_sc.off} for 3D visualization,
+which contains the 2-skeleton of the GIC. This function assumes that
+the cover has been computed with Voronoi. If data points are in 1D or
+2D, the remaining coordinates of the points embedded in 3D are set to
+0.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$plot_off(dir = getwd())}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{dir}}{A character string specifying the path to a directory into
+which the \code{.off} file will be saved. Defaults to current working
+directory retrieved via \code{getwd()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  withr::with_tempdir({
+    cc$plot_dot()
+  })
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-read_point_cloud"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-read_point_cloud}{}}}
+\subsection{Method \code{read_point_cloud()}}{
+Reads and stores the input point cloud from a \verb{.(n)OFF}
+file.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$read_point_cloud(off_file, chainable = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{off_file}}{A character string specifying the location of the
+\verb{.(n)OFF} file to read the point cloud from.}
+
+\item{\code{chainable}}{A boolean specyfing whether the method should be
+chainable in which case it returns invisibly the class itself. Defaults
+to \code{TRUE}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly if
+\code{chainable = TRUE} or a boolean storing the read file status.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+  cc$read_point_cloud(url)
 }
 }
 \if{html}{\out{</div>}}

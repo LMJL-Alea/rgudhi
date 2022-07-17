@@ -21,12 +21,12 @@ Config/reticulate:
   )
 Imports: 
     cli,
+    curl,
     fs,
     mathjaxr,
     purrr,
     R6,
     Rdpack,
-    readr,
     reticulate,
     rlang,
     tibble,

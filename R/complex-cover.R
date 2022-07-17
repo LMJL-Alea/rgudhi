@@ -170,6 +170,62 @@ CoverComplex <- R6::R6Class(
         private$m_PythonClass$plot_dot()
       })
       invisible(self)
+    },
+
+    #' @description Creates a `.off` file called `_sc.off` for 3D visualization,
+    #'   which contains the 2-skeleton of the GIC. This function assumes that
+    #'   the cover has been computed with Voronoi. If data points are in 1D or
+    #'   2D, the remaining coordinates of the points embedded in 3D are set to
+    #'   0.
+    #'
+    #' @param dir A character string specifying the path to a directory into
+    #'   which the `.off` file will be saved. Defaults to current working
+    #'   directory retrieved via `getwd()`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   withr::with_tempdir({
+    #'     cc$plot_dot()
+    #'   })
+    #' }
+    plot_off = function(dir = getwd()) {
+      withr::with_dir(dir, {
+        private$m_PythonClass$plot_off()
+      })
+      invisible(self)
+    },
+
+    #' @description Reads and stores the input point cloud from a `.(n)OFF`
+    #'   file.
+    #'
+    #' @param off_file A character string specifying the location of the
+    #'   `.(n)OFF` file to read the point cloud from.
+    #' @param chainable A boolean specyfing whether the method should be
+    #'   chainable in which case it returns invisibly the class itself. Defaults
+    #'   to `TRUE`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly if
+    #'   `chainable = TRUE` or a boolean storing the read file status.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+    #'   cc$read_point_cloud(url)
+    #' }
+    read_point_cloud = function(off_file, chainable = TRUE) {
+      if (substr(off_file, 1, 5) == "https") {
+        withr::with_tempfile("tf", {
+          download_file(off_file, tf)
+          res <- private$m_PythonClass$read_point_cloud(tf)
+        })
+      } else
+        res <- private$m_PythonClass$read_point_cloud(off_file)
+      if (chainable) return(invisible(self))
+      res
     }
   ),
   private = list(

@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom mathjaxr preview_rd
+#' @importFrom purrr map
 #' @importFrom R6 R6Class
 #' @importFrom Rdpack reprompt
 #' @importFrom rlang set_names
