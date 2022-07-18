@@ -195,9 +195,10 @@ if (reticulate::py_module_available("gudhi")) {
 ## Method `CoverComplex$set_distances_from_range`
 ## ------------------------------------------------
 
+D <- dist(iris[, -5])
 if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
-  cc$set_distances_from_range()
+  cc$set_distances_from_range(D)
 }
 
 ## ------------------------------------------------
@@ -206,7 +207,7 @@ if (reticulate::py_module_available("gudhi")) {
 
 if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
-  cc$set_function_from_coordinate()
+  # cc$set_function_from_coordinate()
 }
 }
 \seealso{
@@ -830,9 +831,10 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
+\preformatted{D <- dist(iris[, -5])
+if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
-  cc$set_distances_from_range()
+  cc$set_distances_from_range(D)
 }
 }
 \if{html}{\out{</div>}}
@@ -865,7 +867,7 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
-  cc$set_function_from_coordinate()
+  # cc$set_function_from_coordinate()
 }
 }
 \if{html}{\out{</div>}}

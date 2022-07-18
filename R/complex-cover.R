@@ -363,9 +363,10 @@ CoverComplex <- R6::R6Class(
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
     #' @examples
+    #' D <- dist(iris[, -5])
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CoverComplex$new()
-    #'   cc$set_distances_from_range()
+    #'   cc$set_distances_from_range(D)
     #' }
     set_distances_from_range = function(distance_matrix) {
       if (inherits(distance_matrix, "dist"))
@@ -387,7 +388,7 @@ CoverComplex <- R6::R6Class(
     #' @examples
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CoverComplex$new()
-    #'   cc$set_function_from_coordinate()
+    #'   # cc$set_function_from_coordinate()
     #' }
     set_function_from_coordinate = function(k = 0L) {
       private$m_PythonClass$set_function_from_coordinate(k)
