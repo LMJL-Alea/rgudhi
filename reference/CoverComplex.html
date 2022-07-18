@@ -112,6 +112,22 @@ of the GIC.</p>
 <li><p><a href="#method-CoverComplex-set_cover_from_function"><code>CoverComplex$set_cover_from_function()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-set_distances_from_range"><code>CoverComplex$set_distances_from_range()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-set_function_from_coordinate"><code>CoverComplex$set_function_from_coordinate()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_function_from_file"><code>CoverComplex$set_function_from_file()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_function_from_range"><code>CoverComplex$set_function_from_range()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_gain"><code>CoverComplex$set_gain()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_graph_from_OFF"><code>CoverComplex$set_graph_from_OFF()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_graph_from_automatic_rips"><code>CoverComplex$set_graph_from_automatic_rips()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_graph_from_file"><code>CoverComplex$set_graph_from_file()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_graph_from_rips"><code>CoverComplex$set_graph_from_rips()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_mask"><code>CoverComplex$set_mask()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_point_cloud_from_range"><code>CoverComplex$set_point_cloud_from_range()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_resolution_with_interval_length"><code>CoverComplex$set_resolution_with_interval_length()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_resolution_with_interval_number"><code>CoverComplex$set_resolution_with_interval_number()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_subsampling"><code>CoverComplex$set_subsampling()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_type"><code>CoverComplex$set_type()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-set_verbose"><code>CoverComplex$set_verbose()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-subpopulation"><code>CoverComplex$subpopulation()</code></a></p></li>
+<li><p><a href="#method-CoverComplex-write_info"><code>CoverComplex$write_info()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-clone"><code>CoverComplex$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-CoverComplex-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
@@ -219,13 +235,20 @@ corresponding to the input confidence level.</p>
 <h3 id="method-compute-distribution-">Method <code>compute_distribution()</code><a class="anchor" aria-label="anchor" href="#method-compute-distribution-"></a></h3>
 <p>Computes the distribution of distances via bootstrap.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">compute_distribution</span><span class="op">(</span>N <span class="op">=</span> <span class="fl">100L</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">compute_distribution</span><span class="op">(</span>N <span class="op">=</span> <span class="fl">100L</span>, dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>N</code></dt>
-<dd><p>An integer value specifying the number of iterations. Defaults to <code>100L</code>.</p></dd>
+<dd><p>An integer value specifying the number of iterations. Defaults
+to <code>100L</code>.</p></dd>
+
+
+<dt><code>dir</code></dt>
+<dd><p>A character string specifying the path to a directory into
+which the <code>.off</code> file will be saved. Defaults to current working
+directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -491,7 +514,8 @@ Defaults to <code>0L</code>.</p></dd>
 
 </div><p></p><hr><a id="method-CoverComplex-set_color_from_file"></a><div class="section">
 <h3 id="method-set-color-from-file-">Method <code>set_color_from_file()</code><a class="anchor" aria-label="anchor" href="#method-set-color-from-file-"></a></h3>
-<p>Computes the function used to color the nodes of the simplicial complex from a file containing the function values.</p><div class="section">
+<p>Computes the function used to color the nodes of the
+simplicial complex from a file containing the function values.</p><div class="section">
 <h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_color_from_file</span><span class="op">(</span><span class="va">color_file_name</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -499,7 +523,8 @@ Defaults to <code>0L</code>.</p></dd>
 <div class="section">
 <h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>color_file_name</code></dt>
-<dd><p>A character string specifying the name of the input color file.</p></dd>
+<dd><p>A character string specifying the name of the
+input color file.</p></dd>
 
 
 </dl><p></p></div>
@@ -522,13 +547,14 @@ Defaults to <code>0L</code>.</p></dd>
 <p>Computes the function used to color the nodes of the
 simplicial complex from a vector stored in memory.</p><div class="section">
 <h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_color_from_range</span><span class="op">(</span><span class="va">color</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_color_from_range</span><span class="op">(</span><span class="va">color_values</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>color</code></dt>
-<dd><p>A numeric vector specifying the input vector of values.</p></dd>
+<p></p><div class="arguments"><dl><dt><code>color_values</code></dt>
+<dd><p>A numeric vector specifying the input vector of
+values.</p></dd>
 
 
 </dl><p></p></div>
@@ -578,7 +604,9 @@ subsample. Defaults to <code>100L</code>.</p></dd>
 
 </div><p></p><hr><a id="method-CoverComplex-set_cover_from_file"></a><div class="section">
 <h3 id="method-set-cover-from-file-">Method <code>set_cover_from_file()</code><a class="anchor" aria-label="anchor" href="#method-set-cover-from-file-"></a></h3>
-<p>Creates the cover <em></em>\(C\) from a file containing the cover elements of each point (the order has to be the same as in the input file!).</p><div class="section">
+<p>Creates the cover <em></em>\(C\) from a file containing the
+cover elements of each point (the order has to be the same as in the
+input file!).</p><div class="section">
 <h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_cover_from_file</span><span class="op">(</span><span class="va">cover_file_name</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -586,7 +614,8 @@ subsample. Defaults to <code>100L</code>.</p></dd>
 <div class="section">
 <h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>cover_file_name</code></dt>
-<dd><p>A character string specifying the path to the input cover file.</p></dd>
+<dd><p>A character string specifying the path to the
+input cover file.</p></dd>
 
 
 </dl><p></p></div>
@@ -685,15 +714,517 @@ coordinate of the point cloud.</p><div class="section">
 </div>
 
 
-</div><p></p><hr><a id="method-CoverComplex-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-CoverComplex-set_function_from_file"></a><div class="section">
+<h3 id="method-set-function-from-file-">Method <code>set_function_from_file()</code><a class="anchor" aria-label="anchor" href="#method-set-function-from-file-"></a></h3>
+<p>Creates the function <em></em>\(f\) from a file containing the
+function values.</p><div class="section">
 <h4 id="usage-20">Usage<a class="anchor" aria-label="anchor" href="#usage-20"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_function_from_file</span><span class="op">(</span><span class="va">func_file_name</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>func_file_name</code></dt>
+<dd><p>A character string specifying the path to the input
+function file.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-20">Returns<a class="anchor" aria-label="anchor" href="#returns-20"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-20">Examples<a class="anchor" aria-label="anchor" href="#examples-20"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="co"># cc$set_function_from_file()</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_function_from_range"></a><div class="section">
+<h3 id="method-set-function-from-range-">Method <code>set_function_from_range()</code><a class="anchor" aria-label="anchor" href="#method-set-function-from-range-"></a></h3>
+<p>Creates the function <em></em>\(f\) from a vector stored in
+memory.</p><div class="section">
+<h4 id="usage-21">Usage<a class="anchor" aria-label="anchor" href="#usage-21"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_function_from_range</span><span class="op">(</span><span class="va">function_values</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>function_values</code></dt>
+<dd><p>A numeric vector specifying the function values to
+be used.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-21">Returns<a class="anchor" aria-label="anchor" href="#returns-21"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-21">Examples<a class="anchor" aria-label="anchor" href="#examples-21"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_function_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_gain"></a><div class="section">
+<h3 id="method-set-gain-">Method <code>set_gain()</code><a class="anchor" aria-label="anchor" href="#method-set-gain-"></a></h3>
+<p>Sets a gain from a value stored in memory.</p><div class="section">
+<h4 id="usage-22">Usage<a class="anchor" aria-label="anchor" href="#usage-22"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_gain</span><span class="op">(</span>g <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>g</code></dt>
+<dd><p>A numeric value specifying the gain. Defaults to <code>0.3</code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-22">Returns<a class="anchor" aria-label="anchor" href="#returns-22"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-22">Examples<a class="anchor" aria-label="anchor" href="#examples-22"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_gain</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_graph_from_OFF"></a><div class="section">
+<h3 id="method-set-graph-from-off-">Method <code>set_graph_from_OFF()</code><a class="anchor" aria-label="anchor" href="#method-set-graph-from-off-"></a></h3>
+<p>Creates a graph <em></em>\(G\) from the triangulation given by
+the input <code>.off</code> file.</p><div class="section">
+<h4 id="usage-23">Usage<a class="anchor" aria-label="anchor" href="#usage-23"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="returns-23">Returns<a class="anchor" aria-label="anchor" href="#returns-23"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-23">Examples<a class="anchor" aria-label="anchor" href="#examples-23"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_graph_from_automatic_rips"></a><div class="section">
+<h3 id="method-set-graph-from-automatic-rips-">Method <code>set_graph_from_automatic_rips()</code><a class="anchor" aria-label="anchor" href="#method-set-graph-from-automatic-rips-"></a></h3>
+<p>Creates a graph <em></em>\(G\) from a Rips complex whose
+threshold value is automatically tuned with subsampling - see
+Carriere et al. (2018)
+.</p><div class="section">
+<h4 id="references-1">References<a class="anchor" aria-label="anchor" href="#references-1"></a></h4>
+
+
+<p>Carriere M, Michel B, Oudot S (2018).
+“Statistical analysis and parameter selection for mapper.”
+<em>The Journal of Machine Learning Research</em>, <b>19</b>(1), 478--516.</p>
+</div>
+<div class="section">
+<h4 id="usage-24">Usage<a class="anchor" aria-label="anchor" href="#usage-24"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span>N <span class="op">=</span> <span class="fl">100L</span>, chainable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>N</code></dt>
+<dd><p>An integer value specifying the number of subsampling
+iterations. Defaults to <code>100L</code> but there is no guarantee on how to
+choose it.</p></dd>
+
+
+<dt><code>chainable</code></dt>
+<dd><p>A boolean specyfing whether the method should be
+chainable in which case it returns invisibly the class itself. Defaults
+to <code>TRUE</code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-24">Returns<a class="anchor" aria-label="anchor" href="#returns-24"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly if
+<code>chainable = TRUE</code> or a numeric value storing the delta threshold used
+for computing the Rips complex..</p>
+</div>
+<div class="section">
+<h4 id="examples-24">Examples<a class="anchor" aria-label="anchor" href="#examples-24"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span>chainable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_graph_from_file"></a><div class="section">
+<h3 id="method-set-graph-from-file-">Method <code>set_graph_from_file()</code><a class="anchor" aria-label="anchor" href="#method-set-graph-from-file-"></a></h3>
+<p>Creates a graph <em></em>\(G\) from a file containing the edges.</p><div class="section">
+<h4 id="usage-25">Usage<a class="anchor" aria-label="anchor" href="#usage-25"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_graph_from_file</span><span class="op">(</span><span class="va">graph_file_name</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>graph_file_name</code></dt>
+<dd><p>A character string specifying the path to the
+input graph file. The graph file contains one edge per line, each edge
+being represented by the IDs of its two nodes.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-25">Returns<a class="anchor" aria-label="anchor" href="#returns-25"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-25">Examples<a class="anchor" aria-label="anchor" href="#examples-25"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="co"># cc$set_graph_from_file()</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_graph_from_rips"></a><div class="section">
+<h3 id="method-set-graph-from-rips-">Method <code>set_graph_from_rips()</code><a class="anchor" aria-label="anchor" href="#method-set-graph-from-rips-"></a></h3>
+<p>Creates a graph <em></em>\(G\) from a Rips complex.</p><div class="section">
+<h4 id="usage-26">Usage<a class="anchor" aria-label="anchor" href="#usage-26"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="va">threshold</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>threshold</code></dt>
+<dd><p>A numeric value specifying the threshold value for the
+Rips complex.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-26">Returns<a class="anchor" aria-label="anchor" href="#returns-26"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-26">Examples<a class="anchor" aria-label="anchor" href="#examples-26"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_mask"></a><div class="section">
+<h3 id="method-set-mask-">Method <code>set_mask()</code><a class="anchor" aria-label="anchor" href="#method-set-mask-"></a></h3>
+<p>Sets the mask, which is a threshold integer such that nodes
+in the complex that contain a number of data points which is less than
+or equal to this threshold are not displayed.</p><div class="section">
+<h4 id="usage-27">Usage<a class="anchor" aria-label="anchor" href="#usage-27"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_mask</span><span class="op">(</span><span class="va">nodemask</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>nodemask</code></dt>
+<dd><p>A numeric value specifying the threshold value for
+generating the mask.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-27">Returns<a class="anchor" aria-label="anchor" href="#returns-27"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-27">Examples<a class="anchor" aria-label="anchor" href="#examples-27"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_mask</span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_point_cloud_from_range"></a><div class="section">
+<h3 id="method-set-point-cloud-from-range-">Method <code>set_point_cloud_from_range()</code><a class="anchor" aria-label="anchor" href="#method-set-point-cloud-from-range-"></a></h3>
+<p>Reads and stores the input point cloud from a vector stored
+in memory.</p><div class="section">
+<h4 id="usage-28">Usage<a class="anchor" aria-label="anchor" href="#usage-28"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">cloud</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>cloud</code></dt>
+<dd><p>A numeric matrix specifying the coordinates of the point
+cloud.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-28">Returns<a class="anchor" aria-label="anchor" href="#returns-28"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-28">Examples<a class="anchor" aria-label="anchor" href="#examples-28"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Reduce</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">X</span>, init <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_resolution_with_interval_length"></a><div class="section">
+<h3 id="method-set-resolution-with-interval-length-">Method <code>set_resolution_with_interval_length()</code><a class="anchor" aria-label="anchor" href="#method-set-resolution-with-interval-length-"></a></h3>
+<p>Sets a length of intervals from a value stored in memory.</p><div class="section">
+<h4 id="usage-29">Usage<a class="anchor" aria-label="anchor" href="#usage-29"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="va">resolution</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>resolution</code></dt>
+<dd><p>A numeric value specifying the length of intervals.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-29">Returns<a class="anchor" aria-label="anchor" href="#returns-29"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-29">Examples<a class="anchor" aria-label="anchor" href="#examples-29"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_resolution_with_interval_number"></a><div class="section">
+<h3 id="method-set-resolution-with-interval-number-">Method <code>set_resolution_with_interval_number()</code><a class="anchor" aria-label="anchor" href="#method-set-resolution-with-interval-number-"></a></h3>
+<p>Sets a number of intervals from a value stored in memory.</p><div class="section">
+<h4 id="usage-30">Usage<a class="anchor" aria-label="anchor" href="#usage-30"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="va">resolution</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-23">Arguments<a class="anchor" aria-label="anchor" href="#arguments-23"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>resolution</code></dt>
+<dd><p>An integer value specifying the number of intervals.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-30">Returns<a class="anchor" aria-label="anchor" href="#returns-30"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-30">Examples<a class="anchor" aria-label="anchor" href="#examples-30"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_subsampling"></a><div class="section">
+<h3 id="method-set-subsampling-">Method <code>set_subsampling()</code><a class="anchor" aria-label="anchor" href="#method-set-subsampling-"></a></h3>
+<p>Sets the constants used to subsample the data set. These
+constants are explained in
+Carriere et al. (2018)
+.</p><div class="section">
+<h4 id="references-2">References<a class="anchor" aria-label="anchor" href="#references-2"></a></h4>
+
+
+<p>Carriere M, Michel B, Oudot S (2018).
+“Statistical analysis and parameter selection for mapper.”
+<em>The Journal of Machine Learning Research</em>, <b>19</b>(1), 478--516.</p>
+</div>
+<div class="section">
+<h4 id="usage-31">Usage<a class="anchor" aria-label="anchor" href="#usage-31"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_subsampling</span><span class="op">(</span><span class="va">constant</span>, <span class="va">power</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-24">Arguments<a class="anchor" aria-label="anchor" href="#arguments-24"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>constant</code></dt>
+<dd><p>A numeric value specifying the subsampling constant.</p></dd>
+
+
+<dt><code>power</code></dt>
+<dd><p>A numeric value specifying the subsampling power.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-31">Returns<a class="anchor" aria-label="anchor" href="#returns-31"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-31">Examples<a class="anchor" aria-label="anchor" href="#examples-31"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_subsampling</span><span class="op">(</span>constant <span class="op">=</span> <span class="fl">0</span>, power <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_type"></a><div class="section">
+<h3 id="method-set-type-">Method <code>set_type()</code><a class="anchor" aria-label="anchor" href="#method-set-type-"></a></h3>
+<p>Specifies the type of the output simplicial complex.</p><div class="section">
+<h4 id="usage-32">Usage<a class="anchor" aria-label="anchor" href="#usage-32"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_type</span><span class="op">(</span><span class="va">type</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-25">Arguments<a class="anchor" aria-label="anchor" href="#arguments-25"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>type</code></dt>
+<dd><p>A character string specifying the type of output simplicial
+complex. Can be either <code>"GIC"</code> or <code>"Nerve"</code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-32">Returns<a class="anchor" aria-label="anchor" href="#returns-32"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-32">Examples<a class="anchor" aria-label="anchor" href="#examples-32"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_type</span><span class="op">(</span><span class="st">"GIC"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-set_verbose"></a><div class="section">
+<h3 id="method-set-verbose-">Method <code>set_verbose()</code><a class="anchor" aria-label="anchor" href="#method-set-verbose-"></a></h3>
+<p>Specifies whether the program should display information or
+not.</p><div class="section">
+<h4 id="usage-33">Usage<a class="anchor" aria-label="anchor" href="#usage-33"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="va">verbose</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-26">Arguments<a class="anchor" aria-label="anchor" href="#arguments-26"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>verbose</code></dt>
+<dd><p>A boolean specifying whether to display information.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-33">Returns<a class="anchor" aria-label="anchor" href="#returns-33"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-33">Examples<a class="anchor" aria-label="anchor" href="#examples-33"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-subpopulation"></a><div class="section">
+<h3 id="method-subpopulation-">Method <code>subpopulation()</code><a class="anchor" aria-label="anchor" href="#method-subpopulation-"></a></h3>
+<p>Returns the data subset corresponding to a specific node of
+the created complex.</p><div class="section">
+<h4 id="usage-34">Usage<a class="anchor" aria-label="anchor" href="#usage-34"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="va">node_id</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-27">Arguments<a class="anchor" aria-label="anchor" href="#arguments-27"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>node_id</code></dt>
+<dd><p>An integer value specifying the ID of the desired node.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-34">Returns<a class="anchor" aria-label="anchor" href="#returns-34"></a></h4>
+<p>An integer vector storing the IDs of the data points at the input
+node.</p>
+</div>
+<div class="section">
+<h4 id="examples-34">Examples<a class="anchor" aria-label="anchor" href="#examples-34"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-write_info"></a><div class="section">
+<h3 id="method-write-info-">Method <code>write_info()</code><a class="anchor" aria-label="anchor" href="#method-write-info-"></a></h3>
+<p>Creates a <code>.txt</code> file called <code>_sc.txt</code> describing the
+1-skeleton, which can then be plotted with <em>e.g.</em> KeplerMapper.</p><div class="section">
+<h4 id="usage-35">Usage<a class="anchor" aria-label="anchor" href="#usage-35"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span>dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-28">Arguments<a class="anchor" aria-label="anchor" href="#arguments-28"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>dir</code></dt>
+<dd><p>A character string specifying the path to a directory into
+which the <code>.txt</code> file will be saved. Defaults to current working
+directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-35">Returns<a class="anchor" aria-label="anchor" href="#returns-35"></a></h4>
+<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
+</div>
+<div class="section">
+<h4 id="examples-35">Examples<a class="anchor" aria-label="anchor" href="#examples-35"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-CoverComplex-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-36">Usage<a class="anchor" aria-label="anchor" href="#usage-36"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-29">Arguments<a class="anchor" aria-label="anchor" href="#arguments-29"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -722,7 +1253,7 @@ coordinate of the point cloud.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_PD: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_confidence_level_from_distance: function (distance_threshold) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_distance_from_confidence_level: function (confidence_level) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_distribution: function (N = 100L) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_distribution: function (N = 100L, dir = getwd()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_p_value: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     create_simplex_tree: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     find_simplices: function () </span>
@@ -733,12 +1264,28 @@ coordinate of the point cloud.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_automatic_resolution: function (chainable = TRUE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_color_from_coordinate: function (k = 0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_color_from_file: function (color_file_name) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_color_from_range: function (color) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_color_from_range: function (color_values) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_cover_from_Voronoi: function (m = 100L) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_cover_from_file: function (cover_file_name) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_cover_from_function: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_distances_from_range: function (distance_matrix) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_function_from_coordinate: function (k = 0L) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_function_from_file: function (func_file_name) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_function_from_range: function (function_values) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_gain: function (g = 0.3) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_OFF: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_automatic_rips: function (N = 100L, chainable = TRUE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_file: function (graph_file_name) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_rips: function (threshold) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_mask: function (nodemask) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_point_cloud_from_range: function (cloud) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_resolution_with_interval_length: function (resolution) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_resolution_with_interval_number: function (resolution) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_subsampling: function (constant, power) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_type: function (type) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_verbose: function (verbose) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     subpopulation: function (node_id) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     write_info: function (dir = getwd()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedBootstrapDistribution: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistenceDiagram: FALSE</span>
@@ -922,6 +1469,158 @@ coordinate of the point cloud.</p><div class="section">
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_function_from_coordinate()</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_file`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># cc$set_function_from_file()</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_range`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_function_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_gain`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_gain</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_OFF`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_automatic_rips`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span>chainable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in py_call_impl(callable, dots$args, dots$keywords):</span> cannot create std::vector larger than max_size()</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_file`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># cc$set_graph_from_file()</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_rips`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_mask`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_mask</span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_point_cloud_from_range`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span>, len <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="kw">function</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">cos</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html" class="external-link">sin</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Reduce</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">X</span>, init <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_resolution_with_interval_length`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_resolution_with_interval_number`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_subsampling`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_subsampling</span><span class="op">(</span>constant <span class="op">=</span> <span class="fl">0</span>, power <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_type`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_type</span><span class="op">(</span><span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$set_verbose`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$subpopulation`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `CoverComplex$write_info`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
