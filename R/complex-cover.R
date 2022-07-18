@@ -90,7 +90,11 @@ CoverComplex <- R6::R6Class(
 
     #' @description Computes the distribution of distances via bootstrap.
     #'
-    #' @param N An integer value specifying the number of iterations. Defaults to `100L`.
+    #' @param N An integer value specifying the number of iterations. Defaults
+    #'   to `100L`.
+    #' @param dir A character string specifying the path to a directory into
+    #'   which the `.off` file will be saved. Defaults to current working
+    #'   directory retrieved via `getwd()`.
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
@@ -99,8 +103,10 @@ CoverComplex <- R6::R6Class(
     #'   cc <- CoverComplex$new()
     #'   # cc$compute_distribution()
     #' }
-    compute_distribution = function(N = 100L) {
-      private$m_PythonClass$compute_distribution(N)
+    compute_distribution = function(N = 100L, dir = getwd()) {
+      withr::with_dir(dir, {
+        private$m_PythonClass$compute_distribution(N)
+      })
       private$m_ComputedBootstrapDistribution <- TRUE
       invisible(self)
     },
@@ -273,9 +279,11 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Computes the function used to color the nodes of the simplicial complex from a file containing the function values.
+    #' @description Computes the function used to color the nodes of the
+    #'   simplicial complex from a file containing the function values.
     #'
-    #' @param color_file_name A character string specifying the name of the input color file.
+    #' @param color_file_name A character string specifying the name of the
+    #'   input color file.
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
@@ -292,7 +300,8 @@ CoverComplex <- R6::R6Class(
     #' @description Computes the function used to color the nodes of the
     #'   simplicial complex from a vector stored in memory.
     #'
-    #' @param color A numeric vector specifying the input vector of values.
+    #' @param color_values A numeric vector specifying the input vector of
+    #'   values.
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
@@ -301,8 +310,8 @@ CoverComplex <- R6::R6Class(
     #'   cc <- CoverComplex$new()
     #'   cc$set_color_from_range(seq(0, 1, len = 100))
     #' }
-    set_color_from_range = function(color) {
-      private$m_PythonClass$set_color_from_range(color)
+    set_color_from_range = function(color_values) {
+      private$m_PythonClass$set_color_from_range(color_values)
       invisible(self)
     },
 
@@ -324,9 +333,12 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates the cover \mjseqn{C} from a file containing the cover elements of each point (the order has to be the same as in the input file!).
+    #' @description Creates the cover \mjseqn{C} from a file containing the
+    #'   cover elements of each point (the order has to be the same as in the
+    #'   input file!).
     #'
-    #' @param cover_file_name A character string specifying the path to the input cover file.
+    #' @param cover_file_name A character string specifying the path to the
+    #'   input cover file.
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
@@ -392,6 +404,310 @@ CoverComplex <- R6::R6Class(
     #' }
     set_function_from_coordinate = function(k = 0L) {
       private$m_PythonClass$set_function_from_coordinate(k)
+      invisible(self)
+    },
+
+    #' @description Creates the function \mjseqn{f} from a file containing the
+    #'   function values.
+    #'
+    #' @param func_file_name A character string specifying the path to the input
+    #'   function file.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   # cc$set_function_from_file()
+    #' }
+    set_function_from_file = function(func_file_name) {
+      private$m_PythonClass$set_function_from_file(func_file_name = func_file_name)
+      invisible(self)
+    },
+
+    #' @description Creates the function \mjseqn{f} from a vector stored in
+    #'   memory.
+    #'
+    #' @param function_values A numeric vector specifying the function values to
+    #'   be used.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_function_from_range(seq(0, 1, len = 100))
+    #' }
+    set_function_from_range = function(function_values) {
+      private$m_PythonClass$set_function_from_range(function_values)
+      invisible(self)
+    },
+
+    #' @description Sets a gain from a value stored in memory.
+    #'
+    #' @param g A numeric value specifying the gain. Defaults to `0.3`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_gain()
+    #' }
+    set_gain = function(g = 0.3) {
+      private$m_PythonClass$set_gain(g = g)
+      invisible(self)
+    },
+
+    #' @description Creates a graph \mjseqn{G} from the triangulation given by
+    #'   the input `.off` file.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_graph_from_OFF()
+    #' }
+    set_graph_from_OFF = function() {
+      private$m_PythonClass$set_graph_from_OFF()
+      invisible(self)
+    },
+
+    #' @description Creates a graph \mjseqn{G} from a Rips complex whose
+    #'   threshold value is automatically tuned with subsampling - see
+    #'   \insertCite{carriere2018statistical;textual}{rgudhi}.
+    #'
+    #' ## References
+    #' \insertAllCited{}
+    #'
+    #' @param N An integer value specifying the number of subsampling
+    #'   iterations. Defaults to `100L` but there is no guarantee on how to
+    #'   choose it.
+    #' @param chainable A boolean specyfing whether the method should be
+    #'   chainable in which case it returns invisibly the class itself. Defaults
+    #'   to `TRUE`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly if
+    #'   `chainable = TRUE` or a numeric value storing the delta threshold used
+    #'   for computing the Rips complex..
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_graph_from_automatic_rips(chainable = FALSE)
+    #' }
+    set_graph_from_automatic_rips = function(N = 100L, chainable = TRUE) {
+      res <- private$m_PythonClass$set_graph_from_automatic_rips()
+      if (chainable) return(invisible(self))
+      res
+    },
+
+    #' @description Creates a graph \mjseqn{G} from a file containing the edges.
+    #'
+    #' @param graph_file_name A character string specifying the path to the
+    #'   input graph file. The graph file contains one edge per line, each edge
+    #'   being represented by the IDs of its two nodes.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   # cc$set_graph_from_file()
+    #' }
+    set_graph_from_file = function(graph_file_name) {
+      private$m_PythonClass$set_graph_from_file(graph_file_name = graph_file_name)
+      invisible(self)
+    },
+
+    #' @description Creates a graph \mjseqn{G} from a Rips complex.
+    #'
+    #' @param threshold A numeric value specifying the threshold value for the
+    #'   Rips complex.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_graph_from_rips(0.1)
+    #' }
+    set_graph_from_rips = function(threshold) {
+      private$m_PythonClass$set_graph_from_rips(threshold)
+      invisible(self)
+    },
+
+    #' @description Sets the mask, which is a threshold integer such that nodes
+    #'   in the complex that contain a number of data points which is less than
+    #'   or equal to this threshold are not displayed.
+    #'
+    #' @param nodemask A numeric value specifying the threshold value for
+    #'   generating the mask.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_mask(0.5)
+    #' }
+    set_mask = function(nodemask) {
+      private$m_PythonClass$set_mask(nodemask)
+      invisible(self)
+    },
+
+    #' @description Reads and stores the input point cloud from a vector stored
+    #'   in memory.
+    #'
+    #' @param cloud A numeric matrix specifying the coordinates of the point
+    #'   cloud.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' n <- 10
+    #' X <- lapply(
+    #'   seq(0, 2 * pi, len = n),
+    #'   function(.x) c(cos(.x), sin(.x))
+    #' )
+    #' X <- Reduce(rbind, X, init = numeric())
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_point_cloud_from_range(X)
+    #' }
+    set_point_cloud_from_range = function(cloud) {
+      private$m_PythonClass$set_point_cloud_from_range(cloud)
+      invisible(self)
+    },
+
+    #' @description Sets a length of intervals from a value stored in memory.
+    #'
+    #' @param resolution A numeric value specifying the length of intervals.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_resolution_with_interval_length(1)
+    #' }
+    set_resolution_with_interval_length = function(resolution) {
+      private$m_PythonClass$set_resolution_with_interval_length(resolution)
+      invisible(self)
+    },
+
+    #' @description Sets a number of intervals from a value stored in memory.
+    #'
+    #' @param resolution An integer value specifying the number of intervals.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_resolution_with_interval_number(100L)
+    #' }
+    set_resolution_with_interval_number = function(resolution) {
+      private$m_PythonClass$set_resolution_with_interval_number(resolution)
+      invisible(self)
+    },
+
+    #' @description Sets the constants used to subsample the data set. These
+    #'   constants are explained in
+    #'   \insertCite{carriere2018statistical;textual}{rgudhi}.
+    #'
+    #' ## References
+    #' \insertAllCited{}
+    #'
+    #' @param constant A numeric value specifying the subsampling constant.
+    #' @param power A numeric value specifying the subsampling power.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_subsampling(constant = 0, power = 1)
+    #' }
+    set_subsampling = function(constant, power) {
+      private$m_PythonClass$set_subsampling(
+        constant = constant,
+        power = power
+      )
+      invisible(self)
+    },
+
+    #' @description Specifies the type of the output simplicial complex.
+    #'
+    #' @param type A character string specifying the type of output simplicial
+    #'   complex. Can be either `"GIC"` or `"Nerve"`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_type("GIC")
+    #' }
+    set_type = function(type) {
+      private$m_PythonClass$set_type(type)
+      invisible(self)
+    },
+
+
+    #' @description Specifies whether the program should display information or
+    #'   not.
+    #'
+    #' @param verbose A boolean specifying whether to display information.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_verbose(FALSE)
+    #' }
+    set_verbose = function(verbose) {
+      private$m_PythonClass$set_verbose(verbose)
+      invisible(self)
+    },
+
+    #' @description Returns the data subset corresponding to a specific node of
+    #'   the created complex.
+    #'
+    #' @param node_id An integer value specifying the ID of the desired node.
+    #'
+    #' @return An integer vector storing the IDs of the data points at the input
+    #'   node.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$subpopulation(0)
+    #' }
+    subpopulation = function(node_id) {
+      private$m_PythonClass$subpopulation(node_id)
+    },
+
+    #' @description Creates a `.txt` file called `_sc.txt` describing the
+    #'   1-skeleton, which can then be plotted with *e.g.* KeplerMapper.
+    #'
+    #' @param dir A character string specifying the path to a directory into
+    #'   which the `.txt` file will be saved. Defaults to current working
+    #'   directory retrieved via `getwd()`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$write_info()
+    #' }
+    write_info = function(dir = getwd()) {
+      withr::with_dir(dir, {
+        private$m_PythonClass$write_info()
+      })
       invisible(self)
     }
   ),

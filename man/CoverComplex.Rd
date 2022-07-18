@@ -209,6 +209,156 @@ if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
   # cc$set_function_from_coordinate()
 }
+
+## ------------------------------------------------
+## Method `CoverComplex$set_function_from_file`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_function_from_file()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_function_from_range`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_function_from_range(seq(0, 1, len = 100))
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_gain`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_gain()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_graph_from_OFF`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_graph_from_OFF()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_graph_from_automatic_rips`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_graph_from_automatic_rips(chainable = FALSE)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_graph_from_file`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_graph_from_file()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_graph_from_rips`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_graph_from_rips(0.1)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_mask`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_mask(0.5)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_point_cloud_from_range`
+## ------------------------------------------------
+
+n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+X <- Reduce(rbind, X, init = numeric())
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_point_cloud_from_range(X)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_resolution_with_interval_length`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_resolution_with_interval_length(1)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_resolution_with_interval_number`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_resolution_with_interval_number(100L)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_subsampling`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_subsampling(constant = 0, power = 1)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_type`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_type("GIC")
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_verbose`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_verbose(FALSE)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$subpopulation`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$subpopulation(0)
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$write_info`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$write_info()
+}
 }
 \seealso{
 Other filtrations and reconstructions: 
@@ -243,6 +393,22 @@ Mathieu Carrière
 \item \href{#method-CoverComplex-set_cover_from_function}{\code{CoverComplex$set_cover_from_function()}}
 \item \href{#method-CoverComplex-set_distances_from_range}{\code{CoverComplex$set_distances_from_range()}}
 \item \href{#method-CoverComplex-set_function_from_coordinate}{\code{CoverComplex$set_function_from_coordinate()}}
+\item \href{#method-CoverComplex-set_function_from_file}{\code{CoverComplex$set_function_from_file()}}
+\item \href{#method-CoverComplex-set_function_from_range}{\code{CoverComplex$set_function_from_range()}}
+\item \href{#method-CoverComplex-set_gain}{\code{CoverComplex$set_gain()}}
+\item \href{#method-CoverComplex-set_graph_from_OFF}{\code{CoverComplex$set_graph_from_OFF()}}
+\item \href{#method-CoverComplex-set_graph_from_automatic_rips}{\code{CoverComplex$set_graph_from_automatic_rips()}}
+\item \href{#method-CoverComplex-set_graph_from_file}{\code{CoverComplex$set_graph_from_file()}}
+\item \href{#method-CoverComplex-set_graph_from_rips}{\code{CoverComplex$set_graph_from_rips()}}
+\item \href{#method-CoverComplex-set_mask}{\code{CoverComplex$set_mask()}}
+\item \href{#method-CoverComplex-set_point_cloud_from_range}{\code{CoverComplex$set_point_cloud_from_range()}}
+\item \href{#method-CoverComplex-set_resolution_with_interval_length}{\code{CoverComplex$set_resolution_with_interval_length()}}
+\item \href{#method-CoverComplex-set_resolution_with_interval_number}{\code{CoverComplex$set_resolution_with_interval_number()}}
+\item \href{#method-CoverComplex-set_subsampling}{\code{CoverComplex$set_subsampling()}}
+\item \href{#method-CoverComplex-set_type}{\code{CoverComplex$set_type()}}
+\item \href{#method-CoverComplex-set_verbose}{\code{CoverComplex$set_verbose()}}
+\item \href{#method-CoverComplex-subpopulation}{\code{CoverComplex$subpopulation()}}
+\item \href{#method-CoverComplex-write_info}{\code{CoverComplex$write_info()}}
 \item \href{#method-CoverComplex-clone}{\code{CoverComplex$clone()}}
 }
 }
@@ -368,13 +534,18 @@ corresponding to the input confidence level.
 \subsection{Method \code{compute_distribution()}}{
 Computes the distribution of distances via bootstrap.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$compute_distribution(N = 100L)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$compute_distribution(N = 100L, dir = getwd())}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{N}}{An integer value specifying the number of iterations. Defaults to \code{100L}.}
+\item{\code{N}}{An integer value specifying the number of iterations. Defaults
+to \code{100L}.}
+
+\item{\code{dir}}{A character string specifying the path to a directory into
+which the \code{.off} file will be saved. Defaults to current working
+directory retrieved via \code{getwd()}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -661,7 +832,8 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 \if{html}{\out{<a id="method-CoverComplex-set_color_from_file"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_color_from_file}{}}}
 \subsection{Method \code{set_color_from_file()}}{
-Computes the function used to color the nodes of the simplicial complex from a file containing the function values.
+Computes the function used to color the nodes of the
+simplicial complex from a file containing the function values.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_color_from_file(color_file_name)}\if{html}{\out{</div>}}
 }
@@ -669,7 +841,8 @@ Computes the function used to color the nodes of the simplicial complex from a f
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{color_file_name}}{A character string specifying the name of the input color file.}
+\item{\code{color_file_name}}{A character string specifying the name of the
+input color file.}
 }
 \if{html}{\out{</div>}}
 }
@@ -695,13 +868,14 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 Computes the function used to color the nodes of the
 simplicial complex from a vector stored in memory.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_color_from_range(color)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_color_from_range(color_values)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{color}}{A numeric vector specifying the input vector of values.}
+\item{\code{color_values}}{A numeric vector specifying the input vector of
+values.}
 }
 \if{html}{\out{</div>}}
 }
@@ -757,7 +931,9 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 \if{html}{\out{<a id="method-CoverComplex-set_cover_from_file"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_cover_from_file}{}}}
 \subsection{Method \code{set_cover_from_file()}}{
-Creates the cover \mjseqn{C} from a file containing the cover elements of each point (the order has to be the same as in the input file!).
+Creates the cover \mjseqn{C} from a file containing the
+cover elements of each point (the order has to be the same as in the
+input file!).
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_cover_from_file(cover_file_name)}\if{html}{\out{</div>}}
 }
@@ -765,7 +941,8 @@ Creates the cover \mjseqn{C} from a file containing the cover elements of each p
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{cover_file_name}}{A character string specifying the path to the input cover file.}
+\item{\code{cover_file_name}}{A character string specifying the path to the
+input cover file.}
 }
 \if{html}{\out{</div>}}
 }
@@ -868,6 +1045,543 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 \preformatted{if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
   # cc$set_function_from_coordinate()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_function_from_file"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_function_from_file}{}}}
+\subsection{Method \code{set_function_from_file()}}{
+Creates the function \mjseqn{f} from a file containing the
+function values.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_function_from_file(func_file_name)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{func_file_name}}{A character string specifying the path to the input
+function file.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_function_from_file()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_function_from_range"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_function_from_range}{}}}
+\subsection{Method \code{set_function_from_range()}}{
+Creates the function \mjseqn{f} from a vector stored in
+memory.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_function_from_range(function_values)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{function_values}}{A numeric vector specifying the function values to
+be used.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_function_from_range(seq(0, 1, len = 100))
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_gain"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_gain}{}}}
+\subsection{Method \code{set_gain()}}{
+Sets a gain from a value stored in memory.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_gain(g = 0.3)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{g}}{A numeric value specifying the gain. Defaults to \code{0.3}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_gain()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_graph_from_OFF"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_OFF}{}}}
+\subsection{Method \code{set_graph_from_OFF()}}{
+Creates a graph \mjseqn{G} from the triangulation given by
+the input \code{.off} file.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_OFF()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_graph_from_OFF()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_graph_from_automatic_rips"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_automatic_rips}{}}}
+\subsection{Method \code{set_graph_from_automatic_rips()}}{
+Creates a graph \mjseqn{G} from a Rips complex whose
+threshold value is automatically tuned with subsampling - see
+\insertCite{carriere2018statistical;textual}{rgudhi}.
+\subsection{References}{
+
+\insertAllCited{}
+}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_automatic_rips(N = 100L, chainable = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{N}}{An integer value specifying the number of subsampling
+iterations. Defaults to \code{100L} but there is no guarantee on how to
+choose it.}
+
+\item{\code{chainable}}{A boolean specyfing whether the method should be
+chainable in which case it returns invisibly the class itself. Defaults
+to \code{TRUE}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly if
+\code{chainable = TRUE} or a numeric value storing the delta threshold used
+for computing the Rips complex..
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_graph_from_automatic_rips(chainable = FALSE)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_graph_from_file"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_file}{}}}
+\subsection{Method \code{set_graph_from_file()}}{
+Creates a graph \mjseqn{G} from a file containing the edges.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_file(graph_file_name)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{graph_file_name}}{A character string specifying the path to the
+input graph file. The graph file contains one edge per line, each edge
+being represented by the IDs of its two nodes.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_graph_from_file()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_graph_from_rips"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_rips}{}}}
+\subsection{Method \code{set_graph_from_rips()}}{
+Creates a graph \mjseqn{G} from a Rips complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_rips(threshold)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{threshold}}{A numeric value specifying the threshold value for the
+Rips complex.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_graph_from_rips(0.1)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_mask"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_mask}{}}}
+\subsection{Method \code{set_mask()}}{
+Sets the mask, which is a threshold integer such that nodes
+in the complex that contain a number of data points which is less than
+or equal to this threshold are not displayed.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_mask(nodemask)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{nodemask}}{A numeric value specifying the threshold value for
+generating the mask.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_mask(0.5)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_point_cloud_from_range"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_point_cloud_from_range}{}}}
+\subsection{Method \code{set_point_cloud_from_range()}}{
+Reads and stores the input point cloud from a vector stored
+in memory.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_point_cloud_from_range(cloud)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{cloud}}{A numeric matrix specifying the coordinates of the point
+cloud.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{n <- 10
+X <- lapply(
+  seq(0, 2 * pi, len = n),
+  function(.x) c(cos(.x), sin(.x))
+)
+X <- Reduce(rbind, X, init = numeric())
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_point_cloud_from_range(X)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_resolution_with_interval_length"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_resolution_with_interval_length}{}}}
+\subsection{Method \code{set_resolution_with_interval_length()}}{
+Sets a length of intervals from a value stored in memory.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_resolution_with_interval_length(resolution)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{resolution}}{A numeric value specifying the length of intervals.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_resolution_with_interval_length(1)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_resolution_with_interval_number"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_resolution_with_interval_number}{}}}
+\subsection{Method \code{set_resolution_with_interval_number()}}{
+Sets a number of intervals from a value stored in memory.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_resolution_with_interval_number(resolution)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{resolution}}{An integer value specifying the number of intervals.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_resolution_with_interval_number(100L)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_subsampling"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_subsampling}{}}}
+\subsection{Method \code{set_subsampling()}}{
+Sets the constants used to subsample the data set. These
+constants are explained in
+\insertCite{carriere2018statistical;textual}{rgudhi}.
+\subsection{References}{
+
+\insertAllCited{}
+}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_subsampling(constant, power)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{constant}}{A numeric value specifying the subsampling constant.}
+
+\item{\code{power}}{A numeric value specifying the subsampling power.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_subsampling(constant = 0, power = 1)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_type"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_type}{}}}
+\subsection{Method \code{set_type()}}{
+Specifies the type of the output simplicial complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_type(type)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{type}}{A character string specifying the type of output simplicial
+complex. Can be either \code{"GIC"} or \code{"Nerve"}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_type("GIC")
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_verbose"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_verbose}{}}}
+\subsection{Method \code{set_verbose()}}{
+Specifies whether the program should display information or
+not.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_verbose(verbose)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{verbose}}{A boolean specifying whether to display information.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_verbose(FALSE)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-subpopulation"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-subpopulation}{}}}
+\subsection{Method \code{subpopulation()}}{
+Returns the data subset corresponding to a specific node of
+the created complex.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$subpopulation(node_id)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{node_id}}{An integer value specifying the ID of the desired node.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+An integer vector storing the IDs of the data points at the input
+node.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$subpopulation(0)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-write_info"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-write_info}{}}}
+\subsection{Method \code{write_info()}}{
+Creates a \code{.txt} file called \verb{_sc.txt} describing the
+1-skeleton, which can then be plotted with \emph{e.g.} KeplerMapper.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$write_info(dir = getwd())}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{dir}}{A character string specifying the path to a directory into
+which the \code{.txt} file will be saved. Defaults to current working
+directory retrieved via \code{getwd()}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$write_info()
 }
 }
 \if{html}{\out{</div>}}
