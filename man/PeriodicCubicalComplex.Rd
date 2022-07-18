@@ -24,9 +24,15 @@ if (reticulate::py_module_available("gudhi")) {
   pcc
 }
 }
+\seealso{
+Other data structures for cell complexes: 
+\code{\link{CubicalComplex}},
+\code{\link{SimplexTree}}
+}
 \author{
 Pawel Dlotko
 }
+\concept{data structures for cell complexes}
 \section{Super class}{
 \code{\link[rgudhi:CubicalComplex]{rgudhi::CubicalComplex}} -> \code{PeriodicCubicalComplex}
 }

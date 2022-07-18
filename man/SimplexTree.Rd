@@ -500,9 +500,15 @@ if (reticulate::py_module_available("gudhi")) {
   fs::file_delete(f)
 }
 }
+\seealso{
+Other data structures for cell complexes: 
+\code{\link{CubicalComplex}},
+\code{\link{PeriodicCubicalComplex}}
+}
 \author{
 Clément Maria
 }
+\concept{data structures for cell complexes}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

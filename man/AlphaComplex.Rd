@@ -66,6 +66,7 @@ if (reticulate::py_module_available("gudhi")) {
 Other filtrations and reconstructions: 
 \code{\link{CoverComplex}},
 \code{\link{RipsComplex}},
+\code{\link{TangentialComplex}},
 \code{\link{WitnessComplex}}
 }
 \author{

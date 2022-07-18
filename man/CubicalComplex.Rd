@@ -98,9 +98,15 @@ if (reticulate::py_module_available("gudhi")) {
   cc$compute_persistence()$persistent_betti_numbers(0, 1)
 }
 }
+\seealso{
+Other data structures for cell complexes: 
+\code{\link{PeriodicCubicalComplex}},
+\code{\link{SimplexTree}}
+}
 \author{
 Pawel Dlotko
 }
+\concept{data structures for cell complexes}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

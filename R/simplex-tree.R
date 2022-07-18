@@ -28,6 +28,7 @@
 #'   which enables chaining.
 #'
 #' @author Clément Maria
+#' @family data structures for cell complexes
 #'
 #' @export
 SimplexTree <- R6::R6Class(

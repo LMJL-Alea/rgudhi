@@ -12,6 +12,7 @@
 #'   Defaults to `0.0`. Set `min_persistence = -1.0` to see all values.
 #'
 #' @author Pawel Dlotko
+#' @family data structures for cell complexes
 #'
 #' @export
 CubicalComplex <- R6::R6Class(
@@ -283,6 +284,7 @@ CubicalComplex <- R6::R6Class(
 #'   and image analysis.
 #'
 #' @author Pawel Dlotko
+#' @family data structures for cell complexes
 #'
 #' @export
 PeriodicCubicalComplex <- R6::R6Class(
