@@ -252,7 +252,7 @@ if (reticulate::py_module_available("gudhi")) {
 
 if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
-  cc$set_graph_from_automatic_rips(chainable = FALSE)
+  # cc$set_graph_from_automatic_rips(chainable = FALSE)
 }
 
 ## ------------------------------------------------
@@ -1211,7 +1211,7 @@ for computing the Rips complex..
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{if (reticulate::py_module_available("gudhi")) {
   cc <- CoverComplex$new()
-  cc$set_graph_from_automatic_rips(chainable = FALSE)
+  # cc$set_graph_from_automatic_rips(chainable = FALSE)
 }
 }
 \if{html}{\out{</div>}}

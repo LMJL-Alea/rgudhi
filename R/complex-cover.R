@@ -495,7 +495,7 @@ CoverComplex <- R6::R6Class(
     #' @examples
     #' if (reticulate::py_module_available("gudhi")) {
     #'   cc <- CoverComplex$new()
-    #'   cc$set_graph_from_automatic_rips(chainable = FALSE)
+    #'   # cc$set_graph_from_automatic_rips(chainable = FALSE)
     #' }
     set_graph_from_automatic_rips = function(N = 100L, chainable = TRUE) {
       res <- private$m_PythonClass$set_graph_from_automatic_rips()
