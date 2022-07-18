@@ -226,6 +226,172 @@ CoverComplex <- R6::R6Class(
         res <- private$m_PythonClass$read_point_cloud(off_file)
       if (chainable) return(invisible(self))
       res
+    },
+
+    #' @description Computes the optimal length of intervals (i.e. the smallest
+    #'   interval length avoiding discretization artifacts - see
+    #'   \insertCite{carriere2018statistical;textual}{rgudhi}) for a functional
+    #'   cover.
+    #'
+    #' ## References
+    #' \insertAllCited{}
+    #'
+    #' @param chainable A boolean specyfing whether the method should be
+    #'   chainable in which case it returns invisibly the class itself. Defaults
+    #'   to `TRUE`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly if
+    #'   `chainable = TRUE` or a numeric value storing the resolution interval
+    #'   length used to compute the cover.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_automatic_resolution()
+    #' }
+    set_automatic_resolution = function(chainable = TRUE) {
+      res <- private$m_PythonClass$set_automatic_resolution()
+      if (chainable) return(invisible(self))
+      res
+    },
+
+    #' @description Computes the function used to color the nodes of the
+    #'   simplicial complex from the k-th coordinate.
+    #'
+    #' @param k An integer value specifying the coordinate to use (start at 0).
+    #'   Defaults to `0L`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   # cc$set_color_from_coordinate()
+    #' }
+    set_color_from_coordinate = function(k = 0) {
+      private$m_PythonClass$set_color_from_coordinate(k = k)
+      invisible(self)
+    },
+
+    #' @description Computes the function used to color the nodes of the simplicial complex from a file containing the function values.
+    #'
+    #' @param color_file_name A character string specifying the name of the input color file.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   # cc$set_color_from_file()
+    #' }
+    set_color_from_file = function(color_file_name) {
+      private$m_PythonClass$set_color_from_file(color_file_name = color_file_name)
+      invisible(self)
+    },
+
+    #' @description Computes the function used to color the nodes of the
+    #'   simplicial complex from a vector stored in memory.
+    #'
+    #' @param color A numeric vector specifying the input vector of values.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_color_from_range(seq(0, 1, len = 100))
+    #' }
+    set_color_from_range = function(color) {
+      private$m_PythonClass$set_color_from_range(color)
+      invisible(self)
+    },
+
+    #' @description Creates the cover \mjseqn{C} from the Voronoï cells of a
+    #'   subsampling of the point cloud.
+    #'
+    #' @param m An integer value specifying the number of points in the
+    #'   subsample. Defaults to `100L`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   # cc$set_cover_from_Voronoi()
+    #' }
+    set_cover_from_Voronoi = function(m = 100L) {
+      private$m_PythonClass$set_cover_from_Voronoi(m = m)
+      invisible(self)
+    },
+
+    #' @description Creates the cover \mjseqn{C} from a file containing the cover elements of each point (the order has to be the same as in the input file!).
+    #'
+    #' @param cover_file_name A character string specifying the path to the input cover file.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   # cc$set_cover_from_file()
+    #' }
+    set_cover_from_file = function(cover_file_name) {
+      private$m_PythonClass$set_cover_from_file(cover_file_name = cover_file_name)
+      invisible(self)
+    },
+
+    #' @description Creates a cover \mjseqn{C} from the pre-images of the
+    #'   function \mjseqn{f}.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_cover_from_function()
+    #' }
+    set_cover_from_function = function() {
+      private$m_PythonClass$set_cover_from_function()
+      invisible(self)
+    },
+
+    #' @description Reads and stores the input distance matrix from a vector
+    #'   stored in memory.
+    #'
+    #' @param distance_matrix A numeric matrix specifying the distance matrix.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_distances_from_range()
+    #' }
+    set_distances_from_range = function(distance_matrix) {
+      if (inherits(distance_matrix, "dist"))
+        distance_matrix <- as.matrix(distance_matrix)
+      if (!is.matrix(distance_matrix))
+        cli::cli_abort("The input should be either a matrix or an object of class {.code dist}.")
+      private$m_PythonClass$set_distances_from_range(distance_matrix)
+      invisible(self)
+    },
+
+    #' @description Creates the function \mjseqn{f} from the \mjseqn{k}-*th*
+    #'   coordinate of the point cloud.
+    #'
+    #' @param k An integer value specifying the coordinate to use (starts at
+    #'   `0L`). Defaults to `0L`.
+    #'
+    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #'
+    #' @examples
+    #' if (reticulate::py_module_available("gudhi")) {
+    #'   cc <- CoverComplex$new()
+    #'   cc$set_function_from_coordinate()
+    #' }
+    set_function_from_coordinate = function(k = 0L) {
+      private$m_PythonClass$set_function_from_coordinate(k)
+      invisible(self)
     }
   ),
   private = list(

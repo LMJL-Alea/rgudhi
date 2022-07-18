@@ -127,6 +127,87 @@ if (reticulate::py_module_available("gudhi")) {
   url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
   cc$read_point_cloud(url)
 }
+
+## ------------------------------------------------
+## Method `CoverComplex$set_automatic_resolution`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_automatic_resolution()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_color_from_coordinate`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_color_from_coordinate()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_color_from_file`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_color_from_file()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_color_from_range`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_color_from_range(seq(0, 1, len = 100))
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_cover_from_Voronoi`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_cover_from_Voronoi()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_cover_from_file`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_cover_from_file()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_cover_from_function`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_cover_from_function()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_distances_from_range`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_distances_from_range()
+}
+
+## ------------------------------------------------
+## Method `CoverComplex$set_function_from_coordinate`
+## ------------------------------------------------
+
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_function_from_coordinate()
+}
 }
 \seealso{
 Other filtrations and reconstructions: 
@@ -152,6 +233,15 @@ Mathieu Carrière
 \item \href{#method-CoverComplex-plot_dot}{\code{CoverComplex$plot_dot()}}
 \item \href{#method-CoverComplex-plot_off}{\code{CoverComplex$plot_off()}}
 \item \href{#method-CoverComplex-read_point_cloud}{\code{CoverComplex$read_point_cloud()}}
+\item \href{#method-CoverComplex-set_automatic_resolution}{\code{CoverComplex$set_automatic_resolution()}}
+\item \href{#method-CoverComplex-set_color_from_coordinate}{\code{CoverComplex$set_color_from_coordinate()}}
+\item \href{#method-CoverComplex-set_color_from_file}{\code{CoverComplex$set_color_from_file()}}
+\item \href{#method-CoverComplex-set_color_from_range}{\code{CoverComplex$set_color_from_range()}}
+\item \href{#method-CoverComplex-set_cover_from_Voronoi}{\code{CoverComplex$set_cover_from_Voronoi()}}
+\item \href{#method-CoverComplex-set_cover_from_file}{\code{CoverComplex$set_cover_from_file()}}
+\item \href{#method-CoverComplex-set_cover_from_function}{\code{CoverComplex$set_cover_from_function()}}
+\item \href{#method-CoverComplex-set_distances_from_range}{\code{CoverComplex$set_distances_from_range()}}
+\item \href{#method-CoverComplex-set_function_from_coordinate}{\code{CoverComplex$set_function_from_coordinate()}}
 \item \href{#method-CoverComplex-clone}{\code{CoverComplex$clone()}}
 }
 }
@@ -484,6 +574,298 @@ The updated \code{\link{CoverComplex}} class itself invisibly if
   cc <- CoverComplex$new()
   url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
   cc$read_point_cloud(url)
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_automatic_resolution"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_automatic_resolution}{}}}
+\subsection{Method \code{set_automatic_resolution()}}{
+Computes the optimal length of intervals (i.e. the smallest
+interval length avoiding discretization artifacts - see
+\insertCite{carriere2018statistical;textual}{rgudhi}) for a functional
+cover.
+\subsection{References}{
+
+\insertAllCited{}
+}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_automatic_resolution(chainable = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{chainable}}{A boolean specyfing whether the method should be
+chainable in which case it returns invisibly the class itself. Defaults
+to \code{TRUE}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly if
+\code{chainable = TRUE} or a numeric value storing the resolution interval
+length used to compute the cover.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_automatic_resolution()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_color_from_coordinate"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_color_from_coordinate}{}}}
+\subsection{Method \code{set_color_from_coordinate()}}{
+Computes the function used to color the nodes of the
+simplicial complex from the k-th coordinate.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_color_from_coordinate(k = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{k}}{An integer value specifying the coordinate to use (start at 0).
+Defaults to \code{0L}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_color_from_coordinate()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_color_from_file"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_color_from_file}{}}}
+\subsection{Method \code{set_color_from_file()}}{
+Computes the function used to color the nodes of the simplicial complex from a file containing the function values.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_color_from_file(color_file_name)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{color_file_name}}{A character string specifying the name of the input color file.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_color_from_file()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_color_from_range"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_color_from_range}{}}}
+\subsection{Method \code{set_color_from_range()}}{
+Computes the function used to color the nodes of the
+simplicial complex from a vector stored in memory.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_color_from_range(color)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{color}}{A numeric vector specifying the input vector of values.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_color_from_range(seq(0, 1, len = 100))
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_cover_from_Voronoi"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_cover_from_Voronoi}{}}}
+\subsection{Method \code{set_cover_from_Voronoi()}}{
+Creates the cover \mjseqn{C} from the Voronoï cells of a
+subsampling of the point cloud.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_cover_from_Voronoi(m = 100L)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{m}}{An integer value specifying the number of points in the
+subsample. Defaults to \code{100L}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_cover_from_Voronoi()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_cover_from_file"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_cover_from_file}{}}}
+\subsection{Method \code{set_cover_from_file()}}{
+Creates the cover \mjseqn{C} from a file containing the cover elements of each point (the order has to be the same as in the input file!).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_cover_from_file(cover_file_name)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{cover_file_name}}{A character string specifying the path to the input cover file.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  # cc$set_cover_from_file()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_cover_from_function"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_cover_from_function}{}}}
+\subsection{Method \code{set_cover_from_function()}}{
+Creates a cover \mjseqn{C} from the pre-images of the
+function \mjseqn{f}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_cover_from_function()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_cover_from_function()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_distances_from_range"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_distances_from_range}{}}}
+\subsection{Method \code{set_distances_from_range()}}{
+Reads and stores the input distance matrix from a vector
+stored in memory.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_distances_from_range(distance_matrix)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{distance_matrix}}{A numeric matrix specifying the distance matrix.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_distances_from_range()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CoverComplex-set_function_from_coordinate"></a>}}
+\if{latex}{\out{\hypertarget{method-CoverComplex-set_function_from_coordinate}{}}}
+\subsection{Method \code{set_function_from_coordinate()}}{
+Creates the function \mjseqn{f} from the \mjseqn{k}-\emph{th}
+coordinate of the point cloud.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_function_from_coordinate(k = 0L)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{k}}{An integer value specifying the coordinate to use (starts at
+\code{0L}). Defaults to \code{0L}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The updated \code{\link{CoverComplex}} class itself invisibly.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$new()
+  cc$set_function_from_coordinate()
 }
 }
 \if{html}{\out{</div>}}
