@@ -26,7 +26,7 @@ Imports:
     mathjaxr,
     purrr,
     R6,
-    Rdpack,
+    Rdpack (>= 2.4.0),
     reticulate,
     rlang,
     tibble,
