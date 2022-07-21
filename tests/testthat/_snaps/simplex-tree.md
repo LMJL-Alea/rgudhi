@@ -117,6 +117,7 @@
        9 <int [2]>         -2
       10 <int [1]>         -2
       # ... with 31 more rows
+      # i Use `print(n = ...)` to see more rows
 
 ---
 
@@ -137,6 +138,7 @@
        9 <int [2]>          1
       10 <int [1]>         -1
       # ... with 31 more rows
+      # i Use `print(n = ...)` to see more rows
 
 ---
 
