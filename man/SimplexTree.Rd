@@ -13,7 +13,7 @@ This class is a filtered, with keys, and non contiguous vertices
 version of the simplex tree.
 \subsection{References}{
 
-\insertAllCited{}
+\insertCited{}
 }
 }
 \examples{
@@ -739,7 +739,7 @@ It requires \verb{Eigen >= 3.1.0} and an exception is thrown if not
 available.
 \subsection{References}{
 
-\insertAllCited{}
+\insertCited{}
 }
 }
 

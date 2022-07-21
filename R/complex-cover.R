@@ -240,7 +240,7 @@ CoverComplex <- R6::R6Class(
     #'   cover.
     #'
     #' ## References
-    #' \insertAllCited{}
+    #' \insertCited{}
     #'
     #' @param chainable A boolean specyfing whether the method should be
     #'   chainable in which case it returns invisibly the class itself. Defaults
@@ -479,7 +479,7 @@ CoverComplex <- R6::R6Class(
     #'   \insertCite{carriere2018statistical;textual}{rgudhi}.
     #'
     #' ## References
-    #' \insertAllCited{}
+    #' \insertCited{}
     #'
     #' @param N An integer value specifying the number of subsampling
     #'   iterations. Defaults to `100L` but there is no guarantee on how to
@@ -618,7 +618,7 @@ CoverComplex <- R6::R6Class(
     #'   \insertCite{carriere2018statistical;textual}{rgudhi}.
     #'
     #' ## References
-    #' \insertAllCited{}
+    #' \insertCited{}
     #'
     #' @param constant A numeric value specifying the subsampling constant.
     #' @param power A numeric value specifying the subsampling power.

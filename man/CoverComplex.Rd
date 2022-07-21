@@ -764,7 +764,7 @@ interval length avoiding discretization artifacts - see
 cover.
 \subsection{References}{
 
-\insertAllCited{}
+\insertCited{}
 }
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_automatic_resolution(chainable = TRUE)}\if{html}{\out{</div>}}
@@ -1184,7 +1184,7 @@ threshold value is automatically tuned with subsampling - see
 \insertCite{carriere2018statistical;textual}{rgudhi}.
 \subsection{References}{
 
-\insertAllCited{}
+\insertCited{}
 }
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_automatic_rips(N = 100L, chainable = TRUE)}\if{html}{\out{</div>}}
@@ -1429,7 +1429,7 @@ constants are explained in
 \insertCite{carriere2018statistical;textual}{rgudhi}.
 \subsection{References}{
 
-\insertAllCited{}
+\insertCited{}
 }
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_subsampling(constant, power)}\if{html}{\out{</div>}}

@@ -14,7 +14,7 @@ The class constructs a (weak) witness complex for a given table of
 nearest landmarks with respect to witnesses.
 \subsection{References}{
 
-\insertAllCited{}
+\insertCited{}
 }
 }
 \examples{

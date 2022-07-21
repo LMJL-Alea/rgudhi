@@ -10,7 +10,7 @@
 #'
 #' ## References
 #'
-#' \insertAllCited{}
+#' \insertCited{}
 #'
 #' @author Siargey Kachanovich
 #' @family filtrations and reconstructions

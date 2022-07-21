@@ -9,7 +9,7 @@
 #'
 #' ## References
 #'
-#' \insertAllCited{}
+#' \insertCited{}
 #'
 #' @param simplex An integer vector representing the N-simplex in the form
 #'   of a list of vertices.
@@ -162,7 +162,7 @@ SimplexTree <- R6::R6Class(
     #'
     #' ## References
     #'
-    #' \insertAllCited{}
+    #' \insertCited{}
     #'
     #' @param nb_iterations An integer value specifying the number of edge
     #'   collapse iterations to perform. Defaults to `1L`.
