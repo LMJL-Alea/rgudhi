@@ -29,7 +29,7 @@ of the GIC.
 ## ------------------------------------------------
 
 if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new()
+  cc <- CoverComplex$new(type = "GIC")
   cc
 }
 
@@ -325,15 +325,6 @@ if (reticulate::py_module_available("gudhi")) {
 }
 
 ## ------------------------------------------------
-## Method `CoverComplex$set_type`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new()
-  cc$set_type("GIC")
-}
-
-## ------------------------------------------------
 ## Method `CoverComplex$set_verbose`
 ## ------------------------------------------------
 
@@ -406,7 +397,6 @@ Mathieu Carrière
 \item \href{#method-CoverComplex-set_resolution_with_interval_length}{\code{CoverComplex$set_resolution_with_interval_length()}}
 \item \href{#method-CoverComplex-set_resolution_with_interval_number}{\code{CoverComplex$set_resolution_with_interval_number()}}
 \item \href{#method-CoverComplex-set_subsampling}{\code{CoverComplex$set_subsampling()}}
-\item \href{#method-CoverComplex-set_type}{\code{CoverComplex$set_type()}}
 \item \href{#method-CoverComplex-set_verbose}{\code{CoverComplex$set_verbose()}}
 \item \href{#method-CoverComplex-subpopulation}{\code{CoverComplex$subpopulation()}}
 \item \href{#method-CoverComplex-write_info}{\code{CoverComplex$write_info()}}
@@ -419,16 +409,24 @@ Mathieu Carrière
 \subsection{Method \code{new()}}{
 \code{CoverComplex} constructor.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$new(type)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{type}}{A character string specifying the type of output simplicial
+complex. Can be either \code{"GIC"} or \code{"Nerve"}.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A \code{\link{CoverComplex}} object storing the Cover complex.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new()
+  cc <- CoverComplex$new(type = "GIC")
   cc
 }
 }
@@ -1460,51 +1458,20 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CoverComplex-set_type"></a>}}
-\if{latex}{\out{\hypertarget{method-CoverComplex-set_type}{}}}
-\subsection{Method \code{set_type()}}{
-Specifies the type of the output simplicial complex.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_type(type)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{type}}{A character string specifying the type of output simplicial
-complex. Can be either \code{"GIC"} or \code{"Nerve"}.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
-}
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new()
-  cc$set_type("GIC")
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_verbose"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_verbose}{}}}
 \subsection{Method \code{set_verbose()}}{
 Specifies whether the program should display information or
 not.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_verbose(verbose)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_verbose(verbose = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{verbose}}{A boolean specifying whether to display information.}
+\item{\code{verbose}}{A boolean specifying whether to display information.
+Defaults to \code{FALSE}.}
 }
 \if{html}{\out{</div>}}
 }
