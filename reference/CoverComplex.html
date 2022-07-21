@@ -125,7 +125,6 @@ of the GIC.</p>
 <li><p><a href="#method-CoverComplex-set_resolution_with_interval_length"><code>CoverComplex$set_resolution_with_interval_length()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-set_resolution_with_interval_number"><code>CoverComplex$set_resolution_with_interval_number()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-set_subsampling"><code>CoverComplex$set_subsampling()</code></a></p></li>
-<li><p><a href="#method-CoverComplex-set_type"><code>CoverComplex$set_type()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-set_verbose"><code>CoverComplex$set_verbose()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-subpopulation"><code>CoverComplex$subpopulation()</code></a></p></li>
 <li><p><a href="#method-CoverComplex-write_info"><code>CoverComplex$write_info()</code></a></p></li>
@@ -134,9 +133,18 @@ of the GIC.</p>
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p><code>CoverComplex</code> constructor.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">type</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>type</code></dt>
+<dd><p>A character string specifying the type of output simplicial
+complex. Can be either <code>"GIC"</code> or <code>"Nerve"</code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p>A <code>CoverComplex</code> object storing the Cover complex.</p>
@@ -144,7 +152,7 @@ of the GIC.</p>
 <div class="section">
 <h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -179,7 +187,7 @@ distance threshold.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>distance_threshold</code></dt>
 <dd><p>A numeric value specifying the desired
 Bottleneck distance threshold.</p></dd>
@@ -210,7 +218,7 @@ a specific confidence level.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>confidence_level</code></dt>
 <dd><p>A numeric value specifying the desired confidence
 level.</p></dd>
@@ -240,7 +248,7 @@ corresponding to the input confidence level.</p>
 </div>
 
 <div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>N</code></dt>
 <dd><p>An integer value specifying the number of iterations. Defaults
 to <code>100L</code>.</p></dd>
@@ -341,7 +349,7 @@ computed to get a visualization of its 1-skeleton in a <code>.pdf</code> file.</
 </div>
 
 <div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>dir</code></dt>
 <dd><p>A character string specifying the path to a directory into
 which the <code>.dot</code> file will be saved. Defaults to current working
@@ -377,7 +385,7 @@ the cover has been computed with Voronoi. If data points are in 1D or
 </div>
 
 <div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>dir</code></dt>
 <dd><p>A character string specifying the path to a directory into
 which the <code>.off</code> file will be saved. Defaults to current working
@@ -410,7 +418,7 @@ file.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>off_file</code></dt>
 <dd><p>A character string specifying the location of the
 <code>.(n)OFF</code> file to read the point cloud from.</p></dd>
@@ -459,7 +467,7 @@ cover.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>chainable</code></dt>
 <dd><p>A boolean specyfing whether the method should be
 chainable in which case it returns invisibly the class itself. Defaults
@@ -492,7 +500,7 @@ simplicial complex from the k-th coordinate.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>k</code></dt>
 <dd><p>An integer value specifying the coordinate to use (start at 0).
 Defaults to <code>0L</code>.</p></dd>
@@ -522,7 +530,7 @@ simplicial complex from a file containing the function values.</p><div class="se
 </div>
 
 <div class="section">
-<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>color_file_name</code></dt>
 <dd><p>A character string specifying the name of the
 input color file.</p></dd>
@@ -552,7 +560,7 @@ simplicial complex from a vector stored in memory.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>color_values</code></dt>
 <dd><p>A numeric vector specifying the input vector of
 values.</p></dd>
@@ -582,7 +590,7 @@ subsampling of the point cloud.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>m</code></dt>
 <dd><p>An integer value specifying the number of points in the
 subsample. Defaults to <code>100L</code>.</p></dd>
@@ -613,7 +621,7 @@ input file!).</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>cover_file_name</code></dt>
 <dd><p>A character string specifying the path to the
 input cover file.</p></dd>
@@ -664,7 +672,7 @@ stored in memory.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>distance_matrix</code></dt>
 <dd><p>A numeric matrix specifying the distance matrix.</p></dd>
 
@@ -694,7 +702,7 @@ coordinate of the point cloud.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
+<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>k</code></dt>
 <dd><p>An integer value specifying the coordinate to use (starts at
 <code>0L</code>). Defaults to <code>0L</code>.</p></dd>
@@ -724,7 +732,7 @@ function values.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>func_file_name</code></dt>
 <dd><p>A character string specifying the path to the input
 function file.</p></dd>
@@ -754,7 +762,7 @@ memory.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
+<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>function_values</code></dt>
 <dd><p>A numeric vector specifying the function values to
 be used.</p></dd>
@@ -783,7 +791,7 @@ be used.</p></dd>
 </div>
 
 <div class="section">
-<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>g</code></dt>
 <dd><p>A numeric value specifying the gain. Defaults to <code>0.3</code>.</p></dd>
 
@@ -843,7 +851,7 @@ Carriere et al. (2018)
 </div>
 
 <div class="section">
-<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
+<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>N</code></dt>
 <dd><p>An integer value specifying the number of subsampling
 iterations. Defaults to <code>100L</code> but there is no guarantee on how to
@@ -881,7 +889,7 @@ for computing the Rips complex..</p>
 </div>
 
 <div class="section">
-<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
+<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>graph_file_name</code></dt>
 <dd><p>A character string specifying the path to the
 input graph file. The graph file contains one edge per line, each edge
@@ -911,7 +919,7 @@ being represented by the IDs of its two nodes.</p></dd>
 </div>
 
 <div class="section">
-<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
+<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>threshold</code></dt>
 <dd><p>A numeric value specifying the threshold value for the
 Rips complex.</p></dd>
@@ -942,7 +950,7 @@ or equal to this threshold are not displayed.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
+<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>nodemask</code></dt>
 <dd><p>A numeric value specifying the threshold value for
 generating the mask.</p></dd>
@@ -972,7 +980,7 @@ in memory.</p><div class="section">
 </div>
 
 <div class="section">
-<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
+<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>cloud</code></dt>
 <dd><p>A numeric matrix specifying the coordinates of the point
 cloud.</p></dd>
@@ -1007,7 +1015,7 @@ cloud.</p></dd>
 </div>
 
 <div class="section">
-<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
+<h4 id="arguments-23">Arguments<a class="anchor" aria-label="anchor" href="#arguments-23"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>resolution</code></dt>
 <dd><p>A numeric value specifying the length of intervals.</p></dd>
 
@@ -1035,7 +1043,7 @@ cloud.</p></dd>
 </div>
 
 <div class="section">
-<h4 id="arguments-23">Arguments<a class="anchor" aria-label="anchor" href="#arguments-23"></a></h4>
+<h4 id="arguments-24">Arguments<a class="anchor" aria-label="anchor" href="#arguments-24"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>resolution</code></dt>
 <dd><p>An integer value specifying the number of intervals.</p></dd>
 
@@ -1074,7 +1082,7 @@ Carriere et al. (2018)
 </div>
 
 <div class="section">
-<h4 id="arguments-24">Arguments<a class="anchor" aria-label="anchor" href="#arguments-24"></a></h4>
+<h4 id="arguments-25">Arguments<a class="anchor" aria-label="anchor" href="#arguments-25"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>constant</code></dt>
 <dd><p>A numeric value specifying the subsampling constant.</p></dd>
 
@@ -1098,18 +1106,19 @@ Carriere et al. (2018)
 </div>
 
 
-</div><p></p><hr><a id="method-CoverComplex-set_type"></a><div class="section">
-<h3 id="method-set-type-">Method <code>set_type()</code><a class="anchor" aria-label="anchor" href="#method-set-type-"></a></h3>
-<p>Specifies the type of the output simplicial complex.</p><div class="section">
+</div><p></p><hr><a id="method-CoverComplex-set_verbose"></a><div class="section">
+<h3 id="method-set-verbose-">Method <code>set_verbose()</code><a class="anchor" aria-label="anchor" href="#method-set-verbose-"></a></h3>
+<p>Specifies whether the program should display information or
+not.</p><div class="section">
 <h4 id="usage-32">Usage<a class="anchor" aria-label="anchor" href="#usage-32"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_type</span><span class="op">(</span><span class="va">type</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-25">Arguments<a class="anchor" aria-label="anchor" href="#arguments-25"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>type</code></dt>
-<dd><p>A character string specifying the type of output simplicial
-complex. Can be either <code>"GIC"</code> or <code>"Nerve"</code>.</p></dd>
+<h4 id="arguments-26">Arguments<a class="anchor" aria-label="anchor" href="#arguments-26"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>verbose</code></dt>
+<dd><p>A boolean specifying whether to display information.
+Defaults to <code>FALSE</code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -1122,35 +1131,6 @@ complex. Can be either <code>"GIC"</code> or <code>"Nerve"</code>.</p></dd>
 <h4 id="examples-32">Examples<a class="anchor" aria-label="anchor" href="#examples-32"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_type</span><span class="op">(</span><span class="st">"GIC"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><p></p></div>
-</div>
-
-
-</div><p></p><hr><a id="method-CoverComplex-set_verbose"></a><div class="section">
-<h3 id="method-set-verbose-">Method <code>set_verbose()</code><a class="anchor" aria-label="anchor" href="#method-set-verbose-"></a></h3>
-<p>Specifies whether the program should display information or
-not.</p><div class="section">
-<h4 id="usage-33">Usage<a class="anchor" aria-label="anchor" href="#usage-33"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="va">verbose</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-26">Arguments<a class="anchor" aria-label="anchor" href="#arguments-26"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>verbose</code></dt>
-<dd><p>A boolean specifying whether to display information.</p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-33">Returns<a class="anchor" aria-label="anchor" href="#returns-33"></a></h4>
-<p>The updated <code>CoverComplex</code> class itself invisibly.</p>
-</div>
-<div class="section">
-<h4 id="examples-33">Examples<a class="anchor" aria-label="anchor" href="#examples-33"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -1160,7 +1140,7 @@ not.</p><div class="section">
 <h3 id="method-subpopulation-">Method <code>subpopulation()</code><a class="anchor" aria-label="anchor" href="#method-subpopulation-"></a></h3>
 <p>Returns the data subset corresponding to a specific node of
 the created complex.</p><div class="section">
-<h4 id="usage-34">Usage<a class="anchor" aria-label="anchor" href="#usage-34"></a></h4>
+<h4 id="usage-33">Usage<a class="anchor" aria-label="anchor" href="#usage-33"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="va">node_id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1173,12 +1153,12 @@ the created complex.</p><div class="section">
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-34">Returns<a class="anchor" aria-label="anchor" href="#returns-34"></a></h4>
+<h4 id="returns-33">Returns<a class="anchor" aria-label="anchor" href="#returns-33"></a></h4>
 <p>An integer vector storing the IDs of the data points at the input
 node.</p>
 </div>
 <div class="section">
-<h4 id="examples-34">Examples<a class="anchor" aria-label="anchor" href="#examples-34"></a></h4>
+<h4 id="examples-33">Examples<a class="anchor" aria-label="anchor" href="#examples-33"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
@@ -1190,7 +1170,7 @@ node.</p>
 <h3 id="method-write-info-">Method <code>write_info()</code><a class="anchor" aria-label="anchor" href="#method-write-info-"></a></h3>
 <p>Creates a <code>.txt</code> file called <code>_sc.txt</code> describing the
 1-skeleton, which can then be plotted with <em>e.g.</em> KeplerMapper.</p><div class="section">
-<h4 id="usage-35">Usage<a class="anchor" aria-label="anchor" href="#usage-35"></a></h4>
+<h4 id="usage-34">Usage<a class="anchor" aria-label="anchor" href="#usage-34"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span>dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1205,11 +1185,11 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-35">Returns<a class="anchor" aria-label="anchor" href="#returns-35"></a></h4>
+<h4 id="returns-34">Returns<a class="anchor" aria-label="anchor" href="#returns-34"></a></h4>
 <p>The updated <code>CoverComplex</code> class itself invisibly.</p>
 </div>
 <div class="section">
-<h4 id="examples-35">Examples<a class="anchor" aria-label="anchor" href="#examples-35"></a></h4>
+<h4 id="examples-34">Examples<a class="anchor" aria-label="anchor" href="#examples-34"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span>
@@ -1220,7 +1200,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 </div><p></p><hr><a id="method-CoverComplex-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-36">Usage<a class="anchor" aria-label="anchor" href="#usage-36"></a></h4>
+<h4 id="usage-35">Usage<a class="anchor" aria-label="anchor" href="#usage-35"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">CoverComplex</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1245,7 +1225,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;CoverComplex&gt;</span>
@@ -1258,7 +1238,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_p_value: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     create_simplex_tree: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     find_simplices: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (type) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     plot_dot: function (dir = getwd()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     plot_off: function (dir = getwd()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     read_point_cloud: function (off_file, chainable = TRUE) </span>
@@ -1283,14 +1263,22 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_resolution_with_interval_length: function (resolution) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_resolution_with_interval_number: function (resolution) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_subsampling: function (constant, power) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_type: function (type) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_verbose: function (verbose) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_verbose: function (verbose = FALSE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     subpopulation: function (node_id) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     write_info: function (dir = getwd()) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedBootstrapDistribution: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistenceDiagram: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplexTree: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplicies: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsCoverDefined: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsCoverDefinedFromFunction: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsFunctionDefined: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsGraphDefined: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsGraphDefinedFromAutomaticRips: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsPointCloudDefined: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsPointCloudDefinedFromOFF: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsResolutionDefined: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_PythonClass: gudhi.nerve_gic.CoverComplex, python.builtin.object</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
@@ -1301,6 +1289,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_PD</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_confidence_level_from_distance`</span></span></span>
@@ -1310,7 +1299,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_confidence_level_from_distance</span><span class="op">(</span>distance_threshold <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_distance_from_confidence_level`</span></span></span>
@@ -1320,6 +1309,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$compute_distance_from_confidence_level(confidence_level = 0.1)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_distribution`</span></span></span>
@@ -1329,6 +1319,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$compute_distribution()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_p_value`</span></span></span>
@@ -1338,7 +1329,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_p_value</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$create_simplex_tree`</span></span></span>
@@ -1348,6 +1339,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">cc</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$find_simplices`</span></span></span>
@@ -1357,6 +1349,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$plot_dot`</span></span></span>
@@ -1368,6 +1361,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$plot_off`</span></span></span>
@@ -1379,6 +1373,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$read_point_cloud`</span></span></span>
@@ -1389,6 +1384,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_automatic_resolution`</span></span></span>
@@ -1398,6 +1394,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_color_from_coordinate`</span></span></span>
@@ -1407,6 +1404,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_color_from_coordinate()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_color_from_file`</span></span></span>
@@ -1416,6 +1414,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_color_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_color_from_range`</span></span></span>
@@ -1425,6 +1424,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_color_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_cover_from_Voronoi`</span></span></span>
@@ -1434,6 +1434,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_cover_from_Voronoi()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_cover_from_file`</span></span></span>
@@ -1443,6 +1444,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_cover_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_cover_from_function`</span></span></span>
@@ -1452,6 +1454,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_distances_from_range`</span></span></span>
@@ -1462,6 +1465,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_distances_from_range</span><span class="op">(</span><span class="va">D</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_coordinate`</span></span></span>
@@ -1471,6 +1475,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_function_from_coordinate()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_file`</span></span></span>
@@ -1480,6 +1485,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_function_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_range`</span></span></span>
@@ -1489,6 +1495,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_function_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_gain`</span></span></span>
@@ -1498,6 +1505,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_gain</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_OFF`</span></span></span>
@@ -1507,6 +1515,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_automatic_rips`</span></span></span>
@@ -1516,6 +1525,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_graph_from_automatic_rips(chainable = FALSE)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_file`</span></span></span>
@@ -1525,6 +1535,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_graph_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_rips`</span></span></span>
@@ -1534,6 +1545,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_mask`</span></span></span>
@@ -1543,6 +1555,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_mask</span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_point_cloud_from_range`</span></span></span>
@@ -1558,6 +1571,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_resolution_with_interval_length`</span></span></span>
@@ -1567,6 +1581,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_resolution_with_interval_number`</span></span></span>
@@ -1576,6 +1591,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_subsampling`</span></span></span>
@@ -1585,15 +1601,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_subsampling</span><span class="op">(</span>constant <span class="op">=</span> <span class="fl">0</span>, power <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co">## Method `CoverComplex$set_type`</span></span></span>
-<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_type</span><span class="op">(</span><span class="st">"GIC"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_verbose`</span></span></span>
@@ -1603,6 +1611,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$subpopulation`</span></span></span>
@@ -1612,7 +1621,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$write_info`</span></span></span>
@@ -1622,6 +1631,7 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
