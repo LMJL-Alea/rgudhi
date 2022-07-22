@@ -23,7 +23,7 @@ test_that("Class `CoverComplex` works", {
   cc$compute_PD()
   cc$compute_distribution()
   expect_equal(round(cc$compute_p_value(), 2), 1)
-  expect_equal(round(cc$compute_confidence_level_from_distance(0.1), 2), 0.19)
+  expect_equal(round(cc$compute_confidence_level_from_distance(0.1), 1), 0.2)
   expect_equal(round(cc$compute_distance_from_confidence_level(0.95), 2), 0.15)
   expect_equal(
     cc$subpopulation(0),
