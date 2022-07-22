@@ -22,9 +22,9 @@ test_that("Class `CoverComplex` works", {
   cc$set_mask(1)
   cc$compute_PD()
   cc$compute_distribution()
-  expect_equal(round(cc$compute_p_value(), 3), 1)
-  expect_equal(round(cc$compute_confidence_level_from_distance(0.1), 3), 0.19)
-  expect_equal(round(cc$compute_distance_from_confidence_level(0.95), 3), 0.153)
+  expect_equal(round(cc$compute_p_value(), 2), 1)
+  expect_equal(round(cc$compute_confidence_level_from_distance(0.1), 2), 0.19)
+  expect_equal(round(cc$compute_distance_from_confidence_level(0.95), 2), 0.15)
   expect_equal(
     cc$subpopulation(0),
     c(1161, 107, 154, 155, 1144, 108, 105, 1201,
