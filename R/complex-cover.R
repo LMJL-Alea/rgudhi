@@ -411,18 +411,26 @@ CoverComplex <- R6::R6Class(
     #' @description Computes the function used to color the nodes of the
     #'   simplicial complex from a file containing the function values.
     #'
+    #' @details The color file should be a `.txt` file with as many lines as
+    #'   there are points in the point cloud. Each line should be populated with
+    #'   a single numeric value.
+    #'
     #' @param color_file_name A character string specifying the name of the
     #'   input color file.
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
     #' @examples
+    #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+    #' cf <- system.file("extdata", "color_file.txt", package = "rgudhi")
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   # cc$set_color_from_file()
+    #'   cc <- CoverComplex$
+    #'     new(type = "GIC")$
+    #'     read_point_cloud(url)$
+    #'     set_color_from_file(cf)
     #' }
     set_color_from_file = function(color_file_name) {
-      private$m_PythonClass$set_color_from_file(color_file_name = color_file_name)
+      private$m_PythonClass$set_color_from_file(color_file_name)
       invisible(self)
     },
 
@@ -482,20 +490,30 @@ CoverComplex <- R6::R6Class(
     #'   cover elements of each point (the order has to be the same as in the
     #'   input file!).
     #'
+    #' @details The cover file should be a `.txt` file with as many lines as
+    #'   there are points in the point cloud. Each line should be populated with
+    #'   an integer vector specifying to which cover elements does each point
+    #'   belong.
+    #'
     #' @param cover_file_name A character string specifying the path to the
     #'   input cover file.
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
     #' @examples
+    #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+    #' cf <- system.file("extdata", "cover_file.txt", package = "rgudhi")
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   # cc$set_cover_from_file()
+    #'   cc <- CoverComplex$
+    #'     new(type = "GIC")$
+    #'     read_point_cloud(url)$
+    #'     set_graph_from_automatic_rips()#$
+    #'     #set_cover_from_file(cf)
     #' }
     set_cover_from_file = function(cover_file_name) {
       if (!private$m_IsGraphDefined)
         cli::cli_abort("You first need to register a graph to the class using one of the {.code $set_graph_*()} methods before calling any of the {.code $set_cover_*()} methods.")
-      private$m_PythonClass$set_cover_from_file(cover_file_name = cover_file_name)
+      private$m_PythonClass$set_cover_from_file(cover_file_name)
       private$m_IsCoverDefined <- TRUE
       private$m_IsCoverDefinedFromFunction <- FALSE
       invisible(self)
@@ -579,18 +597,26 @@ CoverComplex <- R6::R6Class(
     #' @description Creates the function \mjseqn{f} from a file containing the
     #'   function values.
     #'
+    #' @details The function file should be a `.txt` file with as many lines as
+    #'   there are points in the point cloud. Each line should be populated with
+    #'   a single numeric value.
+    #'
     #' @param func_file_name A character string specifying the path to the input
     #'   function file.
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
     #' @examples
+    #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+    #' ff <- system.file("extdata", "function_file.txt", package = "rgudhi")
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   # cc$set_function_from_file()
+    #'   cc <- CoverComplex$
+    #'     new(type = "GIC")$
+    #'     read_point_cloud(url)$
+    #'     set_function_from_file(ff)
     #' }
     set_function_from_file = function(func_file_name) {
-      private$m_PythonClass$set_function_from_file(func_file_name = func_file_name)
+      private$m_PythonClass$set_function_from_file(func_file_name)
       private$m_IsFunctionDefined <- TRUE
       invisible(self)
     },
@@ -697,6 +723,10 @@ CoverComplex <- R6::R6Class(
 
     #' @description Creates a graph \mjseqn{G} from a file containing the edges.
     #'
+    #' @details The file should contain the edge list of the graph by rows, each
+    #'   row reporting the indices of the two connected vertices as stored in
+    #'   the input point cloud.
+    #'
     #' @param graph_file_name A character string specifying the path to the
     #'   input graph file. The graph file contains one edge per line, each edge
     #'   being represented by the IDs of its two nodes.
@@ -704,14 +734,18 @@ CoverComplex <- R6::R6Class(
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
     #' @examples
+    #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+    #' gf <- system.file("extdata", "graph_file.txt", package = "rgudhi")
     #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   # cc$set_graph_from_file()
+    #'   cc <- CoverComplex$
+    #'     new(type = "GIC")$
+    #'     read_point_cloud(url)$
+    #'     set_graph_from_file(gf)
     #' }
     set_graph_from_file = function(graph_file_name) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
-      private$m_PythonClass$set_graph_from_file(graph_file_name = graph_file_name)
+      private$m_PythonClass$set_graph_from_file(graph_file_name)
       private$m_IsGraphDefined <- TRUE
       invisible(self)
     },

@@ -249,9 +249,13 @@ if (reticulate::py_module_available("gudhi")) {
 ## Method `CoverComplex$set_color_from_file`
 ## ------------------------------------------------
 
+url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+cf <- system.file("extdata", "color_file.txt", package = "rgudhi")
 if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_color_from_file()
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_color_from_file(cf)
 }
 
 ## ------------------------------------------------
@@ -288,9 +292,14 @@ if (reticulate::py_module_available("gudhi")) {
 ## Method `CoverComplex$set_cover_from_file`
 ## ------------------------------------------------
 
+url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+cf <- system.file("extdata", "cover_file.txt", package = "rgudhi")
 if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_cover_from_file()
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_graph_from_automatic_rips()#$
+    #set_cover_from_file(cf)
 }
 
 ## ------------------------------------------------
@@ -336,9 +345,13 @@ if (reticulate::py_module_available("gudhi")) {
 ## Method `CoverComplex$set_function_from_file`
 ## ------------------------------------------------
 
+url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+ff <- system.file("extdata", "function_file.txt", package = "rgudhi")
 if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_function_from_file()
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_function_from_file(ff)
 }
 
 ## ------------------------------------------------
@@ -391,9 +404,13 @@ if (reticulate::py_module_available("gudhi")) {
 ## Method `CoverComplex$set_graph_from_file`
 ## ------------------------------------------------
 
+url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+gf <- system.file("extdata", "graph_file.txt", package = "rgudhi")
 if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_graph_from_file()
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_graph_from_file(gf)
 }
 
 ## ------------------------------------------------
@@ -1124,14 +1141,24 @@ input color file.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Details}{
+The color file should be a \code{.txt} file with as many lines as
+there are points in the point cloud. Each line should be populated with
+a single numeric value.
+}
+
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_color_from_file()
+\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+cf <- system.file("extdata", "color_file.txt", package = "rgudhi")
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_color_from_file(cf)
 }
 }
 \if{html}{\out{</div>}}
@@ -1236,14 +1263,26 @@ input cover file.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Details}{
+The cover file should be a \code{.txt} file with as many lines as
+there are points in the point cloud. Each line should be populated with
+an integer vector specifying to which cover elements does each point
+belong.
+}
+
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_cover_from_file()
+\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+cf <- system.file("extdata", "cover_file.txt", package = "rgudhi")
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_graph_from_automatic_rips()#$
+    #set_cover_from_file(cf)
 }
 }
 \if{html}{\out{</div>}}
@@ -1371,14 +1410,24 @@ function file.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Details}{
+The function file should be a \code{.txt} file with as many lines as
+there are points in the point cloud. Each line should be populated with
+a single numeric value.
+}
+
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_function_from_file()
+\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+ff <- system.file("extdata", "function_file.txt", package = "rgudhi")
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_function_from_file(ff)
 }
 }
 \if{html}{\out{</div>}}
@@ -1548,14 +1597,24 @@ being represented by the IDs of its two nodes.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Details}{
+The file should contain the edge list of the graph by rows, each
+row reporting the indices of the two connected vertices as stored in
+the input point cloud.
+}
+
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  # cc$set_graph_from_file()
+\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
+gf <- system.file("extdata", "graph_file.txt", package = "rgudhi")
+if (reticulate::py_module_available("gudhi")) {
+  cc <- CoverComplex$
+    new(type = "GIC")$
+    read_point_cloud(url)$
+    set_graph_from_file(gf)
 }
 }
 \if{html}{\out{</div>}}
