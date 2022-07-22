@@ -171,9 +171,19 @@ complex. Can be either <code>"GIC"</code> or <code>"Nerve"</code>.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_PD</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_PD</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -202,9 +212,20 @@ input threshold on the Bottleneck distance.</p>
 </div>
 <div class="section">
 <h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_confidence_level_from_distance</span><span class="op">(</span>distance_threshold <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_confidence_level_from_distance</span><span class="op">(</span>distance_threshold <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -233,9 +254,20 @@ corresponding to the input confidence level.</p>
 </div>
 <div class="section">
 <h4 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="co"># cc$compute_distance_from_confidence_level(confidence_level = 0.1)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_distance_from_confidence_level</span><span class="op">(</span>confidence_level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -268,9 +300,19 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 </div>
 <div class="section">
 <h4 id="examples-4">Examples<a class="anchor" aria-label="anchor" href="#examples-4"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="co"># cc$compute_distribution()</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -290,9 +332,20 @@ persistence diagram of the output simplicial complex.</p><div class="section">
 </div>
 <div class="section">
 <h4 id="examples-5">Examples<a class="anchor" aria-label="anchor" href="#examples-5"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_p_value</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">compute_p_value</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -312,9 +365,12 @@ tree created from the Cover complex.</p>
 </div>
 <div class="section">
 <h4 id="examples-6">Examples<a class="anchor" aria-label="anchor" href="#examples-6"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">cc</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -332,9 +388,18 @@ tree created from the Cover complex.</p>
 </div>
 <div class="section">
 <h4 id="examples-7">Examples<a class="anchor" aria-label="anchor" href="#examples-7"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -364,8 +429,18 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 </div>
 <div class="section">
 <h4 id="examples-8">Examples<a class="anchor" aria-label="anchor" href="#examples-8"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
@@ -400,8 +475,18 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 </div>
 <div class="section">
 <h4 id="examples-9">Examples<a class="anchor" aria-label="anchor" href="#examples-9"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
@@ -439,10 +524,11 @@ to <code>TRUE</code>.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-10">Examples<a class="anchor" aria-label="anchor" href="#examples-10"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -484,9 +570,17 @@ length used to compute the cover.</p>
 </div>
 <div class="section">
 <h4 id="examples-11">Examples<a class="anchor" aria-label="anchor" href="#examples-11"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -514,9 +608,14 @@ Defaults to <code>0L</code>.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-12">Examples<a class="anchor" aria-label="anchor" href="#examples-12"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="co"># cc$set_color_from_coordinate()</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -545,7 +644,7 @@ input color file.</p></dd>
 <div class="section">
 <h4 id="examples-13">Examples<a class="anchor" aria-label="anchor" href="#examples-13"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="co"># cc$set_color_from_file()</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -574,9 +673,14 @@ values.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-14">Examples<a class="anchor" aria-label="anchor" href="#examples-14"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_color_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -604,9 +708,16 @@ subsample. Defaults to <code>100L</code>.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-15">Examples<a class="anchor" aria-label="anchor" href="#examples-15"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="co"># cc$set_cover_from_Voronoi()</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_Voronoi</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -636,7 +747,7 @@ input cover file.</p></dd>
 <div class="section">
 <h4 id="examples-16">Examples<a class="anchor" aria-label="anchor" href="#examples-16"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="co"># cc$set_cover_from_file()</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -656,9 +767,16 @@ function <em></em>\(f\).</p><div class="section">
 </div>
 <div class="section">
 <h4 id="examples-17">Examples<a class="anchor" aria-label="anchor" href="#examples-17"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -687,7 +805,7 @@ stored in memory.</p><div class="section">
 <h4 id="examples-18">Examples<a class="anchor" aria-label="anchor" href="#examples-18"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="op">-</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_distances_from_range</span><span class="op">(</span><span class="va">D</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -716,9 +834,13 @@ coordinate of the point cloud.</p><div class="section">
 </div>
 <div class="section">
 <h4 id="examples-19">Examples<a class="anchor" aria-label="anchor" href="#examples-19"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="co"># cc$set_function_from_coordinate()</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -747,7 +869,7 @@ function file.</p></dd>
 <div class="section">
 <h4 id="examples-20">Examples<a class="anchor" aria-label="anchor" href="#examples-20"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="co"># cc$set_function_from_file()</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -776,9 +898,13 @@ be used.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-21">Examples<a class="anchor" aria-label="anchor" href="#examples-21"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_function_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -805,7 +931,7 @@ be used.</p></dd>
 <div class="section">
 <h4 id="examples-22">Examples<a class="anchor" aria-label="anchor" href="#examples-22"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_gain</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -825,9 +951,12 @@ the input <code>.off</code> file.</p><div class="section">
 </div>
 <div class="section">
 <h4 id="examples-23">Examples<a class="anchor" aria-label="anchor" href="#examples-23"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -874,9 +1003,12 @@ for computing the Rips complex..</p>
 </div>
 <div class="section">
 <h4 id="examples-24">Examples<a class="anchor" aria-label="anchor" href="#examples-24"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="co"># cc$set_graph_from_automatic_rips(chainable = FALSE)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -905,7 +1037,7 @@ being represented by the IDs of its two nodes.</p></dd>
 <div class="section">
 <h4 id="examples-25">Examples<a class="anchor" aria-label="anchor" href="#examples-25"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="co"># cc$set_graph_from_file()</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -933,9 +1065,12 @@ Rips complex.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-26">Examples<a class="anchor" aria-label="anchor" href="#examples-26"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -964,9 +1099,19 @@ generating the mask.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-27">Examples<a class="anchor" aria-label="anchor" href="#examples-27"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_mask</span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_mask</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1001,8 +1146,9 @@ cloud.</p></dd>
 <span><span class="op">)</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Reduce</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">X</span>, init <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1028,9 +1174,15 @@ cloud.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-29">Examples<a class="anchor" aria-label="anchor" href="#examples-29"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1056,9 +1208,15 @@ cloud.</p></dd>
 </div>
 <div class="section">
 <h4 id="examples-30">Examples<a class="anchor" aria-label="anchor" href="#examples-30"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1100,7 +1258,7 @@ Carriere et al. (2018)
 <div class="section">
 <h4 id="examples-31">Examples<a class="anchor" aria-label="anchor" href="#examples-31"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_subsampling</span><span class="op">(</span>constant <span class="op">=</span> <span class="fl">0</span>, power <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -1130,7 +1288,7 @@ Defaults to <code>FALSE</code>.</p></dd>
 <div class="section">
 <h4 id="examples-32">Examples<a class="anchor" aria-label="anchor" href="#examples-32"></a></h4>
 <p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
 <span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -1159,9 +1317,19 @@ node.</p>
 </div>
 <div class="section">
 <h4 id="examples-33">Examples<a class="anchor" aria-label="anchor" href="#examples-33"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1190,9 +1358,21 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 </div>
 <div class="section">
 <h4 id="examples-34">Examples<a class="anchor" aria-label="anchor" href="#examples-34"></a></h4>
-<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoverComplex.html">CoverComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span>
+<span>  <span class="va">cc</span><span class="op">$</span></span>
+<span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span>
+<span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span>
+<span>    <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1285,176 +1465,280 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_PD`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_PD</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_PD</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_confidence_level_from_distance`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_confidence_level_from_distance</span><span class="op">(</span>distance_threshold <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_confidence_level_from_distance</span><span class="op">(</span>distance_threshold <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_distance_from_confidence_level`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># cc$compute_distance_from_confidence_level(confidence_level = 0.1)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_distance_from_confidence_level</span><span class="op">(</span>confidence_level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.208457</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_distribution`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># cc$compute_distribution()</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_p_value`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">compute_p_value</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">compute_p_value</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$create_simplex_tree`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">cc</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$find_simplices`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$plot_dot`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$plot_off`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span>    <span class="va">cc</span><span class="op">$</span><span class="fu">plot_dot</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$read_point_cloud`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_automatic_resolution`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_color_from_coordinate`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># cc$set_color_from_coordinate()</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_color_from_file`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_color_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_color_from_range`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_color_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_cover_from_Voronoi`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># cc$set_cover_from_Voronoi()</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_Voronoi</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_cover_from_file`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_cover_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_cover_from_function`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_distances_from_range`</span></span></span>
@@ -1462,100 +1746,117 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">iris</span><span class="op">[</span>, <span class="op">-</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_distances_from_range</span><span class="op">(</span><span class="va">D</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_coordinate`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># cc$set_function_from_coordinate()</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_file`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_function_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_function_from_range`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_function_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_range</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, len <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_gain`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_gain</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_OFF`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_OFF</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_automatic_rips`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># cc$set_graph_from_automatic_rips(chainable = FALSE)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_file`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># cc$set_graph_from_file()</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_graph_from_rips`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_rips</span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_mask`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_mask</span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_mask</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_point_cloud_from_range`</span></span></span>
@@ -1568,70 +1869,99 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/funprog.html" class="external-link">Reduce</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">X</span>, init <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_point_cloud_from_range</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_resolution_with_interval_length`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_length</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_resolution_with_interval_number`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100L</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_subsampling`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_subsampling</span><span class="op">(</span>constant <span class="op">=</span> <span class="fl">0</span>, power <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$set_verbose`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">set_verbose</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$subpopulation`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$write_info`</span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_module_available.html" class="external-link">py_module_available</a></span><span class="op">(</span><span class="st">"gudhi"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cc</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">read_point_cloud</span><span class="op">(</span><span class="va">url</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_graph_from_automatic_rips</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_function_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_color_from_coordinate</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_resolution_with_interval_number</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_cover_from_function</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">set_automatic_resolution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
+<span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">with_tempdir</a></span><span class="op">(</span><span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="va">cc</span><span class="op">$</span><span class="fu">write_info</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in match.arg(type, choices = c("GIC", "Nerve")):</span> argument "type" is missing, with no default</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
