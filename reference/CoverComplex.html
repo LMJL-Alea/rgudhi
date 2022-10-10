@@ -1460,61 +1460,6 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>  <span class="va">cc</span> <span class="op">&lt;-</span> <span class="va">CoverComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"GIC"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cc</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;CoverComplex&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Inherits from: &lt;PythonClass&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_PD: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_confidence_level_from_distance: function (distance_threshold) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_distance_from_confidence_level: function (confidence_level) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_distribution: function (N = 100L, dir = getwd()) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_p_value: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     create_simplex_tree: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     find_simplices: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (type) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     plot_dot: function (dir = getwd()) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     plot_off: function (dir = getwd()) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     read_point_cloud: function (off_file, chainable = TRUE) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_automatic_resolution: function (chainable = TRUE) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_color_from_coordinate: function (k = 0) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_color_from_file: function (color_file_name) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_color_from_range: function (color_values) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_cover_from_Voronoi: function (m = 100L) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_cover_from_file: function (cover_file_name) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_cover_from_function: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_distances_from_range: function (distance_matrix) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_function_from_coordinate: function (k = 0L) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_function_from_file: function (func_file_name) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_function_from_range: function (function_values) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_gain: function (g = 0.3) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_OFF: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_automatic_rips: function (N = 100L, chainable = TRUE) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_file: function (graph_file_name) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_graph_from_rips: function (threshold) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_mask: function (nodemask) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_point_cloud_from_range: function (cloud) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_resolution_with_interval_length: function (resolution) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_resolution_with_interval_number: function (resolution) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_subsampling: function (constant, power) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_verbose: function (verbose = FALSE) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     subpopulation: function (node_id) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     write_info: function (dir = getwd()) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedBootstrapDistribution: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistenceDiagram: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplexTree: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplicies: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsCoverDefined: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsCoverDefinedFromFunction: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsFunctionDefined: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsGraphDefined: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsGraphDefinedFromAutomaticRips: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsPointCloudDefined: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsPointCloudDefinedFromOFF: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsResolutionDefined: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.nerve_gic.CoverComplex, python.builtin.object</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_PD`</span></span></span>
@@ -1554,7 +1499,6 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
 <span class="r-in"><span>    <span class="fu">compute_confidence_level_from_distance</span><span class="op">(</span>distance_threshold <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_distance_from_confidence_level`</span></span></span>
@@ -1575,7 +1519,6 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
 <span class="r-in"><span>    <span class="fu">compute_distance_from_confidence_level</span><span class="op">(</span>confidence_level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.208457</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$compute_distribution`</span></span></span>
@@ -1615,7 +1558,6 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>    <span class="fu">compute_distribution</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
 <span class="r-in"><span>    <span class="fu">compute_p_value</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$create_simplex_tree`</span></span></span>
@@ -2012,7 +1954,6 @@ directory retrieved via <code><a href="https://rdrr.io/r/base/getwd.html" class=
 <span class="r-in"><span>    <span class="fu">find_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span></span></span>
 <span class="r-in"><span>    <span class="fu">subpopulation</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CoverComplex$write_info`</span></span></span>
