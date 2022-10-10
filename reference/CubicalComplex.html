@@ -64,6 +64,10 @@ analysis.</p>
     <p>Pawel Dlotko</p>
     </div>
     <div class="section level2">
+    <h2 id="super-class">Super class<a class="anchor" aria-label="anchor" href="#super-class"></a></h2>
+    <p><code>rgudhi::PythonClass</code> -&gt; <code>CubicalComplex</code></p>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
     
 <div class="section">
@@ -79,7 +83,9 @@ analysis.</p>
 <li><p><a href="#method-CubicalComplex-persistence_intervals_in_dimension"><code>CubicalComplex$persistence_intervals_in_dimension()</code></a></p></li>
 <li><p><a href="#method-CubicalComplex-persistent_betti_numbers"><code>CubicalComplex$persistent_betti_numbers()</code></a></p></li>
 <li><p><a href="#method-CubicalComplex-clone"><code>CubicalComplex$clone()</code></a></p></li>
-</ul></div><p></p><hr><a id="method-CubicalComplex-new"></a><div class="section">
+</ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href="PythonClass.html#method-get_python_class"><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href="PythonClass.html#method-set_python_class"><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul></details></p><hr><a id="method-CubicalComplex-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Constructor from either <code>top_dimensional_cells</code> (and
 possibly <code>dimensions</code>) or from a Perseus-style file name.</p><div class="section">
@@ -436,20 +442,23 @@ be added in the numbers (<code>persistent death &gt; to_value</code>).</p></dd>
 <span class="r-in"><span>  <span class="va">cc</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;CubicalComplex&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Inherits from: &lt;PythonClass&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     betti_numbers: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     cofaces_of_persistence_pairs: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_persistence: function (homology_coeff_field = 11, min_persistence = 0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     dimension: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (perseus_file, top_dimensional_cells, dimensions = NULL, </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_simplices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistence: function (homology_coeff_field = 11, min_persistence = 0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistence_intervals_in_dimension: function (dimension) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistent_betti_numbers: function (from_value, to_value) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistence: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_PythonClass: gudhi.cubical_complex.CubicalComplex, python.builtin.object</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.cubical_complex.CubicalComplex, python.builtin.object</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `CubicalComplex$betti_numbers`</span></span></span>

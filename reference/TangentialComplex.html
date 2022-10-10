@@ -84,6 +84,10 @@ called perturbation can be run to attempt to remove inconsistencies.</p>
     <p>Clément Jamin</p>
     </div>
     <div class="section level2">
+    <h2 id="super-class">Super class<a class="anchor" aria-label="anchor" href="#super-class"></a></h2>
+    <p><code>rgudhi::PythonClass</code> -&gt; <code>TangentialComplex</code></p>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
     
 <div class="section">
@@ -99,7 +103,9 @@ called perturbation can be run to attempt to remove inconsistencies.</p>
 <li><p><a href="#method-TangentialComplex-num_vertices"><code>TangentialComplex$num_vertices()</code></a></p></li>
 <li><p><a href="#method-TangentialComplex-set_max_squared_edge_length"><code>TangentialComplex$set_max_squared_edge_length()</code></a></p></li>
 <li><p><a href="#method-TangentialComplex-clone"><code>TangentialComplex$clone()</code></a></p></li>
-</ul></div><p></p><hr><a id="method-TangentialComplex-new"></a><div class="section">
+</ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href="PythonClass.html#method-get_python_class"><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href="PythonClass.html#method-set_python_class"><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul></details></p><hr><a id="method-TangentialComplex-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p><code>TangentialComplex</code> constructor.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
@@ -426,21 +432,24 @@ invisibly.</p>
 <span class="r-in"><span>  <span class="va">tc</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;TangentialComplex&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Inherits from: &lt;PythonClass&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_tangential_complex: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     create_simplex_tree: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     get_point: function (vertex) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (points, intrinsic_dim = NULL) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_inconsistent_simplices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_inconsistent_stars: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_simplices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_vertices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     set_max_squared_edge_length: function (max_squared_edge_length) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplexTree: FALSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedTangentialComplex: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_PythonClass: gudhi.tangential_complex.TangentialComplex, python.builtin.object</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.tangential_complex.TangentialComplex, python.builtin.object</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `TangentialComplex$compute_tangential_complex`</span></span></span>

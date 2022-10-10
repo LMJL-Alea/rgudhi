@@ -68,8 +68,8 @@ Boissonnat and Maria (2014)
 nearest landmarks with respect to witnesses.</p>
     </div>
     <div class="section level2">
-    <h2 id="super-class">Super class<a class="anchor" aria-label="anchor" href="#super-class"></a></h2>
-    <p><code><a href="WitnessComplex.html">rgudhi::WitnessComplex</a></code> -&gt; <code>StrongWitnessComplex</code></p>
+    <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
+    <p><code>rgudhi::PythonClass</code> -&gt; <code><a href="WitnessComplex.html">rgudhi::WitnessComplex</a></code> -&gt; <code>StrongWitnessComplex</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -79,7 +79,9 @@ nearest landmarks with respect to witnesses.</p>
 
 <ul><li><p><a href="#method-StrongWitnessComplex-new"><code>StrongWitnessComplex$new()</code></a></p></li>
 <li><p><a href="#method-StrongWitnessComplex-clone"><code>StrongWitnessComplex$clone()</code></a></p></li>
-</ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="WitnessComplex" data-id="create_simplex_tree"><a href="WitnessComplex.html#method-create_simplex_tree"><code>rgudhi::WitnessComplex$create_simplex_tree()</code></a></span></li>
+</ul></div><p><details open><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href="PythonClass.html#method-get_python_class"><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href="PythonClass.html#method-set_python_class"><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="WitnessComplex" data-id="create_simplex_tree"><a href="WitnessComplex.html#method-create_simplex_tree"><code>rgudhi::WitnessComplex$create_simplex_tree()</code></a></span></li>
 </ul></details></p><hr><a id="method-StrongWitnessComplex-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p><code>StrongWitnessComplex</code> constructor.</p><div class="section">
@@ -172,10 +174,12 @@ Witness complex.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     create_simplex_tree: function (max_alpha_square = Inf) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (nearest_landmark_table) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplexTree: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_PythonClass: gudhi.strong_witness_complex.StrongWitnessComplex, python.builtin.object</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.strong_witness_complex.StrongWitnessComplex, python.builtin.object</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

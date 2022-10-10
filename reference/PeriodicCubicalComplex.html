@@ -64,8 +64,8 @@ and image analysis.</p>
     <p>Pawel Dlotko</p>
     </div>
     <div class="section level2">
-    <h2 id="super-class">Super class<a class="anchor" aria-label="anchor" href="#super-class"></a></h2>
-    <p><code><a href="CubicalComplex.html">rgudhi::CubicalComplex</a></code> -&gt; <code>PeriodicCubicalComplex</code></p>
+    <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
+    <p><code>rgudhi::PythonClass</code> -&gt; <code><a href="CubicalComplex.html">rgudhi::CubicalComplex</a></code> -&gt; <code>PeriodicCubicalComplex</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -75,7 +75,9 @@ and image analysis.</p>
 
 <ul><li><p><a href="#method-PeriodicCubicalComplex-new"><code>PeriodicCubicalComplex$new()</code></a></p></li>
 <li><p><a href="#method-PeriodicCubicalComplex-clone"><code>PeriodicCubicalComplex$clone()</code></a></p></li>
-</ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="betti_numbers"><a href="CubicalComplex.html#method-betti_numbers"><code>rgudhi::CubicalComplex$betti_numbers()</code></a></span></li>
+</ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href="PythonClass.html#method-get_python_class"><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href="PythonClass.html#method-set_python_class"><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="betti_numbers"><a href="CubicalComplex.html#method-betti_numbers"><code>rgudhi::CubicalComplex$betti_numbers()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="cofaces_of_persistence_pairs"><a href="CubicalComplex.html#method-cofaces_of_persistence_pairs"><code>rgudhi::CubicalComplex$cofaces_of_persistence_pairs()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="compute_persistence"><a href="CubicalComplex.html#method-compute_persistence"><code>rgudhi::CubicalComplex$compute_persistence()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="dimension"><a href="CubicalComplex.html#method-dimension"><code>rgudhi::CubicalComplex$dimension()</code></a></span></li>
@@ -189,14 +191,16 @@ Defaults to <code>NULL</code> which uses the Python class constructor instead.</
 <span class="r-out co"><span class="r-pr">#&gt;</span>     cofaces_of_persistence_pairs: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     compute_persistence: function (homology_coeff_field = 11, min_persistence = 0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     dimension: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (perseus_file, top_dimensional_cells, periodic_dimensions, </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num_simplices: function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistence: function (homology_coeff_field = 11, min_persistence = 0) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistence_intervals_in_dimension: function (dimension) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     persistent_betti_numbers: function (from_value, to_value) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistence: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_PythonClass: gudhi.periodic_cubical_complex.PeriodicCubicalComplex, python.builtin.object</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.periodic_cubical_complex.PeriodicCubicalComplex, python.builtin.object</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
