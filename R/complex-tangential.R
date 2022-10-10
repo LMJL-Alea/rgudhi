@@ -17,6 +17,7 @@
 #' @export
 TangentialComplex <- R6::R6Class(
   classname = "TangentialComplex",
+  inherit = PythonClass,
   public = list(
     #' @description `TangentialComplex` constructor.
     #'
@@ -42,15 +43,19 @@ TangentialComplex <- R6::R6Class(
     #' }
     initialize = function(points, intrinsic_dim = NULL) {
       if (is.character(points) && fs::path_ext(points) == "off") {
-        private$m_PythonClass <- gd$TangentialComplex(
-          off_file = points
+        super$set_python_class(
+          gd$TangentialComplex(
+            off_file = points
+          )
         )
       } else {
         if (is.null(intrinsic_dim))
           cli::cli_abort("When {.code points} is a numeric matrix or a list of numeric vectors, the intrinsic dimension of the manifold needs to be specified via the {.code intrinsic_dim} argument.")
-        private$m_PythonClass <- gd$TangentialComplex(
-          points = points,
-          intrisic_dim = intrinsic_dim
+        super$set_python_class(
+          gd$TangentialComplex(
+            points = points,
+            intrisic_dim = intrinsic_dim
+          )
         )
       }
     },
@@ -75,7 +80,7 @@ TangentialComplex <- R6::R6Class(
     #'   tc$compute_tangential_complex()
     #' }
     compute_tangential_complex = function() {
-      private$m_PythonClass$compute_tangential_complex()
+      super$get_python_class()$compute_tangential_complex()
       private$m_ComputedTangentialComplex <- TRUE
       invisible(self)
     },
@@ -98,7 +103,7 @@ TangentialComplex <- R6::R6Class(
     create_simplex_tree = function() {
       if (!private$m_ComputedTangentialComplex)
         cli::cli_abort("You first need to compute the tangential complex by calling the {.code $compute_tangential_complex()} method.")
-      py_st <- private$m_PythonClass$create_simplex_tree()
+      py_st <- super$get_python_class()$create_simplex_tree()
       private$m_ComputedSimplexTree <- TRUE
       SimplexTree$new(py_class = py_st)
     },
@@ -125,7 +130,7 @@ TangentialComplex <- R6::R6Class(
     get_point = function(vertex) {
       if (!private$m_ComputedSimplexTree)
         cli::cli_abort("You first need to generate the simplex tree by calling the {.code $create_simplex_tree()} method.")
-      private$m_PythonClass$get_point(vertex)
+      super$get_python_class()$get_point(vertex)
     },
 
     #' @return An integer value storing the number of inconsistent simplicies.
@@ -142,7 +147,7 @@ TangentialComplex <- R6::R6Class(
     #'   tc$num_inconsistent_simplices()
     #' }
     num_inconsistent_simplices = function() {
-      private$m_PythonClass$num_inconsistent_simplices()
+      super$get_python_class()$num_inconsistent_simplices()
     },
 
     #' @return An integer value storing the number of stars containing at least
@@ -160,7 +165,7 @@ TangentialComplex <- R6::R6Class(
     #'   tc$num_inconsistent_stars()
     #' }
     num_inconsistent_stars = function() {
-      private$m_PythonClass$num_inconsistent_stars()
+      super$get_python_class()$num_inconsistent_stars()
     },
 
     #' @return An integer value storing the total number of simplices in stars
@@ -178,7 +183,7 @@ TangentialComplex <- R6::R6Class(
     #'   tc$num_simplices()
     #' }
     num_simplices = function() {
-      private$m_PythonClass$num_simplices()
+      super$get_python_class()$num_simplices()
     },
 
     #' @return An integer value storing the number of vertices.
@@ -195,7 +200,7 @@ TangentialComplex <- R6::R6Class(
     #'   tc$num_vertices()
     #' }
     num_vertices = function() {
-      private$m_PythonClass$num_vertices()
+      super$get_python_class()$num_vertices()
     },
 
     #' @description Sets the maximal possible squared edge length for the edges
@@ -222,12 +227,11 @@ TangentialComplex <- R6::R6Class(
     #'   tc$set_max_squared_edge_length(1)
     #' }
     set_max_squared_edge_length = function(max_squared_edge_length) {
-      private$m_PythonClass$set_max_squared_edge_length(max_squared_edge_length)
+      super$get_python_class()$set_max_squared_edge_length(max_squared_edge_length)
       invisible(self)
     }
   ),
   private = list(
-    m_PythonClass = NULL,
     m_ComputedTangentialComplex = FALSE,
     m_ComputedSimplexTree = FALSE
   )

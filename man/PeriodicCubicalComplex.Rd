@@ -33,8 +33,8 @@ Other data structures for cell complexes:
 Pawel Dlotko
 }
 \concept{data structures for cell complexes}
-\section{Super class}{
-\code{\link[rgudhi:CubicalComplex]{rgudhi::CubicalComplex}} -> \code{PeriodicCubicalComplex}
+\section{Super classes}{
+\code{rgudhi::PythonClass} -> \code{\link[rgudhi:CubicalComplex]{rgudhi::CubicalComplex}} -> \code{PeriodicCubicalComplex}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -46,6 +46,8 @@ Pawel Dlotko
 \if{html}{\out{
 <details><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="betti_numbers"><a href='../../rgudhi/html/CubicalComplex.html#method-CubicalComplex-betti_numbers'><code>rgudhi::CubicalComplex$betti_numbers()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="cofaces_of_persistence_pairs"><a href='../../rgudhi/html/CubicalComplex.html#method-CubicalComplex-cofaces_of_persistence_pairs'><code>rgudhi::CubicalComplex$cofaces_of_persistence_pairs()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="CubicalComplex" data-id="compute_persistence"><a href='../../rgudhi/html/CubicalComplex.html#method-CubicalComplex-compute_persistence'><code>rgudhi::CubicalComplex$compute_persistence()</code></a></span></li>

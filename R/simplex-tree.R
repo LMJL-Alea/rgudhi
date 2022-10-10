@@ -33,6 +33,7 @@
 #' @export
 SimplexTree <- R6::R6Class(
   classname = "SimplexTree",
+  inherit = PythonClass,
   public = list(
     #' @description `SimplexTree` constructor.
     #'
@@ -48,9 +49,9 @@ SimplexTree <- R6::R6Class(
     #' }
     initialize = function(py_class = NULL) {
       if (is.null(py_class))
-        private$m_PythonClass <- gd$SimplexTree()
+        super$set_python_class(gd$SimplexTree())
       else
-        private$m_PythonClass <- py_class
+        super$set_python_class(py_class)
     },
 
     #' @description This function sets the internal field `m_IsFlag` which
@@ -117,7 +118,7 @@ SimplexTree <- R6::R6Class(
       }
       if (length(simplex) == 1)
         simplex <- list(simplex)
-      private$m_PythonClass$assign_filtration(
+      super$get_python_class()$assign_filtration(
         simplex = simplex,
         filtration = filtration
       )
@@ -145,7 +146,7 @@ SimplexTree <- R6::R6Class(
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$betti_numbers()
+      super$get_python_class()$betti_numbers()
     },
 
     #' @description Assuming the simplex tree is a 1-skeleton graph, this method
@@ -181,7 +182,7 @@ SimplexTree <- R6::R6Class(
     #'   st$collapse_edges()
     #' }
     collapse_edges = function(nb_iterations = 1) {
-      private$m_PythonClass$collapse_edges(nb_iterations = nb_iterations)
+      super$get_python_class()$collapse_edges(nb_iterations = nb_iterations)
       private$m_ComputedPersistence <- FALSE
       private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
@@ -197,7 +198,7 @@ SimplexTree <- R6::R6Class(
     compute_persistence = function(homology_coeff_field = 11,
                                    min_persistence = 0.0,
                                    persistence_dim_max = FALSE) {
-      private$m_PythonClass$compute_persistence(
+      super$get_python_class()$compute_persistence(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence,
         persistence_dim_max = persistence_dim_max
@@ -227,7 +228,7 @@ SimplexTree <- R6::R6Class(
     #'   st$dimension()
     #' }
     dimension = function() {
-      private$m_PythonClass$dimension()
+      super$get_python_class()$dimension()
     },
 
     #' @description Expands the simplex tree containing only its one skeleton
@@ -258,7 +259,7 @@ SimplexTree <- R6::R6Class(
     #'   st$expansion(2)
     #' }
     expansion = function(max_dim) {
-      private$m_PythonClass$expansion(max_dim)
+      super$get_python_class()$expansion(max_dim)
       private$m_ComputedPersistence <- FALSE
       private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
@@ -284,7 +285,7 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     extend_filtration = function() {
-      private$m_PythonClass$extend_filtration()
+      super$get_python_class()$extend_filtration()
       private$m_ComputedExtendedFiltration <- TRUE
       private$m_ComputedPersistence <- FALSE
       invisible(self)
@@ -327,7 +328,7 @@ SimplexTree <- R6::R6Class(
                                     min_persistence = 0.0) {
       if (!private$m_ComputedExtendedFiltration)
         cli::cli_abort("You first need to extend the filtration by calling the {.code $extend_filtration()} method.")
-      l <- private$m_PythonClass$extended_persistence(
+      l <- super$get_python_class()$extended_persistence(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence
       )
@@ -357,7 +358,7 @@ SimplexTree <- R6::R6Class(
     filtration = function(simplex) {
       if (length(simplex) == 1)
         simplex <- list(simplex)
-      private$m_PythonClass$filtration(simplex)
+      super$get_python_class()$filtration(simplex)
     },
 
     #' @description This function returns if the N-simplex was found in the
@@ -380,7 +381,7 @@ SimplexTree <- R6::R6Class(
     find = function(simplex) {
       if (length(simplex) == 1)
         simplex <- list(simplex)
-      private$m_PythonClass$find(simplex)
+      super$get_python_class()$find(simplex)
     },
 
     #' @description Assuming this is a flag complex, this function returns the
@@ -414,7 +415,7 @@ SimplexTree <- R6::R6Class(
         cli::cli_abort("The current simplex tree is not a flag complex. Please generate a simplex tree from a Rips complex to use this method.")
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$flag_persistence_generators()
+      super$get_python_class()$flag_persistence_generators()
     },
 
     #' @description For a given N-simplex, this function returns a list of
@@ -438,7 +439,7 @@ SimplexTree <- R6::R6Class(
     #'   st$get_boundaries(splx)
     #' }
     get_boundaries = function(simplex) {
-      itb <- private$m_PythonClass$get_boundaries(simplex)
+      itb <- super$get_python_class()$get_boundaries(simplex)
       res <- reticulate::iterate(itb)
       res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
       res <- purrr::transpose(res)
@@ -469,7 +470,7 @@ SimplexTree <- R6::R6Class(
     #'   st$get_cofaces(1:2, 0)
     #' }
     get_cofaces = function(simplex, codimension) {
-      res <- private$m_PythonClass$get_cofaces(
+      res <- super$get_python_class()$get_cofaces(
         simplex = simplex,
         codimension = codimension
       )
@@ -498,7 +499,7 @@ SimplexTree <- R6::R6Class(
     #'   st$get_filtration()
     #' }
     get_filtration = function() {
-      itb <- private$m_PythonClass$get_filtration()
+      itb <- super$get_python_class()$get_filtration()
       res <- reticulate::iterate(itb)
       res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
       res <- purrr::transpose(res)
@@ -525,7 +526,7 @@ SimplexTree <- R6::R6Class(
     #'   st$get_simplices()
     #' }
     get_simplices = function() {
-      itb <- private$m_PythonClass$get_simplices()
+      itb <- super$get_python_class()$get_simplices()
       res <- reticulate::iterate(itb)
       res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
       res <- purrr::transpose(res)
@@ -554,7 +555,7 @@ SimplexTree <- R6::R6Class(
     #'   st$get_skeleton(0)
     #' }
     get_skeleton = function(dimension) {
-      itb <- private$m_PythonClass$get_skeleton(dimension)
+      itb <- super$get_python_class()$get_skeleton(dimension)
       res <- reticulate::iterate(itb)
       res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
       res <- purrr::transpose(res)
@@ -580,7 +581,7 @@ SimplexTree <- R6::R6Class(
     #'   st$get_star(1:2)
     #' }
     get_star = function(simplex) {
-      res <- private$m_PythonClass$get_star(simplex)
+      res <- super$get_python_class()$get_star(simplex)
       res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
       res <- purrr::transpose(res)
       res$filtration <- purrr::flatten_dbl(res$filtration)
@@ -613,7 +614,7 @@ SimplexTree <- R6::R6Class(
     #'   st$insert(1:3, chainable = FALSE)
     #' }
     insert = function(simplex, filtration = 0.0, chainable = TRUE) {
-      res <- private$m_PythonClass$insert(
+      res <- super$get_python_class()$insert(
         simplex = simplex,
         filtration = filtration
       )
@@ -650,7 +651,7 @@ SimplexTree <- R6::R6Class(
     lower_star_persistence_generators = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$lower_star_persistence_generators()
+      super$get_python_class()$lower_star_persistence_generators()
     },
 
     #' @description This function ensures that each simplex has a higher
@@ -673,7 +674,7 @@ SimplexTree <- R6::R6Class(
     #'   st$make_filtration_non_decreasing()
     #' }
     make_filtration_non_decreasing = function(chainable = TRUE) {
-      res <- private$m_PythonClass$make_filtration_non_decreasing()
+      res <- super$get_python_class()$make_filtration_non_decreasing()
 
       private$m_ComputedPersistence <- FALSE
       private$m_ComputedExtendedFiltration <- FALSE
@@ -700,7 +701,7 @@ SimplexTree <- R6::R6Class(
     #'   st$num_simplices()
     #' }
     num_simplices = function() {
-      private$m_PythonClass$num_simplices()
+      super$get_python_class()$num_simplices()
     },
 
     #' @description This function returns the number of vertices of the
@@ -721,7 +722,7 @@ SimplexTree <- R6::R6Class(
     #'   st$num_vertices()
     #' }
     num_vertices = function() {
-      private$m_PythonClass$num_vertices()
+      super$get_python_class()$num_vertices()
     },
 
     #' @description This function computes and returns the persistence of the
@@ -744,7 +745,7 @@ SimplexTree <- R6::R6Class(
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0,
                            persistence_dim_max = FALSE) {
-      l <- private$m_PythonClass$persistence(
+      l <- super$get_python_class()$persistence(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence,
         persistence_dim_max = persistence_dim_max
@@ -789,7 +790,7 @@ SimplexTree <- R6::R6Class(
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      res <- private$m_PythonClass$persistence_intervals_in_dimension(dimension)
+      res <- super$get_python_class()$persistence_intervals_in_dimension(dimension)
       tibble::tibble(birth = res[, 1], death = res[, 2])
     },
 
@@ -813,7 +814,7 @@ SimplexTree <- R6::R6Class(
     persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$persistence_pairs()
+      super$get_python_class()$persistence_pairs()
     },
 
     #' @description This function returns the persistent Betti numbers of the
@@ -840,7 +841,7 @@ SimplexTree <- R6::R6Class(
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$persistent_betti_numbers(
+      super$get_python_class()$persistent_betti_numbers(
         from_value = from_value,
         to_value = to_value
       )
@@ -872,7 +873,7 @@ SimplexTree <- R6::R6Class(
     #'   st$prune_above_filtration(0.12)
     #' }
     prune_above_filtration = function(filtration, chainable = TRUE) {
-      res <- private$m_PythonClass$prune_above_filtration(filtration)
+      res <- super$get_python_class()$prune_above_filtration(filtration)
       private$m_ComputedPersistence <- FALSE
       private$m_ComputedExtendedFiltration <- FALSE
       if (chainable) return(invisible(self))
@@ -902,7 +903,7 @@ SimplexTree <- R6::R6Class(
     #'   st$remove_maximal_simplex(1:2)
     #' }
     remove_maximal_simplex = function(simplex) {
-      private$m_PythonClass$remove_maximal_simplex(simplex)
+      super$get_python_class()$remove_maximal_simplex(simplex)
       private$m_ComputedPersistence <- FALSE
       private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
@@ -933,7 +934,7 @@ SimplexTree <- R6::R6Class(
     #'   st$reset_filtration(0.1)
     #' }
     reset_filtration = function(filtration, min_dim = 0) {
-      private$m_PythonClass$reset_filtration(
+      super$get_python_class()$reset_filtration(
         filtration = filtration,
         min_dim = min_dim
       )
@@ -965,7 +966,7 @@ SimplexTree <- R6::R6Class(
     #'   st$set_dimension(1)
     #' }
     set_dimension = function(dimension) {
-      private$m_PythonClass$set_dimension(dimension)
+      super$get_python_class()$set_dimension(dimension)
       private$m_ComputedPersistence <- FALSE
       private$m_ComputedExtendedFiltration <- FALSE
       invisible(self)
@@ -989,7 +990,7 @@ SimplexTree <- R6::R6Class(
     #'   st$upper_bound_dimension()
     #' }
     upper_bound_dimension = function() {
-      private$m_PythonClass$upper_bound_dimension()
+      super$get_python_class()$upper_bound_dimension()
     },
 
     #' @description This function writes the persistence intervals of the
@@ -1015,12 +1016,11 @@ SimplexTree <- R6::R6Class(
     write_persistence_diagram = function(persistence_file) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$write_persistence_diagram(persistence_file)
+      super$get_python_class()$write_persistence_diagram(persistence_file)
       invisible(self)
     }
   ),
   private = list(
-    m_PythonClass = NULL,
     m_ComputedPersistence = FALSE,
     m_ComputedExtendedFiltration = FALSE,
     m_IsFlag = FALSE

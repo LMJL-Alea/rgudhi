@@ -509,6 +509,9 @@ Other data structures for cell complexes:
 Clément Maria
 }
 \concept{data structures for cell complexes}
+\section{Super class}{
+\code{rgudhi::PythonClass} -> \code{SimplexTree}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -549,6 +552,14 @@ Clément Maria
 \item \href{#method-SimplexTree-clone}{\code{SimplexTree$clone()}}
 }
 }
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SimplexTree-new"></a>}}
 \if{latex}{\out{\hypertarget{method-SimplexTree-new}{}}}

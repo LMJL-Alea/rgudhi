@@ -18,6 +18,7 @@
 #' @export
 WitnessComplex <- R6::R6Class(
   classname = "WitnessComplex",
+  inherit = PythonClass,
   public = list(
     #' @description `WitnessComplex` constructor.
     #'
@@ -62,8 +63,10 @@ WitnessComplex <- R6::R6Class(
         margin = 1
       )
 
-      private$m_PythonClass <- gd$WitnessComplex(
-        nearest_landmark_table = nearest_landmark_table
+      super$set_python_class(
+        gd$WitnessComplex(
+          nearest_landmark_table = nearest_landmark_table
+        )
       )
     },
 
@@ -92,7 +95,7 @@ WitnessComplex <- R6::R6Class(
     #'   st$num_vertices()
     #' }
     create_simplex_tree = function(max_alpha_square = Inf) {
-      py_st <- private$m_PythonClass$create_simplex_tree(
+      py_st <- super$get_python_class()$create_simplex_tree(
         max_alpha_square = max_alpha_square
       )
       private$m_ComputedSimplexTree <- TRUE
@@ -100,7 +103,6 @@ WitnessComplex <- R6::R6Class(
     }
   ),
   private = list(
-    m_PythonClass = NULL,
     m_ComputedSimplexTree = FALSE
   )
 )
@@ -159,8 +161,10 @@ StrongWitnessComplex <- R6::R6Class(
         margin = 1
       )
 
-      private$m_PythonClass <- gd$StrongWitnessComplex(
-        nearest_landmark_table = nearest_landmark_table
+      super$set_python_class(
+        gd$StrongWitnessComplex(
+          nearest_landmark_table = nearest_landmark_table
+        )
       )
     }
   )

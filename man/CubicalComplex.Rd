@@ -107,6 +107,9 @@ Other data structures for cell complexes:
 Pawel Dlotko
 }
 \concept{data structures for cell complexes}
+\section{Super class}{
+\code{rgudhi::PythonClass} -> \code{CubicalComplex}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -122,6 +125,14 @@ Pawel Dlotko
 \item \href{#method-CubicalComplex-clone}{\code{CubicalComplex$clone()}}
 }
 }
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CubicalComplex-new"></a>}}
 \if{latex}{\out{\hypertarget{method-CubicalComplex-new}{}}}

@@ -16,6 +16,7 @@
 #' @export
 AlphaComplex <- R6::R6Class(
   classname = "AlphaComplex",
+  inherit = PythonClass,
   public = list(
     #' @description `AlphaComplex` constructor.
     #'
@@ -40,10 +41,14 @@ AlphaComplex <- R6::R6Class(
     #' }
     initialize = function(points, precision = "safe") {
       if (inherits(points, "matrix") || inherits(points, "list"))
-        private$m_PythonClass <- gd$AlphaComplex(points = points)
+        super$set_python_class(
+          gd$AlphaComplex(
+            points = points
+          )
+        )
       else if (is.character(points) && fs::path_ext(points) == "off") {
         points <- read_off_file(points)
-        self$initialize(points = points)
+        self$initialize(points = points, precision = precision)
       }
       else
         cli::cli_abort("{.code points} must be either a matrix or a list or an OFF file.")
@@ -75,7 +80,7 @@ AlphaComplex <- R6::R6Class(
     #' }
     create_simplex_tree = function(max_alpha_square = Inf,
                                    default_filtration_value = FALSE) {
-      py_st <- private$m_PythonClass$create_simplex_tree(
+      py_st <- super$get_python_class()$create_simplex_tree(
         max_alpha_square = max_alpha_square,
         default_filtration_value = default_filtration_value
       )
@@ -105,11 +110,10 @@ AlphaComplex <- R6::R6Class(
     get_point = function(vertex) {
       if (!private$m_ComputedSimplexTree)
         cli::cli_abort("You first need to generate the simplex tree by calling the {.code $create_simplex_tree()} method.")
-      private$m_PythonClass$get_point(vertex)
+      super$get_python_class()$get_point(vertex)
     }
   ),
   private = list(
-    m_PythonClass = NULL,
     m_ComputedSimplexTree = FALSE
   )
 )

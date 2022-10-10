@@ -12,6 +12,7 @@
 #' @export
 RipsComplex <- R6::R6Class(
   classname = "RipsComplex",
+  inherit = PythonClass,
   public = list(
     #' @description `RipsComplex` constructor.
     #'
@@ -46,15 +47,19 @@ RipsComplex <- R6::R6Class(
       if (inherits(data, "matrix") || inherits(data, "list")) {
         if (is.null(max_edge_length))
           cli::cli_abort("You need to provide a value for the {.code max_edge_length} argument when using points as data input.")
-        private$m_PythonClass <- gd$RipsComplex(
-          points = data,
-          max_edge_length = max_edge_length,
-          sparse = sparse
+        super$set_python_class(
+          gd$RipsComplex(
+            points = data,
+            max_edge_length = max_edge_length,
+            sparse = sparse
+          )
         )
       } else if (inherits(data, "dist"))
-        private$m_PythonClass <- gd$RipsComplex(
-          distance_matrix = as.matrix(data),
-          sparse = sparse
+        super$set_python_class(
+          gd$RipsComplex(
+            distance_matrix = as.matrix(data),
+            sparse = sparse
+          )
         )
       else
         cli::cli_abort("{.code data} must be either a {.code matrix} or a {.code list} or a {.code dist} file.")
@@ -77,7 +82,7 @@ RipsComplex <- R6::R6Class(
     #'   st <- rc$create_simplex_tree(1)
     #' }
     create_simplex_tree = function(max_dimension) {
-      py_st <- private$m_PythonClass$create_simplex_tree(
+      py_st <- super$get_python_class()$create_simplex_tree(
         max_dimension = max_dimension
       )
       private$m_ComputedSimplexTree <- TRUE
@@ -87,7 +92,6 @@ RipsComplex <- R6::R6Class(
     }
   ),
   private = list(
-    m_PythonClass = NULL,
     m_ComputedSimplexTree = FALSE
   )
 )

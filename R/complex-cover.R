@@ -23,6 +23,7 @@
 #' @export
 CoverComplex <- R6::R6Class(
   classname = "CoverComplex",
+  inherit = PythonClass,
   public = list(
     #' @description `CoverComplex` constructor.
     #'
@@ -38,9 +39,10 @@ CoverComplex <- R6::R6Class(
     #' }
     initialize = function(type) {
       type <- match.arg(type, choices = c("GIC", "Nerve"))
-      private$m_PythonClass <- gd$CoverComplex()
-      private$m_PythonClass$set_type(type)
-
+      super$set_python_class(
+        gd$CoverComplex()
+      )
+      super$get_python_class()$set_type(type)
     },
 
     #' @description Computes the extended persistence diagram of the complex.
@@ -65,7 +67,7 @@ CoverComplex <- R6::R6Class(
     compute_PD = function() {
       if (!private$m_ComputedSimplicies)
         cli::cli_abort("You first need to run the {.code $find_simplicies()} method.")
-      private$m_PythonClass$compute_PD()
+      super$get_python_class()$compute_PD()
       private$m_ComputedPersistenceDiagram <- TRUE
       invisible(self)
     },
@@ -98,7 +100,7 @@ CoverComplex <- R6::R6Class(
     compute_confidence_level_from_distance = function(distance_threshold) {
       if (!private$m_ComputedBootstrapDistribution)
         cli::cli_abort("You first need to compute the bootstrap distribution using the {.code $compute_distribution()} method.")
-      private$m_PythonClass$compute_confidence_level_from_distance(distance_threshold)
+      super$get_python_class()$compute_confidence_level_from_distance(distance_threshold)
     },
 
     #' @description Computes the bottleneck distance threshold corresponding to
@@ -129,7 +131,7 @@ CoverComplex <- R6::R6Class(
     compute_distance_from_confidence_level = function(confidence_level) {
       if (!private$m_ComputedBootstrapDistribution)
         cli::cli_abort("You first need to compute the bootstrap distribution using the {.code $compute_distribution()} method.")
-      private$m_PythonClass$compute_distance_from_confidence_level(confidence_level)
+      super$get_python_class()$compute_distance_from_confidence_level(confidence_level)
     },
 
     #' @description Computes the distribution of distances via bootstrap.
@@ -161,7 +163,7 @@ CoverComplex <- R6::R6Class(
       if (!private$m_ComputedSimplicies)
         cli::cli_abort("You first need to run the {.code $find_simplicies()} method.")
       withr::with_dir(dir, {
-        private$m_PythonClass$compute_distribution(N)
+        super$get_python_class()$compute_distribution(N)
       })
       private$m_ComputedBootstrapDistribution <- TRUE
       invisible(self)
@@ -192,7 +194,7 @@ CoverComplex <- R6::R6Class(
     compute_p_value = function() {
       if (!private$m_ComputedBootstrapDistribution)
         cli::cli_abort("You first need to compute the bootstrap distribution using the {.code $compute_distribution()} method.")
-      private$m_PythonClass$compute_p_value()
+      super$get_python_class()$compute_p_value()
     },
 
     #' @return A \code{\link{SimplexTree}} object storing the simplex
@@ -207,7 +209,7 @@ CoverComplex <- R6::R6Class(
     #'     create_simplex_tree()
     #' }
     create_simplex_tree = function() {
-      py_st <- private$m_PythonClass$create_simplex_tree()
+      py_st <- super$get_python_class()$create_simplex_tree()
       private$m_ComputedSimplexTree <- TRUE
       SimplexTree$new(py_class = py_st)
     },
@@ -235,7 +237,7 @@ CoverComplex <- R6::R6Class(
         cli::cli_abort("You first need to register a cover to the class using one of the {.code $set_cover_*()} methods before calling the {.code $find_simplicies()} method.")
       if (private$m_IsCoverDefinedFromFunction && !private$m_IsResolutionDefined)
         cli::cli_abort("The cover has been registered from a function but the resolution seems not to have been set. Please call one of the {.code $set_resolution_*()} methods or the {.code $set_automatic_resolution()} method first.")
-      private$m_PythonClass$find_simplices()
+      super$get_python_class()$find_simplices()
       private$m_ComputedSimplicies <- TRUE
       invisible(self)
     },
@@ -269,7 +271,7 @@ CoverComplex <- R6::R6Class(
     #' }
     plot_dot = function(dir = getwd()) {
       withr::with_dir(dir, {
-        private$m_PythonClass$plot_dot()
+        super$get_python_class()$plot_dot()
       })
       invisible(self)
     },
@@ -305,7 +307,7 @@ CoverComplex <- R6::R6Class(
     #' }
     plot_off = function(dir = getwd()) {
       withr::with_dir(dir, {
-        private$m_PythonClass$plot_off()
+        super$get_python_class()$plot_off()
       })
       invisible(self)
     },
@@ -333,10 +335,10 @@ CoverComplex <- R6::R6Class(
       if (substr(off_file, 1, 5) == "https") {
         withr::with_tempfile("tf", {
           download_file(off_file, tf)
-          res <- private$m_PythonClass$read_point_cloud(tf)
+          res <- super$get_python_class()$read_point_cloud(tf)
         })
       } else
-        res <- private$m_PythonClass$read_point_cloud(off_file)
+        res <- super$get_python_class()$read_point_cloud(off_file)
       private$m_IsPointCloudDefined <- TRUE
       private$m_IsPointCloudDefinedFromOFF <- TRUE
       if (chainable) return(invisible(self))
@@ -377,7 +379,7 @@ CoverComplex <- R6::R6Class(
         cli::cli_abort("You first need to register a cover to the class using one of the {.code $set_cover_*()} methods.")
       if (!private$m_IsCoverDefinedFromFunction)
         cli::cli_abort("The cover must have been registered via the {.code $set_cover_from_function()} method.")
-      res <- private$m_PythonClass$set_automatic_resolution()
+      res <- super$get_python_class()$set_automatic_resolution()
       private$m_IsResolutionDefined <- TRUE
       if (chainable) return(invisible(self))
       res
@@ -404,7 +406,7 @@ CoverComplex <- R6::R6Class(
     set_color_from_coordinate = function(k = 0) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("Please first register a point cloud via either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} method.")
-      private$m_PythonClass$set_color_from_coordinate(k = k)
+      super$get_python_class()$set_color_from_coordinate(k = k)
       invisible(self)
     },
 
@@ -430,7 +432,7 @@ CoverComplex <- R6::R6Class(
     #'     set_color_from_file(cf)
     #' }
     set_color_from_file = function(color_file_name) {
-      private$m_PythonClass$set_color_from_file(color_file_name)
+      super$get_python_class()$set_color_from_file(color_file_name)
       invisible(self)
     },
 
@@ -453,7 +455,7 @@ CoverComplex <- R6::R6Class(
     #'     set_color_from_range(seq(0, 1, len = 100))
     #' }
     set_color_from_range = function(color_values) {
-      private$m_PythonClass$set_color_from_range(color_values)
+      super$get_python_class()$set_color_from_range(color_values)
       invisible(self)
     },
 
@@ -480,7 +482,7 @@ CoverComplex <- R6::R6Class(
     set_cover_from_Voronoi = function(m = 100L) {
       if (!private$m_IsGraphDefined)
         cli::cli_abort("You first need to register a graph to the class using one of the {.code $set_graph_*()} methods before calling any of the {.code $set_cover_*()} methods.")
-      private$m_PythonClass$set_cover_from_Voronoi(m = m)
+      super$get_python_class()$set_cover_from_Voronoi(m = m)
       private$m_IsCoverDefined <- TRUE
       private$m_IsCoverDefinedFromFunction <- FALSE
       invisible(self)
@@ -513,7 +515,7 @@ CoverComplex <- R6::R6Class(
     set_cover_from_file = function(cover_file_name) {
       if (!private$m_IsGraphDefined)
         cli::cli_abort("You first need to register a graph to the class using one of the {.code $set_graph_*()} methods before calling any of the {.code $set_cover_*()} methods.")
-      private$m_PythonClass$set_cover_from_file(cover_file_name)
+      super$get_python_class()$set_cover_from_file(cover_file_name)
       private$m_IsCoverDefined <- TRUE
       private$m_IsCoverDefinedFromFunction <- FALSE
       invisible(self)
@@ -541,7 +543,7 @@ CoverComplex <- R6::R6Class(
         cli::cli_abort("You first need to register a graph to the class using one of the {.code $set_graph_*()} methods before calling any of the {.code $set_cover_*()} methods.")
       if (!private$m_IsFunctionDefined)
         cli::cli_abort("You first need to register a function to the class using one of the {.code $set_function_*()} methods before calling the {.code $set_cover_from_function()} method.")
-      private$m_PythonClass$set_cover_from_function()
+      super$get_python_class()$set_cover_from_function()
       private$m_IsCoverDefined <- TRUE
       private$m_IsCoverDefinedFromFunction <- TRUE
       invisible(self)
@@ -565,7 +567,7 @@ CoverComplex <- R6::R6Class(
         distance_matrix <- as.matrix(distance_matrix)
       if (!is.matrix(distance_matrix))
         cli::cli_abort("The input should be either a matrix or an object of class {.code dist}.")
-      private$m_PythonClass$set_distances_from_range(distance_matrix)
+      super$get_python_class()$set_distances_from_range(distance_matrix)
       invisible(self)
     },
 
@@ -589,7 +591,7 @@ CoverComplex <- R6::R6Class(
     set_function_from_coordinate = function(k = 0L) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("Please first register a point cloud via either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} method.")
-      private$m_PythonClass$set_function_from_coordinate(k)
+      super$get_python_class()$set_function_from_coordinate(k)
       private$m_IsFunctionDefined <- TRUE
       invisible(self)
     },
@@ -616,7 +618,7 @@ CoverComplex <- R6::R6Class(
     #'     set_function_from_file(ff)
     #' }
     set_function_from_file = function(func_file_name) {
-      private$m_PythonClass$set_function_from_file(func_file_name)
+      super$get_python_class()$set_function_from_file(func_file_name)
       private$m_IsFunctionDefined <- TRUE
       invisible(self)
     },
@@ -639,7 +641,7 @@ CoverComplex <- R6::R6Class(
     #'     set_function_from_range(seq(0, 1, len = 100))
     #' }
     set_function_from_range = function(function_values) {
-      private$m_PythonClass$set_function_from_range(function_values)
+      super$get_python_class()$set_function_from_range(function_values)
       private$m_IsFunctionDefined <- TRUE
       invisible(self)
     },
@@ -656,7 +658,7 @@ CoverComplex <- R6::R6Class(
     #'   cc$set_gain()
     #' }
     set_gain = function(g = 0.3) {
-      private$m_PythonClass$set_gain(g = g)
+      super$get_python_class()$set_gain(g = g)
       invisible(self)
     },
 
@@ -678,7 +680,7 @@ CoverComplex <- R6::R6Class(
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
       if (!private$m_IsPointCloudDefinedFromOFF)
         cli::cli_abort("This method attempts to re-use the OFF file given for registering the point cloud but the point cloud has not been set via an OFF file. Please call the {.code $read_point_cloud()} method first.")
-      private$m_PythonClass$set_graph_from_OFF()
+      super$get_python_class()$set_graph_from_OFF()
       private$m_IsGraphDefined <- TRUE
       invisible(self)
     },
@@ -714,7 +716,7 @@ CoverComplex <- R6::R6Class(
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
       if (private$m_IsGraphDefinedFromAutomaticRips)
         return(invisible(self))
-      res <- private$m_PythonClass$set_graph_from_automatic_rips(N)
+      res <- super$get_python_class()$set_graph_from_automatic_rips(N)
       private$m_IsGraphDefined <- TRUE
       private$m_IsGraphDefinedFromAutomaticRips <- TRUE
       if (chainable) return(invisible(self))
@@ -745,7 +747,7 @@ CoverComplex <- R6::R6Class(
     set_graph_from_file = function(graph_file_name) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
-      private$m_PythonClass$set_graph_from_file(graph_file_name)
+      super$get_python_class()$set_graph_from_file(graph_file_name)
       private$m_IsGraphDefined <- TRUE
       invisible(self)
     },
@@ -768,7 +770,7 @@ CoverComplex <- R6::R6Class(
     set_graph_from_rips = function(threshold) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
-      private$m_PythonClass$set_graph_from_rips(threshold)
+      super$get_python_class()$set_graph_from_rips(threshold)
       private$m_IsGraphDefined <- TRUE
       invisible(self)
     },
@@ -800,7 +802,7 @@ CoverComplex <- R6::R6Class(
     set_mask = function(nodemask) {
       if (!private$m_ComputedSimplicies)
         cli::cli_abort("You need to first run the {.code $find_simplicies()} method before calling the {.code $set_mask()} method.")
-      private$m_PythonClass$set_mask(nodemask)
+      super$get_python_class()$set_mask(nodemask)
       private$m_ComputedBootstrapDistribution <- FALSE
       invisible(self)
     },
@@ -826,7 +828,7 @@ CoverComplex <- R6::R6Class(
     #'     set_point_cloud_from_range(X)
     #' }
     set_point_cloud_from_range = function(cloud) {
-      private$m_PythonClass$set_point_cloud_from_range(cloud)
+      super$get_python_class()$set_point_cloud_from_range(cloud)
       private$m_IsPointCloudDefined <- TRUE
       private$m_IsPointCloudDefinedFromOFF <- FALSE
       invisible(self)
@@ -850,7 +852,7 @@ CoverComplex <- R6::R6Class(
     #'     set_resolution_with_interval_length(1)
     #' }
     set_resolution_with_interval_length = function(resolution) {
-      private$m_PythonClass$set_resolution_with_interval_length(resolution)
+      super$get_python_class()$set_resolution_with_interval_length(resolution)
       private$m_IsResolutionDefined <- TRUE
       invisible(self)
     },
@@ -873,7 +875,7 @@ CoverComplex <- R6::R6Class(
     #'     set_resolution_with_interval_number(100)
     #' }
     set_resolution_with_interval_number = function(resolution) {
-      private$m_PythonClass$set_resolution_with_interval_number(resolution)
+      super$get_python_class()$set_resolution_with_interval_number(resolution)
       private$m_IsResolutionDefined <- TRUE
       invisible(self)
     },
@@ -896,7 +898,7 @@ CoverComplex <- R6::R6Class(
     #'   cc$set_subsampling(constant = 0, power = 1)
     #' }
     set_subsampling = function(constant, power) {
-      private$m_PythonClass$set_subsampling(
+      super$get_python_class()$set_subsampling(
         constant = constant,
         power = power
       )
@@ -917,7 +919,7 @@ CoverComplex <- R6::R6Class(
     #'   cc$set_verbose(FALSE)
     #' }
     set_verbose = function(verbose = FALSE) {
-      private$m_PythonClass$set_verbose(verbose)
+      super$get_python_class()$set_verbose(verbose)
       invisible(self)
     },
 
@@ -945,7 +947,7 @@ CoverComplex <- R6::R6Class(
     #'     subpopulation(0)
     #' }
     subpopulation = function(node_id) {
-      private$m_PythonClass$subpopulation(node_id)
+      super$get_python_class()$subpopulation(node_id)
     },
 
     #' @description Creates a `.txt` file called `_sc.txt` describing the
@@ -976,13 +978,12 @@ CoverComplex <- R6::R6Class(
     #' }
     write_info = function(dir = getwd()) {
       withr::with_dir(dir, {
-        private$m_PythonClass$write_info()
+        super$get_python_class()$write_info()
       })
       invisible(self)
     }
   ),
   private = list(
-    m_PythonClass = NULL,
     m_ComputedPersistenceDiagram = FALSE,
     m_ComputedBootstrapDistribution = FALSE,
     m_ComputedSimplexTree = FALSE,

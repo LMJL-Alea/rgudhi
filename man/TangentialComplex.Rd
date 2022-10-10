@@ -160,6 +160,9 @@ Other filtrations and reconstructions:
 Clément Jamin
 }
 \concept{filtrations and reconstructions}
+\section{Super class}{
+\code{rgudhi::PythonClass} -> \code{TangentialComplex}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -175,6 +178,14 @@ Clément Jamin
 \item \href{#method-TangentialComplex-clone}{\code{TangentialComplex$clone()}}
 }
 }
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-TangentialComplex-new"></a>}}
 \if{latex}{\out{\hypertarget{method-TangentialComplex-new}{}}}

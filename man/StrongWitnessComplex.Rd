@@ -36,8 +36,8 @@ if (reticulate::py_module_available("gudhi")) {
   wc
 }
 }
-\section{Super class}{
-\code{\link[rgudhi:WitnessComplex]{rgudhi::WitnessComplex}} -> \code{StrongWitnessComplex}
+\section{Super classes}{
+\code{rgudhi::PythonClass} -> \code{\link[rgudhi:WitnessComplex]{rgudhi::WitnessComplex}} -> \code{StrongWitnessComplex}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -49,6 +49,8 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{
 <details open><summary>Inherited methods</summary>
 <ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="WitnessComplex" data-id="create_simplex_tree"><a href='../../rgudhi/html/WitnessComplex.html#method-WitnessComplex-create_simplex_tree'><code>rgudhi::WitnessComplex$create_simplex_tree()</code></a></span></li>
 </ul>
 </details>

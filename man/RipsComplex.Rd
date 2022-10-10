@@ -58,6 +58,9 @@ Clément Maria, Pawel Dlotko, Vincent Rouvreau, Marc Glisse, Yuichi
 Ike
 }
 \concept{filtrations and reconstructions}
+\section{Super class}{
+\code{rgudhi::PythonClass} -> \code{RipsComplex}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -66,6 +69,14 @@ Ike
 \item \href{#method-RipsComplex-clone}{\code{RipsComplex$clone()}}
 }
 }
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RipsComplex-new"></a>}}
 \if{latex}{\out{\hypertarget{method-RipsComplex-new}{}}}

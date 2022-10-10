@@ -73,6 +73,9 @@ Other filtrations and reconstructions:
 Vincent Rouvreau
 }
 \concept{filtrations and reconstructions}
+\section{Super class}{
+\code{rgudhi::PythonClass} -> \code{AlphaComplex}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -82,6 +85,14 @@ Vincent Rouvreau
 \item \href{#method-AlphaComplex-clone}{\code{AlphaComplex$clone()}}
 }
 }
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AlphaComplex-new"></a>}}
 \if{latex}{\out{\hypertarget{method-AlphaComplex-new}{}}}

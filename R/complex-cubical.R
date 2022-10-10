@@ -17,6 +17,7 @@
 #' @export
 CubicalComplex <- R6::R6Class(
   classname = "CubicalComplex",
+  inherit = PythonClass,
   public = list(
     #' @description Constructor from either `top_dimensional_cells` (and
     #'   possibly `dimensions`) or from a Perseus-style file name.
@@ -50,25 +51,31 @@ CubicalComplex <- R6::R6Class(
           top_dimensional_cells = {
             dims <- dim(top_dimensional_cells)
             if (!rlang::is_null(dims)) {
-              private$m_PythonClass <- gd$CubicalComplex(
-                top_dimensional_cells = top_dimensional_cells
+              super$set_python_class(
+                gd$CubicalComplex(
+                  top_dimensional_cells = top_dimensional_cells
+                )
               )
             } else {
-              private$m_PythonClass <- gd$CubicalComplex(
-                dimensions = dimensions,
-                top_dimensional_cells = top_dimensional_cells
+              super$set_python_class(
+                gd$CubicalComplex(
+                  dimensions = dimensions,
+                  top_dimensional_cells = top_dimensional_cells
+                )
               )
             }
           },
           perseus_file = {
-            private$m_PythonClass <- gd$CubicalComplex(
-              perseus_file = perseus_file
+            super$set_python_class(
+              gd$CubicalComplex(
+                perseus_file = perseus_file
+              )
             )
           }
         )
       }
       else
-        private$m_PythonClass <- py_class
+        super$set_python_class(py_class)
     },
 
     #' @description This function returns the Betti numbers of the complex.
@@ -88,7 +95,7 @@ CubicalComplex <- R6::R6Class(
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$betti_numbers()
+      super$get_python_class()$betti_numbers()
     },
 
     #' @description A persistence interval is described by a pair of cells, one
@@ -134,7 +141,7 @@ CubicalComplex <- R6::R6Class(
     cofaces_of_persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$cofaces_of_persistence_pairs()
+      super$get_python_class()$cofaces_of_persistence_pairs()
     },
 
     #' @description This method computes the persistence of the complex, so it
@@ -146,7 +153,7 @@ CubicalComplex <- R6::R6Class(
     #' @return The updated \code{\link{CubicalComplex}} class itself invisibly.
     compute_persistence = function(homology_coeff_field = 11,
                                    min_persistence = 0.0) {
-      private$m_PythonClass$compute_persistence(
+      super$get_python_class()$compute_persistence(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence
       )
@@ -166,7 +173,7 @@ CubicalComplex <- R6::R6Class(
     #'   cc$dimension()
     #' }
     dimension = function() {
-      private$m_PythonClass$dimension()
+      super$get_python_class()$dimension()
     },
 
     #' @description This function returns the number of all cubes in the
@@ -182,7 +189,7 @@ CubicalComplex <- R6::R6Class(
     #'   cc$num_simplices()
     #' }
     num_simplices = function() {
-      private$m_PythonClass$num_simplices()
+      super$get_python_class()$num_simplices()
     },
 
     #' @description This function computes and returns the persistence of the
@@ -200,7 +207,7 @@ CubicalComplex <- R6::R6Class(
     #' }
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0) {
-      l <- private$m_PythonClass$persistence(
+      l <- super$get_python_class()$persistence(
         homology_coeff_field = homology_coeff_field,
         min_persistence = min_persistence
       )
@@ -240,7 +247,7 @@ CubicalComplex <- R6::R6Class(
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      M <- private$m_PythonClass$persistence_intervals_in_dimension(dimension)
+      M <- super$get_python_class()$persistence_intervals_in_dimension(dimension)
       colnames(M) <- c("birth", "death")
       tibble::as_tibble(M)
     },
@@ -265,14 +272,13 @@ CubicalComplex <- R6::R6Class(
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
-      private$m_PythonClass$persistent_betti_numbers(
+      super$get_python_class()$persistent_betti_numbers(
         from_value = from_value,
         to_value = to_value
       )
     }
   ),
   private = list(
-    m_PythonClass = NULL,
     m_ComputedPersistence = FALSE
   )
 )
@@ -332,27 +338,33 @@ PeriodicCubicalComplex <- R6::R6Class(
             if (length(periodic_dimensions) == 1)
               periodic_dimensions <- list(periodic_dimensions)
             if (!rlang::is_null(dims)) {
-              private$m_PythonClass <- gd$PeriodicCubicalComplex(
-                top_dimensional_cells = top_dimensional_cells,
-                periodic_dimensions = periodic_dimensions
+              super$set_python_class(
+                gd$PeriodicCubicalComplex(
+                  top_dimensional_cells = top_dimensional_cells,
+                  periodic_dimensions = periodic_dimensions
+                )
               )
             } else {
-              private$m_PythonClass <- gd$PeriodicCubicalComplex(
-                dimensions = dimensions,
-                top_dimensional_cells = top_dimensional_cells,
-                periodic_dimensions = periodic_dimensions
+              super$set_python_class(
+                gd$PeriodicCubicalComplex(
+                  dimensions = dimensions,
+                  top_dimensional_cells = top_dimensional_cells,
+                  periodic_dimensions = periodic_dimensions
+                )
               )
             }
           },
           perseus_file = {
-            private$m_PythonClass <- gd$PeriodicCubicalComplex(
-              perseus_file = perseus_file
+            super$set_python_class(
+              gd$PeriodicCubicalComplex(
+                perseus_file = perseus_file
+              )
             )
           }
         )
       }
       else
-        private$m_PythonClass <- py_class
+        super$set_python_class(py_class)
     }
   )
 )

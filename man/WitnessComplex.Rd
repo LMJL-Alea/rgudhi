@@ -73,6 +73,9 @@ Other filtrations and reconstructions:
 Siargey Kachanovich
 }
 \concept{filtrations and reconstructions}
+\section{Super class}{
+\code{rgudhi::PythonClass} -> \code{WitnessComplex}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -81,6 +84,14 @@ Siargey Kachanovich
 \item \href{#method-WitnessComplex-clone}{\code{WitnessComplex$clone()}}
 }
 }
+\if{html}{\out{
+<details open><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WitnessComplex-new"></a>}}
 \if{latex}{\out{\hypertarget{method-WitnessComplex-new}{}}}
