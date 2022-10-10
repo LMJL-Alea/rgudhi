@@ -15,26 +15,27 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true
+
+      - uses: actions/setup-python@v4
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::covr
           needs: coverage
 
-      - name: Install Miniconda
+      - name: Setup r-reticulate venv
+        shell: Rscript {0}
         run: |
-          Rscript -e 'reticulate::install_miniconda()'
-
-      - name: Setup Python dependencies
-        run: |
-          Rscript -e 'reticulate::conda_create("r-reticulate")'
-          Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
-          Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
+          reticulate::virtualenv_create("r-reticulate", Sys.which("python"))
+          reticulate::virtualenv_install("r-reticulate", "gudhi")
+          python <- reticulate::virtualenv_python("r-reticulate")
+          writeLines(sprintf("RETICULATE_PYTHON=%s", python),
+                     Sys.getenv("GITHUB_ENV"))
 
       - name: Test coverage
         run: covr::codecov(quiet = FALSE)

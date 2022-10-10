@@ -20,7 +20,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -32,16 +32,6 @@ jobs:
         with:
           extra-packages: any::pkgdown, local::.
           needs: website
-
-      - name: Install Miniconda
-        run: |
-          Rscript -e 'reticulate::install_miniconda()'
-
-      - name: Setup Python dependencies
-        run: |
-          Rscript -e 'reticulate::conda_create("r-reticulate")'
-          Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
-          Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)

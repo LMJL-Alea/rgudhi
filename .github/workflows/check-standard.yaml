@@ -18,18 +18,21 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release'}
-          - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-latest,   r: 'release'}
-          - {os: ubuntu-latest,   r: 'oldrel-1'}
+          - {os: macOS-latest  , r: 'release',  python: '3.9'}
+          - {os: windows-latest, r: 'release',  python: '3.9'}
+          - {os: ubuntu-latest , r: 'release',  python: '3.9'}
+          - {os: ubuntu-latest,  r: 'oldrel-1', python: '3.9'}
+          - {os: ubuntu-latest,  r: 'devel'   , python: '3.9', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  r: 'release',  python: '3.7'}
+          - {os: ubuntu-latest,  r: 'release',  python: '3.8'}
+          - {os: ubuntu-latest,  r: 'release',  python: '3.10'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -39,22 +42,23 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.config.python }}
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: Install Miniconda
-        shell: bash
+      - name: setup r-reticulate venv
+        shell: Rscript {0}
         run: |
-          Rscript -e 'reticulate::install_miniconda()'
-
-      - name: Setup Python dependencies
-        shell: bash
-        run: |
-          Rscript -e 'reticulate::conda_create("r-reticulate")'
-          Rscript -e 'reticulate::conda_install("matplotlib", envname = "r-reticulate")'
-          Rscript -e 'reticulate::conda_install("gudhi", envname = "r-reticulate")'
+          reticulate::virtualenv_create("r-reticulate", Sys.which("python"))
+          reticulate::virtualenv_install("r-reticulate", "gudhi")
+          python <- reticulate::virtualenv_python("r-reticulate")
+          writeLines(sprintf("RETICULATE_PYTHON=%s", python),
+                     Sys.getenv("GITHUB_ENV"))
 
       - uses: r-lib/actions/check-r-package@v2
         with:
