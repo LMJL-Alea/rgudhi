@@ -15,7 +15,7 @@ be applied on persistence diagrams.
 
 n <- 10
 X <- lapply(
-  seq(0, 2 * pi, len = n),
+  seq(0, 2 * pi, len = n + 1)[1:n],
   function(.x) c(cos(.x), sin(.x))
 )
 if (reticulate::py_module_available("gudhi")) {
@@ -70,7 +70,7 @@ A \code{\link{BirthPersistenceTransform}} object.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
 X <- lapply(
-  seq(0, 2 * pi, len = n),
+  seq(0, 2 * pi, len = n + 1)[1:n],
   function(.x) c(cos(.x), sin(.x))
 )
 if (reticulate::py_module_available("gudhi")) {
