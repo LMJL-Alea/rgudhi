@@ -35,12 +35,12 @@ SimplexTree <- R6::R6Class(
   classname = "SimplexTree",
   inherit = PythonClass,
   public = list(
-    #' @description `SimplexTree` constructor.
+    #' @description The [`SimplexTree`] class constructor.
     #'
     #' @param py_class A Python `SimplexTree` class object. Defaults to `NULL`
     #'   which uses the Python class constructor instead.
     #'
-    #' @return A new \code{\link{SimplexTree}} object.
+    #' @return A new [`SimplexTree`] object.
     #'
     #' @examples
     #' if (reticulate::py_module_available("gudhi")) {

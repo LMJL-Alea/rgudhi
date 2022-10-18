@@ -564,7 +564,7 @@ Clément Maria
 \if{html}{\out{<a id="method-SimplexTree-new"></a>}}
 \if{latex}{\out{\hypertarget{method-SimplexTree-new}{}}}
 \subsection{Method \code{new()}}{
-\code{SimplexTree} constructor.
+The \code{\link{SimplexTree}} class constructor.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SimplexTree$new(py_class = NULL)}\if{html}{\out{</div>}}
 }
