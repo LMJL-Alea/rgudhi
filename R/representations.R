@@ -16,9 +16,9 @@ RepresentationBaseClass <- R6::R6Class(
     #' @description Applies the class on a single persistence diagram and output
     #'   the result.
     apply = function(diag) {
-      print(diag)
-      print(super$apply(diag))
-      super$apply(diag) |>
+      diag |>
+        as.matrix() |>
+        super$apply() |>
         `colnames<-`(private$var_names) |>
         tibble::as_tibble()
     },
@@ -32,7 +32,9 @@ RepresentationBaseClass <- R6::R6Class(
 
     #' @description Applies the class on the persistence diagrams.
     transform = function(X) {
-      super$transform(X) |>
+      X |>
+        purrr::map(as.matrix) |>
+        super$transform() |>
         purrr::map(`colnames<-`, value = private$var_names) |>
         purrr::map(tibble::as_tibble)
     },
@@ -40,7 +42,9 @@ RepresentationBaseClass <- R6::R6Class(
     #' @description Applies sequentially the `$fit()` and `$transform()` methods
     #'   on the persistence diagrams.
     fit_transform = function(X, y = NULL) {
-      super$fit_transform(X, y) |>
+      X |>
+        purrr::map(as.matrix) |>
+        super$fit_transform(y) |>
         purrr::map(`colnames<-`, value = private$var_names) |>
         purrr::map(tibble::as_tibble)
     }
