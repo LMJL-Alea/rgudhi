@@ -16,7 +16,7 @@ Config/reticulate:
   list(
     packages = list(
       list(package = "scikit-learn"), 
-      list(package = "gudhi", pip = FALSE)
+      list(package = "gudhi")
     )
   )
 Imports: 
