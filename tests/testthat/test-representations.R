@@ -9,6 +9,7 @@ dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
 
 test_that("The BirthPersistenceTransform class works", {
   bpt <- BirthPersistenceTransform$new()
+  print(dgm)
   single_val <- bpt$apply(dgm)
   expect_true(inherits(single_val, "tbl_df"))
   expect_equal(ncol(single_val), 2)
