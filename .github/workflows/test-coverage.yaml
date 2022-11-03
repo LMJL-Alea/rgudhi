@@ -28,15 +28,15 @@ jobs:
           extra-packages: any::covr
           needs: coverage
 
-      - name: Setup r-reticulate venv
-        shell: Rscript {0}
-        run: |
-          reticulate::virtualenv_create("r-reticulate", Sys.which("python"))
-          reticulate::virtualenv_install("r-reticulate", "scikit-learn")
-          reticulate::virtualenv_install("r-reticulate", "gudhi")
-          python <- reticulate::virtualenv_python("r-reticulate")
-          writeLines(sprintf("RETICULATE_PYTHON=%s", python),
-                     Sys.getenv("GITHUB_ENV"))
+      # - name: Setup r-reticulate venv
+      #   shell: Rscript {0}
+      #   run: |
+      #     reticulate::virtualenv_create("r-reticulate", Sys.which("python"))
+      #     reticulate::virtualenv_install("r-reticulate", "scikit-learn")
+      #     reticulate::virtualenv_install("r-reticulate", "gudhi")
+      #     python <- reticulate::virtualenv_python("r-reticulate")
+      #     writeLines(sprintf("RETICULATE_PYTHON=%s", python),
+      #                Sys.getenv("GITHUB_ENV"))
 
       - name: Test coverage
         run: covr::codecov(quiet = FALSE)
