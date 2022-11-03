@@ -15,7 +15,7 @@ BugReports: https://github.com/lmjl-alea/rgudhi/issues
 Config/reticulate:
   list(
     packages = list(
-      list(package = "matplotlib"), 
+      list(package = "scikit-learn"), 
       list(package = "gudhi")
     )
   )

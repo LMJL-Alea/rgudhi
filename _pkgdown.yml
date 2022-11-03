@@ -4,15 +4,20 @@ template:
 
 reference:
   - title: Data structures for cell complexes
-    contents:
+  - contents:
     - CubicalComplex
     - PeriodicCubicalComplex
     - SimplexTree
   - title: Filtrations and reconstructions
-    contents:
+  - contents:
     - AlphaComplex
     - RipsComplex
     - WitnessComplex
     - StrongWitnessComplex
     - CoverComplex
     - TangentialComplex
+  - title: Representations
+  - subtitle: Preprocessing
+  - contents:
+    - BirthPersistenceTransform
+    - DiagramScaler
