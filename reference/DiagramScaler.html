@@ -70,9 +70,9 @@ given list of scalers, such as those included in <strong>scikit-learn</strong>.<
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href="PythonClass.html#method-set_python_class"><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="get_params"><a href="SKLearnClass.html#method-get_params"><code>rgudhi::SKLearnClass$get_params()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="set_params"><a href="SKLearnClass.html#method-set_params"><code>rgudhi::SKLearnClass$set_params()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="apply"><a href="RepresentationBaseClass.html#method-apply"><code>rgudhi::RepresentationBaseClass$apply()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="fit"><a href="RepresentationBaseClass.html#method-fit"><code>rgudhi::RepresentationBaseClass$fit()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="fit_transform"><a href="RepresentationBaseClass.html#method-fit_transform"><code>rgudhi::RepresentationBaseClass$fit_transform()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="get_value"><a href="RepresentationBaseClass.html#method-get_value"><code>rgudhi::RepresentationBaseClass$get_value()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="transform"><a href="RepresentationBaseClass.html#method-transform"><code>rgudhi::RepresentationBaseClass$transform()</code></a></span></li>
 </ul></details></p><hr><a id="method-DiagramScaler-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
@@ -117,7 +117,7 @@ Common scalers can be found in the <strong>scikit-learn</strong> library (such a
 <span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
 <span>  <span class="va">ds</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/DiagramScaler.html">DiagramScaler</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="va">ds</span><span class="op">$</span><span class="fu">get_value</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span>
+<span>  <span class="va">ds</span><span class="op">$</span><span class="fu">apply</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span>
 <span>  <span class="va">ds</span><span class="op">$</span><span class="fu">fit_transform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div><p></p></div>
 </div>
@@ -160,7 +160,7 @@ Common scalers can be found in the <strong>scikit-learn</strong> library (such a
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">ds</span> <span class="op">&lt;-</span> <span class="va">DiagramScaler</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">ds</span><span class="op">$</span><span class="fu">get_value</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">ds</span><span class="op">$</span><span class="fu">apply</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">ds</span><span class="op">$</span><span class="fu">fit_transform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
