@@ -43,7 +43,12 @@ RepresentationBaseClass <- R6::R6Class(
         purrr::map(tibble::as_tibble)
     }
   ),
-  private = list(var_names = NULL)
+  private = list(
+    var_names = NULL,
+    set_var_names = function(val) {
+      private$var_names <- val
+    }
+  )
 )
 
 #' Representation Module - Birth Persistence Transform
@@ -76,7 +81,7 @@ BirthPersistenceTransform <- R6::R6Class(
     #'   bpt$fit_transform(list(dgm))
     #' }
     initialize = function() {
-      private$var_names <- c("birth", "death - birth")
+      super$set_var_names(c("birth", "death - birth"))
       super$set_python_class(
         gdr$BirthPersistenceTransform()
       )
@@ -125,7 +130,7 @@ DiagramScaler <- R6::R6Class(
     #'   ds$fit_transform(list(dgm))
     #' }
     initialize = function(use = FALSE, scalers = list()) {
-      private$var_names <- c("birth", "death")
+      super$set_var_names(c("birth", "death"))
       super$set_python_class(
         gdr$DiagramScaler(use = use, scalers = scalers)
       )
