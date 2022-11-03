@@ -27,7 +27,9 @@ RepresentationBaseClass <- R6::R6Class(
     #'   do nothing in some cases but is useful when the class is included in a
     #'   **scikit-learn** pipeline.
     fit = function(X, y = NULL) {
-      super$fit(X, y)
+      X |>
+        purrr::map(as.matrix) |>
+        super$fit(y)
     },
 
     #' @description Applies the class on the persistence diagrams.
