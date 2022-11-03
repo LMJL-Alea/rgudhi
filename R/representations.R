@@ -44,10 +44,7 @@ RepresentationBaseClass <- R6::R6Class(
     }
   ),
   private = list(
-    var_names = NULL,
-    set_var_names = function(val) {
-      private$var_names <- val
-    }
+    var_names = NULL
   )
 )
 
@@ -81,9 +78,9 @@ BirthPersistenceTransform <- R6::R6Class(
     #'   bpt$fit_transform(list(dgm))
     #' }
     initialize = function() {
-      super$set_var_names(c("birth", "death - birth"))
+      private$var_names <- c("birth", "death - birth")
       super$set_python_class(
-        gdr$BirthPersistenceTransform()
+        gd$representations$BirthPersistenceTransform()
       )
     }
   )
@@ -130,9 +127,9 @@ DiagramScaler <- R6::R6Class(
     #'   ds$fit_transform(list(dgm))
     #' }
     initialize = function(use = FALSE, scalers = list()) {
-      super$set_var_names(c("birth", "death"))
+      private$var_names <- c("birth", "death")
       super$set_python_class(
-        gdr$DiagramScaler(use = use, scalers = scalers)
+        gd$representations$DiagramScaler(use = use, scalers = scalers)
       )
     }
   )
