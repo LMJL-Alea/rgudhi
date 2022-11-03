@@ -16,7 +16,8 @@ RepresentationBaseClass <- R6::R6Class(
     #' @description Applies the class on a single persistence diagram and output
     #'   the result.
     apply = function(diag) {
-      print(private$var_names)
+      print(diag)
+      print(super$apply(diag))
       super$apply(diag) |>
         `colnames<-`(private$var_names) |>
         tibble::as_tibble()
