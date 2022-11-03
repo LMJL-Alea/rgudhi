@@ -23,7 +23,7 @@ if (reticulate::py_module_available("gudhi")) {
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
   bpt <- BirthPersistenceTransform$new()
-  bpt$get_value(dgm)
+  bpt$apply(dgm)
   bpt$fit_transform(list(dgm))
 }
 }
@@ -47,9 +47,9 @@ Mathieu Carrière
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="get_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-get_params'><code>rgudhi::SKLearnClass$get_params()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="set_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-set_params'><code>rgudhi::SKLearnClass$set_params()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="apply"><a href='../../rgudhi/html/RepresentationBaseClass.html#method-RepresentationBaseClass-apply'><code>rgudhi::RepresentationBaseClass$apply()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="fit"><a href='../../rgudhi/html/RepresentationBaseClass.html#method-RepresentationBaseClass-fit'><code>rgudhi::RepresentationBaseClass$fit()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="fit_transform"><a href='../../rgudhi/html/RepresentationBaseClass.html#method-RepresentationBaseClass-fit_transform'><code>rgudhi::RepresentationBaseClass$fit_transform()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="get_value"><a href='../../rgudhi/html/RepresentationBaseClass.html#method-RepresentationBaseClass-get_value'><code>rgudhi::RepresentationBaseClass$get_value()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="RepresentationBaseClass" data-id="transform"><a href='../../rgudhi/html/RepresentationBaseClass.html#method-RepresentationBaseClass-transform'><code>rgudhi::RepresentationBaseClass$transform()</code></a></span></li>
 </ul>
 </details>
@@ -78,7 +78,7 @@ if (reticulate::py_module_available("gudhi")) {
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
   bpt <- BirthPersistenceTransform$new()
-  bpt$get_value(dgm)
+  bpt$apply(dgm)
   bpt$fit_transform(list(dgm))
 }
 }

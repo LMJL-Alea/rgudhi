@@ -8,17 +8,8 @@ st <- ac$create_simplex_tree()
 dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
 
 test_that("The BirthPersistenceTransform class works", {
-  n <- 10
-  X <- lapply(
-    seq(0, 2 * pi, len = n + 1)[1:n],
-    function(.x) c(cos(.x), sin(.x))
-  )
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-
   bpt <- BirthPersistenceTransform$new()
-  single_val <- bpt$get_value(dgm)
+  single_val <- bpt$apply(dgm)
   expect_true(inherits(single_val, "tbl_df"))
   expect_equal(ncol(single_val), 2)
   expect_equal(names(single_val), c("birth", "death - birth"))
@@ -40,17 +31,8 @@ test_that("The BirthPersistenceTransform class works", {
 })
 
 test_that("The DiagramScaler class works", {
-  n <- 10
-  X <- lapply(
-    seq(0, 2 * pi, len = n + 1)[1:n],
-    function(.x) c(cos(.x), sin(.x))
-  )
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-
   ds <- DiagramScaler$new()
-  expect_equal(ds$get_value(dgm), dgm)
+  expect_equal(ds$apply(dgm), dgm)
   expect_equal(ds$transform(list(dgm)), list(dgm))
   expect_equal(ds$fit_transform(list(dgm)), list(dgm))
 })

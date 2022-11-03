@@ -18,7 +18,7 @@ Mathieu Carrière
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-RepresentationBaseClass-get_value}{\code{RepresentationBaseClass$get_value()}}
+\item \href{#method-RepresentationBaseClass-apply}{\code{RepresentationBaseClass$apply()}}
 \item \href{#method-RepresentationBaseClass-fit}{\code{RepresentationBaseClass$fit()}}
 \item \href{#method-RepresentationBaseClass-transform}{\code{RepresentationBaseClass$transform()}}
 \item \href{#method-RepresentationBaseClass-fit_transform}{\code{RepresentationBaseClass$fit_transform()}}
@@ -36,13 +36,13 @@ Mathieu Carrière
 </details>
 }}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-RepresentationBaseClass-get_value"></a>}}
-\if{latex}{\out{\hypertarget{method-RepresentationBaseClass-get_value}{}}}
-\subsection{Method \code{get_value()}}{
+\if{html}{\out{<a id="method-RepresentationBaseClass-apply"></a>}}
+\if{latex}{\out{\hypertarget{method-RepresentationBaseClass-apply}{}}}
+\subsection{Method \code{apply()}}{
 Applies the class on a single persistence diagram and output
 the result.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RepresentationBaseClass$get_value(diag)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RepresentationBaseClass$apply(diag)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

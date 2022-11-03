@@ -15,8 +15,8 @@ RepresentationBaseClass <- R6::R6Class(
   public = list(
     #' @description Applies the class on a single persistence diagram and output
     #'   the result.
-    get_value = function(diag) {
-      super$get_value(diag) |>
+    apply = function(diag) {
+      super$apply(diag) |>
         `colnames<-`(private$var_names) |>
         tibble::as_tibble()
     },
@@ -74,7 +74,7 @@ BirthPersistenceTransform <- R6::R6Class(
     #'   st <- ac$create_simplex_tree()
     #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
     #'   bpt <- BirthPersistenceTransform$new()
-    #'   bpt$get_value(dgm)
+    #'   bpt$apply(dgm)
     #'   bpt$fit_transform(list(dgm))
     #' }
     initialize = function() {
@@ -123,7 +123,7 @@ DiagramScaler <- R6::R6Class(
     #'   st <- ac$create_simplex_tree()
     #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
     #'   ds <- DiagramScaler$new()
-    #'   ds$get_value(dgm)
+    #'   ds$apply(dgm)
     #'   ds$fit_transform(list(dgm))
     #' }
     initialize = function(use = FALSE, scalers = list()) {

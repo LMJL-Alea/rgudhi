@@ -2,7 +2,7 @@ SKLearnClass <- R6::R6Class(
   classname = "SKLearnClass",
   inherit = PythonClass,
   public = list(
-    get_value = function(...) {
+    apply = function(...) {
       super$get_python_class()(...)
     },
     set_params = function(...) {
