@@ -21,3 +21,6 @@ reference:
   - contents:
     - BirthPersistenceTransform
     - DiagramScaler
+    - DiagramSelector
+    - Padding
+    - ProminentPoints

@@ -36,3 +36,27 @@ test_that("The DiagramScaler class works", {
   expect_equal(ds$transform(list(dgm)), list(dgm))
   expect_equal(ds$fit_transform(list(dgm)), list(dgm))
 })
+
+test_that("The DiagramSelector class works", {
+  ds <- DiagramSelector$new()
+  expect_equal(ds$apply(dgm), dgm)
+  expect_equal(ds$transform(list(dgm)), list(dgm))
+  expect_equal(ds$fit_transform(list(dgm)), list(dgm))
+})
+
+test_that("The Padding class works", {
+  pad <- Padding$new(use = TRUE)
+  dgm_padded <- dgm
+  dgm_padded$original <- 1
+  expect_equal(pad$apply(dgm), dgm_padded)
+  expect_equal(pad$transform(list(dgm)), list(dgm_padded))
+  expect_equal(pad$fit_transform(list(dgm)), list(dgm_padded))
+})
+
+test_that("The ProminentPoints class works", {
+  pp <- ProminentPoints$new(use = TRUE, threshold = 0.1)
+  dgm_expected <- tibble::tibble(birth = 0, death = Inf)
+  expect_equal(pp$apply(dgm), dgm_expected)
+  expect_equal(pp$transform(list(dgm)), list(dgm_expected))
+  expect_equal(pp$fit_transform(list(dgm)), list(dgm_expected))
+})

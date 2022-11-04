@@ -2,7 +2,7 @@
 % Please edit documentation in R/representations.R
 \name{BirthPersistenceTransform}
 \alias{BirthPersistenceTransform}
-\title{Representation Module - Birth Persistence Transform}
+\title{Birth Persistence Transform}
 \description{
 This is a class for the affine transformation \eqn{(x,y) \mapsto
   (x,y-x)} to be applied on persistence diagrams.
