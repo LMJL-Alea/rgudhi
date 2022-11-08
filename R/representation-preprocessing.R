@@ -1,62 +1,71 @@
-#' Representation Module - Abstract Base Class
+#' Preprocessing Step
 #'
-#' @param diag A [tibble::tibble] with two variables `birth` and `death`
-#'   specifying a persistence diagram.
-#' @param X A list of [tibble::tibble]s specifying a sample of persistence
-#'   diagrams.
+#' @param diag A numeric array of shape \eqn{[\dots \times 2]} specifying a
+#'   persistence diagram.
+#' @param X A list of numeric arrays of shape \eqn{[\dots \times 2]} specifying
+#'   a sample of persistence diagrams.
 #' @param y An integer vector specifying persistence diagram labels (unused for
 #'   now).
 #'
 #' @author Mathieu Carrière
 #' @keywords internal
-RepresentationBaseClass <- R6::R6Class(
-  classname = "RepresentationBaseClass",
+PreprocessingStep <- R6::R6Class(
+  classname = "PreprocessingStep",
   inherit = SKLearnClass,
   public = list(
-    #' @description Applies the class on a single persistence diagram and output
-    #'   the result.
+    #' @description Applies the class on a single persistence diagram and
+    #'   outputs the result.
+    #'
+    #' @return A numeric array of shape \eqn{[\dots \times 2]} storing the
+    #'   preprocessed persistence diagram.
     apply = function(diag) {
       diag |>
         as.matrix() |>
         super$apply() |>
-        `colnames<-`(private$var_names) |>
-        tibble::as_tibble()
+        private$convert_output()
     },
 
-    #' @description Fits the class on a list of persistence diagrams. It might
-    #'   do nothing in some cases but is useful when the class is included in a
-    #'   **scikit-learn** pipeline.
+    #' @description Fits the class on a sample of persistence diagrams.
+    #'
+    #' @return The class itself invisibly.
     fit = function(X, y = NULL) {
       X |>
         purrr::map(as.matrix) |>
         super$fit(y)
+      invisible(self)
     },
 
-    #' @description Applies the class on the persistence diagrams.
+    #' @description Applies the class on a sample of persistence diagrams.
     transform = function(X) {
       X |>
         purrr::map(as.matrix) |>
         super$transform() |>
-        purrr::map(`colnames<-`, value = private$var_names) |>
-        purrr::map(tibble::as_tibble)
+        private$convert_output()
     },
 
     #' @description Applies sequentially the `$fit()` and `$transform()` methods
-    #'   on the persistence diagrams.
+    #'   on a sample of persistence diagrams in a more efficient way than
+    #'   calling them directly.
     fit_transform = function(X, y = NULL) {
+      X <- purrr::map(X, as.matrix)
+      super$fit(X, y)
       X |>
-        purrr::map(as.matrix) |>
-        super$fit_transform(y) |>
-        purrr::map(`colnames<-`, value = private$var_names) |>
-        purrr::map(tibble::as_tibble)
+        super$transform() |>
+        private$convert_output()
     }
   ),
   private = list(
-    var_names = NULL
+    variable_names = NULL,
+    convert_output = function(x) {
+      if (is.list(x)) purrr::map(x, private$convert_output)
+      x |>
+        `colnames<-`(value = private$variable_names) |>
+        tibble::as_tibble()
+    }
   )
 )
 
-#' Birth Persistence Transform
+#' Preprocessing Birth Persistence Transform Step
 #'
 #' @description This is a class for the affine transformation \eqn{(x,y) \mapsto
 #'   (x,y-x)} to be applied on persistence diagrams.
@@ -65,7 +74,7 @@ RepresentationBaseClass <- R6::R6Class(
 #' @export
 BirthPersistenceTransform <- R6::R6Class(
   classname = "BirthPersistenceTransform",
-  inherit = RepresentationBaseClass,
+  inherit = PreprocessingStep,
   public = list(
     #' @description The [`BirthPersistenceTransform`] constructor.
     #'
@@ -86,7 +95,7 @@ BirthPersistenceTransform <- R6::R6Class(
     #'   bpt$fit_transform(list(dgm))
     #' }
     initialize = function() {
-      private$var_names <- c("birth", "death - birth")
+      private$variable_names <- c("birth", "death - birth")
       super$set_python_class(
         gd$representations$BirthPersistenceTransform()
       )
@@ -94,7 +103,7 @@ BirthPersistenceTransform <- R6::R6Class(
   )
 )
 
-#' Diagram Scaler
+#' Preprocessing Diagram Scaler Step
 #'
 #' @description This is a class for preprocessing persistence diagrams with a
 #'   given list of scalers, such as those included in **scikit-learn**.
@@ -103,7 +112,7 @@ BirthPersistenceTransform <- R6::R6Class(
 #' @export
 DiagramScaler <- R6::R6Class(
   classname = "DiagramScaler",
-  inherit = RepresentationBaseClass,
+  inherit = PreprocessingStep,
   public = list(
     #' @description The [`DiagramScaler`] constructor.
     #'
@@ -135,7 +144,7 @@ DiagramScaler <- R6::R6Class(
     #'   ds$fit_transform(list(dgm))
     #' }
     initialize = function(use = FALSE, scalers = list()) {
-      private$var_names <- c("birth", "death")
+      private$variable_names <- c("birth", "death")
       super$set_python_class(
         gd$representations$DiagramScaler(use = use, scalers = scalers)
       )
@@ -143,7 +152,7 @@ DiagramScaler <- R6::R6Class(
   )
 )
 
-#' Diagram Selector
+#' Preprocessing Diagram Selector Step
 #'
 #' @description This is a class for extracting finite or essential points in
 #'   persistence diagrams.
@@ -152,7 +161,7 @@ DiagramScaler <- R6::R6Class(
 #' @export
 DiagramSelector <- R6::R6Class(
   classname = "DiagramSelector",
-  inherit = RepresentationBaseClass,
+  inherit = PreprocessingStep,
   public = list(
     #' @description The [`DiagramSelector`] constructor.
     #'
@@ -183,7 +192,7 @@ DiagramSelector <- R6::R6Class(
     #' }
     initialize = function(use = FALSE, limit = Inf, point_type = c("finite", "essential")) {
       point_type <- rlang::arg_match(point_type)
-      private$var_names <- c("birth", "death")
+      private$variable_names <- c("birth", "death")
       super$set_python_class(
         gd$representations$DiagramSelector(
           use = use,
@@ -195,7 +204,7 @@ DiagramSelector <- R6::R6Class(
   )
 )
 
-#' Padding
+#' Preprocessing Padding Step
 #'
 #' @description This is a class for padding a list of persistence diagrams with
 #'   dummy points, so that all persistence diagrams end up with the same number
@@ -205,7 +214,7 @@ DiagramSelector <- R6::R6Class(
 #' @export
 Padding <- R6::R6Class(
   classname = "Padding",
-  inherit = RepresentationBaseClass,
+  inherit = PreprocessingStep,
   public = list(
     #' @description The [`Padding`] constructor.
     #'
@@ -229,10 +238,7 @@ Padding <- R6::R6Class(
     #'   ds$fit_transform(list(dgm))
     #' }
     initialize = function(use = FALSE) {
-      if (use)
-        private$var_names <- c("birth", "death", "original")
-      else
-        private$var_names <- c("birth", "death")
+      private$variable_names <- if (use) c("birth", "death", "original") else c("birth", "death")
       super$set_python_class(
         gd$representations$Padding(use = use)
       )
@@ -240,7 +246,7 @@ Padding <- R6::R6Class(
   )
 )
 
-#' Prominent Points
+#' Preprocessing Prominent Points Step
 #'
 #' @description This is a class or removing points that are close or far from
 #'   the diagonal in persistence diagrams. If persistence diagrams are 2-column
@@ -254,7 +260,7 @@ Padding <- R6::R6Class(
 #' @export
 ProminentPoints <- R6::R6Class(
   classname = "ProminentPoints",
-  inherit = RepresentationBaseClass,
+  inherit = PreprocessingStep,
   public = list(
     #' @description The [`ProminentPoints`] constructor.
     #'
@@ -293,7 +299,7 @@ ProminentPoints <- R6::R6Class(
     initialize = function(use = FALSE, num_pts = 10, threshold = - 1, location = c("upper", "lower")) {
       num_pts <- as.integer(num_pts)
       location <- rlang::arg_match(location)
-      private$var_names <- c("birth", "death")
+      private$variable_names <- c("birth", "death")
       super$set_python_class(
         gd$representations$ProminentPoints(
           use = use,

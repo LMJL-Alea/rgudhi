@@ -16,11 +16,20 @@ reference:
     - StrongWitnessComplex
     - CoverComplex
     - TangentialComplex
-  - title: Representations
-  - subtitle: Preprocessing
+  - title: Recipes for persistence diagrams
+  - subtitle: Preprocessing steps
   - contents:
     - BirthPersistenceTransform
     - DiagramScaler
     - DiagramSelector
     - Padding
     - ProminentPoints
+  - subtitle: Vector representations
+  - contents:
+    - BettiCurve
+    - ComplexPolynomial
+    - Entropy
+    - Landscape
+    - PersistentImage
+    - Silhouette
+    - TopologicalVector
