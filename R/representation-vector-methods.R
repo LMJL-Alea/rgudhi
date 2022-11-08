@@ -62,7 +62,6 @@ VectorRepresentationStep <- R6::R6Class(
     }
   ),
   private = list(
-    variable_names = NULL,
     convert_output = function(x) {
       if (is.list(x)) purrr::map(x, private$convert_output)
       repr_values <- if (length(dim(x)) == 1) x else purrr::array_tree(x, margin = 2)

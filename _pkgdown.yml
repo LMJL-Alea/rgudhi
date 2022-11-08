@@ -16,8 +16,8 @@ reference:
     - StrongWitnessComplex
     - CoverComplex
     - TangentialComplex
-  - title: Recipes for persistence diagrams
-  - subtitle: Preprocessing steps
+  - title: Samples of persistence diagrams
+  - subtitle: Preprocessing
   - contents:
     - BirthPersistenceTransform
     - DiagramScaler
@@ -33,3 +33,6 @@ reference:
     - PersistentImage
     - Silhouette
     - TopologicalVector
+  - subtitle: Kernel representations
+  - contents:
+    - PersistenceFisherKernel
