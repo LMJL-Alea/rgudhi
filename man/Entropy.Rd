@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-vector-methods.R
 \name{Entropy}
 \alias{Entropy}
-\title{Vector Representation Entropy}
+\title{Vector Representation: Entropy}
 \description{
 Computes persistence entropy. Persistence entropy is a statistic
 for persistence diagrams inspired from Shannon entropy. This statistic can

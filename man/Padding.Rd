@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-preprocessing.R
 \name{Padding}
 \alias{Padding}
-\title{Preprocessing Padding Step}
+\title{Preprocessing: Padding}
 \description{
 This is a class for padding a list of persistence diagrams with
 dummy points, so that all persistence diagrams end up with the same number

@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-vector-methods.R
 \name{TopologicalVector}
 \alias{TopologicalVector}
-\title{Vector Representation Topological Vector}
+\title{Vector Representation: Topological Vector}
 \description{
 Computes topological vectors from a list of persistence
 diagrams. The topological vector associated to a persistence diagram is the

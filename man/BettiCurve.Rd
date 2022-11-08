@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-vector-methods.R
 \name{BettiCurve}
 \alias{BettiCurve}
-\title{Vector Representation Betti Curve}
+\title{Vector Representation: Betti Curve}
 \description{
 Computes Betti curves from persistence diagrams. There are
 several modes of operation: with a given resolution (with or without a

@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-vector-methods.R
 \name{PersistenceImage}
 \alias{PersistenceImage}
-\title{Vector Representation Persistence Image}
+\title{Vector Representation: Persistence Image}
 \description{
 Computes persistence images from a list of persistence diagrams.
 A persistence image is a 2D function computed from a persistence diagram by

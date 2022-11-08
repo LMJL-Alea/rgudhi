@@ -1,9 +1,8 @@
 #' Preprocessing Step
 #'
-#' @param diag A numeric array of shape \eqn{[\dots \times 2]} specifying a
-#'   persistence diagram.
-#' @param X A list of numeric arrays of shape \eqn{[\dots \times 2]} specifying
-#'   a sample of persistence diagrams.
+#' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+#' @param X A list of 2-column [tibble::tibble]s specifying a sample of
+#'   persistence diagrams.
 #' @param y An integer vector specifying persistence diagram labels (unused for
 #'   now).
 #'
@@ -16,8 +15,8 @@ PreprocessingStep <- R6::R6Class(
     #' @description Applies the class on a single persistence diagram and
     #'   outputs the result.
     #'
-    #' @return A numeric array of shape \eqn{[\dots \times 2]} storing the
-    #'   preprocessed persistence diagram.
+    #' @return A 2-column [tibble::tibble] storing the preprocessed persistence
+    #'   diagram.
     apply = function(diag) {
       diag |>
         as.matrix() |>
@@ -36,6 +35,9 @@ PreprocessingStep <- R6::R6Class(
     },
 
     #' @description Applies the class on a sample of persistence diagrams.
+    #'
+    #' @return A list of 2-column [tibble::tibble]s storing the preprocessed
+    #'   persistence diagrams.
     transform = function(X) {
       X |>
         purrr::map(as.matrix) |>
@@ -46,6 +48,9 @@ PreprocessingStep <- R6::R6Class(
     #' @description Applies sequentially the `$fit()` and `$transform()` methods
     #'   on a sample of persistence diagrams in a more efficient way than
     #'   calling them directly.
+    #'
+    #' @return A list of 2-column [tibble::tibble]s storing the preprocessed
+    #'   persistence diagrams.
     fit_transform = function(X, y = NULL) {
       X <- purrr::map(X, as.matrix)
       super$fit(X, y)
@@ -65,7 +70,7 @@ PreprocessingStep <- R6::R6Class(
   )
 )
 
-#' Preprocessing Birth Persistence Transform Step
+#' Preprocessing: Birth Persistence Transform
 #'
 #' @description This is a class for the affine transformation \eqn{(x,y) \mapsto
 #'   (x,y-x)} to be applied on persistence diagrams.
@@ -103,7 +108,7 @@ BirthPersistenceTransform <- R6::R6Class(
   )
 )
 
-#' Preprocessing Diagram Scaler Step
+#' Preprocessing: Diagram Scaler
 #'
 #' @description This is a class for preprocessing persistence diagrams with a
 #'   given list of scalers, such as those included in **scikit-learn**.
@@ -152,7 +157,7 @@ DiagramScaler <- R6::R6Class(
   )
 )
 
-#' Preprocessing Diagram Selector Step
+#' Preprocessing: Diagram Selector
 #'
 #' @description This is a class for extracting finite or essential points in
 #'   persistence diagrams.
@@ -204,7 +209,7 @@ DiagramSelector <- R6::R6Class(
   )
 )
 
-#' Preprocessing Padding Step
+#' Preprocessing: Padding
 #'
 #' @description This is a class for padding a list of persistence diagrams with
 #'   dummy points, so that all persistence diagrams end up with the same number
@@ -246,7 +251,7 @@ Padding <- R6::R6Class(
   )
 )
 
-#' Preprocessing Prominent Points Step
+#' Preprocessing: Prominent Points
 #'
 #' @description This is a class or removing points that are close or far from
 #'   the diagonal in persistence diagrams. If persistence diagrams are 2-column

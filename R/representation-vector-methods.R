@@ -1,9 +1,8 @@
 #' Vector Representation Step
 #'
-#' @param diag A numeric array of shape \eqn{[\dots \times 2]} specifying a
-#'   persistence diagram.
-#' @param X A list of numeric arrays of shape \eqn{[\dots \times 2]} specifying
-#'   a sample of persistence diagrams.
+#' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+#' @param X A list of 2-column [tibble::tibble]s specifying a sample of
+#'   persistence diagrams.
 #' @param y An integer vector specifying persistence diagram labels (unused for
 #'   now).
 #'
@@ -16,15 +15,9 @@ VectorRepresentationStep <- R6::R6Class(
     #' @description Applies the class on a single persistence diagram and
     #'   outputs the result.
     #'
-    #' @return A numeric array of shape \eqn{[\dots \times 2]} storing the
-    #'   preprocessed persistence diagram.
+    #' @return A [tibble::tibble] storing the requested vector representation of
+    #'   the persistence diagram in a table suitable for visualization.
     apply = function(diag) {
-      py_cls <- super$get_python_class()
-      if ("sample_range" %in% names(py_cls)) {
-        if (anyNA(py_cls$sample_range))
-          self$fit(list(diag))
-      }
-
       diag |>
         as.matrix() |>
         super$apply() |>
@@ -42,6 +35,10 @@ VectorRepresentationStep <- R6::R6Class(
     },
 
     #' @description Applies the class on a sample of persistence diagrams.
+    #'
+    #' @return A list of [tibble::tibble]s storing the requested vector
+    #'   representations of the persistence diagrams in a table suitable for
+    #'   visualization.
     transform = function(X) {
       X |>
         purrr::map(as.matrix) |>
@@ -52,6 +49,10 @@ VectorRepresentationStep <- R6::R6Class(
     #' @description Applies sequentially the `$fit()` and `$transform()` methods
     #'   on a sample of persistence diagrams in a more efficient way than
     #'   calling them directly.
+    #'
+    #' @return A list of [tibble::tibble]s storing the requested vector
+    #'   representations of the persistence diagrams in a table suitable for
+    #'   visualization.
     fit_transform = function(X, y = NULL) {
       X <- purrr::map(X, as.matrix)
       super$fit(X, y)
@@ -109,7 +110,7 @@ VectorRepresentationStep <- R6::R6Class(
   )
 )
 
-#' Vector Representation Betti Curve
+#' Vector Representation: Betti Curve
 #'
 #' @description Computes Betti curves from persistence diagrams. There are
 #'   several modes of operation: with a given resolution (with or without a
@@ -175,7 +176,7 @@ BettiCurve <- R6::R6Class(
   )
 )
 
-#' Vector Representation Complex Polynomial
+#' Vector Representation: Complex Polynomial
 #'
 #' @description Computes complex polynomials from a list of persistence
 #'   diagrams. The persistence diagram points are seen as the roots of some
@@ -232,7 +233,7 @@ ComplexPolynomial <- R6::R6Class(
   )
 )
 
-#' Vector Representation Entropy
+#' Vector Representation: Entropy
 #'
 #' @description Computes persistence entropy. Persistence entropy is a statistic
 #'   for persistence diagrams inspired from Shannon entropy. This statistic can
@@ -298,7 +299,7 @@ Entropy <- R6::R6Class(
   )
 )
 
-#' Vector Representation Landscape
+#' Vector Representation: Landscape
 #'
 #' @description Computes persistence landscapes from a list of persistence
 #'   diagrams. A persistence landscape is a collection of 1D piecewise-linear
@@ -357,7 +358,7 @@ Landscape <- R6::R6Class(
   )
 )
 
-#' Vector Representation Persistence Image
+#' Vector Representation: Persistence Image
 #'
 #' @description Computes persistence images from a list of persistence diagrams.
 #'   A persistence image is a 2D function computed from a persistence diagram by
@@ -422,7 +423,7 @@ PersistenceImage <- R6::R6Class(
   )
 )
 
-#' Vector Representation Silhouette
+#' Vector Representation: Silhouette
 #'
 #' @description Computes persistence silhouettes from a list of persistence
 #'   diagrams. A persistence silhouette is computed by taking a weighted average
@@ -484,7 +485,7 @@ Silhouette <- R6::R6Class(
   )
 )
 
-#' Vector Representation Topological Vector
+#' Vector Representation: Topological Vector
 #'
 #' @description Computes topological vectors from a list of persistence
 #'   diagrams. The topological vector associated to a persistence diagram is the

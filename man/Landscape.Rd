@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-vector-methods.R
 \name{Landscape}
 \alias{Landscape}
-\title{Vector Representation Landscape}
+\title{Vector Representation: Landscape}
 \description{
 Computes persistence landscapes from a list of persistence
 diagrams. A persistence landscape is a collection of 1D piecewise-linear

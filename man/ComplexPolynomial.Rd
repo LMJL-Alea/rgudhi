@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-vector-methods.R
 \name{ComplexPolynomial}
 \alias{ComplexPolynomial}
-\title{Vector Representation Complex Polynomial}
+\title{Vector Representation: Complex Polynomial}
 \description{
 Computes complex polynomials from a list of persistence
 diagrams. The persistence diagram points are seen as the roots of some

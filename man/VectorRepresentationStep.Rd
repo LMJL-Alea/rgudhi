@@ -48,14 +48,13 @@ outputs the result.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{diag}}{A numeric array of shape \eqn{[\dots \times 2]} specifying a
-persistence diagram.}
+\item{\code{diag}}{A 2-column \link[tibble:tibble]{tibble::tibble} specifying a persistence diagram.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A numeric array of shape \eqn{[\dots \times 2]} storing the
-preprocessed persistence diagram.
+A \link[tibble:tibble]{tibble::tibble} storing the requested vector representation of
+the persistence diagram in a table suitable for visualization.
 }
 }
 \if{html}{\out{<hr>}}
@@ -70,8 +69,8 @@ Fits the class on a sample of persistence diagrams.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{X}}{A list of numeric arrays of shape \eqn{[\dots \times 2]} specifying
-a sample of persistence diagrams.}
+\item{\code{X}}{A list of 2-column \link[tibble:tibble]{tibble::tibble}s specifying a sample of
+persistence diagrams.}
 
 \item{\code{y}}{An integer vector specifying persistence diagram labels (unused for
 now).}
@@ -94,10 +93,15 @@ Applies the class on a sample of persistence diagrams.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{X}}{A list of numeric arrays of shape \eqn{[\dots \times 2]} specifying
-a sample of persistence diagrams.}
+\item{\code{X}}{A list of 2-column \link[tibble:tibble]{tibble::tibble}s specifying a sample of
+persistence diagrams.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list of \link[tibble:tibble]{tibble::tibble}s storing the requested vector
+representations of the persistence diagrams in a table suitable for
+visualization.
 }
 }
 \if{html}{\out{<hr>}}
@@ -114,13 +118,18 @@ calling them directly.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{X}}{A list of numeric arrays of shape \eqn{[\dots \times 2]} specifying
-a sample of persistence diagrams.}
+\item{\code{X}}{A list of 2-column \link[tibble:tibble]{tibble::tibble}s specifying a sample of
+persistence diagrams.}
 
 \item{\code{y}}{An integer vector specifying persistence diagram labels (unused for
 now).}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list of \link[tibble:tibble]{tibble::tibble}s storing the requested vector
+representations of the persistence diagrams in a table suitable for
+visualization.
 }
 }
 \if{html}{\out{<hr>}}

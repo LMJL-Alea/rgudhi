@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-preprocessing.R
 \name{DiagramSelector}
 \alias{DiagramSelector}
-\title{Preprocessing Diagram Selector Step}
+\title{Preprocessing: Diagram Selector}
 \description{
 This is a class for extracting finite or essential points in
 persistence diagrams.

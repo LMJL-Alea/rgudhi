@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-vector-methods.R
 \name{Silhouette}
 \alias{Silhouette}
-\title{Vector Representation Silhouette}
+\title{Vector Representation: Silhouette}
 \description{
 Computes persistence silhouettes from a list of persistence
 diagrams. A persistence silhouette is computed by taking a weighted average

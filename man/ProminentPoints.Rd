@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-preprocessing.R
 \name{ProminentPoints}
 \alias{ProminentPoints}
-\title{Preprocessing Prominent Points Step}
+\title{Preprocessing: Prominent Points}
 \description{
 This is a class or removing points that are close or far from
 the diagonal in persistence diagrams. If persistence diagrams are 2-column

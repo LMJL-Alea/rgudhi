@@ -2,7 +2,7 @@
 % Please edit documentation in R/representation-preprocessing.R
 \name{DiagramScaler}
 \alias{DiagramScaler}
-\title{Preprocessing Diagram Scaler Step}
+\title{Preprocessing: Diagram Scaler}
 \description{
 This is a class for preprocessing persistence diagrams with a
 given list of scalers, such as those included in \strong{scikit-learn}.
