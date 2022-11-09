@@ -25,6 +25,9 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/BirthPersistenceTransform.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/BottleneckDistance.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/ComplexPolynomial.html</loc>
   </url>
   <url>
@@ -49,10 +52,16 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Landscape.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/MetricStep.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Padding.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/PeriodicCubicalComplex.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/PersistenceFisherDistance.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/PersistenceFisherKernel.html</loc>
@@ -85,6 +94,9 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/SimplexTree.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/SlicedWassersteinDistance.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/StrongWitnessComplex.html</loc>
   </url>
   <url>
@@ -95,6 +107,9 @@
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/VectorRepresentationStep.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/WassersteinDistance.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/WitnessComplex.html</loc>
