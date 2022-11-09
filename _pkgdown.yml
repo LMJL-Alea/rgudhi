@@ -40,3 +40,9 @@ reference:
     - PersistenceScaleSpaceKernel
     - PersistenceWeightedGaussianKernel
     - PersistenceSlicedWassersteinKernel
+  - subtitle: Metrics
+  - contents:
+    - BottleneckDistance
+    - PersistenceFisherDistance
+    - SlicedWassersteinDistance
+    - WassersteinDistance

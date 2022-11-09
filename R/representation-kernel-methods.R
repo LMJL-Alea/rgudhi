@@ -16,7 +16,8 @@ KernelRepresentationStep <- R6::R6Class(
     #' @description Applies the class on a single persistence diagram and
     #'   outputs the result.
     #'
-    #' @return A numeric value storing the persistence Fisher kernel value.
+    #' @return A numeric value storing the kernel-induced inner product between
+    #'   the two input diagrams.
     apply = function(diag1, diag2) {
       diag1 |>
         as.matrix() |>
