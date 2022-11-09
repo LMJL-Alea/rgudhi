@@ -26,9 +26,11 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ls <- Landscape$new()
-  ls$apply(dgm)
-  ls$fit_transform(list(dgm))
+  ds <- DiagramSelector$new(use = TRUE)
+  dgm <- ds$apply(dgm)
+  lds <- Landscape$new()
+  lds$apply(dgm)
+  lds$fit_transform(list(dgm))
 }
 }
 \author{
@@ -102,9 +104,11 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ls <- Landscape$new()
-  ls$apply(dgm)
-  ls$fit_transform(list(dgm))
+  ds <- DiagramSelector$new(use = TRUE)
+  dgm <- ds$apply(dgm)
+  lds <- Landscape$new()
+  lds$apply(dgm)
+  lds$fit_transform(list(dgm))
 }
 }
 \if{html}{\out{</div>}}

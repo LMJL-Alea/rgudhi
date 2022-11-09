@@ -27,9 +27,9 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- ProminentPoints$new()
-  ds$apply(dgm)
-  ds$fit_transform(list(dgm))
+  pp <- ProminentPoints$new(use=TRUE)
+  pp$apply(dgm)
+  pp$fit_transform(list(dgm))
 }
 }
 \author{
@@ -110,9 +110,9 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- ProminentPoints$new()
-  ds$apply(dgm)
-  ds$fit_transform(list(dgm))
+  pp <- ProminentPoints$new(use=TRUE)
+  pp$apply(dgm)
+  pp$fit_transform(list(dgm))
 }
 }
 \if{html}{\out{</div>}}

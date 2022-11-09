@@ -42,7 +42,7 @@ PreprocessingStep <- R6::R6Class(
       X |>
         purrr::map(as.matrix) |>
         super$transform() |>
-        private$convert_output()
+        purrr::map(private$convert_output)
     },
 
     #' @description Applies sequentially the `$fit()` and `$transform()` methods
@@ -56,13 +56,12 @@ PreprocessingStep <- R6::R6Class(
       super$fit(X, y)
       X |>
         super$transform() |>
-        private$convert_output()
+        purrr::map(private$convert_output)
     }
   ),
   private = list(
     variable_names = NULL,
     convert_output = function(x) {
-      if (is.list(x)) purrr::map(x, private$convert_output)
       x |>
         `colnames<-`(value = private$variable_names) |>
         tibble::as_tibble()
@@ -297,9 +296,9 @@ ProminentPoints <- R6::R6Class(
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
     #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- ProminentPoints$new()
-    #'   ds$apply(dgm)
-    #'   ds$fit_transform(list(dgm))
+    #'   pp <- ProminentPoints$new(use=TRUE)
+    #'   pp$apply(dgm)
+    #'   pp$fit_transform(list(dgm))
     #' }
     initialize = function(use = FALSE, num_pts = 10, threshold = - 1, location = c("upper", "lower")) {
       num_pts <- as.integer(num_pts)

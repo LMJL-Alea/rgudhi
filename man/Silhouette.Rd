@@ -26,6 +26,8 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+  ds <- DiagramSelector$new(use = TRUE)
+  dgm <- ds$apply(dgm)
   sil <- Silhouette$new()
   sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
   sil$fit_transform(list(dgm))
@@ -101,6 +103,8 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+  ds <- DiagramSelector$new(use = TRUE)
+  dgm <- ds$apply(dgm)
   sil <- Silhouette$new()
   sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
   sil$fit_transform(list(dgm))

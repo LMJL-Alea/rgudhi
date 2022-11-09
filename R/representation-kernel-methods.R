@@ -113,7 +113,7 @@ PersistenceFisherKernel <- R6::R6Class(
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
     #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new()
+    #'   ds <- DiagramSelector$new(use = TRUE)
     #'   dgm <- ds$apply(dgm)
     #'   pfk <- PersistenceFisherKernel$new()
     #'   pfk$apply(dgm, dgm)
