@@ -19,7 +19,13 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/AlphaComplex.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/BettiCurve.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/BirthPersistenceTransform.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/ComplexPolynomial.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/CoverComplex.html</loc>
@@ -34,19 +40,46 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/DiagramSelector.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/Entropy.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/KernelRepresentationStep.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/Landscape.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Padding.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/PeriodicCubicalComplex.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/PersistenceFisherKernel.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/PersistenceImage.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/PersistenceScaleSpaceKernel.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/PersistenceSlicedWassersteinKernel.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/PersistenceWeightedGaussianKernel.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/PreprocessingStep.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/ProminentPoints.html</loc>
   </url>
   <url>
-    <loc>https://lmjl-alea.github.io/rgudhi/reference/RepresentationBaseClass.html</loc>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/RipsComplex.html</loc>
   </url>
   <url>
-    <loc>https://lmjl-alea.github.io/rgudhi/reference/RipsComplex.html</loc>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/Silhouette.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/SimplexTree.html</loc>
@@ -56,6 +89,12 @@
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/TangentialComplex.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/TopologicalVector.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/VectorRepresentationStep.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/WitnessComplex.html</loc>
