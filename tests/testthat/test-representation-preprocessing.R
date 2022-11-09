@@ -31,17 +31,18 @@ test_that("The BirthPersistenceTransform class works", {
 })
 
 test_that("The DiagramScaler class works", {
-  ds <- DiagramScaler$new()
+  ds <- DiagramScaler$new(use = TRUE)
   expect_equal(ds$apply(dgm), dgm)
   expect_equal(ds$transform(list(dgm)), list(dgm))
   expect_equal(ds$fit_transform(list(dgm)), list(dgm))
 })
 
 test_that("The DiagramSelector class works", {
-  ds <- DiagramSelector$new()
-  expect_equal(ds$apply(dgm), dgm)
-  expect_equal(ds$transform(list(dgm)), list(dgm))
-  expect_equal(ds$fit_transform(list(dgm)), list(dgm))
+  ds <- DiagramSelector$new(use = TRUE)
+  dgm_expected <- subset(dgm, death != Inf)
+  expect_equal(ds$apply(dgm), dgm_expected)
+  expect_equal(ds$transform(list(dgm)), list(dgm_expected))
+  expect_equal(ds$fit_transform(list(dgm)), list(dgm_expected))
 })
 
 test_that("The Padding class works", {

@@ -237,9 +237,9 @@ Padding <- R6::R6Class(
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
     #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- Padding$new()
-    #'   ds$apply(dgm)
-    #'   ds$fit_transform(list(dgm))
+    #'   pad <- Padding$new()
+    #'   pad$apply(dgm)
+    #'   pad$fit_transform(list(dgm))
     #' }
     initialize = function(use = FALSE) {
       private$variable_names <- if (use) c("birth", "death", "original") else c("birth", "death")
@@ -296,7 +296,7 @@ ProminentPoints <- R6::R6Class(
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
     #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   pp <- ProminentPoints$new(use=TRUE)
+    #'   pp <- ProminentPoints$new()
     #'   pp$apply(dgm)
     #'   pp$fit_transform(list(dgm))
     #' }

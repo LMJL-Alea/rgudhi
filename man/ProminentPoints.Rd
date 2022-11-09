@@ -27,7 +27,7 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  pp <- ProminentPoints$new(use=TRUE)
+  pp <- ProminentPoints$new()
   pp$apply(dgm)
   pp$fit_transform(list(dgm))
 }
@@ -110,7 +110,7 @@ if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  pp <- ProminentPoints$new(use=TRUE)
+  pp <- ProminentPoints$new()
   pp$apply(dgm)
   pp$fit_transform(list(dgm))
 }
