@@ -3,12 +3,13 @@ template:
   bootstrap: 5
 
 reference:
-  - title: Data structures for cell complexes
+  - title: Persistence diagram generation
+  - subtitle: Data structures for cell complexes
   - contents:
     - CubicalComplex
     - PeriodicCubicalComplex
     - SimplexTree
-  - title: Filtrations and reconstructions
+  - subtitle: Filtrations and reconstructions
   - contents:
     - AlphaComplex
     - RipsComplex
@@ -16,7 +17,7 @@ reference:
     - StrongWitnessComplex
     - CoverComplex
     - TangentialComplex
-  - title: Samples of persistence diagrams
+  - title: Persistence diagram manipulation
   - subtitle: Preprocessing
   - contents:
     - BirthPersistenceTransform
@@ -30,9 +31,12 @@ reference:
     - ComplexPolynomial
     - Entropy
     - Landscape
-    - PersistentImage
+    - PersistenceImage
     - Silhouette
     - TopologicalVector
   - subtitle: Kernel representations
   - contents:
     - PersistenceFisherKernel
+    - PersistenceScaleSpaceKernel
+    - PersistenceWeightedGaussianKernel
+    - PersistenceSlicedWassersteinKernel
