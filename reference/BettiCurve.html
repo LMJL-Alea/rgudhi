@@ -125,16 +125,17 @@ the piecewise constant function. Defaults to <code>100L</code>.</p></dd>
 <dt><code>sample_range</code></dt>
 <dd><p>A length-2 numeric vector specifying the minimum and
 maximum of the piecewise constant function domain, of the form
-\([x_\min, x_\max]\). Defaults to <code>rep(NA, 2)</code>. It is the interval on
-which samples will be drawn evenly. If one of the values is <code>NA</code>, it
-can be computed from the persistence diagrams with the <code>$fit()</code> method.</p></dd>
+\([x_{\min}, x_{\max}]\). Defaults to <code>rep(NA, 2)</code>. It is the
+interval on which samples will be drawn evenly. If one of the values is
+<code>NA</code>, it can be computed from the persistence diagrams with the
+<code>$fit()</code> method.</p></dd>
 
 
 <dt><code>predefined_grid</code></dt>
 <dd><p>A numeric vector specifying a predefined grid of
 points at which to compute the Betti curves. Must be strictly ordered.
 Infinities are ok. If set to <code>NULL</code> (default), and resolution is given,
-the grid will be uniform from \(x_\min\) to \(x_\max\) in
+the grid will be uniform from \(x_{\min}\) to \(x_{\max}\) in
 <code>resolution</code> steps, otherwise a grid will be computed that captures all
 changes in Betti numbers in the provided data.</p></dd>
 
