@@ -4,23 +4,23 @@
 \alias{CoverComplex}
 \title{R6 Class for Cover Complex}
 \description{
-\loadmathjax Nerves and Graph Induced Complexes are cover
-complexes, i.e. simplicial complexes that provably contain topological
-information about the input data. They can be computed with a cover of the
-data, that comes i.e. from the pre-image of a family of intervals covering
-the image of a scalar-valued function defined on the data.
+Nerves and Graph Induced Complexes are cover complexes, i.e.
+simplicial complexes that provably contain topological information about
+the input data. They can be computed with a cover of the data, that comes
+i.e. from the pre-image of a family of intervals covering the image of a
+scalar-valued function defined on the data.
 }
 \details{
 \strong{Cover complex data structure.} The data structure is a simplicial
 complex, representing a Graph Induced simplicial Complex (GIC) or a Nerve,
-and whose simplices are computed with a cover \mjseqn{C} of a point cloud
-\mjseqn{P}, which often comes from the pre-images of intervals covering the
-image of a function \mjseqn{f} defined on \mjseqn{P}. These intervals are
+and whose simplices are computed with a cover \eqn{C} of a point cloud
+\eqn{P}, which often comes from the pre-images of intervals covering the
+image of a function \eqn{f} defined on \eqn{P}. These intervals are
 parameterised by their resolution (either their length or their number) and
 their gain (percentage of overlap). To compute a GIC, one also needs a
-graph \mjseqn{G} built on top of \mjseqn{P}, whose cliques with vertices
-belonging to different elements of \mjseqn{C} correspond to the simplices
-of the GIC.
+graph \eqn{G} built on top of \eqn{P}, whose cliques with vertices
+belonging to different elements of \eqn{C} correspond to the simplices of
+the GIC.
 }
 \examples{
 
@@ -1219,7 +1219,7 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_cover_from_Voronoi"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_cover_from_Voronoi}{}}}
 \subsection{Method \code{set_cover_from_Voronoi()}}{
-Creates the cover \mjseqn{C} from the Voronoï cells of a
+Creates the cover \eqn{C} from the Voronoï cells of a
 subsampling of the point cloud.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_cover_from_Voronoi(m = 100L)}\if{html}{\out{</div>}}
@@ -1234,7 +1234,7 @@ subsample. Defaults to \code{100L}.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1259,9 +1259,9 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_cover_from_file"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_cover_from_file}{}}}
 \subsection{Method \code{set_cover_from_file()}}{
-Creates the cover \mjseqn{C} from a file containing the
-cover elements of each point (the order has to be the same as in the
-input file!).
+Creates the cover \eqn{C} from a file containing the cover
+elements of each point (the order has to be the same as in the input
+file!).
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_cover_from_file(cover_file_name)}\if{html}{\out{</div>}}
 }
@@ -1282,7 +1282,7 @@ belong.
 }
 
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1305,14 +1305,14 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_cover_from_function"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_cover_from_function}{}}}
 \subsection{Method \code{set_cover_from_function()}}{
-Creates a cover \mjseqn{C} from the pre-images of the
-function \mjseqn{f}.
+Creates a cover \eqn{C} from the pre-images of the function
+\eqn{f}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_cover_from_function()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1370,7 +1370,7 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_function_from_coordinate"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_function_from_coordinate}{}}}
 \subsection{Method \code{set_function_from_coordinate()}}{
-Creates the function \mjseqn{f} from the \mjseqn{k}-\emph{th}
+Creates the function \eqn{f} from the \eqn{k}-\emph{th}
 coordinate of the point cloud.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_function_from_coordinate(k = 0L)}\if{html}{\out{</div>}}
@@ -1385,7 +1385,7 @@ coordinate of the point cloud.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1407,7 +1407,7 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_function_from_file"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_function_from_file}{}}}
 \subsection{Method \code{set_function_from_file()}}{
-Creates the function \mjseqn{f} from a file containing the
+Creates the function \eqn{f} from a file containing the
 function values.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_function_from_file(func_file_name)}\if{html}{\out{</div>}}
@@ -1428,7 +1428,7 @@ a single numeric value.
 }
 
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1450,8 +1450,7 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_function_from_range"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_function_from_range}{}}}
 \subsection{Method \code{set_function_from_range()}}{
-Creates the function \mjseqn{f} from a vector stored in
-memory.
+Creates the function \eqn{f} from a vector stored in memory.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_function_from_range(function_values)}\if{html}{\out{</div>}}
 }
@@ -1465,7 +1464,7 @@ be used.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1518,14 +1517,14 @@ The updated \code{\link{CoverComplex}} class itself invisibly.
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_OFF"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_OFF}{}}}
 \subsection{Method \code{set_graph_from_OFF()}}{
-Creates a graph \mjseqn{G} from the triangulation given by
-the input \code{.off} file.
+Creates a graph \eqn{G} from the triangulation given by the
+input \code{.off} file.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_OFF()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1546,8 +1545,8 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_automatic_rips"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_automatic_rips}{}}}
 \subsection{Method \code{set_graph_from_automatic_rips()}}{
-Creates a graph \mjseqn{G} from a Rips complex whose
-threshold value is automatically tuned with subsampling - see
+Creates a graph \eqn{G} from a Rips complex whose threshold
+value is automatically tuned with subsampling - see
 \insertCite{carriere2018statistical;textual}{rgudhi}.
 \subsection{References}{
 
@@ -1571,9 +1570,8 @@ to \code{TRUE}.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly if
-\code{chainable = TRUE} or a numeric value storing the delta threshold used
-for computing the Rips complex..
+The updated \link{CoverComplex} class itself invisibly if \code{chainable = TRUE} or a numeric value storing the delta threshold used for computing
+the Rips complex..
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1594,7 +1592,7 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_file"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_file}{}}}
 \subsection{Method \code{set_graph_from_file()}}{
-Creates a graph \mjseqn{G} from a file containing the edges.
+Creates a graph \eqn{G} from a file containing the edges.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_file(graph_file_name)}\if{html}{\out{</div>}}
 }
@@ -1615,7 +1613,7 @@ the input point cloud.
 }
 
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
@@ -1637,7 +1635,7 @@ if (reticulate::py_module_available("gudhi")) {
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_rips"></a>}}
 \if{latex}{\out{\hypertarget{method-CoverComplex-set_graph_from_rips}{}}}
 \subsection{Method \code{set_graph_from_rips()}}{
-Creates a graph \mjseqn{G} from a Rips complex.
+Creates a graph \eqn{G} from a Rips complex.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoverComplex$set_graph_from_rips(threshold)}\if{html}{\out{</div>}}
 }
@@ -1651,7 +1649,7 @@ Rips complex.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-The updated \code{\link{CoverComplex}} class itself invisibly.
+The updated \link{CoverComplex} class itself invisibly.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}

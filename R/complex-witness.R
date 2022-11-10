@@ -1,8 +1,8 @@
 #' R6 Class for Witness Complex
 #'
-#' @description \loadmathjax A Witness complex \mjseqn{\mathrm{Wit}(W,L)} is a
-#'   simplicial complex defined on two sets of points in \mjseqn{\mathbb{R}^D}.
-#'   The data structure is described in
+#' @description A Witness complex \eqn{\mathrm{Wit}(W,L)} is a simplicial
+#'   complex defined on two sets of points in \eqn{\mathbb{R}^D}. The data
+#'   structure is described in
 #'   \insertCite{boissonnat2014simplex;textual}{rgudhi}.
 #'
 #' @details The class constructs a (weak) witness complex for a given table of
@@ -20,9 +20,9 @@ WitnessComplex <- R6::R6Class(
   classname = "WitnessComplex",
   inherit = PythonClass,
   public = list(
-    #' @description `WitnessComplex` constructor.
+    #' @description The [WitnessComplex] constructor.
     #'
-    #' @param nearest_landmark_table A list of \code{\link[tibble]{tibble}}s
+    #' @param nearest_landmark_table A list of [tibble::tibble]s
     #'   specifying for each *witness* `w`, the ordered list of nearest
     #'   landmarks with id in column `nearest_landmark` and distance to `w` in
     #'   column `distance`.

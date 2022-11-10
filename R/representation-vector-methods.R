@@ -136,13 +136,14 @@ BettiCurve <- R6::R6Class(
     #'   the piecewise constant function. Defaults to `100L`.
     #' @param sample_range A length-2 numeric vector specifying the minimum and
     #'   maximum of the piecewise constant function domain, of the form
-    #'   \eqn{[x_\min, x_\max]}. Defaults to `rep(NA, 2)`. It is the interval on
-    #'   which samples will be drawn evenly. If one of the values is `NA`, it
-    #'   can be computed from the persistence diagrams with the `$fit()` method.
+    #'   \eqn{[x_{\min}, x_{\max}]}. Defaults to `rep(NA, 2)`. It is the
+    #'   interval on which samples will be drawn evenly. If one of the values is
+    #'   `NA`, it can be computed from the persistence diagrams with the
+    #'   `$fit()` method.
     #' @param predefined_grid A numeric vector specifying a predefined grid of
     #'   points at which to compute the Betti curves. Must be strictly ordered.
     #'   Infinities are ok. If set to `NULL` (default), and resolution is given,
-    #'   the grid will be uniform from \eqn{x_\min} to \eqn{x_\max} in
+    #'   the grid will be uniform from \eqn{x_{\min}} to \eqn{x_{\max}} in
     #'   `resolution` steps, otherwise a grid will be computed that captures all
     #'   changes in Betti numbers in the provided data.
     #'
@@ -262,7 +263,7 @@ Entropy <- R6::R6Class(
     #'   entropy summary function. Defaults to `100L`. Used only if `mode ==
     #'   "vector"`.
     #' @param sample_range A length-2 numeric vector specifying the domain for
-    #'   the entropy summary function, of the form \eqn{[x_\min, x_\max]}.
+    #'   the entropy summary function, of the form \eqn{[x_{\min}, x_{\max}]}.
     #'   Defaults to `rep(NA, 2)`. It is the interval on which samples will be
     #'   drawn evenly. If one of the values is `NA`, it can be computed from the
     #'   persistence diagrams with the `$fit()` method. Used only if `mode ==
@@ -326,7 +327,7 @@ Landscape <- R6::R6Class(
     #' @param resolution An integer value specifying the grid size for the
     #'   landscapes. Defaults to `100L`.
     #' @param sample_range A length-2 numeric vector specifying the domain for
-    #'   the entropy summary function, of the form \eqn{[x_\min, x_\max]}.
+    #'   the entropy summary function, of the form \eqn{[x_{\min}, x_{\max}]}.
     #'   Defaults to `rep(NA, 2)`. It is the interval on which samples will be
     #'   drawn evenly. If one of the values is `NA`, it can be computed from the
     #'   persistence diagrams with the `$fit()` method.
@@ -391,8 +392,8 @@ PersistenceImage <- R6::R6Class(
     #' @param resolution An length-1 integer vector specifying the size (in
     #'   pixels) of the persistence image. Defaults to `rep(20L, 2)`.
     #' @param im_range A length-4 numeric vector specifying the two-dimensional
-    #'   domain for the persistence image, of the form \eqn{[x_\min, y_\min,
-    #'   x_\max, y_\max]}. Defaults to `rep(NA, 4)`. If one of the values is
+    #'   domain for the persistence image, of the form \eqn{[x_{\min}, y_{\min},
+    #'   x_{\max}, y_{\max}]}. Defaults to `rep(NA, 4)`. If one of the values is
     #'   `NA`, it can be computed from the persistence diagrams with the
     #'   `$fit()` method.
     #'
@@ -457,7 +458,7 @@ Silhouette <- R6::R6Class(
     #' @param resolution An length-1 integer vector specifying the size (in
     #'   pixels) of the persistence image. Defaults to `rep(20L, 2)`.
     #' @param sample_range A length-2 numeric vector specifying the domain for
-    #'   the entropy summary function, of the form \eqn{[x_\min, x_\max]}.
+    #'   the entropy summary function, of the form \eqn{[x_{\min}, x_{\max}]}.
     #'   Defaults to `rep(NA, 2)`. It is the interval on which samples will be
     #'   drawn evenly. If one of the values is `NA`, it can be computed from the
     #'   persistence diagrams with the `$fit()` method.

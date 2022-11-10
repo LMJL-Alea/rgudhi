@@ -4,17 +4,17 @@
 \alias{TangentialComplex}
 \title{R6 Class for Tangential Complex}
 \description{
-\loadmathjax A Tangential Delaunay complex is a simplicial
-complex designed to reconstruct a \mjseqn{k}-dimensional manifold embedded
-in \mjseqn{d}-dimensional Euclidean space. The input is a point sample
-coming from an unknown manifold. The running time depends only linearly on
-the extrinsic dimension \mjseqn{d} and exponentially on the intrinsic
-dimension \mjseqn{k}.
+A Tangential Delaunay complex is a simplicial complex designed
+to reconstruct a \eqn{k}-dimensional manifold embedded in
+\eqn{d}-dimensional Euclidean space. The input is a point sample coming
+from an unknown manifold. The running time depends only linearly on the
+extrinsic dimension \eqn{d} and exponentially on the intrinsic dimension
+\eqn{k}.
 }
 \details{
-The \code{\link{TangentialComplex}} class represents a tangential
-complex. After the computation of the complex, an optional post-processing
-called perturbation can be run to attempt to remove inconsistencies.
+The \link{TangentialComplex} class represents a tangential complex. After
+the computation of the complex, an optional post-processing called
+perturbation can be run to attempt to remove inconsistencies.
 }
 \examples{
 

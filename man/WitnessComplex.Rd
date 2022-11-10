@@ -4,9 +4,9 @@
 \alias{WitnessComplex}
 \title{R6 Class for Witness Complex}
 \description{
-\loadmathjax A Witness complex \mjseqn{\mathrm{Wit}(W,L)} is a
-simplicial complex defined on two sets of points in \mjseqn{\mathbb{R}^D}.
-The data structure is described in
+A Witness complex \eqn{\mathrm{Wit}(W,L)} is a simplicial
+complex defined on two sets of points in \eqn{\mathbb{R}^D}. The data
+structure is described in
 \insertCite{boissonnat2014simplex;textual}{rgudhi}.
 }
 \details{
@@ -96,7 +96,7 @@ Siargey Kachanovich
 \if{html}{\out{<a id="method-WitnessComplex-new"></a>}}
 \if{latex}{\out{\hypertarget{method-WitnessComplex-new}{}}}
 \subsection{Method \code{new()}}{
-\code{WitnessComplex} constructor.
+The \link{WitnessComplex} constructor.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{WitnessComplex$new(nearest_landmark_table)}\if{html}{\out{</div>}}
 }
@@ -104,7 +104,7 @@ Siargey Kachanovich
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{nearest_landmark_table}}{A list of \code{\link[tibble]{tibble}}s
+\item{\code{nearest_landmark_table}}{A list of \link[tibble:tibble]{tibble::tibble}s
 specifying for each \emph{witness} \code{w}, the ordered list of nearest
 landmarks with id in column \code{nearest_landmark} and distance to \code{w} in
 column \code{distance}.}

@@ -1,21 +1,21 @@
 #' R6 Class for Cover Complex
 #'
-#' @description \loadmathjax Nerves and Graph Induced Complexes are cover
-#'   complexes, i.e. simplicial complexes that provably contain topological
-#'   information about the input data. They can be computed with a cover of the
-#'   data, that comes i.e. from the pre-image of a family of intervals covering
-#'   the image of a scalar-valued function defined on the data.
+#' @description Nerves and Graph Induced Complexes are cover complexes, i.e.
+#'   simplicial complexes that provably contain topological information about
+#'   the input data. They can be computed with a cover of the data, that comes
+#'   i.e. from the pre-image of a family of intervals covering the image of a
+#'   scalar-valued function defined on the data.
 #'
 #' @details **Cover complex data structure.** The data structure is a simplicial
 #'   complex, representing a Graph Induced simplicial Complex (GIC) or a Nerve,
-#'   and whose simplices are computed with a cover \mjseqn{C} of a point cloud
-#'   \mjseqn{P}, which often comes from the pre-images of intervals covering the
-#'   image of a function \mjseqn{f} defined on \mjseqn{P}. These intervals are
+#'   and whose simplices are computed with a cover \eqn{C} of a point cloud
+#'   \eqn{P}, which often comes from the pre-images of intervals covering the
+#'   image of a function \eqn{f} defined on \eqn{P}. These intervals are
 #'   parameterised by their resolution (either their length or their number) and
 #'   their gain (percentage of overlap). To compute a GIC, one also needs a
-#'   graph \mjseqn{G} built on top of \mjseqn{P}, whose cliques with vertices
-#'   belonging to different elements of \mjseqn{C} correspond to the simplices
-#'   of the GIC.
+#'   graph \eqn{G} built on top of \eqn{P}, whose cliques with vertices
+#'   belonging to different elements of \eqn{C} correspond to the simplices of
+#'   the GIC.
 #'
 #' @author Mathieu Carrière
 #' @family filtrations and reconstructions
@@ -459,13 +459,13 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates the cover \mjseqn{C} from the Voronoï cells of a
+    #' @description Creates the cover \eqn{C} from the Voronoï cells of a
     #'   subsampling of the point cloud.
     #'
     #' @param m An integer value specifying the number of points in the
     #'   subsample. Defaults to `100L`.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -488,9 +488,9 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates the cover \mjseqn{C} from a file containing the
-    #'   cover elements of each point (the order has to be the same as in the
-    #'   input file!).
+    #' @description Creates the cover \eqn{C} from a file containing the cover
+    #'   elements of each point (the order has to be the same as in the input
+    #'   file!).
     #'
     #' @details The cover file should be a `.txt` file with as many lines as
     #'   there are points in the point cloud. Each line should be populated with
@@ -500,7 +500,7 @@ CoverComplex <- R6::R6Class(
     #' @param cover_file_name A character string specifying the path to the
     #'   input cover file.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -521,10 +521,10 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates a cover \mjseqn{C} from the pre-images of the
-    #'   function \mjseqn{f}.
+    #' @description Creates a cover \eqn{C} from the pre-images of the function
+    #'   \eqn{f}.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -571,13 +571,13 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates the function \mjseqn{f} from the \mjseqn{k}-*th*
+    #' @description Creates the function \eqn{f} from the \eqn{k}-*th*
     #'   coordinate of the point cloud.
     #'
     #' @param k An integer value specifying the coordinate to use (starts at
     #'   `0L`). Defaults to `0L`.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -596,7 +596,7 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates the function \mjseqn{f} from a file containing the
+    #' @description Creates the function \eqn{f} from a file containing the
     #'   function values.
     #'
     #' @details The function file should be a `.txt` file with as many lines as
@@ -606,7 +606,7 @@ CoverComplex <- R6::R6Class(
     #' @param func_file_name A character string specifying the path to the input
     #'   function file.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -623,13 +623,12 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates the function \mjseqn{f} from a vector stored in
-    #'   memory.
+    #' @description Creates the function \eqn{f} from a vector stored in memory.
     #'
     #' @param function_values A numeric vector specifying the function values to
     #'   be used.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -662,10 +661,10 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates a graph \mjseqn{G} from the triangulation given by
-    #'   the input `.off` file.
+    #' @description Creates a graph \eqn{G} from the triangulation given by the
+    #'   input `.off` file.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -685,8 +684,8 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates a graph \mjseqn{G} from a Rips complex whose
-    #'   threshold value is automatically tuned with subsampling - see
+    #' @description Creates a graph \eqn{G} from a Rips complex whose threshold
+    #'   value is automatically tuned with subsampling - see
     #'   \insertCite{carriere2018statistical;textual}{rgudhi}.
     #'
     #' ## References
@@ -699,9 +698,9 @@ CoverComplex <- R6::R6Class(
     #'   chainable in which case it returns invisibly the class itself. Defaults
     #'   to `TRUE`.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly if
-    #'   `chainable = TRUE` or a numeric value storing the delta threshold used
-    #'   for computing the Rips complex..
+    #' @return The updated [CoverComplex] class itself invisibly if `chainable =
+    #'   TRUE` or a numeric value storing the delta threshold used for computing
+    #'   the Rips complex..
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -723,7 +722,7 @@ CoverComplex <- R6::R6Class(
       res
     },
 
-    #' @description Creates a graph \mjseqn{G} from a file containing the edges.
+    #' @description Creates a graph \eqn{G} from a file containing the edges.
     #'
     #' @details The file should contain the edge list of the graph by rows, each
     #'   row reporting the indices of the two connected vertices as stored in
@@ -733,7 +732,7 @@ CoverComplex <- R6::R6Class(
     #'   input graph file. The graph file contains one edge per line, each edge
     #'   being represented by the IDs of its two nodes.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
@@ -752,12 +751,12 @@ CoverComplex <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Creates a graph \mjseqn{G} from a Rips complex.
+    #' @description Creates a graph \eqn{G} from a Rips complex.
     #'
     #' @param threshold A numeric value specifying the threshold value for the
     #'   Rips complex.
     #'
-    #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
+    #' @return The updated [CoverComplex] class itself invisibly.
     #'
     #' @examples
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"

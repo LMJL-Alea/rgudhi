@@ -23,7 +23,6 @@ Imports:
     cli,
     curl,
     fs,
-    mathjaxr,
     purrr,
     R6,
     Rdpack (>= 2.4.0),
@@ -35,4 +34,4 @@ Suggests:
     covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-RdMacros: Rdpack, mathjaxr
+RdMacros: Rdpack

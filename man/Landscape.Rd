@@ -83,7 +83,7 @@ linear functions to output. Defaults to \code{5L}.}
 landscapes. Defaults to \code{100L}.}
 
 \item{\code{sample_range}}{A length-2 numeric vector specifying the domain for
-the entropy summary function, of the form \eqn{[x_\min, x_\max]}.
+the entropy summary function, of the form \eqn{[x_{\min}, x_{\max}]}.
 Defaults to \code{rep(NA, 2)}. It is the interval on which samples will be
 drawn evenly. If one of the values is \code{NA}, it can be computed from the
 persistence diagrams with the \verb{$fit()} method.}

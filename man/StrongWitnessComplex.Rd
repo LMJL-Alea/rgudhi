@@ -4,9 +4,9 @@
 \alias{StrongWitnessComplex}
 \title{R6 Class for Strong Witness Complex}
 \description{
-\loadmathjax A Witness complex \mjseqn{\mathrm{Wit}(W,L)} is a
-simplicial complex defined on two sets of points in \mjseqn{\mathbb{R}^D}.
-The data structure is described in
+A Witness complex \eqn{\mathrm{Wit}(W,L)} is a simplicial
+complex defined on two sets of points in \eqn{\mathbb{R}^D}. The data
+structure is described in
 \insertCite{boissonnat2014simplex;textual}{rgudhi}.
 }
 \details{

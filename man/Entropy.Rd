@@ -87,7 +87,7 @@ entropy summary function. Defaults to \code{TRUE}. Used only if \code{mode == "v
 entropy summary function. Defaults to \code{100L}. Used only if \code{mode == "vector"}.}
 
 \item{\code{sample_range}}{A length-2 numeric vector specifying the domain for
-the entropy summary function, of the form \eqn{[x_\min, x_\max]}.
+the entropy summary function, of the form \eqn{[x_{\min}, x_{\max}]}.
 Defaults to \code{rep(NA, 2)}. It is the interval on which samples will be
 drawn evenly. If one of the values is \code{NA}, it can be computed from the
 persistence diagrams with the \verb{$fit()} method. Used only if \code{mode == "vector"}.}
