@@ -1,8 +1,5 @@
 n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n + 1)[1:n],
-  function(.x) c(cos(.x), sin(.x))
-)
+X <- seq_circle(n)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)

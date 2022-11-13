@@ -1,8 +1,5 @@
 n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n + 1)[1:n],
-  function(.x) c(cos(.x), sin(.x))
-)
+X <- seq_circle(n)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
@@ -17,7 +14,7 @@ test_that("The BottleneckDistance class works", {
 })
 
 test_that("The PersistenceFisherDistance class works", {
-  skip_on_os("linux") # needs to monitor is it fixes itself or what
+  skip_on_os("linux") # needs to monitor if it fixes itself or what
   dis <- PersistenceFisherDistance$new()
   expect_snapshot(dis$apply(dgm, dgm))
   expect_snapshot(dis$fit(list(dgm))$transform(list(dgm)))

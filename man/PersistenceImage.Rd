@@ -17,10 +17,7 @@ as a vector. See http://jmlr.org/papers/v18/16-337.html for more details.
 ## ------------------------------------------------
 
 n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n + 1)[1:n],
-  function(.x) c(cos(.x), sin(.x))
-)
+X <- seq_circle(n)
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()
@@ -102,10 +99,7 @@ An object of class \code{\link{PersistenceImage}}.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n + 1)[1:n],
-  function(.x) c(cos(.x), sin(.x))
-)
+X <- seq_circle(n)
 if (reticulate::py_module_available("gudhi")) {
   ac <- AlphaComplex$new(points = X)
   st <- ac$create_simplex_tree()

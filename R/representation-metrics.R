@@ -94,10 +94,7 @@ BottleneckDistance <- R6::R6Class(
     #'
     #' @examples
     #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n + 1)[1:n],
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
+    #' X <- seq_circle(n)
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
@@ -151,10 +148,7 @@ PersistenceFisherDistance <- R6::R6Class(
     #'
     #' @examples
     #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n + 1)[1:n],
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
+    #' X <- seq_circle(n)
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
@@ -204,10 +198,7 @@ SlicedWassersteinDistance <- R6::R6Class(
     #'
     #' @examples
     #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n + 1)[1:n],
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
+    #' X <- seq_circle(n)
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
@@ -260,10 +251,7 @@ WassersteinDistance <- R6::R6Class(
     #'
     #' @examples
     #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n + 1)[1:n],
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
+    #' X <- seq_circle(n)
     #' if (reticulate::py_module_available("gudhi")) {
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()

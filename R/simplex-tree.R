@@ -751,7 +751,7 @@ SimplexTree <- R6::R6Class(
         persistence_dim_max = persistence_dim_max
       )
       l <- purrr::map(l, purrr::simplify_all)
-      l <- purrr::map(l, purrr::set_names, nm = c("dimension", "barcode"))
+      l <- purrr::map(l, rlang::set_names, nm = c("dimension", "barcode"))
 
       l_dim <- purrr::map(l, "dimension")
       l_dim <- purrr::map(l_dim, rlang::set_names, nm = "dimension")

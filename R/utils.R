@@ -17,3 +17,24 @@ download_file <- function(input_file, output_file) {
     cli::cli_abort("Input file {.file {input_file}} is not a valid HTTPS url.")
   curl::curl_download(input_file, destfile = output_file)
 }
+
+#' Circular Sequence Generation
+#'
+#' Generates a sequence of 2D points evenly spaced on the unit circle.
+#'
+#' @param n An integer value specifying the number of points in the sequence.
+#'
+#' @return A [base::list] of length-2 numeric vectors storing 2D points evenly
+#'   spaced on the unit circle.
+#'
+#' @export
+#' @examples
+#' seq_circle(10)
+seq_circle <- function(n) {
+  if (n == 0)
+    return(list())
+  purrr::map(
+    seq(0, 2 * pi, len = n + 1)[1:n],
+    ~ c(cos(.x), sin(.x))
+  )
+}
