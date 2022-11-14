@@ -1,4 +1,4 @@
-check_persistence_diagram <- function(x,
+massage_persistence_diagram <- function(x,
                                       dimension = NULL,
                                       max_intervals = 20000) {
   if (is.null(dimension) && !("dimension" %in% names(x)))
@@ -146,7 +146,7 @@ autoplot.persistence_diagram <- function(x,
                                       alpha = 0.6,
                                       max_intervals = 20000,
                                       legend = FALSE) {
-  persistence <- check_persistence_diagram(
+  persistence <- massage_persistence_diagram(
     x = persistence,
     dimension = dimension,
     max_intervals = max_intervals
@@ -178,7 +178,7 @@ autoplot.persistence_diagram <- function(x,
                                       max_intervals = 20000,
                                       legend = FALSE,
                                       greyblock = TRUE) {
-  persistence <- check_persistence_diagram(
+  persistence <- massage_persistence_diagram(
     x = persistence,
     dimension = dimension,
     max_intervals = max_intervals

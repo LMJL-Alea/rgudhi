@@ -17,6 +17,12 @@ reference:
     - StrongWitnessComplex
     - CoverComplex
     - TangentialComplex
+  - title: Persistence diagram class
+  - contents:
+    - as_persistence_diagram
+    - is_persistence_diagram
+    - plot.persistence_diagram
+    - autoplot.persistence_diagram
   - title: Persistence diagram manipulation
   - subtitle: Preprocessing
   - contents:
