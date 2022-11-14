@@ -52,3 +52,7 @@ reference:
     - PersistenceFisherDistance
     - SlicedWassersteinDistance
     - WassersteinDistance
+  - title: Data sets
+  - subtitle: Generators
+  - contents:
+    - seq_circle
