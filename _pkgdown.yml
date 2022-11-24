@@ -56,3 +56,9 @@ reference:
   - subtitle: Generators
   - contents:
     - seq_circle
+    - sphere
+    - torus
+  - subtitle: Remote data
+    - fetch_bunny
+    - fetch_spiral_2d
+    - clear_data_home
