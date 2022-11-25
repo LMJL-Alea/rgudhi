@@ -77,8 +77,10 @@ is_persistence_diagram <- function(x) {
 #' @param greyblock A boolean value specifying whether to display a grey lower
 #'   triangle in the diagram representation for nicer output. Defaults to
 #'   `TRUE`.
+#' @param n An integer value specifying the number of bins for plotting the
+#'   diagram as a density. Defaults to `10L`.
 #' @param type A string specifyfing the type of representation. Choices are
-#'   either `"barcode"` or `"diagram"`. Defaults to `"barcode"`.
+#'   `"barcode"`, `"diagram"` or `"density"`. Defaults to `"barcode"`.
 #' @param ... Other parameters to be passed on to next methods.
 #'
 #' @return For [plot.persistence_diagram()], `NULL`. Otherwise a
@@ -120,24 +122,36 @@ autoplot.persistence_diagram <- function(x,
                                          max_intervals = 20000,
                                          legend = FALSE,
                                          greyblock = TRUE,
-                                         type = c("barcode", "diagram"),
+                                         n = 10L,
+                                         type = c("barcode", "diagram", "density"),
                                          ...) {
   type <- rlang::arg_match(type)
-  if (type == "barcode")
-    return(.plot_persistence_barcode(
+  switch(
+    type,
+    barcode = .plot_persistence_barcode(
       persistence = x,
       dimension = dimension,
       alpha = alpha,
       max_intervals = max_intervals,
       legend = legend
-    ))
-  .plot_persistence_diagram(
-    persistence = x,
-    dimension = dimension,
-    alpha = alpha,
-    max_intervals = max_intervals,
-    legend = legend,
-    greyblock = greyblock
+    ),
+    diagram = .plot_persistence_diagram(
+      persistence = x,
+      dimension = dimension,
+      alpha = alpha,
+      max_intervals = max_intervals,
+      legend = legend,
+      greyblock = greyblock
+    ),
+    density = .plot_persistence_density(
+      persistence = x,
+      dimension = dimension,
+      alpha = alpha,
+      max_intervals = max_intervals,
+      legend = legend,
+      greyblock = greyblock,
+      n = n
+    )
   )
 }
 
@@ -151,8 +165,6 @@ autoplot.persistence_diagram <- function(x,
     dimension = dimension,
     max_intervals = max_intervals
   )
-  birth_max <- max(persistence$birth)
-  death_max <- max(persistence$death[!is.infinite(persistence$death)])
   persistence |>
     dplyr::arrange(dimension, .data$birth) |>
     dplyr::mutate(id = 1:dplyr::n()) |>
@@ -200,8 +212,37 @@ autoplot.persistence_diagram <- function(x,
     ) +
     ggplot2::geom_abline(intercept = 0, slope = 1) +
     ggplot2::scale_color_viridis_d() +
-    ggplot2::coord_fixed(xlim = c(0, birth_max), ylim = c(0, death_max)) +
+    ggplot2::coord_fixed(xlim = c(0, death_max), ylim = c(0, death_max)) +
     ggplot2::theme_classic() +
     ggplot2::labs(color = "Dimension") +
     ggplot2::theme(legend.position = if (legend) "top" else "none")
+}
+
+.plot_persistence_density <- function(persistence,
+                                      dimension = NULL,
+                                      alpha = 0.6,
+                                      max_intervals = 20000,
+                                      legend = FALSE,
+                                      greyblock = TRUE,
+                                      n = 10) {
+  persistence <- massage_persistence_diagram(
+    x = persistence,
+    dimension = dimension,
+    max_intervals = max_intervals
+  )
+  max_val <- max(persistence$death[!is.infinite(persistence$death)])
+  p <- persistence |>
+    tibble::add_row(birth = 2 * max_val, death = 2 * max_val) |>
+    ggplot2::ggplot(ggplot2::aes(birth, death)) +
+    ggplot2::geom_density_2d_filled(breaks = 10^(-n:0), contour_var = "ndensity")
+  if (greyblock) p <- p + ggplot2::geom_ribbon(
+    mapping = ggplot2::aes(ymax = .data$birth),
+    ymin = 0,
+    fill = "grey90"
+  )
+  p <- p +
+    ggplot2::coord_fixed(xlim = c(0, max_val), ylim = c(0, max_val)) +
+    ggplot2::theme_classic()
+  if (!legend || n > 10) p <- p + ggplot2::theme(legend.position = "none")
+  p
 }

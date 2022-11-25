@@ -24,7 +24,8 @@
   max_intervals = 20000,
   legend = FALSE,
   greyblock = TRUE,
-  type = c("barcode", "diagram"),
+  n = 10L,
+  type = c("barcode", "diagram", "density"),
   ...
 )
 }
@@ -50,9 +51,12 @@ triangle in the diagram representation for nicer output. Defaults to
 \code{TRUE}.}
 
 \item{type}{A string specifyfing the type of representation. Choices are
-either \code{"barcode"} or \code{"diagram"}. Defaults to \code{"barcode"}.}
+\code{"barcode"}, \code{"diagram"} or \code{"density"}. Defaults to \code{"barcode"}.}
 
 \item{...}{Other parameters to be passed on to next methods.}
+
+\item{n}{An integer value specifying the number of bins for plotting the
+diagram as a density. Defaults to \code{10L}.}
 }
 \value{
 For \code{\link[=plot.persistence_diagram]{plot.persistence_diagram()}}, \code{NULL}. Otherwise a
