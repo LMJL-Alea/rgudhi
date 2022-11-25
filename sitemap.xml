@@ -115,6 +115,9 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/WitnessComplex.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/fetch.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/index.html</loc>
   </url>
   <url>
@@ -128,5 +131,11 @@
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/seq_circle.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/sphere.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/torus.html</loc>
   </url>
 </urlset>

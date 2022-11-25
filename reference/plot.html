@@ -80,7 +80,8 @@ layers as desired.</p>
 <span>  max_intervals <span class="op">=</span> <span class="fl">20000</span>,</span>
 <span>  legend <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  greyblock <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"barcode"</span>, <span class="st">"diagram"</span><span class="op">)</span>,</span>
+<span>  n <span class="op">=</span> <span class="fl">10L</span>,</span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"barcode"</span>, <span class="st">"diagram"</span>, <span class="st">"density"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -121,11 +122,16 @@ triangle in the diagram representation for nicer output. Defaults to
 
 <dt>type</dt>
 <dd><p>A string specifyfing the type of representation. Choices are
-either <code>"barcode"</code> or <code>"diagram"</code>. Defaults to <code>"barcode"</code>.</p></dd>
+<code>"barcode"</code>, <code>"diagram"</code> or <code>"density"</code>. Defaults to <code>"barcode"</code>.</p></dd>
 
 
 <dt>...</dt>
 <dd><p>Other parameters to be passed on to next methods.</p></dd>
+
+
+<dt>n</dt>
+<dd><p>An integer value specifying the number of bins for plotting the
+diagram as a density. Defaults to <code>10L</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
