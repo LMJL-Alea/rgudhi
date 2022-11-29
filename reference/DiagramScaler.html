@@ -91,11 +91,9 @@ to <code>FALSE</code>.</p></dd>
 <dt><code>scalers</code></dt>
 <dd><p>A list of scalers to be fit on the persistence diagrams.
 Defaults to <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> which is an empty list. Each element of the list
-is a tuple with two elements:</p><ul><li><p>the first one is a list of coordinates;</p></li>
-<li><p>the second one is a scaler (i.e. a class with <code>$fit()</code> and
-<code>$transform()</code> methods) that is going to be applied to these coordinates.
-Common scalers can be found in the <strong>scikit-learn</strong> library (such as
-<code>MinMaxScaler</code> for instance).</p></li>
+is a length-2 <a href="https://rdrr.io/r/base/list.html" class="external-link">base::list</a> with two elements:</p><ul><li><p>the first one is a list of coordinates;</p></li>
+<li><p>the second one is an instantiated scaler class. Choices are
+<a href="MaxAbsScaler.html">MaxAbsScaler</a>, <a href="MinMaxScaler.html">MinMaxScaler</a>, <a href="RobustScaler.html">RobustScaler</a> or <a href="StandardScaler.html">StandardScaler</a>.</p></li>
 </ul></dd>
 
 

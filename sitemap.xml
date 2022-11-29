@@ -16,16 +16,31 @@
     <loc>https://lmjl-alea.github.io/rgudhi/index.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/AffinityPropagation.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/AgglomerativeClustering.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/AlphaComplex.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/BettiCurve.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/Birch.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/BirthPersistenceTransform.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/BisectingKMeans.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/BottleneckDistance.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/ClusteringAlgorithm.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/ComplexPolynomial.html</loc>
@@ -37,6 +52,9 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/CubicalComplex.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/DBSCAN.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/DiagramScaler.html</loc>
   </url>
   <url>
@@ -46,13 +64,28 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Entropy.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/FeatureAgglomeration.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/KMeans.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/KernelRepresentationStep.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Landscape.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/MaxAbsScaler.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/MetricStep.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/MinMaxScaler.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/MiniBatchKMeans.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Padding.html</loc>
@@ -88,6 +121,9 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/RipsComplex.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/RobustScaler.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Silhouette.html</loc>
   </url>
   <url>
@@ -95,6 +131,9 @@
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/SlicedWassersteinDistance.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/StandardScaler.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/StrongWitnessComplex.html</loc>
