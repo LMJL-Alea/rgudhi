@@ -52,14 +52,27 @@ reference:
     - PersistenceFisherDistance
     - SlicedWassersteinDistance
     - WassersteinDistance
+  - title: Data Scalers
+  - contents:
+    - MaxAbsScaler
+    - MinMaxScaler
+    - RobustScaler
+    - StandardScaler
+  - title: Clustering
+  - contents:
+    - AffinityPropagation
+    - AgglomerativeClustering
+    - Birch
+    - DBSCAN
+    - FeatureAgglomeration
+    - KMeans
+    - BisectingKMeans
+    - MiniBatchKMeans
   - title: Data sets
-  - subtitle: Generators
   - contents:
     - seq_circle
     - sphere
     - torus
-  - subtitle: Remote data
-  - contents:
     - fetch_bunny
     - fetch_spiral_2d
     - clear_data_home

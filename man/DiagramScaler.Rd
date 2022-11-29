@@ -68,13 +68,11 @@ to \code{FALSE}.}
 
 \item{\code{scalers}}{A list of scalers to be fit on the persistence diagrams.
 Defaults to \code{list()} which is an empty list. Each element of the list
-is a tuple with two elements:
+is a length-2 \link[base:list]{base::list} with two elements:
 \itemize{
 \item the first one is a list of coordinates;
-\item the second one is a scaler (i.e. a class with \verb{$fit()} and
-\verb{$transform()} methods) that is going to be applied to these coordinates.
-Common scalers can be found in the \strong{scikit-learn} library (such as
-\code{MinMaxScaler} for instance).
+\item the second one is an instantiated scaler class. Choices are
+\link{MaxAbsScaler}, \link{MinMaxScaler}, \link{RobustScaler} or \link{StandardScaler}.
 }}
 }
 \if{html}{\out{</div>}}

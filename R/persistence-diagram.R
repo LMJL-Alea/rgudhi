@@ -233,7 +233,7 @@ autoplot.persistence_diagram <- function(x,
   max_val <- max(persistence$death[!is.infinite(persistence$death)])
   p <- persistence |>
     tibble::add_row(birth = 2 * max_val, death = 2 * max_val) |>
-    ggplot2::ggplot(ggplot2::aes(birth, death)) +
+    ggplot2::ggplot(ggplot2::aes(.data$birth, .data$death)) +
     ggplot2::geom_density_2d_filled(breaks = 10^(-n:0), contour_var = "ndensity")
   if (greyblock) p <- p + ggplot2::geom_ribbon(
     mapping = ggplot2::aes(ymax = .data$birth),

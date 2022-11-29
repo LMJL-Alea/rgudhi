@@ -121,12 +121,10 @@ DiagramScaler <- R6::R6Class(
     #'   to `FALSE`.
     #' @param scalers A list of scalers to be fit on the persistence diagrams.
     #'   Defaults to `list()` which is an empty list. Each element of the list
-    #'   is a tuple with two elements:
+    #'   is a length-2 [base::list] with two elements:
     #'   - the first one is a list of coordinates;
-    #' - the second one is a scaler (i.e. a class with `$fit()` and
-    #' `$transform()` methods) that is going to be applied to these coordinates.
-    #' Common scalers can be found in the **scikit-learn** library (such as
-    #' `MinMaxScaler` for instance).
+    #'   - the second one is an instantiated scaler class. Choices are
+    #'   [MaxAbsScaler], [MinMaxScaler], [RobustScaler] or [StandardScaler].
     #'
     #' @return An object of class [`DiagramScaler`].
     #'
