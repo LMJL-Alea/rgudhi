@@ -19,8 +19,8 @@ BugReports: https://github.com/lmjl-alea/rgudhi/issues
 Config/reticulate:
   list(
     packages = list(
-      list(package = "scikit-learn"), 
-      list(package = "gudhi")
+      list(package = "scikit-learn", version = "1.2.0"), 
+      list(package = "gudhi", version = "3.7.1")
     )
   )
 Imports: 
