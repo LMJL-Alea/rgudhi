@@ -42,14 +42,14 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.config.python }}
-
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
           needs: check
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.config.python }}
 
       - name: setup r-reticulate venv
         shell: Rscript {0}

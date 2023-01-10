@@ -9,14 +9,9 @@ distance. This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html#sklearn.cluster.AgglomerativeClustering}{sklearn.cluster.AgglomerativeClustering}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `AgglomerativeClustering$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- AgglomerativeClustering$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- AgglomerativeClustering$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{\link[rgudhi:ClusteringAlgorithm]{rgudhi::ClusteringAlgorithm}} -> \code{AgglomerativeClustering}
@@ -120,16 +115,6 @@ computational and memory overhead. Defaults to \code{FALSE}.}
 \subsection{Returns}{
 An object of class \link{AgglomerativeClustering}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- AgglomerativeClustering$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AgglomerativeClustering-clone"></a>}}

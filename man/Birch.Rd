@@ -12,14 +12,9 @@ such as \link{AgglomerativeClustering}. This is a wrapper around the Python clas
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.Birch.html#sklearn.cluster.Birch}{sklearn.cluster.Birch}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `Birch$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- Birch$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- Birch$new()
+\dontshow{\}) # examplesIf}
 }
 \references{
 \itemize{
@@ -105,16 +100,6 @@ Defaults to \code{TRUE}.}
 \subsection{Returns}{
 An object of class \link{Birch}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- Birch$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Birch-clone"></a>}}

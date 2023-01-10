@@ -16,7 +16,7 @@ torus(n_samples, dim, sample = c("random", "grid"))
 or \code{"grid"}. Defaults to \code{"random"}.}
 }
 \value{
-A numeric array of shape \eqn{\mathrm{n_samples} \times \mathbb{R}^{2
+A numeric array of shape \eqn{n_\mathrm{samples} \times \mathbb{R}^{2
   \mathrm{dim}}} storing the sampled points.
 }
 \description{
@@ -28,5 +28,7 @@ returned as an array of shape \eqn{\mathrm{n_samples} \times \mathbb{R}^{2
 \mathrm{dim}}}.
 }
 \examples{
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 torus(10, 1)
+\dontshow{\}) # examplesIf}
 }

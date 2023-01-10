@@ -8,14 +8,9 @@ This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering}{sklearn.cluster.SpectralClustering}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `SpectralClustering$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- SpectralClustering$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- SpectralClustering$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{\link[rgudhi:ClusteringAlgorithm]{rgudhi::ClusteringAlgorithm}} -> \code{SpectralClustering}
@@ -166,16 +161,6 @@ using all processors.}
 \subsection{Returns}{
 An object of class \link{SpectralClustering}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- SpectralClustering$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SpectralClustering-clone"></a>}}

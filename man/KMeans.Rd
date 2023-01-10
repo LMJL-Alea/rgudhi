@@ -8,14 +8,9 @@ This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans}{sklearn.cluster.KMeans}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `KMeans$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- KMeans$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- KMeans$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{\link[rgudhi:ClusteringAlgorithm]{rgudhi::ClusteringAlgorithm}} -> \code{KMeans}
@@ -118,16 +113,6 @@ allocation of an extra array of shape \eqn{\mathrm{n_{samples}} \times
 \subsection{Returns}{
 An object of class \link{KMeans}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- KMeans$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-KMeans-clone"></a>}}

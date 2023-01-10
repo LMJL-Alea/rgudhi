@@ -40,7 +40,8 @@ The \code{\link[=fetch_spiral_2d]{fetch_spiral_2d()}} function returns a numeric
 }
 
 \examples{
-b <- fetch_bunny("~/gudhi_data")
-s <- fetch_spiral_2d("~/gudhi_data")
-clear_data_home("~/gudhi_data")
+\dontshow{if (requireNamespace("withr", quiet = TRUE) && reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+b <- withr::with_tempdir({fetch_bunny(getwd())})
+s <- withr::with_tempdir({fetch_spiral_2d(getwd())})
+\dontshow{\}) # examplesIf}
 }

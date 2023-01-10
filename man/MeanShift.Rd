@@ -8,14 +8,9 @@ This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MeanShift.html#sklearn.cluster.MeanShift}{sklearn.cluster.MeanShift}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `MeanShift$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- MeanShift$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- MeanShift$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{\link[rgudhi:ClusteringAlgorithm]{rgudhi::ClusteringAlgorithm}} -> \code{MeanShift}
@@ -95,16 +90,6 @@ iterations per seed point before the clustering operation terminates
 \subsection{Returns}{
 An object of class \link{MeanShift}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- MeanShift$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MeanShift-clone"></a>}}

@@ -12,12 +12,12 @@
 #' @param radius A numeric value specifying the radius of the sphere. Defaults
 #'   to `1.0`.
 #'
-#' @return A numeric array of shape \eqn{\mathrm{n_samples} \times
-#'   \mathrm{ambient_dim}} storing `n_samples` points uniformly sampled on the
+#' @return A numeric array of shape \eqn{n_\mathrm{samples} \times
+#'   \mathrm{ambient\_dim}} storing `n_samples` points uniformly sampled on the
 #'   sphere of dimension `ambient_dim - 1`.
 #'
 #' @export
-#' @examples
+#' @examplesIf reticulate::py_module_available("gudhi")
 #' sphere(10, 2)
 sphere <- function(n_samples, ambient_dim, radius = 1.0) {
   n_samples <- as.integer(n_samples)
@@ -44,11 +44,11 @@ sphere <- function(n_samples, ambient_dim, radius = 1.0) {
 #' @param sample A string specifying the sampling type. Choices are `"random"`
 #'   or `"grid"`. Defaults to `"random"`.
 #'
-#' @return A numeric array of shape \eqn{\mathrm{n_samples} \times \mathbb{R}^{2
+#' @return A numeric array of shape \eqn{n_\mathrm{samples} \times \mathbb{R}^{2
 #'   \mathrm{dim}}} storing the sampled points.
 #'
 #' @export
-#' @examples
+#' @examplesIf reticulate::py_module_available("gudhi")
 #' torus(10, 1)
 torus <- function(n_samples, dim, sample = c("random", "grid")) {
   n_samples <- as.integer(n_samples)

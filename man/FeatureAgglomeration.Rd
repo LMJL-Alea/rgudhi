@@ -9,14 +9,9 @@ Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.FeatureAgglomeration.html#sklearn.cluster.FeatureAgglomeration}{sklearn.cluster.FeatureAgglomeration}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `FeatureAgglomeration$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- FeatureAgglomeration$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- FeatureAgglomeration$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{\link[rgudhi:ClusteringAlgorithm]{rgudhi::ClusteringAlgorithm}} -> \code{FeatureAgglomeration}
@@ -129,16 +124,6 @@ computational and memory overhead. Defaults to \code{FALSE}.}
 \subsection{Returns}{
 An object of class \link{FeatureAgglomeration}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- FeatureAgglomeration$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FeatureAgglomeration-clone"></a>}}

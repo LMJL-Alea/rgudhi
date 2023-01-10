@@ -8,14 +8,9 @@ This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AffinityPropagation.html#sklearn.cluster.AffinityPropagation}{sklearn.cluster.AffinityPropagation}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `AffinityPropagation$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- AffinityPropagation$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- AffinityPropagation$new()
+\dontshow{\}) # examplesIf}
 }
 \references{
 \itemize{
@@ -102,16 +97,6 @@ fixed integer for reproducible results across function calls.}
 \subsection{Returns}{
 An object of class \link{AffinityPropagation}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- AffinityPropagation$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AffinityPropagation-clone"></a>}}

@@ -8,14 +8,9 @@ This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans}{sklearn.cluster.MiniBatchKMeans}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `MiniBatchKMeans$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- MiniBatchKMeans$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- MiniBatchKMeans$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{\link[rgudhi:ClusteringAlgorithm]{rgudhi::ClusteringAlgorithm}} -> \code{MiniBatchKMeans}
@@ -130,16 +125,6 @@ issues, especially with a small batch size. Defaults to \code{0.01}.}
 \subsection{Returns}{
 An object of class \link{MiniBatchKMeans}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- MiniBatchKMeans$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MiniBatchKMeans-clone"></a>}}

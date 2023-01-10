@@ -11,10 +11,9 @@
 #' @return A numeric array storing the points of the corresponding data set.
 #' @name fetch
 #'
-#' @examples
-#' b <- fetch_bunny("~/gudhi_data")
-#' s <- fetch_spiral_2d("~/gudhi_data")
-#' clear_data_home("~/gudhi_data")
+#' @examplesIf requireNamespace("withr", quiet = TRUE) && reticulate::py_module_available("gudhi")
+#' b <- withr::with_tempdir({fetch_bunny(getwd())})
+#' s <- withr::with_tempdir({fetch_spiral_2d(getwd())})
 NULL
 
 #' @section Stanford bunny dataset:

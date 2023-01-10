@@ -16,8 +16,8 @@ space.}
 to \code{1.0}.}
 }
 \value{
-A numeric array of shape \eqn{\mathrm{n_samples} \times
-  \mathrm{ambient_dim}} storing \code{n_samples} points uniformly sampled on the
+A numeric array of shape \eqn{n_\mathrm{samples} \times
+  \mathrm{ambient\_dim}} storing \code{n_samples} points uniformly sampled on the
 sphere of dimension \code{ambient_dim - 1}.
 }
 \description{
@@ -28,5 +28,7 @@ dimension \code{ambient_dim}. The radius of the sphere is optional and is equal 
 \code{1} by default. Only random points generation is currently available.
 }
 \examples{
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 sphere(10, 2)
+\dontshow{\}) # examplesIf}
 }

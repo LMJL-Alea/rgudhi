@@ -8,14 +8,9 @@ DBSCAN - Density-Based Spatial Clustering of Applications with Noise. Finds core
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN}{sklearn.cluster.DBSCAN}.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `DBSCAN$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- DBSCAN$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cl <- DBSCAN$new()
+\dontshow{\}) # examplesIf}
 }
 \references{
 \itemize{
@@ -116,16 +111,6 @@ run. Defaults to \code{1L}.}
 \subsection{Returns}{
 An object of class \link{DBSCAN}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.cluster")) {
-  cl <- DBSCAN$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-DBSCAN-clone"></a>}}

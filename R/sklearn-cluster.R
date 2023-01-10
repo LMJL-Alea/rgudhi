@@ -57,10 +57,8 @@ AffinityPropagation <- R6::R6Class(
     #'
     #' @return An object of class [AffinityPropagation].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- AffinityPropagation$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- AffinityPropagation$new()
     initialize = function(damping = 0.5,
                           max_iter = 200L,
                           convergence_iter = 15L,
@@ -152,10 +150,8 @@ AgglomerativeClustering <- R6::R6Class(
     #'
     #' @return An object of class [AgglomerativeClustering].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- AgglomerativeClustering$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- AgglomerativeClustering$new()
     initialize = function(n_clusters = 2L,
                           affinity = c("euclidean", "l1", "l2", "manhattan",
                                        "cosine", "precomputed"),
@@ -247,10 +243,8 @@ Birch <- R6::R6Class(
     #'
     #' @return An object of class [Birch].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- Birch$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- Birch$new()
     initialize = function(threshold = 0.5,
                           branching_factor = 50L,
                           n_clusters = 3L,
@@ -337,10 +331,8 @@ DBSCAN <- R6::R6Class(
     #'
     #' @return An object of class [DBSCAN].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- DBSCAN$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- DBSCAN$new()
     initialize = function(eps = 0.5,
                           min_samples = 5L,
                           metric = "euclidean",
@@ -446,10 +438,8 @@ FeatureAgglomeration <- R6::R6Class(
     #'
     #' @return An object of class [FeatureAgglomeration].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- FeatureAgglomeration$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- FeatureAgglomeration$new()
     initialize = function(n_clusters = 2L,
                           affinity = c("euclidean", "l1", "l2", "manhattan",
                                        "cosine", "precomputed"),
@@ -550,10 +540,8 @@ KMeans <- R6::R6Class(
     #'
     #' @return An object of class [KMeans].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- KMeans$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- KMeans$new()
     initialize = function(n_clusters = 2L,
                           init = c("k-means++", "random"),
                           n_init = 10L,
@@ -661,10 +649,8 @@ BisectingKMeans <- R6::R6Class(
     #'
     #' @return An object of class [BisectingKMeans].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- BisectingKMeans$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- BisectingKMeans$new()
     initialize = function(n_clusters = 2L,
                           init = c("k-means++", "random"),
                           n_init = 10L,
@@ -774,10 +760,8 @@ MiniBatchKMeans <- R6::R6Class(
     #'
     #' @return An object of class [MiniBatchKMeans].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- MiniBatchKMeans$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- MiniBatchKMeans$new()
     initialize = function(n_clusters = 2L,
                           init = c("k-means++", "random"),
                           n_init = 10L,
@@ -865,10 +849,8 @@ MeanShift <- R6::R6Class(
     #'
     #' @return An object of class [MeanShift].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- MeanShift$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- MeanShift$new()
     initialize = function(bandwidth = NULL,
                           seeds = NULL,
                           bin_seeding = FALSE,
@@ -990,10 +972,8 @@ OPTICS <- R6::R6Class(
     #' ## References
     #' \insertCited{}
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- OPTICS$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- OPTICS$new()
     initialize = function(min_samples = 5L,
                           max_eps = Inf,
                           metric = c(
@@ -1147,10 +1127,8 @@ SpectralClustering <- R6::R6Class(
     #'
     #' @return An object of class [SpectralClustering].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.cluster")) {
-    #'   cl <- SpectralClustering$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- SpectralClustering$new()
     initialize = function(n_clusters = 8L,
                           eigen_solver = c("arpack", "lobpcg", "amg"),
                           n_components = NULL,
