@@ -79,6 +79,9 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/MaxAbsScaler.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/MeanShift.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/MetricStep.html</loc>
   </url>
   <url>
@@ -86,6 +89,9 @@
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/MiniBatchKMeans.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/OPTICS.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Padding.html</loc>
@@ -131,6 +137,9 @@
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/SlicedWassersteinDistance.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/SpectralClustering.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/StandardScaler.html</loc>
