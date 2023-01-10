@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{AgglomerativeClustering}
 \alias{AgglomerativeClustering}
-\title{Agglomerative Clustering}
+\title{Performs clustering according to the agglomerative algorithm}
 \description{
 Recursively merges pair of clusters of sample data; uses linkage
 distance. This is a wrapper around the Python class

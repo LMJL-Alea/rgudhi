@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{DBSCAN}
 \alias{DBSCAN}
-\title{DBSCAN Clustering}
+\title{Performs clustering according to the DBSCAN algorithm}
 \description{
 DBSCAN - Density-Based Spatial Clustering of Applications with Noise. Finds core samples of high density and expands clusters from them. Good for data which contains clusters of similar density. This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN}{sklearn.cluster.DBSCAN}.

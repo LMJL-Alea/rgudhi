@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{KMeans}
 \alias{KMeans}
-\title{K-Means Clustering}
+\title{Performs clustering according to the k-means algorithm}
 \description{
 This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans}{sklearn.cluster.KMeans}.
@@ -61,7 +61,7 @@ The \link{KMeans} class constructor.
 form as well as the number of centroids to generate. Defaults to \code{2L}.}
 
 \item{\code{init}}{Either a string or a numeric matrix of shape
-\eqn{\mathrm{n_clusters} \times \mathrm{n_features}} specifying the
+\eqn{\mathrm{n_{clusters}} \times \mathrm{n_{features}}} specifying the
 method for initialization. If a string, choices are:
 \itemize{
 \item \code{"k-means++"}: selects initial cluster centroids using sampling based
@@ -71,8 +71,9 @@ theoretically proven to be \eqn{\mathcal{O}(\log ⁡k})-optimal. See the
 description of \code{n_init} for more details;
 \item \code{"random"}: chooses \code{n_clusters} observations (rows) at random from
 data for the initial centroids.
-Defaults to \code{"k-means++"}.
-}}
+}
+
+Defaults to \code{"k-means++"}.}
 
 \item{\code{n_init}}{An integer value specifying the number of times the k-means
 algorithm will be run with different centroid seeds. The final results
@@ -109,8 +110,8 @@ sparse, but not in CSR format, a copy will be made even if \code{copy_x} is
 classical EM-style algorithm is \code{"lloyd"}. The \code{"elkan"} variation can
 be more efficient on some datasets with well-defined clusters, by using
 the triangle inequality. However it’s more memory-intensive due to the
-allocation of an extra array of shape \eqn{\mathrm{n_samples} \times
-  \mathrm{n_clusters}}. Defaults to \code{"lloyd"}.}
+allocation of an extra array of shape \eqn{\mathrm{n_{samples}} \times
+  \mathrm{n_{clusters}}}. Defaults to \code{"lloyd"}.}
 }
 \if{html}{\out{</div>}}
 }

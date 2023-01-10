@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{BisectingKMeans}
 \alias{BisectingKMeans}
-\title{Bisecting K-Means Clustering}
+\title{Performs clustering according to the bisecting k-means algorithm}
 \description{
 This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.BisectingKMeans.html#sklearn.cluster.BisectingKMeans}{sklearn.cluster.BisectingKMeans}.

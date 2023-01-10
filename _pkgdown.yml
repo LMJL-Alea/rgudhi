@@ -68,6 +68,9 @@ reference:
     - KMeans
     - BisectingKMeans
     - MiniBatchKMeans
+    - MeanShift
+    - OPTICS
+    - SpectralClustering
   - title: Data sets
   - contents:
     - seq_circle

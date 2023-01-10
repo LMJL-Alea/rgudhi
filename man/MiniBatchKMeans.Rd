@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{MiniBatchKMeans}
 \alias{MiniBatchKMeans}
-\title{Mini-Batch K-Means Clustering}
+\title{Performs clustering according to the mini-batch k-means algorithm}
 \description{
 This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans}{sklearn.cluster.MiniBatchKMeans}.

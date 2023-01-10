@@ -72,6 +72,7 @@ MinMaxScaler <- R6::R6Class(
     initialize = function(feature_range = c(0, 1),
                           copy = TRUE,
                           clip = FALSE) {
+      feature_range <- reticulate::tuple(feature_range[1], feature_range[2])
       super$set_python_class(
         skl_preprocessing$MinMaxScaler(
           feature_range = feature_range,
@@ -138,6 +139,7 @@ RobustScaler <- R6::R6Class(
                           quantile_range = c(25.0, 75.0),
                           copy = TRUE,
                           unit_variance = FALSE) {
+      quantile_range <- reticulate::tuple(quantile_range[1], quantile_range[2])
       super$set_python_class(
         skl_preprocessing$RobustScaler(
           with_centering = with_centering,

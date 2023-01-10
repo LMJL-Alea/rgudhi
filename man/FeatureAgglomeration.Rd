@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{FeatureAgglomeration}
 \alias{FeatureAgglomeration}
-\title{Feature Agglomeration Clustering}
+\title{Performs clustering according to the feature agglomeration algorithm}
 \description{
 Recursively merges pair of clusters of features. This is a wrapper around the
 Python class

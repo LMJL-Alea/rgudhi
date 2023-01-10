@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{Birch}
 \alias{Birch}
-\title{Birch Clustering}
+\title{Performs clustering according to the Birch algorithm}
 \description{
 It is a memory-efficient, online-learning algorithm provided as an
 alternative to \link{MiniBatchKMeans}. It constructs a tree data structure with

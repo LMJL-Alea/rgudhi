@@ -120,60 +120,30 @@
     Code
       ent$apply(dgm)
     Output
-      # A tibble: 100 x 2
-             Grid     Value
-            <dbl> <dbl[1d]>
-       1 0             2.20
-       2 0.000965      2.20
-       3 0.00193       2.20
-       4 0.00289       2.20
-       5 0.00386       2.20
-       6 0.00482       2.20
-       7 0.00579       2.20
-       8 0.00675       2.20
-       9 0.00772       2.20
-      10 0.00868       2.20
-      # ... with 90 more rows
+      # A tibble: 1 x 2
+         Grid     Value
+        <int> <dbl[1d]>
+      1     1      2.20
 
 ---
 
     Code
       ent$fit(list(dgm))$transform(list(dgm))
     Output
-      # A tibble: 100 x 2
-             Grid Value    
-            <dbl> <list>   
-       1 0        <dbl [1]>
-       2 0.000965 <dbl [1]>
-       3 0.00193  <dbl [1]>
-       4 0.00289  <dbl [1]>
-       5 0.00386  <dbl [1]>
-       6 0.00482  <dbl [1]>
-       7 0.00579  <dbl [1]>
-       8 0.00675  <dbl [1]>
-       9 0.00772  <dbl [1]>
-      10 0.00868  <dbl [1]>
-      # ... with 90 more rows
+      # A tibble: 1 x 2
+         Grid Value    
+        <int> <list>   
+      1     1 <dbl [1]>
 
 ---
 
     Code
       ent$fit_transform(list(dgm))
     Output
-      # A tibble: 100 x 2
-             Grid Value    
-            <dbl> <list>   
-       1 0        <dbl [1]>
-       2 0.000965 <dbl [1]>
-       3 0.00193  <dbl [1]>
-       4 0.00289  <dbl [1]>
-       5 0.00386  <dbl [1]>
-       6 0.00482  <dbl [1]>
-       7 0.00579  <dbl [1]>
-       8 0.00675  <dbl [1]>
-       9 0.00772  <dbl [1]>
-      10 0.00868  <dbl [1]>
-      # ... with 90 more rows
+      # A tibble: 1 x 2
+         Grid Value    
+        <int> <list>   
+      1     1 <dbl [1]>
 
 # The Landscape class works
 
@@ -183,16 +153,16 @@
       # A tibble: 500 x 3
              Grid LandscapeId     Value
             <dbl>       <int> <dbl[1d]>
-       1 0                  1   0.00134
-       2 0.000965           1   0.00267
-       3 0.00193            1   0.00401
-       4 0.00289            1   0.00535
-       5 0.00386            1   0.00669
-       6 0.00482            1   0.00802
-       7 0.00579            1   0.00936
-       8 0.00675            1   0.0107 
-       9 0.00772            1   0.0120 
-      10 0.00868            1   0.0134 
+       1 0.000945           1   0.00134
+       2 0.00189            1   0.00267
+       3 0.00284            1   0.00401
+       4 0.00378            1   0.00535
+       5 0.00473            1   0.00669
+       6 0.00567            1   0.00802
+       7 0.00662            1   0.00936
+       8 0.00756            1   0.0107 
+       9 0.00851            1   0.0120 
+      10 0.00945            1   0.0134 
       # ... with 490 more rows
 
 ---
@@ -203,16 +173,16 @@
       # A tibble: 500 x 3
              Grid LandscapeId Value    
             <dbl>       <int> <list>   
-       1 0                  1 <dbl [1]>
-       2 0.000965           1 <dbl [1]>
-       3 0.00193            1 <dbl [1]>
-       4 0.00289            1 <dbl [1]>
-       5 0.00386            1 <dbl [1]>
-       6 0.00482            1 <dbl [1]>
-       7 0.00579            1 <dbl [1]>
-       8 0.00675            1 <dbl [1]>
-       9 0.00772            1 <dbl [1]>
-      10 0.00868            1 <dbl [1]>
+       1 0.000945           1 <dbl [1]>
+       2 0.00189            1 <dbl [1]>
+       3 0.00284            1 <dbl [1]>
+       4 0.00378            1 <dbl [1]>
+       5 0.00473            1 <dbl [1]>
+       6 0.00567            1 <dbl [1]>
+       7 0.00662            1 <dbl [1]>
+       8 0.00756            1 <dbl [1]>
+       9 0.00851            1 <dbl [1]>
+      10 0.00945            1 <dbl [1]>
       # ... with 490 more rows
 
 ---
@@ -223,22 +193,26 @@
       # A tibble: 500 x 3
              Grid LandscapeId Value    
             <dbl>       <int> <list>   
-       1 0                  1 <dbl [1]>
-       2 0.000965           1 <dbl [1]>
-       3 0.00193            1 <dbl [1]>
-       4 0.00289            1 <dbl [1]>
-       5 0.00386            1 <dbl [1]>
-       6 0.00482            1 <dbl [1]>
-       7 0.00579            1 <dbl [1]>
-       8 0.00675            1 <dbl [1]>
-       9 0.00772            1 <dbl [1]>
-      10 0.00868            1 <dbl [1]>
+       1 0.000945           1 <dbl [1]>
+       2 0.00189            1 <dbl [1]>
+       3 0.00284            1 <dbl [1]>
+       4 0.00378            1 <dbl [1]>
+       5 0.00473            1 <dbl [1]>
+       6 0.00567            1 <dbl [1]>
+       7 0.00662            1 <dbl [1]>
+       8 0.00756            1 <dbl [1]>
+       9 0.00851            1 <dbl [1]>
+      10 0.00945            1 <dbl [1]>
       # ... with 490 more rows
 
 # The PersistenceImage class works
 
     Code
       pei$apply(dgm)
+    Warning <lifecycle_warning_deprecated>
+      `cross_df()` was deprecated in purrr 1.0.0.
+      i Please use `tidyr::expand_grid()` instead.
+      i See <https://github.com/tidyverse/purrr/issues/768>.
     Output
       # A tibble: 400 x 3
                X     Y     Value
@@ -259,6 +233,10 @@
 
     Code
       pei$fit(list(dgm))$transform(list(dgm))
+    Warning <lifecycle_warning_deprecated>
+      `cross_df()` was deprecated in purrr 1.0.0.
+      i Please use `tidyr::expand_grid()` instead.
+      i See <https://github.com/tidyverse/purrr/issues/768>.
     Output
       # A tibble: 400 x 3
                X     Y Value    
@@ -279,6 +257,10 @@
 
     Code
       pei$fit_transform(list(dgm))
+    Warning <lifecycle_warning_deprecated>
+      `cross_df()` was deprecated in purrr 1.0.0.
+      i Please use `tidyr::expand_grid()` instead.
+      i See <https://github.com/tidyverse/purrr/issues/768>.
     Output
       # A tibble: 400 x 3
                X     Y Value    
@@ -303,16 +285,16 @@
       # A tibble: 100 x 2
              Grid     Value
             <dbl> <dbl[1d]>
-       1 0          0      
-       2 0.000965   0.00136
-       3 0.00193    0.00273
-       4 0.00289    0.00409
-       5 0.00386    0.00546
-       6 0.00482    0.00682
-       7 0.00579    0.00818
-       8 0.00675    0.00955
-       9 0.00772    0.0109 
-      10 0.00868    0.0123 
+       1 0.000945   0.00134
+       2 0.00189    0.00267
+       3 0.00284    0.00401
+       4 0.00378    0.00535
+       5 0.00473    0.00669
+       6 0.00567    0.00802
+       7 0.00662    0.00936
+       8 0.00756    0.0107 
+       9 0.00851    0.0120 
+      10 0.00945    0.0134 
       # ... with 90 more rows
 
 ---
@@ -323,16 +305,16 @@
       # A tibble: 100 x 2
              Grid Value    
             <dbl> <list>   
-       1 0        <dbl [1]>
-       2 0.000965 <dbl [1]>
-       3 0.00193  <dbl [1]>
-       4 0.00289  <dbl [1]>
-       5 0.00386  <dbl [1]>
-       6 0.00482  <dbl [1]>
-       7 0.00579  <dbl [1]>
-       8 0.00675  <dbl [1]>
-       9 0.00772  <dbl [1]>
-      10 0.00868  <dbl [1]>
+       1 0.000945 <dbl [1]>
+       2 0.00189  <dbl [1]>
+       3 0.00284  <dbl [1]>
+       4 0.00378  <dbl [1]>
+       5 0.00473  <dbl [1]>
+       6 0.00567  <dbl [1]>
+       7 0.00662  <dbl [1]>
+       8 0.00756  <dbl [1]>
+       9 0.00851  <dbl [1]>
+      10 0.00945  <dbl [1]>
       # ... with 90 more rows
 
 ---
@@ -343,16 +325,16 @@
       # A tibble: 100 x 2
              Grid Value    
             <dbl> <list>   
-       1 0        <dbl [1]>
-       2 0.000965 <dbl [1]>
-       3 0.00193  <dbl [1]>
-       4 0.00289  <dbl [1]>
-       5 0.00386  <dbl [1]>
-       6 0.00482  <dbl [1]>
-       7 0.00579  <dbl [1]>
-       8 0.00675  <dbl [1]>
-       9 0.00772  <dbl [1]>
-      10 0.00868  <dbl [1]>
+       1 0.000945 <dbl [1]>
+       2 0.00189  <dbl [1]>
+       3 0.00284  <dbl [1]>
+       4 0.00378  <dbl [1]>
+       5 0.00473  <dbl [1]>
+       6 0.00567  <dbl [1]>
+       7 0.00662  <dbl [1]>
+       8 0.00756  <dbl [1]>
+       9 0.00851  <dbl [1]>
+      10 0.00945  <dbl [1]>
       # ... with 90 more rows
 
 # The TopologicalVector class works

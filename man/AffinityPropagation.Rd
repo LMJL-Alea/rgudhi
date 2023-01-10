@@ -2,7 +2,7 @@
 % Please edit documentation in R/sklearn-cluster.R
 \name{AffinityPropagation}
 \alias{AffinityPropagation}
-\title{Affinity Propagation Clustering}
+\title{Performs clustering according to the affinity propagation algorithm}
 \description{
 This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AffinityPropagation.html#sklearn.cluster.AffinityPropagation}{sklearn.cluster.AffinityPropagation}.

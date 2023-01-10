@@ -68,7 +68,7 @@ VectorRepresentationStep <- R6::R6Class(
       py_cls <- super$get_python_class()
       if ("grid_" %in% names(py_cls))
         grid <- as.numeric(py_cls$grid_)
-      else if ("sample_range" %in% names(py_cls))
+      else if ("sample_range" %in% names(py_cls) && !anyNA(py_cls$sample_range))
         grid <- seq(
           from = py_cls$sample_range[1],
           to = py_cls$sample_range[2],
