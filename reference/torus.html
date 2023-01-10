@@ -86,40 +86,24 @@ or <code>"grid"</code>. Defaults to <code>"random"</code>.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A numeric array of shape \(\mathrm{n_samples} \times \mathbb{R}^{2
+<p>A numeric array of shape \(n_\mathrm{samples} \times \mathbb{R}^{2
   \mathrm{dim}}\) storing the sampled points.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">torus</span><span class="op">(</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> List of 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ python              : chr "/usr/bin/python3"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ libpython           : chr "/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/libpython3.10.so"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ pythonhome          : chr "//usr://usr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ pythonpath          : chr "/home/runner/work/_temp/Library/reticulate/config:/usr/lib/python310.zip:/usr/lib/python3.10:/usr/lib/python3.1"| __truncated__</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ prefix              : chr "/usr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ exec_prefix         : chr "/usr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ base_exec_prefix    : chr "/usr"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ virtualenv          : chr ""</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ virtualenv_activate : chr ""</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ version_string      : chr "3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0]"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ version             : chr "3.10"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ architecture        : chr "64bit"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ anaconda            : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ conda               : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ numpy               : NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ required_module     : chr "sklearn"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ required_module_path: NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ available           : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ python_versions     : chr [1:2] "/usr/bin/python3" "/usr/share/miniconda/bin/python"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ forced              : NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr "py_config"</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Python module gudhi was not found.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Detected Python configuration:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             [,1]       [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,]  0.1026004 -0.9947227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,] -0.2300016 -0.9731902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,] -0.1005753 -0.9949294</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]  0.8523717 -0.5229365</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,]  0.5102711 -0.8600136</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]  0.3853043  0.9227896</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,]  0.1393609  0.9902417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]  0.6536738  0.7567764</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,]  0.7099093 -0.7042931</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10,] -0.7881691 -0.6154588</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -230,6 +230,17 @@ tree created from the Delaunay triangulation.</p>
 <span class="r-in"><span>  <span class="va">wc</span> <span class="op">&lt;-</span> <span class="va">WitnessComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>nearest_landmark_table <span class="op">=</span> <span class="va">l</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">wc</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;WitnessComplex&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Inherits from: &lt;PythonClass&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     create_simplex_tree: function (max_alpha_square = Inf) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (nearest_landmark_table) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplexTree: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.witness_complex.WitnessComplex, python.builtin.object</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `WitnessComplex$create_simplex_tree`</span></span></span>
@@ -252,6 +263,7 @@ tree created from the Delaunay triangulation.</p>
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">wc</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">num_vertices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

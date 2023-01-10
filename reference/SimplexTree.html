@@ -1497,6 +1497,51 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">SimplexTree</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SimplexTree&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Inherits from: &lt;PythonClass&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     assign_filtration: function (simplex, filtration) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     betti_numbers: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     collapse_edges: function (nb_iterations = 1) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     compute_persistence: function (homology_coeff_field = 11, min_persistence = 0, persistence_dim_max = FALSE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     dimension: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     expansion: function (max_dim) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     extend_filtration: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     extended_persistence: function (homology_coeff_field = 11, min_persistence = 0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     filtration: function (simplex) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     find: function (simplex) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     flag_persistence_generators: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_boundaries: function (simplex) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_cofaces: function (simplex, codimension) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_filtration: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_simplices: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_skeleton: function (dimension) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     get_star: function (simplex) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (py_class = NULL) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     insert: function (simplex, filtration = 0, chainable = TRUE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     lower_star_persistence_generators: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     make_filtration_non_decreasing: function (chainable = TRUE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     num_simplices: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     num_vertices: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     persistence: function (homology_coeff_field = 11, min_persistence = 0, persistence_dim_max = FALSE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     persistence_intervals_in_dimension: function (dimension) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     persistence_pairs: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     persistent_betti_numbers: function (from_value, to_value) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     prune_above_filtration: function (filtration, chainable = TRUE) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     remove_maximal_simplex: function (simplex) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     reset_filtration: function (filtration, min_dim = 0) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_dimension: function (dimension) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_is_flag: function (val) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     upper_bound_dimension: function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     write_persistence_diagram: function (persistence_file) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedExtendedFiltration: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedPersistence: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     m_IsFlag: FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.simplex_tree.SimplexTree, python.builtin.object</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$set_is_flag`</span></span></span>
@@ -1529,6 +1574,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">assign_filtration</span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.8</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">filtration</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.8</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$betti_numbers`</span></span></span>
@@ -1544,6 +1590,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">betti_numbers</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$collapse_edges`</span></span></span>
@@ -1574,6 +1621,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">dimension</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$expansion`</span></span></span>
@@ -1605,6 +1653,18 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">extend_filtration</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">extended_persistence</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Ordinary</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Relative</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Extended+`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`Extended-`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$filtration`</span></span></span>
@@ -1621,6 +1681,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">filtration</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">filtration</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1169778</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$find`</span></span></span>
@@ -1636,6 +1697,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">find</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$flag_persistence_generators`</span></span></span>
@@ -1651,6 +1713,27 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">rc</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">flag_persistence_generators</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       [,1] [,2] [,3]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,]    9    9    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,]    6    6    5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,]    3    3    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]    1    1    0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,]    2    2    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]    4    4    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,]    5    5    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]    7    7    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,]    8    8    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$get_boundaries`</span></span></span>
@@ -1667,6 +1750,12 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">splx</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">get_simplices</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">simplex</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_boundaries</span><span class="op">(</span><span class="va">splx</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      0.117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      1    </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$get_cofaces`</span></span></span>
@@ -1682,6 +1771,11 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_cofaces</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      0.117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">&lt;int [3]&gt;</span>      1.00 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$get_filtration`</span></span></span>
@@ -1697,6 +1791,20 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_filtration</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 35 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 25 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$get_simplices`</span></span></span>
@@ -1712,6 +1820,20 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 35 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">&lt;int [3]&gt;</span>   1   <span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">&lt;int [2]&gt;</span>   1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">&lt;int [3]&gt;</span>   1   <span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">&lt;int [2]&gt;</span>   1   <span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">&lt;int [2]&gt;</span>   1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">-32</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">&lt;int [1]&gt;</span>   0   <span style="color: #949494;"> </span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">&lt;int [3]&gt;</span>   1.00<span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">&lt;int [2]&gt;</span>   1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">&lt;int [3]&gt;</span>   1   <span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">&lt;int [2]&gt;</span>   1   <span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 25 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$get_skeleton`</span></span></span>
@@ -1727,6 +1849,19 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_skeleton</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">&lt;int [1]&gt;</span>          0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$get_star`</span></span></span>
@@ -1742,6 +1877,11 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">get_star</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   simplex   filtration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> <span style="color: #949494;">&lt;int [2]&gt;</span>      0.117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> <span style="color: #949494;">&lt;int [3]&gt;</span>      1.00 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$insert`</span></span></span>
@@ -1758,6 +1898,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">insert</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, chainable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$lower_star_persistence_generators`</span></span></span>
@@ -1773,6 +1914,31 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">lower_star_persistence_generators</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       [,1] [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,]    9   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,]    6   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,]    3   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]    1   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,]    2   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]    4   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,]    8   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]    5   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,]    7   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      [,1] [,2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]   -1   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2,]   -1   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3,]   -1   -1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$make_filtration_non_decreasing`</span></span></span>
@@ -1803,6 +1969,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">num_simplices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 35</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$num_vertices`</span></span></span>
@@ -1818,6 +1985,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">num_vertices</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$persistence`</span></span></span>
@@ -1833,6 +2001,22 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">persistence</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    dimension birth      death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>         1 0.117   1.00<span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>         1 1       1.00<span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>         1 1       1   <span style="color: #949494;">e</span>+ 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>         0 0     <span style="color: #BB0000;">Inf</span>   <span style="color: #949494;"> </span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span>         0 0       1.17<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span>         0 0       1.50<span style="color: #949494;">e</span><span style="color: #BB0000;">-32</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$persistence_intervals_in_dimension`</span></span></span>
@@ -1848,6 +2032,12 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   birth death</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1      1   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 1      1.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 0.117  1.00</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$persistence_pairs`</span></span></span>
@@ -1863,6 +2053,110 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_pairs</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[4]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[4]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[5]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[5]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[5]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[6]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[6]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[6]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[7]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[7]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[7]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[8]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[8]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[8]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[9]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[9]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[9]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[10]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[10]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[10]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9 8 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[11]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[11]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[11]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 2 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[12]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[12]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[12]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 8 7 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[13]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[13]][[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[13]][[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$persistent_betti_numbers`</span></span></span>
@@ -1878,6 +2172,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistent_betti_numbers</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9 0</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$prune_above_filtration`</span></span></span>
@@ -1953,6 +2248,7 @@ simplicial complex in a user given file name.</p><div class="section">
 <span class="r-in"><span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">st</span><span class="op">$</span><span class="fu">upper_bound_dimension</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co">## Method `SimplexTree$write_persistence_diagram`</span></span></span>
