@@ -19,7 +19,7 @@ X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
 if (reticulate::py_module_available("gudhi")) {
   pcc <- PeriodicCubicalComplex$new(
     top_dimensional_cells = X,
-    periodic_dimensions = TRUE
+    periodic_dimensions = c(TRUE, FALSE)
   )
   pcc
 }
@@ -106,7 +106,7 @@ X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
 if (reticulate::py_module_available("gudhi")) {
   pcc <- PeriodicCubicalComplex$new(
     top_dimensional_cells = X,
-    periodic_dimensions = TRUE
+    periodic_dimensions = c(TRUE, FALSE)
   )
   pcc
 }
