@@ -37,28 +37,24 @@ devtools::install_github("LMJL-Alea/rgudhi")
 ``` r
 library(rgudhi)
 n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n), 
-  function(.x) c(cos(.x), sin(.x))
-)
+X <- seq_circle(n)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 st$persistence()
-#> # A tibble: 14 × 3
-#>    dimension birth      death
-#>        <int> <dbl>      <dbl>
-#>  1         1 0.117   1.00e+ 0
-#>  2         1 1       1.00e+ 0
-#>  3         1 1       1   e+ 0
-#>  4         1 1       1   e+ 0
-#>  5         0 0     Inf       
-#>  6         0 0       1.17e- 1
-#>  7         0 0       1.17e- 1
-#>  8         0 0       1.17e- 1
-#>  9         0 0       1.17e- 1
-#> 10         0 0       1.17e- 1
-#> 11         0 0       1.17e- 1
-#> 12         0 0       1.17e- 1
-#> 13         0 0       1.17e- 1
-#> 14         0 0       1.50e-32
+#> # A tibble: 13 × 3
+#>    dimension  birth    death
+#>        <int>  <dbl>    <dbl>
+#>  1         1 0.0955   1.00  
+#>  2         1 1        1     
+#>  3         1 1        1     
+#>  4         0 0      Inf     
+#>  5         0 0        0.0955
+#>  6         0 0        0.0955
+#>  7         0 0        0.0955
+#>  8         0 0        0.0955
+#>  9         0 0        0.0955
+#> 10         0 0        0.0955
+#> 11         0 0        0.0955
+#> 12         0 0        0.0955
+#> 13         0 0        0.0955
 ```

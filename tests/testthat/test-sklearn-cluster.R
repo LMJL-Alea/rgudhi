@@ -11,4 +11,5 @@ test_that("Clustering algorithm classes work", {
   expect_true("OPTICS" %in% class(OPTICS$new()))
   expect_true("SpectralClustering" %in% class(SpectralClustering$new()))
   expect_true("SpectralBiclustering" %in% class(SpectralBiclustering$new()))
+  expect_true("SpectralCoclustering" %in% class(SpectralCoclustering$new()))
 })

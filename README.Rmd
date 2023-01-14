@@ -39,10 +39,7 @@ devtools::install_github("LMJL-Alea/rgudhi")
 ```{r example}
 library(rgudhi)
 n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n), 
-  function(.x) c(cos(.x), sin(.x))
-)
+X <- seq_circle(n)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 st$persistence()

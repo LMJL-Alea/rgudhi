@@ -1283,3 +1283,77 @@ SpectralBiclustering <- R6::R6Class(
     }
   )
 )
+
+#' Performs clustering according to the spectral coclustering algorithm
+#'
+#' @description
+#' This is a wrapper around the Python class
+#' [sklearn.cluster.SpectralCoclustering](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralCoclustering.html#sklearn.cluster.SpectralCoclustering).
+#'
+#' @export
+SpectralCoclustering <- R6::R6Class(
+  classname = "SpectralCoclustering",
+  inherit = ClusteringAlgorithm,
+  public = list(
+    #' @description The [SpectralCoclustering] class constructor.
+    #'
+    #' @param n_clusters An integer value specifying the number of biclusters to
+    #'   find. Defaults to `3L`.
+    #' @param svd_method A string specifying the algorithm for finding singular
+    #'   vectors. May be `"randomized"` or `"arpack"`. If `"randomized"`, uses
+    #'   `sklearn.utils.extmath.randomized_svd()`, which may be faster for large
+    #'   matrices. If `"arpack"`, uses `scipy.sparse.linalg.svds()`, which is
+    #'   more accurate, but possibly slower in some cases. Defaults to
+    #'   `"randomized"`.
+    #' @param n_svd_vecs An integer value specifying the number of vectors to
+    #'   use in calculating the SVD. Corresponds to `ncv` when `svd_method ==
+    #'   "arpack"` and `n_oversamples` when `svd_method == "randomized"`.
+    #'   Defaults to `NULL`.
+    #' @param mini_batch A boolean value specifying whether to use mini-batch
+    #'   k-means, which is faster but may get different results. Defaults to
+    #'   `FALSE`.
+    #' @param init A string specifying the method for initialization of k-means
+    #'   algorithm. Choices are `"k-means++"` or `"random"`. Defaults to
+    #'   `"k-means++"`.
+    #' @param n_init An integer value specifying the number of random
+    #'   initializations that are tried with the k-means algorithm. If
+    #'   mini-batch k-means is used, the best initialization is chosen and the
+    #'   algorithm runs once. Otherwise, the algorithm is run for each
+    #'   initialization and the best solution chosen. Defaults to `10L`.
+    #' @param random_state An integer value specifying a pseudo random number
+    #'   generator used for the initialization of the `lobpcg` eigenvectors
+    #'   decomposition when `eigen_solver == "amg"`, and for the k-means
+    #'   initialization. Defaults to `NULL` which uses clock time.
+    #'
+    #' @return An object of class [SpectralCoclustering].
+    #'
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- SpectralCoclustering$new()
+    initialize = function(n_clusters = 3L,
+                          svd_method = c("randomized", "arpack"),
+                          n_svd_vecs = NULL,
+                          mini_batch = FALSE,
+                          init = c("k-means++", "random"),
+                          n_init = 10L,
+                          random_state = NULL) {
+      n_clusters <- as.integer(n_clusters)
+      svd_method <- rlang::arg_match(svd_method)
+      if (!is.null(n_svd_vecs)) n_svd_vecs <- as.integer(n_svd_vecs)
+      init <- rlang::arg_match(init)
+      n_init <- as.integer(n_init)
+      if (!is.null(random_state)) random_state <- as.integer(random_state)
+
+      super$set_python_class(
+        skl_cluster$SpectralCoclustering(
+          n_clusters = n_clusters,
+          svd_method = svd_method,
+          n_svd_vecs = n_svd_vecs,
+          mini_batch = mini_batch,
+          init = init,
+          n_init = n_init,
+          random_state = random_state
+        )
+      )
+    }
+  )
+)

@@ -72,6 +72,7 @@ reference:
     - OPTICS
     - SpectralClustering
     - SpectralBiclustering
+    - SpectralCoclustering
   - title: Data sets
   - contents:
     - seq_circle
