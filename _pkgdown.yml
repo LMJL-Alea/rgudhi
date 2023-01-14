@@ -71,6 +71,7 @@ reference:
     - MeanShift
     - OPTICS
     - SpectralClustering
+    - SpectralBiclustering
   - title: Data sets
   - contents:
     - seq_circle

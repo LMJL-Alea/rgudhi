@@ -1185,3 +1185,101 @@ SpectralClustering <- R6::R6Class(
     }
   )
 )
+
+#' Performs clustering according to the spectral biclustering algorithm
+#'
+#' @description
+#' This is a wrapper around the Python class
+#' [sklearn.cluster.SpectralBiclustering](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralBiclustering.html#sklearn.cluster.SpectralBiclustering).
+#'
+#' @export
+SpectralBiclustering <- R6::R6Class(
+  classname = "SpectralBiclustering",
+  inherit = ClusteringAlgorithm,
+  public = list(
+    #' @description The [SpectralBiclustering] class constructor.
+    #'
+    #' @param n_clusters An integer value or a length-2 vector specifying the
+    #'   number of row and column clusters in the checkerboard structure.
+    #'   Defaults to `3L`.
+    #' @param method A string specifying the method of normalizing and
+    #'   converting singular vectors into biclusters. May be one of `"scale"`,
+    #'   `"bistochastic"` or `"log"`. The authors recommend using `"log"`. If
+    #'   the data is sparse, however, log-normalization will not work, which is
+    #'   why the default is `"bistochastic"`. Warning: if `method == "log"`, the
+    #'   data must not be sparse.
+    #' @param n_components An integer value specifying the number of singular
+    #'   vectors to check. Defaults to `6L`.
+    #' @param n_best An integer value specifying the number of best singular
+    #'   vectors to which to project the data for clustering. Defaults to `3L`.
+    #' @param svd_method A string specifying the algorithm for finding singular
+    #'   vectors. May be `"randomized"` or `"arpack"`. If `"randomized"`, uses
+    #'   `randomized_svd()`, which may be faster for large matrices. If
+    #'   `"arpack"`, uses `scipy.sparse.linalg.svds()`, which is more accurate,
+    #'   but possibly slower in some cases. Defaults to `"randomized"`.
+    #' @param n_svd_vecs An integer value specifying the number of vectors to
+    #'   use in calculating the SVD. Corresponds to `ncv` when `svd_method ==
+    #'   "arpack"` and `n_oversamples` when `svd_method == "randomized"`.
+    #'   Defaults to `NULL`.
+    #' @param mini_batch A boolean value specifying whether to use mini-batch
+    #'   k-means, which is faster but may get different results. Defaults to
+    #'   `FALSE`.
+    #' @param init A string specifying the method for initialization of k-means
+    #'   algorithm. Choices are `"k-means++"` or `"random"`. Defaults to
+    #'   `"k-means++"`.
+    #' @param n_init An integer value specifying the number of random
+    #'   initializations that are tried with the k-means algorithm. If
+    #'   mini-batch k-means is used, the best initialization is chosen and the
+    #'   algorithm runs once. Otherwise, the algorithm is run for each
+    #'   initialization and the best solution chosen. Defaults to `10L`.
+    #' @param random_state An integer value specifying a pseudo random number
+    #'   generator used for the initialization of the `lobpcg` eigenvectors
+    #'   decomposition when `eigen_solver == "amg"`, and for the k-means
+    #'   initialization. Defaults to `NULL` which uses clock time.
+    #'
+    #' @return An object of class [SpectralBiclustering].
+    #'
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' cl <- SpectralBiclustering$new()
+    initialize = function(n_clusters = 3L,
+                          method = c("bistochastic", "scale", "log"),
+                          n_components = 6L,
+                          n_best = 3L,
+                          svd_method = c("randomized", "arpack"),
+                          n_svd_vecs = NULL,
+                          mini_batch = FALSE,
+                          init = c("k-means++", "random"),
+                          n_init = 10L,
+                          random_state = NULL) {
+      n_clusters <- as.integer(n_clusters)
+      if (length(n_clusters) > 1L) {
+        if (length(n_clusters) > 2L)
+          cli::cli_abort("The argument {.arg n_clusters} should be of length 1 or 2.")
+        n_clusters <- reticulate::tuple(n_clusters[1], n_clusters[2])
+      }
+      method <- rlang::arg_match(method)
+      n_components <- as.integer(n_components)
+      n_best <- as.integer(n_best)
+      svd_method <- rlang::arg_match(svd_method)
+      if (!is.null(n_svd_vecs)) n_svd_vecs <- as.integer(n_svd_vecs)
+      init <- rlang::arg_match(init)
+      n_init <- as.integer(n_init)
+      if (!is.null(random_state)) random_state <- as.integer(random_state)
+
+      super$set_python_class(
+        skl_cluster$SpectralBiclustering(
+          n_clusters = n_clusters,
+          method = method,
+          n_components = n_components,
+          n_best = n_best,
+          svd_method = svd_method,
+          n_svd_vecs = n_svd_vecs,
+          mini_batch = mini_batch,
+          init = init,
+          n_init = n_init,
+          random_state = random_state
+        )
+      )
+    }
+  )
+)
