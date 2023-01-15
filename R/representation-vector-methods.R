@@ -109,6 +109,71 @@ VectorRepresentationStep <- R6::R6Class(
   )
 )
 
+#' Vector Representation: Atol
+#'
+#' @description Computes measure vectorization (e.g. point clouds, persistence
+#'   diagrams, etc.) after a quantisation step according to the Atol algorithm
+#'   \insertCite{royer2021atol}{rgudhi}.
+#'
+#' ## References
+#' \insertCited{}
+#'
+#' @author Mathieu Carrière
+#'
+#' @export
+Atol <- R6::R6Class(
+  classname = "Atol",
+  inherit = VectorRepresentationStep,
+  public = list(
+    #' @description The [`Atol`] constructor.
+    #'
+    #' @param quantiser An object of class [`ClusteringAlgorithm`] specifying
+    #'   any clustering algorithm from the
+    #'   [**sklearn.cluster**](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.cluster)
+    #'   module. It will be fitted when the `$fit()` method is called.
+    #' @param weighting_method A string specifying the constant generic function
+    #'   for weighting the measure points. Choices are either `"cloud"` or
+    #'   `"iidproba"`. Defaults to `"cloud"`, i.e. the measure is seen as a
+    #'   point cloud. This will have no impact if weights are provided along
+    #'   with measures all the way, i.e. at `$fit()` and `$transform()` calls,
+    #'   through the optional argument `sample_weight`.
+    #' @param contrast A string specifying the constant function for evaluating
+    #'   proximity of a measure with respect to centers. Choices are either
+    #'   `"gaussian"` or `"laplacian"` or `"indicator"`. Defaults to
+    #'   `"gaussian"` (see page 3 in
+    #'   \insertCite{royer2021atol;textual}{rgudhi}).
+    #'
+    #' @return An object of class [`Atol`].
+    #'
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' n <- 10
+    #' X <- seq_circle(n)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' km <- KMeans$new(n_clusters = 2, random_state = 202006)
+    #' vr <- Atol$new(quantiser = km)
+    #' vr$apply(dgm)
+    #' vr$fit_transform(list(dgm))
+    initialize = function(quantiser,
+                          weighting_method = c("cloud", "iidproba"),
+                          contrast = c("gaussian", "laplacian", "indicator")) {
+      quantiser <- quantiser$get_python_class()
+      weighting_method <- rlang::arg_match(weighting_method)
+      contrast <- rlang::arg_match(contrast)
+      super$set_python_class(
+        gd$representations$Atol(
+          quantiser = quantiser,
+          weighting_method = weighting_method,
+          contrast = contrast
+        )
+      )
+    }
+  )
+)
+
 #' Vector Representation: Betti Curve
 #'
 #' @description Computes Betti curves from persistence diagrams. There are
@@ -162,7 +227,9 @@ BettiCurve <- R6::R6Class(
     #'   bc$apply(dgm)
     #'   bc$fit_transform(list(dgm))
     #' }
-    initialize = function(resolution = 100, sample_range = rep(NA, 2), predefined_grid = NULL) {
+    initialize = function(resolution = 100,
+                          sample_range = rep(NA, 2),
+                          predefined_grid = NULL) {
       resolution <- as.integer(resolution)
       super$set_python_class(
         gd$representations$BettiCurve(

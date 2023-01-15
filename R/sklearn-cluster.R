@@ -3,7 +3,7 @@
 #' This is the base class for all the clustering algorithms in the
 #' [**sklearn.cluster**](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.cluster)
 #' module. The child classes are intended to be used within some GUDHI classes
-#' such as Atol # TO DO: link.
+#' such as [`Atol`].
 #'
 #' @keywords internal
 ClusteringAlgorithm <- R6::R6Class(
@@ -551,6 +551,7 @@ KMeans <- R6::R6Class(
                           random_state = NULL,
                           copy_x = TRUE,
                           algorithm = c("lloyd", "elkan")) {
+      n_clusters <- as.integer(n_clusters)
       if (is.character(init))
         init <- rlang::arg_match(init)
       else if (!is.matrix(init) || dim(init)[1] != n_clusters)
@@ -558,6 +559,7 @@ KMeans <- R6::R6Class(
                        {.field "k-means++"} or {.field "random"} or a numeric
                        matrix with {n_clusters} row{?s}.')
       n_init <- as.integer(n_init)
+      max_iter <- as.integer(max_iter)
       if (!is.null(random_state))
         random_state <- as.integer(random_state)
       algorithm <- rlang::arg_match(algorithm)

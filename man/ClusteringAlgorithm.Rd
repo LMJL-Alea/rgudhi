@@ -7,7 +7,7 @@
 This is the base class for all the clustering algorithms in the
 \href{https://scikit-learn.org/stable/modules/classes.html#module-sklearn.cluster}{\strong{sklearn.cluster}}
 module. The child classes are intended to be used within some GUDHI classes
-such as Atol # TO DO: link.
+such as \code{\link{Atol}}.
 }
 \keyword{internal}
 \section{Super class}{

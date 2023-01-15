@@ -6,6 +6,14 @@ dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
 ds <- DiagramSelector$new(use = TRUE)
 dgm <- ds$apply(dgm)
 
+test_that("The Atol class works", {
+  km <- KMeans$new(n_clusters = 2, random_state = 202006)
+  vr <- Atol$new(quantiser = km)
+  # expect_snapshot(vr$apply(dgm)) # TODO: needs a fix in Python
+  expect_snapshot(vr$fit(list(dgm))$transform(list(dgm)))
+  expect_snapshot(vr$fit_transform(list(dgm)))
+})
+
 test_that("The BettiCurve class works", {
   bc <- BettiCurve$new()
   expect_snapshot(bc$apply(dgm))

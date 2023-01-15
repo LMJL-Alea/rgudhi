@@ -33,6 +33,7 @@ reference:
     - ProminentPoints
   - subtitle: Vector representations
   - contents:
+    - Atol
     - BettiCurve
     - ComplexPolynomial
     - Entropy

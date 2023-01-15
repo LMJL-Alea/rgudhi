@@ -1,3 +1,25 @@
+# The Atol class works
+
+    Code
+      vr$fit(list(dgm))$transform(list(dgm))
+    Output
+      # A tibble: 2 x 2
+         Grid Value    
+        <int> <list>   
+      1     1 <dbl [1]>
+      2     2 <dbl [1]>
+
+---
+
+    Code
+      vr$fit_transform(list(dgm))
+    Output
+      # A tibble: 2 x 2
+         Grid Value    
+        <int> <list>   
+      1     1 <dbl [1]>
+      2     2 <dbl [1]>
+
 # The BettiCurve class works
 
     Code
