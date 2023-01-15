@@ -121,7 +121,7 @@ PMLR.</p>
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>quantiser</code></dt>
-<dd><p>An object of class <code><a href="ClusteringAlgorithm.html">ClusteringAlgorithm</a></code> specifying
+<dd><p>An object of class <code><a href="BaseClustering.html">BaseClustering</a></code> specifying
 any clustering algorithm from the
 <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.cluster" class="external-link"><strong>sklearn.cluster</strong></a>
 module. It will be fitted when the <code>$fit()</code> method is called.</p></dd>
@@ -183,8 +183,7 @@ Royer et al. (2021)
 <span class="r-in"><span><span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="fu">apply</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">km</span> <span class="op">&lt;-</span> <span class="va"><a href="KMeans.html">KMeans</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>n_clusters <span class="op">=</span> <span class="fl">2</span>, random_state <span class="op">=</span> <span class="fl">202006</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">vr</span> <span class="op">&lt;-</span> <span class="va">Atol</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>quantiser <span class="op">=</span> <span class="va">km</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">vr</span><span class="op">$</span><span class="fu">apply</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in py_call_impl(callable, dots$args, dots$keywords):</span> AttributeError: 'Atol' object has no attribute 'centers'</span>
+<span class="r-in"><span><span class="co"># vr$apply(dgm) # TODO: needs fix in python</span></span></span>
 <span class="r-in"><span><span class="va">vr</span><span class="op">$</span><span class="fu">fit_transform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Grid Value    </span>

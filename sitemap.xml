@@ -28,6 +28,12 @@
     <loc>https://lmjl-alea.github.io/rgudhi/reference/Atol.html</loc>
   </url>
   <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/BaseClustering.html</loc>
+  </url>
+  <url>
+    <loc>https://lmjl-alea.github.io/rgudhi/reference/BaseScaler.html</loc>
+  </url>
+  <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/BettiCurve.html</loc>
   </url>
   <url>
@@ -41,9 +47,6 @@
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/BottleneckDistance.html</loc>
-  </url>
-  <url>
-    <loc>https://lmjl-alea.github.io/rgudhi/reference/ClusteringAlgorithm.html</loc>
   </url>
   <url>
     <loc>https://lmjl-alea.github.io/rgudhi/reference/ComplexPolynomial.html</loc>
