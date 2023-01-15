@@ -30,7 +30,7 @@ WitnessComplex <- R6::R6Class(
     #' @return A \code{\link{WitnessComplex}} object storing the Witness
     #'   complex.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' withr::with_seed(1234, {
     #'   l <- list(
     #'     tibble::tibble(
@@ -43,10 +43,8 @@ WitnessComplex <- R6::R6Class(
     #'     )
     #'   )
     #' })
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   wc <- WitnessComplex$new(nearest_landmark_table = l)
-    #'   wc
-    #' }
+    #' wc <- WitnessComplex$new(nearest_landmark_table = l)
+    #' wc
     initialize = function(nearest_landmark_table) {
       if (!rlang::is_list(nearest_landmark_table))
         cli::cli_abort("The input should be a list.")
@@ -76,7 +74,7 @@ WitnessComplex <- R6::R6Class(
     #' @return A \code{\link{SimplexTree}} object storing the computed simplex
     #'   tree created from the Delaunay triangulation.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' withr::with_seed(1234, {
     #'   l <- list(
     #'     tibble::tibble(
@@ -89,11 +87,9 @@ WitnessComplex <- R6::R6Class(
     #'     )
     #'   )
     #' })
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   wc <- WitnessComplex$new(nearest_landmark_table = l)
-    #'   st <- wc$create_simplex_tree()
-    #'   st$num_vertices()
-    #' }
+    #' wc <- WitnessComplex$new(nearest_landmark_table = l)
+    #' st <- wc$create_simplex_tree()
+    #' st$num_vertices()
     create_simplex_tree = function(max_alpha_square = Inf) {
       py_st <- super$get_python_class()$create_simplex_tree(
         max_alpha_square = max_alpha_square
@@ -128,7 +124,7 @@ StrongWitnessComplex <- R6::R6Class(
     #' @return A \code{\link{StrongWitnessComplex}} object storing the strong
     #'   Witness complex.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' withr::with_seed(1234, {
     #'   l <- list(
     #'     tibble::tibble(
@@ -141,10 +137,8 @@ StrongWitnessComplex <- R6::R6Class(
     #'     )
     #'   )
     #' })
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
-    #'   wc
-    #' }
+    #' wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
+    #' wc
     initialize = function(nearest_landmark_table) {
       if (!rlang::is_list(nearest_landmark_table))
         cli::cli_abort("The input should be a list.")

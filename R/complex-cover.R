@@ -32,11 +32,9 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return A \code{\link{CoverComplex}} object storing the Cover complex.
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc
     initialize = function(type) {
       type <- match.arg(type, choices = c("GIC", "Nerve"))
       super$set_python_class(
@@ -49,21 +47,19 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()$
-    #'     compute_PD()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()$
+    #'   compute_PD()
     compute_PD = function() {
       if (!private$m_ComputedSimplicies)
         cli::cli_abort("You first need to run the {.code $find_simplicies()} method.")
@@ -81,22 +77,20 @@ CoverComplex <- R6::R6Class(
     #' @return A numeric value storing the confidence level corresponding to the
     #'   input threshold on the Bottleneck distance.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()$
-    #'     compute_distribution()$
-    #'     compute_confidence_level_from_distance(distance_threshold = 0.1)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()$
+    #'   compute_distribution()$
+    #'   compute_confidence_level_from_distance(distance_threshold = 0.1)
     compute_confidence_level_from_distance = function(distance_threshold) {
       if (!private$m_ComputedBootstrapDistribution)
         cli::cli_abort("You first need to compute the bootstrap distribution using the {.code $compute_distribution()} method.")
@@ -112,22 +106,20 @@ CoverComplex <- R6::R6Class(
     #' @return A numeric value storing the threshold on the Bottleneck distance
     #'   corresponding to the input confidence level.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()$
-    #'     compute_distribution()$
-    #'     compute_distance_from_confidence_level(confidence_level = 0.95)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()$
+    #'   compute_distribution()$
+    #'   compute_distance_from_confidence_level(confidence_level = 0.95)
     compute_distance_from_confidence_level = function(confidence_level) {
       if (!private$m_ComputedBootstrapDistribution)
         cli::cli_abort("You first need to compute the bootstrap distribution using the {.code $compute_distribution()} method.")
@@ -144,21 +136,19 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()$
-    #'     compute_distribution()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()$
+    #'   compute_distribution()
     compute_distribution = function(N = 100L, dir = getwd()) {
       if (!private$m_ComputedSimplicies)
         cli::cli_abort("You first need to run the {.code $find_simplicies()} method.")
@@ -175,22 +165,20 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return A numeric value storing the desired p-value.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()$
-    #'     compute_distribution()$
-    #'     compute_p_value()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()$
+    #'   compute_distribution()$
+    #'   compute_p_value()
     compute_p_value = function() {
       if (!private$m_ComputedBootstrapDistribution)
         cli::cli_abort("You first need to compute the bootstrap distribution using the {.code $compute_distribution()} method.")
@@ -200,14 +188,12 @@ CoverComplex <- R6::R6Class(
     #' @return A \code{\link{SimplexTree}} object storing the simplex
     #'   tree created from the Cover complex.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   st <- cc$
-    #'     read_point_cloud(url)$
-    #'     create_simplex_tree()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' st <- cc$
+    #'   read_point_cloud(url)$
+    #'   create_simplex_tree()
     create_simplex_tree = function() {
       py_st <- super$get_python_class()$create_simplex_tree()
       private$m_ComputedSimplexTree <- TRUE
@@ -218,20 +204,18 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()
     find_simplices = function() {
       if (!private$ m_IsCoverDefined)
         cli::cli_abort("You first need to register a cover to the class using one of the {.code $set_cover_*()} methods before calling the {.code $find_simplicies()} method.")
@@ -252,23 +236,21 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()
-    #'   withr::with_tempdir({
-    #'     cc$plot_dot()
-    #'   })
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()
+    #' withr::with_tempdir({
+    #'   cc$plot_dot()
+    #' })
     plot_dot = function(dir = getwd()) {
       withr::with_dir(dir, {
         super$get_python_class()$plot_dot()
@@ -288,23 +270,21 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()
-    #'   withr::with_tempdir({
-    #'     cc$plot_dot()
-    #'   })
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()
+    #' withr::with_tempdir({
+    #'   cc$plot_dot()
+    #' })
     plot_off = function(dir = getwd()) {
       withr::with_dir(dir, {
         super$get_python_class()$plot_off()
@@ -324,13 +304,11 @@ CoverComplex <- R6::R6Class(
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly if
     #'   `chainable = TRUE` or a boolean storing the read file status.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)
     read_point_cloud = function(off_file, chainable = TRUE) {
       if (substr(off_file, 1, 5) == "https") {
         withr::with_tempfile("tf", {
@@ -361,19 +339,17 @@ CoverComplex <- R6::R6Class(
     #'   `chainable = TRUE` or a numeric value storing the resolution interval
     #'   length used to compute the cover.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()
     set_automatic_resolution = function(chainable = TRUE) {
       if (!private$m_IsCoverDefined)
         cli::cli_abort("You first need to register a cover to the class using one of the {.code $set_cover_*()} methods.")
@@ -393,16 +369,14 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()
     set_color_from_coordinate = function(k = 0) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("Please first register a point cloud via either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} method.")
@@ -422,15 +396,13 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
     #' cf <- system.file("extdata", "color_file.txt", package = "rgudhi")
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$
-    #'     new(type = "GIC")$
-    #'     read_point_cloud(url)$
-    #'     set_color_from_file(cf)
-    #' }
+    #' cc <- CoverComplex$
+    #'   new(type = "GIC")$
+    #'   read_point_cloud(url)$
+    #'   set_color_from_file(cf)
     set_color_from_file = function(color_file_name) {
       super$get_python_class()$set_color_from_file(color_file_name)
       invisible(self)
@@ -444,16 +416,14 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_range(seq(0, 1, len = 100))
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_range(seq(0, 1, len = 100))
     set_color_from_range = function(color_values) {
       super$get_python_class()$set_color_from_range(color_values)
       invisible(self)
@@ -467,18 +437,16 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_Voronoi()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_Voronoi()
     set_cover_from_Voronoi = function(m = 100L) {
       if (!private$m_IsGraphDefined)
         cli::cli_abort("You first need to register a graph to the class using one of the {.code $set_graph_*()} methods before calling any of the {.code $set_cover_*()} methods.")
@@ -502,16 +470,14 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
     #' cf <- system.file("extdata", "cover_file.txt", package = "rgudhi")
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$
-    #'     new(type = "GIC")$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()#$
-    #'     #set_cover_from_file(cf)
-    #' }
+    #' cc <- CoverComplex$
+    #'   new(type = "GIC")$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()#$
+    #'   #set_cover_from_file(cf) # TODO: fix in python
     set_cover_from_file = function(cover_file_name) {
       if (!private$m_IsGraphDefined)
         cli::cli_abort("You first need to register a graph to the class using one of the {.code $set_graph_*()} methods before calling any of the {.code $set_cover_*()} methods.")
@@ -526,18 +492,16 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()
     set_cover_from_function = function() {
       if (!private$m_IsGraphDefined)
         cli::cli_abort("You first need to register a graph to the class using one of the {.code $set_graph_*()} methods before calling any of the {.code $set_cover_*()} methods.")
@@ -556,12 +520,10 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' D <- dist(iris[, -5])
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$set_distances_from_range(D)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$set_distances_from_range(D)
     set_distances_from_range = function(distance_matrix) {
       if (inherits(distance_matrix, "dist"))
         distance_matrix <- as.matrix(distance_matrix)
@@ -579,15 +541,13 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()
     set_function_from_coordinate = function(k = 0L) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("Please first register a point cloud via either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} method.")
@@ -608,15 +568,13 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
     #' ff <- system.file("extdata", "function_file.txt", package = "rgudhi")
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$
-    #'     new(type = "GIC")$
-    #'     read_point_cloud(url)$
-    #'     set_function_from_file(ff)
-    #' }
+    #' cc <- CoverComplex$
+    #'   new(type = "GIC")$
+    #'   read_point_cloud(url)$
+    #'   set_function_from_file(ff)
     set_function_from_file = function(func_file_name) {
       super$get_python_class()$set_function_from_file(func_file_name)
       private$m_IsFunctionDefined <- TRUE
@@ -630,15 +588,13 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_range(seq(0, 1, len = 100))
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_range(seq(0, 1, len = 100))
     set_function_from_range = function(function_values) {
       super$get_python_class()$set_function_from_range(function_values)
       private$m_IsFunctionDefined <- TRUE
@@ -651,11 +607,9 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$set_gain()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$set_gain()
     set_gain = function(g = 0.3) {
       super$get_python_class()$set_gain(g = g)
       invisible(self)
@@ -666,14 +620,12 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_OFF()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_OFF()
     set_graph_from_OFF = function() {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
@@ -702,14 +654,12 @@ CoverComplex <- R6::R6Class(
     #'   TRUE` or a numeric value storing the delta threshold used for computing
     #'   the Rips complex..
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()
     set_graph_from_automatic_rips = function(N = 100L, chainable = TRUE) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
@@ -734,15 +684,13 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
     #' gf <- system.file("extdata", "graph_file.txt", package = "rgudhi")
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$
-    #'     new(type = "GIC")$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_file(gf)
-    #' }
+    #' cc <- CoverComplex$
+    #'   new(type = "GIC")$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_file(gf)
     set_graph_from_file = function(graph_file_name) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
@@ -758,14 +706,12 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated [CoverComplex] class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_rips(0.1)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_rips(0.1)
     set_graph_from_rips = function(threshold) {
       if (!private$m_IsPointCloudDefined)
         cli::cli_abort("You first need to register a point cloud to the class using either the {.code $read_point_cloud()} method or the {.code $set_point_cloud_from_range()} mehtod before calling any of the {.code $set_graph_*()} methods.")
@@ -783,21 +729,19 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()$
-    #'     set_mask(1)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()$
+    #'   set_mask(1)
     set_mask = function(nodemask) {
       if (!private$m_ComputedSimplicies)
         cli::cli_abort("You need to first run the {.code $find_simplicies()} method before calling the {.code $set_mask()} method.")
@@ -814,18 +758,12 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
     #' X <- Reduce(rbind, X, init = numeric())
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     set_point_cloud_from_range(X)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   set_point_cloud_from_range(X)
     set_point_cloud_from_range = function(cloud) {
       super$get_python_class()$set_point_cloud_from_range(cloud)
       private$m_IsPointCloudDefined <- TRUE
@@ -839,17 +777,15 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_length(1)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_length(1)
     set_resolution_with_interval_length = function(resolution) {
       super$get_python_class()$set_resolution_with_interval_length(resolution)
       private$m_IsResolutionDefined <- TRUE
@@ -862,17 +798,15 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)
     set_resolution_with_interval_number = function(resolution) {
       super$get_python_class()$set_resolution_with_interval_number(resolution)
       private$m_IsResolutionDefined <- TRUE
@@ -891,11 +825,9 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$set_subsampling(constant = 0, power = 1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$set_subsampling(constant = 0, power = 1)
     set_subsampling = function(constant, power) {
       super$get_python_class()$set_subsampling(
         constant = constant,
@@ -912,11 +844,9 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$set_verbose(FALSE)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$set_verbose(FALSE)
     set_verbose = function(verbose = FALSE) {
       super$get_python_class()$set_verbose(verbose)
       invisible(self)
@@ -930,21 +860,19 @@ CoverComplex <- R6::R6Class(
     #' @return An integer vector storing the IDs of the data points at the input
     #'   node.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()$
-    #'     subpopulation(0)
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()$
+    #'   subpopulation(0)
     subpopulation = function(node_id) {
       super$get_python_class()$subpopulation(node_id)
     },
@@ -958,23 +886,21 @@ CoverComplex <- R6::R6Class(
     #'
     #' @return The updated \code{\link{CoverComplex}} class itself invisibly.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CoverComplex$new(type = "GIC")
-    #'   cc$
-    #'     read_point_cloud(url)$
-    #'     set_graph_from_automatic_rips()$
-    #'     set_function_from_coordinate()$
-    #'     set_color_from_coordinate()$
-    #'     set_resolution_with_interval_number(100)$
-    #'     set_cover_from_function()$
-    #'     set_automatic_resolution()$
-    #'     find_simplices()
-    #'   withr::with_tempdir({
-    #'     cc$write_info()
-    #'   })
-    #' }
+    #' cc <- CoverComplex$new(type = "GIC")
+    #' cc$
+    #'   read_point_cloud(url)$
+    #'   set_graph_from_automatic_rips()$
+    #'   set_function_from_coordinate()$
+    #'   set_color_from_coordinate()$
+    #'   set_resolution_with_interval_number(100)$
+    #'   set_cover_from_function()$
+    #'   set_automatic_resolution()$
+    #'   find_simplices()
+    #' withr::with_tempdir({
+    #'   cc$write_info()
+    #' })
     write_info = function(dir = getwd()) {
       withr::with_dir(dir, {
         super$get_python_class()$write_info()

@@ -1,9 +1,6 @@
 test_that("Class `TangentialComplex` works", {
   n <- 10
-  X <- lapply(
-    seq(0, 2 * pi, len = n),
-    function(.x) c(cos(.x), sin(.x))
-  )
+  X <- seq_circle(n)
   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
   tc$set_max_squared_edge_length(1)
   tc$compute_tangential_complex()

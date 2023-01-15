@@ -14,8 +14,7 @@ diagrams, etc.) after a quantisation step according to the Atol algorithm
 }
 \examples{
 \dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-n <- 10
-X <- seq_circle(n)
+X <- seq_circle(10)
 ac <- AlphaComplex$new(points = X)
 st <- ac$create_simplex_tree()
 dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)

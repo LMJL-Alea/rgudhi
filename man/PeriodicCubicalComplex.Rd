@@ -9,20 +9,15 @@ complex useful in computational mathematics (specially rigorous numerics)
 and image analysis.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `PeriodicCubicalComplex$new`
-## ------------------------------------------------
-
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 n <- 10
 X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-if (reticulate::py_module_available("gudhi")) {
-  pcc <- PeriodicCubicalComplex$new(
-    top_dimensional_cells = X,
-    periodic_dimensions = c(TRUE, FALSE)
-  )
-  pcc
-}
+pcc <- PeriodicCubicalComplex$new(
+  top_dimensional_cells = X,
+  periodic_dimensions = c(TRUE, FALSE)
+)
+pcc
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other data structures for cell complexes: 
@@ -99,22 +94,6 @@ Defaults to \code{NULL} which uses the Python class constructor instead.}
 \subsection{Returns}{
 A new \code{\link{PeriodicCubicalComplex}} object.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-if (reticulate::py_module_available("gudhi")) {
-  pcc <- PeriodicCubicalComplex$new(
-    top_dimensional_cells = X,
-    periodic_dimensions = c(TRUE, FALSE)
-  )
-  pcc
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PeriodicCubicalComplex-clone"></a>}}

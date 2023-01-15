@@ -23,530 +23,351 @@ belonging to different elements of \eqn{C} correspond to the simplices of
 the GIC.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `CoverComplex$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$compute_PD`
-## ------------------------------------------------
-
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cc <- CoverComplex$new(type = "GIC")
+cc
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_PD()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$compute_confidence_level_from_distance`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()$
+  compute_PD()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()$
-    compute_confidence_level_from_distance(distance_threshold = 0.1)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$compute_distance_from_confidence_level`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()$
+  compute_distribution()$
+  compute_confidence_level_from_distance(distance_threshold = 0.1)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()$
-    compute_distance_from_confidence_level(confidence_level = 0.95)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$compute_distribution`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()$
+  compute_distribution()$
+  compute_distance_from_confidence_level(confidence_level = 0.95)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$compute_p_value`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()$
+  compute_distribution()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()$
-    compute_p_value()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$create_simplex_tree`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()$
+  compute_distribution()$
+  compute_p_value()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  st <- cc$
-    read_point_cloud(url)$
-    create_simplex_tree()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$find_simplices`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+st <- cc$
+  read_point_cloud(url)$
+  create_simplex_tree()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$plot_dot`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-  withr::with_tempdir({
-    cc$plot_dot()
-  })
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$plot_off`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()
+withr::with_tempdir({
+  cc$plot_dot()
+})
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-  withr::with_tempdir({
-    cc$plot_dot()
-  })
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$read_point_cloud`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()
+withr::with_tempdir({
+  cc$plot_dot()
+})
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_automatic_resolution`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_color_from_coordinate`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_color_from_file`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
 cf <- system.file("extdata", "color_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_color_from_file(cf)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_color_from_range`
-## ------------------------------------------------
-
+cc <- CoverComplex$
+  new(type = "GIC")$
+  read_point_cloud(url)$
+  set_color_from_file(cf)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_range(seq(0, 1, len = 100))
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_cover_from_Voronoi`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_range(seq(0, 1, len = 100))
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_Voronoi()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_cover_from_file`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_Voronoi()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
 cf <- system.file("extdata", "cover_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()#$
-    #set_cover_from_file(cf)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_cover_from_function`
-## ------------------------------------------------
-
+cc <- CoverComplex$
+  new(type = "GIC")$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()#$
+  #set_cover_from_file(cf) # TODO: fix in python
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_distances_from_range`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 D <- dist(iris[, -5])
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_distances_from_range(D)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_function_from_coordinate`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$set_distances_from_range(D)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_function_from_file`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
 ff <- system.file("extdata", "function_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_function_from_file(ff)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_function_from_range`
-## ------------------------------------------------
-
+cc <- CoverComplex$
+  new(type = "GIC")$
+  read_point_cloud(url)$
+  set_function_from_file(ff)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_range(seq(0, 1, len = 100))
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_gain`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_gain()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_graph_from_OFF`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_range(seq(0, 1, len = 100))
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cc <- CoverComplex$new(type = "GIC")
+cc$set_gain()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_OFF()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_graph_from_automatic_rips`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_OFF()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_graph_from_file`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
 gf <- system.file("extdata", "graph_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_graph_from_file(gf)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_graph_from_rips`
-## ------------------------------------------------
-
+cc <- CoverComplex$
+  new(type = "GIC")$
+  read_point_cloud(url)$
+  set_graph_from_file(gf)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_rips(0.1)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_mask`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_rips(0.1)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    set_mask(1)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_point_cloud_from_range`
-## ------------------------------------------------
-
-n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()$
+  set_mask(1)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
 X <- Reduce(rbind, X, init = numeric())
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    set_point_cloud_from_range(X)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_resolution_with_interval_length`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  set_point_cloud_from_range(X)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_length(1)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_resolution_with_interval_number`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_length(1)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_subsampling`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_subsampling(constant = 0, power = 1)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$set_verbose`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_verbose(FALSE)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$subpopulation`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cc <- CoverComplex$new(type = "GIC")
+cc$set_subsampling(constant = 0, power = 1)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+cc <- CoverComplex$new(type = "GIC")
+cc$set_verbose(FALSE)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    subpopulation(0)
-}
-
-## ------------------------------------------------
-## Method `CoverComplex$write_info`
-## ------------------------------------------------
-
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()$
+  subpopulation(0)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-  withr::with_tempdir({
-    cc$write_info()
-  })
-}
+cc <- CoverComplex$new(type = "GIC")
+cc$
+  read_point_cloud(url)$
+  set_graph_from_automatic_rips()$
+  set_function_from_coordinate()$
+  set_color_from_coordinate()$
+  set_resolution_with_interval_number(100)$
+  set_cover_from_function()$
+  set_automatic_resolution()$
+  find_simplices()
+withr::with_tempdir({
+  cc$write_info()
+})
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other filtrations and reconstructions: 
@@ -631,17 +452,6 @@ complex. Can be either \code{"GIC"} or \code{"Nerve"}.}
 \subsection{Returns}{
 A \code{\link{CoverComplex}} object storing the Cover complex.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-compute_PD"></a>}}
@@ -655,27 +465,6 @@ Computes the extended persistence diagram of the complex.
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_PD()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-compute_confidence_level_from_distance"></a>}}
@@ -699,28 +488,6 @@ Bottleneck distance threshold.}
 A numeric value storing the confidence level corresponding to the
 input threshold on the Bottleneck distance.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()$
-    compute_confidence_level_from_distance(distance_threshold = 0.1)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-compute_distance_from_confidence_level"></a>}}
@@ -744,28 +511,6 @@ level.}
 A numeric value storing the threshold on the Bottleneck distance
 corresponding to the input confidence level.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()$
-    compute_distance_from_confidence_level(confidence_level = 0.95)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-compute_distribution"></a>}}
@@ -791,27 +536,6 @@ directory retrieved via \code{getwd()}.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-compute_p_value"></a>}}
@@ -827,28 +551,6 @@ persistence diagram of the output simplicial complex.
 \subsection{Returns}{
 A numeric value storing the desired p-value.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    compute_distribution()$
-    compute_p_value()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-create_simplex_tree"></a>}}
@@ -862,20 +564,6 @@ if (reticulate::py_module_available("gudhi")) {
 A \code{\link{SimplexTree}} object storing the simplex
 tree created from the Cover complex.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  st <- cc$
-    read_point_cloud(url)$
-    create_simplex_tree()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-find_simplices"></a>}}
@@ -889,26 +577,6 @@ Computes the simplices of the simplicial complex.
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-plot_dot"></a>}}
@@ -933,29 +601,6 @@ directory retrieved via \code{getwd()}.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-  withr::with_tempdir({
-    cc$plot_dot()
-  })
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-plot_off"></a>}}
@@ -982,29 +627,6 @@ directory retrieved via \code{getwd()}.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-  withr::with_tempdir({
-    cc$plot_dot()
-  })
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-read_point_cloud"></a>}}
@@ -1032,19 +654,6 @@ to \code{TRUE}.}
 The updated \code{\link{CoverComplex}} class itself invisibly if
 \code{chainable = TRUE} or a boolean storing the read file status.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_automatic_resolution"></a>}}
@@ -1076,25 +685,6 @@ The updated \code{\link{CoverComplex}} class itself invisibly if
 \code{chainable = TRUE} or a numeric value storing the resolution interval
 length used to compute the cover.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_color_from_coordinate"></a>}}
@@ -1117,22 +707,6 @@ Defaults to \code{0L}.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_color_from_file"></a>}}
@@ -1161,21 +735,6 @@ a single numeric value.
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-cf <- system.file("extdata", "color_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_color_from_file(cf)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_color_from_range"></a>}}
@@ -1198,22 +757,6 @@ values.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_range(seq(0, 1, len = 100))
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_cover_from_Voronoi"></a>}}
@@ -1236,24 +779,6 @@ subsample. Defaults to \code{100L}.}
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_Voronoi()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_cover_from_file"></a>}}
@@ -1284,22 +809,6 @@ belong.
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-cf <- system.file("extdata", "cover_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()#$
-    #set_cover_from_file(cf)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_cover_from_function"></a>}}
@@ -1314,24 +823,6 @@ Creates a cover \eqn{C} from the pre-images of the function
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_distances_from_range"></a>}}
@@ -1353,18 +844,6 @@ stored in memory.
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{D <- dist(iris[, -5])
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_distances_from_range(D)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_function_from_coordinate"></a>}}
@@ -1387,21 +866,6 @@ coordinate of the point cloud.
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_function_from_file"></a>}}
@@ -1430,21 +894,6 @@ a single numeric value.
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-ff <- system.file("extdata", "function_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_function_from_file(ff)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_function_from_range"></a>}}
@@ -1466,21 +915,6 @@ be used.}
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_range(seq(0, 1, len = 100))
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_gain"></a>}}
@@ -1501,17 +935,6 @@ Sets a gain from a value stored in memory.
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_gain()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_OFF"></a>}}
@@ -1526,20 +949,6 @@ input \code{.off} file.
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_OFF()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_automatic_rips"></a>}}
@@ -1573,20 +982,6 @@ to \code{TRUE}.}
 The updated \link{CoverComplex} class itself invisibly if \code{chainable = TRUE} or a numeric value storing the delta threshold used for computing
 the Rips complex..
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_file"></a>}}
@@ -1615,21 +1010,6 @@ the input point cloud.
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-gf <- system.file("extdata", "graph_file.txt", package = "rgudhi")
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$
-    new(type = "GIC")$
-    read_point_cloud(url)$
-    set_graph_from_file(gf)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_graph_from_rips"></a>}}
@@ -1651,20 +1031,6 @@ Rips complex.}
 \subsection{Returns}{
 The updated \link{CoverComplex} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_rips(0.1)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_mask"></a>}}
@@ -1688,27 +1054,6 @@ generating the mask.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    set_mask(1)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_point_cloud_from_range"></a>}}
@@ -1731,24 +1076,6 @@ cloud.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-X <- Reduce(rbind, X, init = numeric())
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    set_point_cloud_from_range(X)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_resolution_with_interval_length"></a>}}
@@ -1769,23 +1096,6 @@ Sets a length of intervals from a value stored in memory.
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_length(1)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_resolution_with_interval_number"></a>}}
@@ -1806,23 +1116,6 @@ Sets a number of intervals from a value stored in memory.
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_subsampling"></a>}}
@@ -1851,17 +1144,6 @@ constants are explained in
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_subsampling(constant = 0, power = 1)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-set_verbose"></a>}}
@@ -1884,17 +1166,6 @@ Defaults to \code{FALSE}.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$set_verbose(FALSE)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-subpopulation"></a>}}
@@ -1917,27 +1188,6 @@ the created complex.
 An integer vector storing the IDs of the data points at the input
 node.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()$
-    subpopulation(0)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-write_info"></a>}}
@@ -1961,29 +1211,6 @@ directory retrieved via \code{getwd()}.}
 \subsection{Returns}{
 The updated \code{\link{CoverComplex}} class itself invisibly.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{url <- "https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off"
-if (reticulate::py_module_available("gudhi")) {
-  cc <- CoverComplex$new(type = "GIC")
-  cc$
-    read_point_cloud(url)$
-    set_graph_from_automatic_rips()$
-    set_function_from_coordinate()$
-    set_color_from_coordinate()$
-    set_resolution_with_interval_number(100)$
-    set_cover_from_function()$
-    set_automatic_resolution()$
-    find_simplices()
-  withr::with_tempdir({
-    cc$write_info()
-  })
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoverComplex-clone"></a>}}

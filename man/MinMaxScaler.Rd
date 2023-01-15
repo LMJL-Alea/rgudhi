@@ -19,14 +19,9 @@ This transformation is often used as an alternative to zero mean, unit
 variance scaling.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `MinMaxScaler$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.preprocessing")) {
-  mms <- MinMaxScaler$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.preprocessing")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+mms <- MinMaxScaler$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{rgudhi::SKLearnClass} -> \code{\link[rgudhi:BaseScaler]{rgudhi::BaseScaler}} -> \code{MinMaxScaler}
@@ -79,16 +74,6 @@ of held-out data to provided \code{feature_range}. Defaults to \code{FALSE}.}
 \subsection{Returns}{
 An object of class \link{MinMaxScaler}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.preprocessing")) {
-  mms <- MinMaxScaler$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MinMaxScaler-clone"></a>}}

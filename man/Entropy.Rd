@@ -11,23 +11,17 @@ function. See https://arxiv.org/pdf/1803.08304.pdf for more details. Note
 that a previous implementation was contributed by Manuel Soriano-Trigueros.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `Entropy$new`
-## ------------------------------------------------
-
-n <- 10
-X <- seq_circle(n)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- DiagramSelector$new(use = TRUE)
-  dgm <- ds$apply(dgm)
-  ent <- Entropy$new()
-  ent$apply(dgm)
-  ent$fit_transform(list(dgm))
-}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+ds <- DiagramSelector$new(use = TRUE)
+dgm <- ds$apply(dgm)
+ent <- Entropy$new()
+ent$apply(dgm)
+ent$fit_transform(list(dgm))
+\dontshow{\}) # examplesIf}
 }
 \author{
 Mathieu Carrière
@@ -94,25 +88,6 @@ persistence diagrams with the \verb{$fit()} method. Used only if \code{mode == "
 \subsection{Returns}{
 An object of class \code{\link{Entropy}}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- seq_circle(n)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- DiagramSelector$new(use = TRUE)
-  dgm <- ds$apply(dgm)
-  ent <- Entropy$new()
-  ent$apply(dgm)
-  ent$fit_transform(list(dgm))
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Entropy-clone"></a>}}

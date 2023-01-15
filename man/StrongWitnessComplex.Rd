@@ -14,11 +14,7 @@ The class constructs a (strong) witness complex for a given table of
 nearest landmarks with respect to witnesses.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `StrongWitnessComplex$new`
-## ------------------------------------------------
-
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 withr::with_seed(1234, {
   l <- list(
     tibble::tibble(
@@ -31,10 +27,9 @@ withr::with_seed(1234, {
     )
   )
 })
-if (reticulate::py_module_available("gudhi")) {
-  wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
-  wc
-}
+wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
+wc
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{\link[rgudhi:WitnessComplex]{rgudhi::WitnessComplex}} -> \code{StrongWitnessComplex}
@@ -78,29 +73,6 @@ column \code{distance}.}
 A \code{\link{StrongWitnessComplex}} object storing the strong
 Witness complex.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{withr::with_seed(1234, {
-  l <- list(
-    tibble::tibble(
-      nearest_landmark = sample.int(10),
-      distance = sort(rexp(10))
-    ),
-    tibble::tibble(
-      nearest_landmark = sample.int(10),
-      distance = sort(rexp(10))
-    )
-  )
-})
-if (reticulate::py_module_available("gudhi")) {
-  wc <- StrongWitnessComplex$new(nearest_landmark_table = l)
-  wc
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StrongWitnessComplex-clone"></a>}}

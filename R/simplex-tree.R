@@ -42,11 +42,9 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return A new [`SimplexTree`] object.
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   st <- SimplexTree$new()
-    #'   st
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' st <- SimplexTree$new()
+    #' st
     initialize = function(py_class = NULL) {
       if (is.null(py_class))
         super$set_python_class(gd$SimplexTree())
@@ -67,17 +65,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$set_is_flag(TRUE)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$set_is_flag(TRUE)
     set_is_flag = function(val) {
       private$m_IsFlag <- val
       invisible(self)
@@ -98,19 +90,13 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$filtration(1)
-    #'   st$assign_filtration(1, 0.8)
-    #'   st$filtration(1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$filtration(1)
+    #' st$assign_filtration(1, 0.8)
+    #' st$filtration(1)
     assign_filtration = function(simplex, filtration) {
       if (!self$find(simplex)) {
         cli::cli_alert_warning("The input simplex {simplex} is not currently included in the simplex tree. Nothing to do.")
@@ -132,17 +118,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return An integer vector storing the Betti numbers.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()$betti_numbers()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$compute_persistence()$betti_numbers()
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -170,17 +150,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$collapse_edges()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$collapse_edges()
     collapse_edges = function(nb_iterations = 1) {
       super$get_python_class()$collapse_edges(nb_iterations = nb_iterations)
       private$m_ComputedPersistence <- FALSE
@@ -216,17 +190,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return An integer value storing the simplicial complex dimension.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$dimension()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$dimension()
     dimension = function() {
       super$get_python_class()$dimension()
     },
@@ -247,17 +215,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$expansion(2)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$expansion(2)
     expansion = function(max_dim) {
       super$get_python_class()$expansion(max_dim)
       private$m_ComputedPersistence <- FALSE
@@ -312,18 +274,12 @@ SimplexTree <- R6::R6Class(
     #'   [article](https://link.springer.com/article/10.1007/s10208-017-9370-z)
     #'   for a description of these subtypes.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$extend_filtration()
-    #'   st$extended_persistence()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$extend_filtration()
+    #' st$extended_persistence()
     extended_persistence = function(homology_coeff_field = 11,
                                     min_persistence = 0.0) {
       if (!private$m_ComputedExtendedFiltration)
@@ -343,18 +299,12 @@ SimplexTree <- R6::R6Class(
     #' @return A numeric value storing the filtration value for the input
     #'   N-simplex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$filtration(0)
-    #'   st$filtration(1:2)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$filtration(0)
+    #' st$filtration(1:2)
     filtration = function(simplex) {
       if (length(simplex) == 1)
         simplex <- list(simplex)
@@ -367,17 +317,11 @@ SimplexTree <- R6::R6Class(
     #' @return A boolean storing whether the input N-simplex was found in the
     #'   simplicial complex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$find(0)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$find(0)
     find = function(simplex) {
       if (length(simplex) == 1)
         simplex <- list(simplex)
@@ -399,17 +343,11 @@ SimplexTree <- R6::R6Class(
     #' - A list of `k x 2` integer matrices containing the other essential
     #' features, grouped by dimension, with 2 vertices for birth.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   rc <- RipsComplex$new(data = X, max_edge_length = 1)
-    #'   st <- rc$create_simplex_tree(1)
-    #'   st$compute_persistence()$flag_persistence_generators()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' rc <- RipsComplex$new(data = X, max_edge_length = 1)
+    #' st <- rc$create_simplex_tree(1)
+    #' st$compute_persistence()$flag_persistence_generators()
     flag_persistence_generators = function() {
       if (!private$m_IsFlag)
         cli::cli_abort("The current simplex tree is not a flag complex. Please generate a simplex tree from a Rips complex to use this method.")
@@ -426,18 +364,12 @@ SimplexTree <- R6::R6Class(
     #'   boundary of the input N-simplex in column `simplex` along with their
     #'   corresponding filtration value in column `filtration`.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   splx <- st$get_simplices()$simplex[[1]]
-    #'   st$get_boundaries(splx)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' splx <- st$get_simplices()$simplex[[1]]
+    #' st$get_boundaries(splx)
     get_boundaries = function(simplex) {
       itb <- super$get_python_class()$get_boundaries(simplex)
       res <- reticulate::iterate(itb)
@@ -458,17 +390,11 @@ SimplexTree <- R6::R6Class(
     #'   cofaces of the input N-simplex in column `simplex` along with their
     #'   corresponding filtration value in column `filtration`.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$get_cofaces(1:2, 0)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_cofaces(1:2, 0)
     get_cofaces = function(simplex, codimension) {
       res <- super$get_python_class()$get_cofaces(
         simplex = simplex,
@@ -487,17 +413,11 @@ SimplexTree <- R6::R6Class(
     #'   `simplex` along with their corresponding filtration value in column
     #'   `filtration`, in increasing order of filtration value.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$get_filtration()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_filtration()
     get_filtration = function() {
       itb <- super$get_python_class()$get_filtration()
       res <- reticulate::iterate(itb)
@@ -514,17 +434,11 @@ SimplexTree <- R6::R6Class(
     #'   `simplex` along with their corresponding filtration value in column
     #'   `filtration`, in increasing order of filtration value.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$get_simplices()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_simplices()
     get_simplices = function() {
       itb <- super$get_python_class()$get_simplices()
       res <- reticulate::iterate(itb)
@@ -543,17 +457,11 @@ SimplexTree <- R6::R6Class(
     #'   skeleton of a maximum dimension in column `simplex` along with their
     #'   corresponding filtration value in column `filtration`.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$get_skeleton(0)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_skeleton(0)
     get_skeleton = function(dimension) {
       itb <- super$get_python_class()$get_skeleton(dimension)
       res <- reticulate::iterate(itb)
@@ -569,17 +477,11 @@ SimplexTree <- R6::R6Class(
     #'   star of a simplex in column `simplex` along with their corresponding
     #'   filtration value in column `filtration`.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$get_star(1:2)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$get_star(1:2)
     get_star = function(simplex) {
       res <- super$get_python_class()$get_star(simplex)
       res <- purrr::map(res, rlang::set_names, nm = c("simplex", "filtration"))
@@ -601,18 +503,12 @@ SimplexTree <- R6::R6Class(
     #'   `TRUE` if the simplex was not yet in the complex or `FALSE` otherwise
     #'   (whatever its original filtration value).
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$insert(1:2)
-    #'   st$insert(1:3, chainable = FALSE)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$insert(1:2)
+    #' st$insert(1:3, chainable = FALSE)
     insert = function(simplex, filtration = 0.0, chainable = TRUE) {
       res <- super$get_python_class()$insert(
         simplex = simplex,
@@ -637,17 +533,11 @@ SimplexTree <- R6::R6Class(
     #' - A list of `m x ?` integer matrices containing the essential features,
     #' grouped by dimension, with one vertex each.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()$lower_star_persistence_generators()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$compute_persistence()$lower_star_persistence_generators()
     lower_star_persistence_generators = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -662,17 +552,11 @@ SimplexTree <- R6::R6Class(
     #'   `TRUE` if any filtration value was modified or to `FALSE` if the
     #'   filtration was already non-decreasing.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$make_filtration_non_decreasing()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$make_filtration_non_decreasing()
     make_filtration_non_decreasing = function(chainable = TRUE) {
       res <- super$get_python_class()$make_filtration_non_decreasing()
 
@@ -689,17 +573,11 @@ SimplexTree <- R6::R6Class(
     #' @return An integer value storing the number of simplices in the
     #'   simplicial complex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$num_simplices()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$num_simplices()
     num_simplices = function() {
       super$get_python_class()$num_simplices()
     },
@@ -710,17 +588,11 @@ SimplexTree <- R6::R6Class(
     #' @return An integer value storing the number of vertices in the simplicial
     #'   complex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$num_vertices()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$num_vertices()
     num_vertices = function() {
       super$get_python_class()$num_vertices()
     },
@@ -731,17 +603,11 @@ SimplexTree <- R6::R6Class(
     #' @return A \code{\link[tibble]{tibble}} listing all persistence feature
     #'   summarised by 3 variables: `dimension`, `birth` and `death`.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$persistence()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$persistence()
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0,
                            persistence_dim_max = FALSE) {
@@ -776,17 +642,11 @@ SimplexTree <- R6::R6Class(
     #' @return A \code{\link[tibble]{tibble}} storing the persistence intervals
     #'   for the required dimension in two columns `birth` and `death`.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()$persistence_intervals_in_dimension(1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$compute_persistence()$persistence_intervals_in_dimension(1)
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -800,17 +660,11 @@ SimplexTree <- R6::R6Class(
     #' @return A list of pairs of integer vectors storing a list of persistence
     #'   simplices intervals.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()$persistence_pairs()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$compute_persistence()$persistence_pairs()
     persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -827,17 +681,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return An integer vector storing the persistent Betti numbers.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$compute_persistence()$persistent_betti_numbers(0, 0.1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$compute_persistence()$persistent_betti_numbers(0, 0.1)
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -861,17 +709,11 @@ SimplexTree <- R6::R6Class(
     #'   `chainable` is set to `TRUE` (default behavior), or a boolean set to
     #'   `TRUE` if the filtration has been modified or to `FALSE` otherwise.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$prune_above_filtration(0.12)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$prune_above_filtration(0.12)
     prune_above_filtration = function(filtration, chainable = TRUE) {
       res <- super$get_python_class()$prune_above_filtration(filtration)
       private$m_ComputedPersistence <- FALSE
@@ -891,17 +733,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$remove_maximal_simplex(1:2)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$remove_maximal_simplex(1:2)
     remove_maximal_simplex = function(simplex) {
       super$get_python_class()$remove_maximal_simplex(simplex)
       private$m_ComputedPersistence <- FALSE
@@ -922,17 +758,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$reset_filtration(0.1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$reset_filtration(0.1)
     reset_filtration = function(filtration, min_dim = 0) {
       super$get_python_class()$reset_filtration(
         filtration = filtration,
@@ -954,17 +784,11 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$set_dimension(1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$set_dimension(1)
     set_dimension = function(dimension) {
       super$get_python_class()$set_dimension(dimension)
       private$m_ComputedPersistence <- FALSE
@@ -978,17 +802,11 @@ SimplexTree <- R6::R6Class(
     #' @return An integer value storing an upper bound on the dimension of the
     #'   simplicial complex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   st$upper_bound_dimension()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' st$upper_bound_dimension()
     upper_bound_dimension = function() {
       super$get_python_class()$upper_bound_dimension()
     },
@@ -1000,19 +818,13 @@ SimplexTree <- R6::R6Class(
     #'
     #' @return The updated \code{\link{SimplexTree}} class itself invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   f <- fs::file_temp(ext = ".dgm")
-    #'   st$compute_persistence()$write_persistence_diagram(f)
-    #'   fs::file_delete(f)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' f <- fs::file_temp(ext = ".dgm")
+    #' st$compute_persistence()$write_persistence_diagram(f)
+    #' fs::file_delete(f)
     write_persistence_diagram = function(persistence_file) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")

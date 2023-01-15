@@ -84,17 +84,14 @@ BirthPersistenceTransform <- R6::R6Class(
     #'
     #' @return An object of class [`BirthPersistenceTransform`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
     #'   ac <- AlphaComplex$new(points = X)
     #'   st <- ac$create_simplex_tree()
     #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
     #'   bpt <- BirthPersistenceTransform$new()
     #'   bpt$apply(dgm)
     #'   bpt$fit_transform(list(dgm))
-    #' }
     initialize = function() {
       private$variable_names <- c("birth", "lifetime")
       super$set_python_class(
@@ -128,17 +125,14 @@ DiagramScaler <- R6::R6Class(
     #'
     #' @return An object of class [`DiagramScaler`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramScaler$new()
-    #'   ds$apply(dgm)
-    #'   ds$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramScaler$new()
+    #' ds$apply(dgm)
+    #' ds$fit_transform(list(dgm))
     initialize = function(use = FALSE, scalers = list()) {
       private$variable_names <- c("birth", "death")
       super$set_python_class(
@@ -172,17 +166,14 @@ DiagramSelector <- R6::R6Class(
     #'
     #' @return An object of class [`DiagramSelector`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new()
-    #'   ds$apply(dgm)
-    #'   ds$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new()
+    #' ds$apply(dgm)
+    #' ds$fit_transform(list(dgm))
     initialize = function(use = FALSE, limit = Inf, point_type = c("finite", "essential")) {
       point_type <- rlang::arg_match(point_type)
       private$variable_names <- c("birth", "death")
@@ -216,17 +207,14 @@ Padding <- R6::R6Class(
     #'
     #' @return An object of class [`Padding`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   pad <- Padding$new()
-    #'   pad$apply(dgm)
-    #'   pad$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' pad <- Padding$new()
+    #' pad$apply(dgm)
+    #' pad$fit_transform(list(dgm))
     initialize = function(use = FALSE) {
       private$variable_names <- if (use) c("birth", "death", "original") else c("birth", "death")
       super$set_python_class(
@@ -272,17 +260,14 @@ ProminentPoints <- R6::R6Class(
     #'
     #' @return An object of class [`ProminentPoints`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   pp <- ProminentPoints$new()
-    #'   pp$apply(dgm)
-    #'   pp$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' pp <- ProminentPoints$new()
+    #' pp$apply(dgm)
+    #' pp$fit_transform(list(dgm))
     initialize = function(use = FALSE, num_pts = 10, threshold = - 1, location = c("upper", "lower")) {
       num_pts <- as.integer(num_pts)
       location <- rlang::arg_match(location)

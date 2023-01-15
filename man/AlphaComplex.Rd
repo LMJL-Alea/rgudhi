@@ -16,51 +16,24 @@ that have a filtration value strictly greater than a given alpha squared
 value are not inserted into the complex.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `AlphaComplex$new`
-## ------------------------------------------------
-
-n <- 10
-Xl <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+Xl <- seq_circle(10)
 Xm <- Reduce(rbind, Xl, init = numeric())
-if (reticulate::py_module_available("gudhi")) {
-  acm <- AlphaComplex$new(points = Xm)
-  acl <- AlphaComplex$new(points = Xl)
-  acl
-}
-
-## ------------------------------------------------
-## Method `AlphaComplex$create_simplex_tree`
-## ------------------------------------------------
-
-n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-}
-
-## ------------------------------------------------
-## Method `AlphaComplex$get_point`
-## ------------------------------------------------
-
-n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  ac$get_point(1)
-}
+acm <- AlphaComplex$new(points = Xm)
+acl <- AlphaComplex$new(points = Xl)
+acl
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+ac$get_point(1)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other filtrations and reconstructions: 
@@ -116,24 +89,6 @@ one of \code{"fast"}, \code{"safe"} or \code{"exact"}. Defaults to \code{"safe"}
 \subsection{Returns}{
 A \code{\link{AlphaComplex}} object storing the Alpha complex.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-Xl <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-Xm <- Reduce(rbind, Xl, init = numeric())
-if (reticulate::py_module_available("gudhi")) {
-  acm <- AlphaComplex$new(points = Xm)
-  acl <- AlphaComplex$new(points = Xl)
-  acl
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AlphaComplex-create_simplex_tree"></a>}}
@@ -166,22 +121,6 @@ compute the filtration values).}
 A \code{\link{SimplexTree}} object storing the computed simplex
 tree.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AlphaComplex-get_point"></a>}}
@@ -204,23 +143,6 @@ vertex from the SimplexTree.
 A numeric vector storing the point corresponding to the input
 vertex.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  ac$get_point(1)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AlphaComplex-clone"></a>}}

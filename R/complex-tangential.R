@@ -31,16 +31,10 @@ TangentialComplex <- R6::R6Class(
     #' @return A \code{\link{TangentialComplex}} object storing the tangential
     #'   complex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   tc
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' tc
     initialize = function(points, intrinsic_dim = NULL) {
       if (is.character(points) && fs::path_ext(points) == "off") {
         super$set_python_class(
@@ -69,16 +63,10 @@ TangentialComplex <- R6::R6Class(
     #' @return The updated \code{\link{TangentialComplex}} class itself
     #'   invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   tc$compute_tangential_complex()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' tc$compute_tangential_complex()
     compute_tangential_complex = function() {
       super$get_python_class()$compute_tangential_complex()
       private$m_ComputedTangentialComplex <- TRUE
@@ -90,16 +78,10 @@ TangentialComplex <- R6::R6Class(
     #' @return A \code{\link{SimplexTree}} object storing the computed simplex
     #'   tree.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   st <- tc$compute_tangential_complex()$create_simplex_tree()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' st <- tc$compute_tangential_complex()$create_simplex_tree()
     create_simplex_tree = function() {
       if (!private$m_ComputedTangentialComplex)
         cli::cli_abort("You first need to compute the tangential complex by calling the {.code $compute_tangential_complex()} method.")
@@ -116,17 +98,11 @@ TangentialComplex <- R6::R6Class(
     #' @return A numeric vector storing the point corresponding to the input
     #'   vertex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   st <- tc$compute_tangential_complex()$create_simplex_tree()
-    #'   tc$get_point(1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' st <- tc$compute_tangential_complex()$create_simplex_tree()
+    #' tc$get_point(1)
     get_point = function(vertex) {
       if (!private$m_ComputedSimplexTree)
         cli::cli_abort("You first need to generate the simplex tree by calling the {.code $create_simplex_tree()} method.")
@@ -135,17 +111,11 @@ TangentialComplex <- R6::R6Class(
 
     #' @return An integer value storing the number of inconsistent simplicies.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   tc$compute_tangential_complex()
-    #'   tc$num_inconsistent_simplices()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' tc$compute_tangential_complex()
+    #' tc$num_inconsistent_simplices()
     num_inconsistent_simplices = function() {
       super$get_python_class()$num_inconsistent_simplices()
     },
@@ -153,17 +123,11 @@ TangentialComplex <- R6::R6Class(
     #' @return An integer value storing the number of stars containing at least
     #'   one inconsistent simplex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   tc$compute_tangential_complex()
-    #'   tc$num_inconsistent_stars()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' tc$compute_tangential_complex()
+    #' tc$num_inconsistent_stars()
     num_inconsistent_stars = function() {
       super$get_python_class()$num_inconsistent_stars()
     },
@@ -171,34 +135,22 @@ TangentialComplex <- R6::R6Class(
     #' @return An integer value storing the total number of simplices in stars
     #'   (including duplicates that appear in several stars).
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   tc$compute_tangential_complex()
-    #'   tc$num_simplices()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' tc$compute_tangential_complex()
+    #' tc$num_simplices()
     num_simplices = function() {
       super$get_python_class()$num_simplices()
     },
 
     #' @return An integer value storing the number of vertices.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   tc$compute_tangential_complex()
-    #'   tc$num_vertices()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' tc$compute_tangential_complex()
+    #' tc$num_vertices()
     num_vertices = function() {
       super$get_python_class()$num_vertices()
     },
@@ -216,16 +168,10 @@ TangentialComplex <- R6::R6Class(
     #' @return The updated \code{\link{TangentialComplex}} class itself
     #'   invisibly.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
-    #'   tc$set_max_squared_edge_length(1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' tc <- TangentialComplex$new(points = X, intrinsic_dim = 1)
+    #' tc$set_max_squared_edge_length(1)
     set_max_squared_edge_length = function(max_squared_edge_length) {
       super$get_python_class()$set_max_squared_edge_length(max_squared_edge_length)
       invisible(self)

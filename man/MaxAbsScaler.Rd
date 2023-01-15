@@ -11,14 +11,9 @@ does not shift/center the data, and thus does not destroy any sparsity.
 This scaler can also be applied to sparse CSR or CSC matrices.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `MaxAbsScaler$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.preprocessing")) {
-  mas <- MaxAbsScaler$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.preprocessing")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+mas <- MaxAbsScaler$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{rgudhi::SKLearnClass} -> \code{\link[rgudhi:BaseScaler]{rgudhi::BaseScaler}} -> \code{MaxAbsScaler}
@@ -65,16 +60,6 @@ Defaults to \code{TRUE}.}
 \subsection{Returns}{
 An object of class \link{MaxAbsScaler}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.preprocessing")) {
-  mas <- MaxAbsScaler$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MaxAbsScaler-clone"></a>}}

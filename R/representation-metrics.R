@@ -92,19 +92,16 @@ BottleneckDistance <- R6::R6Class(
     #'
     #' @return An object of class [`BottleneckDistance`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   dis <- BottleneckDistance$new()
-    #'   dis$apply(dgm, dgm)
-    #'   dis$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' dis <- BottleneckDistance$new()
+    #' dis$apply(dgm, dgm)
+    #' dis$fit_transform(list(dgm))
     initialize = function(epsilon = NULL, n_jobs = 1) {
       n_jobs <- as.integer(n_jobs)
       super$set_python_class(
@@ -146,19 +143,16 @@ PersistenceFisherDistance <- R6::R6Class(
     #'
     #' @return An object of class [`PersistenceFisherDistance`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   dis <- PersistenceFisherDistance$new()
-    #'   dis$apply(dgm, dgm)
-    #'   dis$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' dis <- PersistenceFisherDistance$new()
+    #' dis$apply(dgm, dgm)
+    #' dis$fit_transform(list(dgm))
     initialize = function(bandwidth = 1.0, kernel_approx = NULL, n_jobs = 1) {
       n_jobs <- as.integer(n_jobs)
       super$set_python_class(
@@ -196,19 +190,16 @@ SlicedWassersteinDistance <- R6::R6Class(
     #'
     #' @return An object of class [`SlicedWassersteinDistance`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   dis <- SlicedWassersteinDistance$new()
-    #'   dis$apply(dgm, dgm)
-    #'   dis$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' dis <- SlicedWassersteinDistance$new()
+    #' dis$apply(dgm, dgm)
+    #' dis$fit_transform(list(dgm))
     initialize = function(num_directions = 10, n_jobs = 1) {
       num_directions <- as.integer(num_directions)
       n_jobs <- as.integer(n_jobs)
@@ -249,19 +240,16 @@ WassersteinDistance <- R6::R6Class(
     #'
     #' @return An object of class [`WassersteinDistance`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   dis <- WassersteinDistance$new()
-    #'   dis$apply(dgm, dgm)
-    #'   dis$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' dis <- WassersteinDistance$new()
+    #' dis$apply(dgm, dgm)
+    #' dis$fit_transform(list(dgm))
     initialize = function(order = 1,
                           internal_p = Inf,
                           mode = c("hera", "pot"),

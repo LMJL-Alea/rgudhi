@@ -33,10 +33,8 @@ MaxAbsScaler <- R6::R6Class(
     #'
     #' @return An object of class [MaxAbsScaler].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.preprocessing")) {
-    #'   mas <- MaxAbsScaler$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.preprocessing")
+    #' mas <- MaxAbsScaler$new()
     initialize = function(copy = TRUE) {
       super$set_python_class(
         skl_preprocessing$MaxAbsScaler(copy = copy)
@@ -78,10 +76,8 @@ MinMaxScaler <- R6::R6Class(
     #'
     #' @return An object of class [MinMaxScaler].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.preprocessing")) {
-    #'   mms <- MinMaxScaler$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.preprocessing")
+    #' mms <- MinMaxScaler$new()
     initialize = function(feature_range = c(0, 1),
                           copy = TRUE,
                           clip = FALSE) {
@@ -143,10 +139,8 @@ RobustScaler <- R6::R6Class(
     #'
     #' @return An object of class [RobustScaler].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.preprocessing")) {
-    #'   rs <- RobustScaler$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.preprocessing")
+    #' rs <- RobustScaler$new()
     initialize = function(with_centering = TRUE,
                           with_scaling = TRUE,
                           quantile_range = c(25.0, 75.0),
@@ -212,10 +206,8 @@ StandardScaler <- R6::R6Class(
     #'
     #' @return An object of class [StandardScaler].
     #'
-    #' @examples
-    #' if (reticulate::py_module_available("sklearn.preprocessing")) {
-    #'   ss <- StandardScaler$new()
-    #' }
+    #' @examplesIf reticulate::py_module_available("sklearn.preprocessing")
+    #' ss <- StandardScaler$new()
     initialize = function(copy = TRUE,
                           with_mean = TRUE,
                           with_std = TRUE) {

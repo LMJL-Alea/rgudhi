@@ -146,8 +146,7 @@ Atol <- R6::R6Class(
     #' @return An object of class [`Atol`].
     #'
     #' @examplesIf reticulate::py_module_available("gudhi")
-    #' n <- 10
-    #' X <- seq_circle(n)
+    #' X <- seq_circle(10)
     #' ac <- AlphaComplex$new(points = X)
     #' st <- ac$create_simplex_tree()
     #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
@@ -214,19 +213,16 @@ BettiCurve <- R6::R6Class(
     #'
     #' @return An object of class [`BettiCurve`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   bc <- BettiCurve$new()
-    #'   bc$apply(dgm)
-    #'   bc$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' bc <- BettiCurve$new()
+    #' bc$apply(dgm)
+    #' bc$fit_transform(list(dgm))
     initialize = function(resolution = 100,
                           sample_range = rep(NA, 2),
                           predefined_grid = NULL) {
@@ -272,19 +268,16 @@ ComplexPolynomial <- R6::R6Class(
     #'
     #' @return An object of class [`ComplexPolynomial`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   cp <- ComplexPolynomial$new()
-    #'   cp$apply(dgm)
-    #'   cp$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' cp <- ComplexPolynomial$new()
+    #' cp$apply(dgm)
+    #' cp$fit_transform(list(dgm))
     initialize = function(polynomial_type = c("R", "S", "T"), threshold = 10) {
       polynomial_type <- rlang::arg_match(polynomial_type)
       threshold <- as.integer(threshold)
@@ -332,19 +325,16 @@ Entropy <- R6::R6Class(
     #'
     #' @return An object of class [`Entropy`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   ent <- Entropy$new()
-    #'   ent$apply(dgm)
-    #'   ent$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' ent <- Entropy$new()
+    #' ent$apply(dgm)
+    #' ent$fit_transform(list(dgm))
     initialize = function(mode = c("scalar", "vector"),
                           normalized = TRUE,
                           resolution = 100,
@@ -392,19 +382,16 @@ Landscape <- R6::R6Class(
     #'
     #' @return An object of class [`Landscape`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   lds <- Landscape$new()
-    #'   lds$apply(dgm)
-    #'   lds$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' lds <- Landscape$new()
+    #' lds$apply(dgm)
+    #' lds$fit_transform(list(dgm))
     initialize = function(num_landscapes = 5,
                           resolution = 100,
                           sample_range = rep(NA_real_, 2)) {
@@ -454,19 +441,16 @@ PersistenceImage <- R6::R6Class(
     #'
     #' @return An object of class [`PersistenceImage`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   pei <- PersistenceImage$new()
-    #'   pei$apply(dgm)
-    #'   pei$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' pei <- PersistenceImage$new()
+    #' pei$apply(dgm)
+    #' pei$fit_transform(list(dgm))
     initialize = function(bandwidth = 1.0,
                           weight = ~ 1,
                           resolution = c(20, 20),
@@ -517,19 +501,16 @@ Silhouette <- R6::R6Class(
     #'
     #' @return An object of class [`Silhouette`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   sil <- Silhouette$new()
-    #'   sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
-    #'   sil$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' sil <- Silhouette$new()
+    #' sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
+    #' sil$fit_transform(list(dgm))
     initialize = function(weight = ~ 1,
                           resolution = 100,
                           sample_range = rep(NA_real_, 2)) {
@@ -571,19 +552,16 @@ TopologicalVector <- R6::R6Class(
     #'
     #' @return An object of class [`TopologicalVector`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   tv <- TopologicalVector$new()
-    #'   tv$apply(dgm)
-    #'   tv$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' tv <- TopologicalVector$new()
+    #' tv$apply(dgm)
+    #' tv$fit_transform(list(dgm))
     initialize = function(threshold = 10) {
       threshold <- as.integer(threshold)
       super$set_python_class(

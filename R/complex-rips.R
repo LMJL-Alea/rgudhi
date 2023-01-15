@@ -26,23 +26,13 @@ RipsComplex <- R6::R6Class(
     #'
     #' @return A \code{\link{RipsComplex}} object storing the Rips complex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   rc1 <- RipsComplex$new(data = X, max_edge_length = 1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' rc1 <- RipsComplex$new(data = X, max_edge_length = 1)
     #' Xm <- Reduce(rbind, X, init = numeric())
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
-    #' }
+    #' rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
     #' D <- dist(Xm)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   rc3 <- RipsComplex$new(data = D)
-    #' }
+    #' rc3 <- RipsComplex$new(data = D)
     initialize = function(data, max_edge_length = NULL, sparse = NULL) {
       if (inherits(data, "matrix") || inherits(data, "list")) {
         if (is.null(max_edge_length))
@@ -71,16 +61,10 @@ RipsComplex <- R6::R6Class(
     #' @return A \code{\link{SimplexTree}} object storing the computed simplex
     #'   tree.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   rc <- RipsComplex$new(data = X, max_edge_length = 1)
-    #'   st <- rc$create_simplex_tree(1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' rc <- RipsComplex$new(data = X, max_edge_length = 1)
+    #' st <- rc$create_simplex_tree(1)
     create_simplex_tree = function(max_dimension) {
       py_st <- super$get_python_class()$create_simplex_tree(
         max_dimension = max_dimension

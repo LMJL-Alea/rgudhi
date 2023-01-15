@@ -18,11 +18,7 @@ nearest landmarks with respect to witnesses.
 }
 }
 \examples{
-
-## ------------------------------------------------
-## Method `WitnessComplex$new`
-## ------------------------------------------------
-
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 withr::with_seed(1234, {
   l <- list(
     tibble::tibble(
@@ -35,15 +31,10 @@ withr::with_seed(1234, {
     )
   )
 })
-if (reticulate::py_module_available("gudhi")) {
-  wc <- WitnessComplex$new(nearest_landmark_table = l)
-  wc
-}
-
-## ------------------------------------------------
-## Method `WitnessComplex$create_simplex_tree`
-## ------------------------------------------------
-
+wc <- WitnessComplex$new(nearest_landmark_table = l)
+wc
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 withr::with_seed(1234, {
   l <- list(
     tibble::tibble(
@@ -56,11 +47,10 @@ withr::with_seed(1234, {
     )
   )
 })
-if (reticulate::py_module_available("gudhi")) {
-  wc <- WitnessComplex$new(nearest_landmark_table = l)
-  st <- wc$create_simplex_tree()
-  st$num_vertices()
-}
+wc <- WitnessComplex$new(nearest_landmark_table = l)
+st <- wc$create_simplex_tree()
+st$num_vertices()
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other filtrations and reconstructions: 
@@ -115,29 +105,6 @@ column \code{distance}.}
 A \code{\link{WitnessComplex}} object storing the Witness
 complex.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{withr::with_seed(1234, {
-  l <- list(
-    tibble::tibble(
-      nearest_landmark = sample.int(10),
-      distance = sort(rexp(10))
-    ),
-    tibble::tibble(
-      nearest_landmark = sample.int(10),
-      distance = sort(rexp(10))
-    )
-  )
-})
-if (reticulate::py_module_available("gudhi")) {
-  wc <- WitnessComplex$new(nearest_landmark_table = l)
-  wc
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WitnessComplex-create_simplex_tree"></a>}}
@@ -159,30 +126,6 @@ if (reticulate::py_module_available("gudhi")) {
 A \code{\link{SimplexTree}} object storing the computed simplex
 tree created from the Delaunay triangulation.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{withr::with_seed(1234, {
-  l <- list(
-    tibble::tibble(
-      nearest_landmark = sample.int(10),
-      distance = sort(rexp(10))
-    ),
-    tibble::tibble(
-      nearest_landmark = sample.int(10),
-      distance = sort(rexp(10))
-    )
-  )
-})
-if (reticulate::py_module_available("gudhi")) {
-  wc <- WitnessComplex$new(nearest_landmark_table = l)
-  st <- wc$create_simplex_tree()
-  st$num_vertices()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WitnessComplex-clone"></a>}}

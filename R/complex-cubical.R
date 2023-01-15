@@ -34,13 +34,11 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @return A new \code{\link{CubicalComplex}} object.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc
     initialize = function(perseus_file,
                           top_dimensional_cells,
                           dimensions = NULL,
@@ -85,13 +83,11 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @return An integer vector storing the Betti numbers.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()$betti_numbers()
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()$betti_numbers()
     betti_numbers = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -131,13 +127,11 @@ CubicalComplex <- R6::R6Class(
     #'   dimensions, and the integers of each row in each array correspond to:
     #'   `(index of positive top-dimensional cell)`.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()$cofaces_of_persistence_pairs()
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()$cofaces_of_persistence_pairs()
     cofaces_of_persistence_pairs = function() {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -165,13 +159,11 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @return An integer value giving the complex dimension.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$dimension()
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$dimension()
     dimension = function() {
       super$get_python_class()$dimension()
     },
@@ -181,13 +173,11 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @return An integer value giving the number of all cubes in the complex.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$num_simplices()
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$num_simplices()
     num_simplices = function() {
       super$get_python_class()$num_simplices()
     },
@@ -198,13 +188,11 @@ CubicalComplex <- R6::R6Class(
     #' @return A \code{\link[tibble]{tibble}} listing all persistence feature
     #'   summarised by 3 variables: `dimension`, `birth` and `death`.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$persistence()
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$persistence()
     persistence = function(homology_coeff_field = 11,
                            min_persistence = 0.0) {
       l <- super$get_python_class()$persistence(
@@ -237,13 +225,11 @@ CubicalComplex <- R6::R6Class(
     #' @return A \code{\link[tibble]{tibble}} storing the persistence intervals
     #'   by row.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()$persistence_intervals_in_dimension(0)
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()$persistence_intervals_in_dimension(0)
     persistence_intervals_in_dimension = function(dimension) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -262,13 +248,11 @@ CubicalComplex <- R6::R6Class(
     #'
     #' @return An integer vector storing the persistent Betti numbers.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   cc <- CubicalComplex$new(top_dimensional_cells = X)
-    #'   cc$compute_persistence()$persistent_betti_numbers(0, 1)
-    #' }
+    #' cc <- CubicalComplex$new(top_dimensional_cells = X)
+    #' cc$compute_persistence()$persistent_betti_numbers(0, 1)
     persistent_betti_numbers = function(from_value, to_value) {
       if (!private$m_ComputedPersistence)
         cli::cli_abort("You first need to compute the persistence by calling the {.code $compute_persistence()} method.")
@@ -314,16 +298,14 @@ PeriodicCubicalComplex <- R6::R6Class(
     #'
     #' @return A new \code{\link{PeriodicCubicalComplex}} object.
     #'
-    #' @examples
+    #' @examplesIf reticulate::py_module_available("gudhi")
     #' n <- 10
     #' X <- cbind(seq(0, 1, len = n), seq(0, 1, len = n))
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   pcc <- PeriodicCubicalComplex$new(
-    #'     top_dimensional_cells = X,
-    #'     periodic_dimensions = c(TRUE, FALSE)
-    #'   )
-    #'   pcc
-    #' }
+    #' pcc <- PeriodicCubicalComplex$new(
+    #'   top_dimensional_cells = X,
+    #'   periodic_dimensions = c(TRUE, FALSE)
+    #' )
+    #' pcc
     initialize = function(perseus_file,
                           top_dimensional_cells,
                           periodic_dimensions,

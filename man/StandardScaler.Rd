@@ -26,14 +26,9 @@ This scaler can also be applied to sparse CSR or CSC matrices by passing
 \code{with_mean = FALSE} to avoid breaking the sparsity structure of the data.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `StandardScaler$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.preprocessing")) {
-  ss <- StandardScaler$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.preprocessing")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+ss <- StandardScaler$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{rgudhi::SKLearnClass} -> \code{\link[rgudhi:BaseScaler]{rgudhi::BaseScaler}} -> \code{StandardScaler}
@@ -90,16 +85,6 @@ unit variance (or equivalently, unit standard deviation). Defaults to
 \subsection{Returns}{
 An object of class \link{StandardScaler}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.preprocessing")) {
-  ss <- StandardScaler$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StandardScaler-clone"></a>}}

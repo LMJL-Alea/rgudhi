@@ -10,41 +10,19 @@ threshold. Edge length is computed from a user given point cloud with a
 given distance function, or a distance matrix.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `RipsComplex$new`
-## ------------------------------------------------
-
-n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  rc1 <- RipsComplex$new(data = X, max_edge_length = 1)
-}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
+rc1 <- RipsComplex$new(data = X, max_edge_length = 1)
 Xm <- Reduce(rbind, X, init = numeric())
-if (reticulate::py_module_available("gudhi")) {
-  rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
-}
+rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
 D <- dist(Xm)
-if (reticulate::py_module_available("gudhi")) {
-  rc3 <- RipsComplex$new(data = D)
-}
-
-## ------------------------------------------------
-## Method `RipsComplex$create_simplex_tree`
-## ------------------------------------------------
-
-n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  rc <- RipsComplex$new(data = X, max_edge_length = 1)
-  st <- rc$create_simplex_tree(1)
-}
+rc3 <- RipsComplex$new(data = D)
+\dontshow{\}) # examplesIf}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
+rc <- RipsComplex$new(data = X, max_edge_length = 1)
+st <- rc$create_simplex_tree(1)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other filtrations and reconstructions: 
@@ -104,29 +82,6 @@ builds an exact Rips complex.}
 \subsection{Returns}{
 A \code{\link{RipsComplex}} object storing the Rips complex.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  rc1 <- RipsComplex$new(data = X, max_edge_length = 1)
-}
-Xm <- Reduce(rbind, X, init = numeric())
-if (reticulate::py_module_available("gudhi")) {
-  rc2 <- RipsComplex$new(data = Xm, max_edge_length = 1)
-}
-D <- dist(Xm)
-if (reticulate::py_module_available("gudhi")) {
-  rc3 <- RipsComplex$new(data = D)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RipsComplex-create_simplex_tree"></a>}}
@@ -148,22 +103,6 @@ which the Rips complex will be expanded to.}
 A \code{\link{SimplexTree}} object storing the computed simplex
 tree.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- lapply(
-  seq(0, 2 * pi, len = n),
-  function(.x) c(cos(.x), sin(.x))
-)
-if (reticulate::py_module_available("gudhi")) {
-  rc <- RipsComplex$new(data = X, max_edge_length = 1)
-  st <- rc$create_simplex_tree(1)
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RipsComplex-clone"></a>}}

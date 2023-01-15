@@ -27,18 +27,12 @@ AlphaComplex <- R6::R6Class(
     #'
     #' @return A \code{\link{AlphaComplex}} object storing the Alpha complex.
     #'
-    #' @examples
-    #' n <- 10
-    #' Xl <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' Xl <- seq_circle(10)
     #' Xm <- Reduce(rbind, Xl, init = numeric())
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   acm <- AlphaComplex$new(points = Xm)
-    #'   acl <- AlphaComplex$new(points = Xl)
-    #'   acl
-    #' }
+    #' acm <- AlphaComplex$new(points = Xm)
+    #' acl <- AlphaComplex$new(points = Xl)
+    #' acl
     initialize = function(points, precision = "safe") {
       if (inherits(points, "matrix") || inherits(points, "list"))
         super$set_python_class(
@@ -68,16 +62,10 @@ AlphaComplex <- R6::R6Class(
     #' @return A \code{\link{SimplexTree}} object storing the computed simplex
     #'   tree.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
     create_simplex_tree = function(max_alpha_square = Inf,
                                    default_filtration_value = FALSE) {
       py_st <- super$get_python_class()$create_simplex_tree(
@@ -96,17 +84,11 @@ AlphaComplex <- R6::R6Class(
     #' @return A numeric vector storing the point corresponding to the input
     #'   vertex.
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- lapply(
-    #'   seq(0, 2 * pi, len = n),
-    #'   function(.x) c(cos(.x), sin(.x))
-    #' )
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   ac$get_point(1)
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' ac$get_point(1)
     get_point = function(vertex) {
       if (!private$m_ComputedSimplexTree)
         cli::cli_abort("You first need to generate the simplex tree by calling the {.code $create_simplex_tree()} method.")

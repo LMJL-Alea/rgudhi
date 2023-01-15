@@ -1,9 +1,6 @@
 test_that("Class `SimplexTree` works", {
   n <- 10
-  X <- lapply(
-    seq(0, 2 * pi, len = n),
-    function(.x) c(cos(.x), sin(.x))
-  )
+  X <- seq_circle(n)
   st <- SimplexTree$new()
   rc <- RipsComplex$new(data = X, max_edge_length = 1)
   st <- rc$create_simplex_tree(max_dimension = 2)

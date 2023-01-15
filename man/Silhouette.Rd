@@ -12,23 +12,17 @@ Finally, the corresponding vector of samples is returned. See
 https://arxiv.org/abs/1312.0308 for more details.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `Silhouette$new`
-## ------------------------------------------------
-
-n <- 10
-X <- seq_circle(n)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- DiagramSelector$new(use = TRUE)
-  dgm <- ds$apply(dgm)
-  sil <- Silhouette$new()
-  sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
-  sil$fit_transform(list(dgm))
-}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+ds <- DiagramSelector$new(use = TRUE)
+dgm <- ds$apply(dgm)
+sil <- Silhouette$new()
+sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
+sil$fit_transform(list(dgm))
+\dontshow{\}) # examplesIf}
 }
 \author{
 Mathieu Carrière
@@ -89,25 +83,6 @@ persistence diagrams with the \verb{$fit()} method.}
 \subsection{Returns}{
 An object of class \code{\link{Silhouette}}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- seq_circle(n)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- DiagramSelector$new(use = TRUE)
-  dgm <- ds$apply(dgm)
-  sil <- Silhouette$new()
-  sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
-  sil$fit_transform(list(dgm))
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Silhouette-clone"></a>}}

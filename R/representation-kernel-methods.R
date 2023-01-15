@@ -104,19 +104,16 @@ PersistenceFisherKernel <- R6::R6Class(
     #'
     #' @return An object of class [`PersistenceFisherKernel`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   pfk <- PersistenceFisherKernel$new()
-    #'   pfk$apply(dgm, dgm)
-    #'   pfk$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' pfk <- PersistenceFisherKernel$new()
+    #' pfk$apply(dgm, dgm)
+    #' pfk$fit_transform(list(dgm))
     initialize = function(bandwidth_fisher = 1.0,
                           bandwidth = 1.0,
                           kernel_approx = NULL,
@@ -164,19 +161,16 @@ PersistenceScaleSpaceKernel <- R6::R6Class(
     #'
     #' @return An object of class [`PersistenceScaleSpaceKernel`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   pssk <- PersistenceScaleSpaceKernel$new()
-    #'   pssk$apply(dgm, dgm)
-    #'   pssk$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' pssk <- PersistenceScaleSpaceKernel$new()
+    #' pssk$apply(dgm, dgm)
+    #' pssk$fit_transform(list(dgm))
     initialize = function(bandwidth = 1.0,
                           kernel_approx = NULL,
                           n_jobs = 1) {
@@ -225,19 +219,16 @@ PersistenceWeightedGaussianKernel <- R6::R6Class(
     #'
     #' @return An object of class [`PersistenceWeightedGaussianKernel`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   pwgk <- PersistenceWeightedGaussianKernel$new()
-    #'   pwgk$apply(dgm, dgm)
-    #'   pwgk$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' pwgk <- PersistenceWeightedGaussianKernel$new()
+    #' pwgk$apply(dgm, dgm)
+    #' pwgk$fit_transform(list(dgm))
     initialize = function(bandwidth = 1.0,
                           weight = ~ 1,
                           kernel_approx = NULL,
@@ -283,19 +274,16 @@ PersistenceSlicedWassersteinKernel <- R6::R6Class(
     #'
     #' @return An object of class [`PersistenceSlicedWassersteinKernel`].
     #'
-    #' @examples
-    #' n <- 10
-    #' X <- seq_circle(n)
-    #' if (reticulate::py_module_available("gudhi")) {
-    #'   ac <- AlphaComplex$new(points = X)
-    #'   st <- ac$create_simplex_tree()
-    #'   dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-    #'   ds <- DiagramSelector$new(use = TRUE)
-    #'   dgm <- ds$apply(dgm)
-    #'   pswk <- PersistenceSlicedWassersteinKernel$new()
-    #'   pswk$apply(dgm, dgm)
-    #'   pswk$fit_transform(list(dgm))
-    #' }
+    #' @examplesIf reticulate::py_module_available("gudhi")
+    #' X <- seq_circle(10)
+    #' ac <- AlphaComplex$new(points = X)
+    #' st <- ac$create_simplex_tree()
+    #' dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+    #' ds <- DiagramSelector$new(use = TRUE)
+    #' dgm <- ds$apply(dgm)
+    #' pswk <- PersistenceSlicedWassersteinKernel$new()
+    #' pswk$apply(dgm, dgm)
+    #' pswk$fit_transform(list(dgm))
     initialize = function(num_directions = 10,
                           bandwidth = 1.0,
                           n_jobs = 1) {

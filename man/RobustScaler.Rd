@@ -20,14 +20,9 @@ variance in a negative way. In such cases, the median and the interquartile
 range often give better results.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `RobustScaler$new`
-## ------------------------------------------------
-
-if (reticulate::py_module_available("sklearn.preprocessing")) {
-  rs <- RobustScaler$new()
-}
+\dontshow{if (reticulate::py_module_available("sklearn.preprocessing")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+rs <- RobustScaler$new()
+\dontshow{\}) # examplesIf}
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{rgudhi::SKLearnClass} -> \code{\link[rgudhi:BaseScaler]{rgudhi::BaseScaler}} -> \code{RobustScaler}
@@ -99,16 +94,6 @@ scaled up. Defaults to \code{FALSE}.}
 \subsection{Returns}{
 An object of class \link{RobustScaler}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{if (reticulate::py_module_available("sklearn.preprocessing")) {
-  rs <- RobustScaler$new()
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RobustScaler-clone"></a>}}

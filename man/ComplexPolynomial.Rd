@@ -11,23 +11,17 @@ See https://link.springer.com/chapter/10.1007\%2F978-3-319-23231-7_27 for
 more details.
 }
 \examples{
-
-## ------------------------------------------------
-## Method `ComplexPolynomial$new`
-## ------------------------------------------------
-
-n <- 10
-X <- seq_circle(n)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- DiagramSelector$new(use = TRUE)
-  dgm <- ds$apply(dgm)
-  cp <- ComplexPolynomial$new()
-  cp$apply(dgm)
-  cp$fit_transform(list(dgm))
-}
+\dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+X <- seq_circle(10)
+ac <- AlphaComplex$new(points = X)
+st <- ac$create_simplex_tree()
+dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
+ds <- DiagramSelector$new(use = TRUE)
+dgm <- ds$apply(dgm)
+cp <- ComplexPolynomial$new()
+cp$apply(dgm)
+cp$fit_transform(list(dgm))
+\dontshow{\}) # examplesIf}
 }
 \author{
 Mathieu Carrière
@@ -86,25 +80,6 @@ coefficients as threshold. Defaults to \code{10L}.}
 \subsection{Returns}{
 An object of class \code{\link{ComplexPolynomial}}.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{n <- 10
-X <- seq_circle(n)
-if (reticulate::py_module_available("gudhi")) {
-  ac <- AlphaComplex$new(points = X)
-  st <- ac$create_simplex_tree()
-  dgm <- st$compute_persistence()$persistence_intervals_in_dimension(0)
-  ds <- DiagramSelector$new(use = TRUE)
-  dgm <- ds$apply(dgm)
-  cp <- ComplexPolynomial$new()
-  cp$apply(dgm)
-  cp$fit_transform(list(dgm))
-}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ComplexPolynomial-clone"></a>}}

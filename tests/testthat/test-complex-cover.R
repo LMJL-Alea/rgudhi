@@ -1,10 +1,7 @@
 test_that("Class `CoverComplex` works", {
   cc <- CoverComplex$new(type = "GIC")
   n <- 10
-  X <- lapply(
-    seq(0, 2 * pi, len = n),
-    function(.x) c(cos(.x), sin(.x))
-  )
+  X <- seq_circle(n)
   X <- Reduce(rbind, X, init = numeric())
   cc$set_point_cloud_from_range(X)
   cc$read_point_cloud("https://raw.githubusercontent.com/GUDHI/TDA-tutorial/master/datasets/tore3D_1307.off")
