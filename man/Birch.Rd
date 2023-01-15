@@ -26,7 +26,7 @@ algorithm}, \url{https://code.google.com/archive/p/jbirch}.
 }
 }
 \section{Super classes}{
-\code{rgudhi::PythonClass} -> \code{\link[rgudhi:ClusteringAlgorithm]{rgudhi::ClusteringAlgorithm}} -> \code{Birch}
+\code{rgudhi::PythonClass} -> \code{rgudhi::SKLearnClass} -> \code{\link[rgudhi:BaseClustering]{rgudhi::BaseClustering}} -> \code{Birch}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -36,10 +36,16 @@ algorithm}, \url{https://code.google.com/archive/p/jbirch}.
 }
 }
 \if{html}{\out{
-<details open><summary>Inherited methods</summary>
+<details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="apply"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-apply'><code>rgudhi::SKLearnClass$apply()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="fit"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-fit'><code>rgudhi::SKLearnClass$fit()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="fit_transform"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-fit_transform'><code>rgudhi::SKLearnClass$fit_transform()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="get_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-get_params'><code>rgudhi::SKLearnClass$get_params()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="set_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-set_params'><code>rgudhi::SKLearnClass$set_params()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="transform"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-transform'><code>rgudhi::SKLearnClass$transform()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -74,13 +80,13 @@ parent subcluster of that node is removed and two new subclusters are
 added as parents of the 2 split nodes.}
 
 \item{\code{n_clusters}}{Either an integer value or an object of class
-\link{ClusteringAlgorithm} specifying the number of clusters after the final
+\link{BaseClustering} specifying the number of clusters after the final
 clustering step, which treats the subclusters from the leaves as new
 samples.
 \itemize{
 \item \code{NULL}: the final clustering step is not performed and the
 subclusters are returned as they are;
-\item an object of class \link{ClusteringAlgorithm}: the model is fit treating
+\item an object of class \link{BaseClustering}: the model is fit treating
 the subclusters as new samples and the initial data is mapped to the
 label of the closest subcluster;
 \item integer value: the model fit is \link{AgglomerativeClustering} with

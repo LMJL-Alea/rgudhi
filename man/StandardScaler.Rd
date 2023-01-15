@@ -35,8 +35,8 @@ if (reticulate::py_module_available("sklearn.preprocessing")) {
   ss <- StandardScaler$new()
 }
 }
-\section{Super class}{
-\code{rgudhi::PythonClass} -> \code{StandardScaler}
+\section{Super classes}{
+\code{rgudhi::PythonClass} -> \code{rgudhi::SKLearnClass} -> \code{\link[rgudhi:BaseScaler]{rgudhi::BaseScaler}} -> \code{StandardScaler}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -46,10 +46,16 @@ if (reticulate::py_module_available("sklearn.preprocessing")) {
 }
 }
 \if{html}{\out{
-<details open><summary>Inherited methods</summary>
+<details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-get_python_class'><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="apply"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-apply'><code>rgudhi::SKLearnClass$apply()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="fit"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-fit'><code>rgudhi::SKLearnClass$fit()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="fit_transform"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-fit_transform'><code>rgudhi::SKLearnClass$fit_transform()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="get_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-get_params'><code>rgudhi::SKLearnClass$get_params()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="set_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-set_params'><code>rgudhi::SKLearnClass$set_params()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="transform"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-transform'><code>rgudhi::SKLearnClass$transform()</code></a></span></li>
 </ul>
 </details>
 }}

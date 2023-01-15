@@ -127,7 +127,7 @@ Atol <- R6::R6Class(
   public = list(
     #' @description The [`Atol`] constructor.
     #'
-    #' @param quantiser An object of class [`ClusteringAlgorithm`] specifying
+    #' @param quantiser An object of class [`BaseClustering`] specifying
     #'   any clustering algorithm from the
     #'   [**sklearn.cluster**](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.cluster)
     #'   module. It will be fitted when the `$fit()` method is called.
@@ -155,7 +155,7 @@ Atol <- R6::R6Class(
     #' dgm <- ds$apply(dgm)
     #' km <- KMeans$new(n_clusters = 2, random_state = 202006)
     #' vr <- Atol$new(quantiser = km)
-    #' vr$apply(dgm)
+    #' # vr$apply(dgm) # TODO: needs fix in python
     #' vr$fit_transform(list(dgm))
     initialize = function(quantiser,
                           weighting_method = c("cloud", "iidproba"),

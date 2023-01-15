@@ -1,3 +1,16 @@
+#' Base Class for Scalers
+#'
+#' This is the base class for all the scalers available in the
+#' [**sklearn.preprocessing**](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.preprocessing)
+#' module. The child classes are intended to be used within some GUDHI classes
+#' such as [`DiagramScaler`].
+#'
+#' @keywords internal
+BaseScaler <- R6::R6Class(
+  classname = "BaseScaler",
+  inherit = SKLearnClass
+)
+
 #' Scales each feature by its maximum absolute value
 #'
 #' @description
@@ -10,7 +23,7 @@
 #' @export
 MaxAbsScaler <- R6::R6Class(
   classname = "MaxAbsScaler",
-  inherit = PythonClass,
+  inherit = BaseScaler,
   public = list(
     #' @description The [MaxAbsScaler] class constructor.
     #'
@@ -51,7 +64,7 @@ MaxAbsScaler <- R6::R6Class(
 #' @export
 MinMaxScaler <- R6::R6Class(
   classname = "MinMaxScaler",
-  inherit = PythonClass,
+  inherit = BaseScaler,
   public = list(
     #' @description The [MinMaxScaler] class constructor.
     #'
@@ -105,7 +118,7 @@ MinMaxScaler <- R6::R6Class(
 #' @export
 RobustScaler <- R6::R6Class(
   classname = "RobustScaler",
-  inherit = PythonClass,
+  inherit = BaseScaler,
   public = list(
     #' @description The [RobustScaler] class constructor.
     #'
@@ -181,7 +194,7 @@ RobustScaler <- R6::R6Class(
 #' @export
 StandardScaler <- R6::R6Class(
   classname = "StandardScaler",
-  inherit = PythonClass,
+  inherit = BaseScaler,
   public = list(
     #' @description The [StandardScaler] class constructor.
     #'

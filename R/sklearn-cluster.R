@@ -6,9 +6,9 @@
 #' such as [`Atol`].
 #'
 #' @keywords internal
-ClusteringAlgorithm <- R6::R6Class(
-  classname = "ClusteringAlgorithm",
-  inherit = PythonClass
+BaseClustering <- R6::R6Class(
+  classname = "BaseClustering",
+  inherit = SKLearnClass
 )
 
 #' Performs clustering according to the affinity propagation algorithm
@@ -23,7 +23,7 @@ ClusteringAlgorithm <- R6::R6Class(
 #' @export
 AffinityPropagation <- R6::R6Class(
   classname = "AffinityPropagation",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [AffinityPropagation] class constructor.
     #'
@@ -94,7 +94,7 @@ AffinityPropagation <- R6::R6Class(
 #' @export
 AgglomerativeClustering <- R6::R6Class(
   classname = "AgglomerativeClustering",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [AgglomerativeClustering] class constructor.
     #'
@@ -209,7 +209,7 @@ AgglomerativeClustering <- R6::R6Class(
 #' @export
 Birch <- R6::R6Class(
   classname = "Birch",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [Birch] class constructor.
     #'
@@ -224,12 +224,12 @@ Birch <- R6::R6Class(
     #'   parent subcluster of that node is removed and two new subclusters are
     #'   added as parents of the 2 split nodes.
     #' @param n_clusters Either an integer value or an object of class
-    #'   [ClusteringAlgorithm] specifying the number of clusters after the final
+    #'   [BaseClustering] specifying the number of clusters after the final
     #'   clustering step, which treats the subclusters from the leaves as new
     #'   samples.
     #'   - `NULL`: the final clustering step is not performed and the
     #'   subclusters are returned as they are;
-    #'   - an object of class [ClusteringAlgorithm]: the model is fit treating
+    #'   - an object of class [BaseClustering]: the model is fit treating
     #'   the subclusters as new samples and the initial data is mapped to the
     #'   label of the closest subcluster;
     #'   - integer value: the model fit is [AgglomerativeClustering] with
@@ -252,7 +252,7 @@ Birch <- R6::R6Class(
                           copy = TRUE) {
       branching_factor <- as.integer(branching_factor)
       if (!is.null(n_clusters)) {
-        if ("ClusteringAlgorithm" %in% class(n_clusters))
+        if ("BaseClustering" %in% class(n_clusters))
           n_clusters <- n_clusters$get_python_class()
         else
           n_clusters <- as.integer(n_clusters)
@@ -288,7 +288,7 @@ Birch <- R6::R6Class(
 #' @export
 DBSCAN <- R6::R6Class(
   classname = "DBSCAN",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [DBSCAN] class constructor.
     #'
@@ -376,7 +376,7 @@ DBSCAN <- R6::R6Class(
 #' @export
 FeatureAgglomeration <- R6::R6Class(
   classname = "FeatureAgglomeration",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [FeatureAgglomeration] class constructor.
     #'
@@ -488,7 +488,7 @@ FeatureAgglomeration <- R6::R6Class(
 #' @export
 KMeans <- R6::R6Class(
   classname = "KMeans",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [KMeans] class constructor.
     #'
@@ -589,7 +589,7 @@ KMeans <- R6::R6Class(
 #' @export
 BisectingKMeans <- R6::R6Class(
   classname = "BisectingKMeans",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [BisectingKMeans] class constructor.
     #'
@@ -702,7 +702,7 @@ BisectingKMeans <- R6::R6Class(
 #' @export
 MiniBatchKMeans <- R6::R6Class(
   classname = "MiniBatchKMeans",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [MiniBatchKMeans] class constructor.
     #'
@@ -816,7 +816,7 @@ MiniBatchKMeans <- R6::R6Class(
 #' @export
 MeanShift <- R6::R6Class(
   classname = "MeanShift",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [MeanShift] class constructor.
     #'
@@ -887,7 +887,7 @@ MeanShift <- R6::R6Class(
 #' @export
 OPTICS <- R6::R6Class(
   classname = "OPTICS",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [OPTICS] class constructor.
     #'
@@ -1040,7 +1040,7 @@ OPTICS <- R6::R6Class(
 #' @export
 SpectralClustering <- R6::R6Class(
   classname = "SpectralClustering",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [SpectralClustering] class constructor.
     #'
@@ -1197,7 +1197,7 @@ SpectralClustering <- R6::R6Class(
 #' @export
 SpectralBiclustering <- R6::R6Class(
   classname = "SpectralBiclustering",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [SpectralBiclustering] class constructor.
     #'
@@ -1295,7 +1295,7 @@ SpectralBiclustering <- R6::R6Class(
 #' @export
 SpectralCoclustering <- R6::R6Class(
   classname = "SpectralCoclustering",
-  inherit = ClusteringAlgorithm,
+  inherit = BaseClustering,
   public = list(
     #' @description The [SpectralCoclustering] class constructor.
     #'

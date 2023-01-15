@@ -23,7 +23,7 @@ ds <- DiagramSelector$new(use = TRUE)
 dgm <- ds$apply(dgm)
 km <- KMeans$new(n_clusters = 2, random_state = 202006)
 vr <- Atol$new(quantiser = km)
-vr$apply(dgm)
+# vr$apply(dgm) # TODO: needs fix in python
 vr$fit_transform(list(dgm))
 \dontshow{\}) # examplesIf}
 }
@@ -70,7 +70,7 @@ The \code{\link{Atol}} constructor.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{quantiser}}{An object of class \code{\link{ClusteringAlgorithm}} specifying
+\item{\code{quantiser}}{An object of class \code{\link{BaseClustering}} specifying
 any clustering algorithm from the
 \href{https://scikit-learn.org/stable/modules/classes.html#module-sklearn.cluster}{\strong{sklearn.cluster}}
 module. It will be fitted when the \verb{$fit()} method is called.}
