@@ -4,9 +4,9 @@
 \name{rgudhi-package}
 \alias{rgudhi}
 \alias{rgudhi-package}
-\title{rgudhi: An R Interface to GUDHI}
+\title{rgudhi: An Interface to the GUDHI Library for Topological Data Analysis}
 \description{
-Provides an R interface to the Python package GUDHI.
+Provides an interface to the GUDHI library which is a generic open source C++ library, with a Python interface, for topological data analysis (TDA) and higher dimensional geometry understanding. The library offers state-of-the-art data structures and algorithms to construct simplicial complexes and compute persistent homology.
 }
 \seealso{
 Useful links:
@@ -19,6 +19,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Aymeric Stamm \email{aymeric.stamm@cnrs.fr} (\href{https://orcid.org/0000-0002-8725-3654}{ORCID})
+
+Other contributors:
+\itemize{
+  \item GUDHI Editorial Board (https://gudhi.inria.fr/people/) [contributor]
+}
 
 }
 \keyword{internal}

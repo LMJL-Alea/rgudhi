@@ -1,14 +1,23 @@
 Package: rgudhi
-Title: An R Interface to GUDHI
-Version: 0.0.0.9000
-Authors@R:
+Title: An Interface to the GUDHI Library for Topological Data Analysis
+Version: 0.1.0
+Authors@R: c(
   person(
     given = "Aymeric", 
     family = "Stamm", 
     email = "aymeric.stamm@cnrs.fr", 
     role = c("aut", "cre"), 
-    comment = c(ORCID = "0000-0002-8725-3654"))
-Description: Provides an R interface to the Python package GUDHI.
+    comment = c(ORCID = "0000-0002-8725-3654")),
+  person(
+    given = "GUDHI Editorial Board", 
+    role = "ctb", 
+    comment = c("https://gudhi.inria.fr/people/")
+  ))
+Description: Provides an interface to the GUDHI library which is a generic open 
+  source C++ library, with a Python interface, for topological data analysis 
+  (TDA) and higher dimensional geometry understanding. The library offers 
+  state-of-the-art data structures and algorithms to construct simplicial 
+  complexes and compute persistent homology.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
