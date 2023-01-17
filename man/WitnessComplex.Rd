@@ -55,7 +55,6 @@ st$num_vertices()
 \seealso{
 Other filtrations and reconstructions: 
 \code{\link{AlphaComplex}},
-\code{\link{CoverComplex}},
 \code{\link{RipsComplex}},
 \code{\link{TangentialComplex}}
 }

@@ -37,7 +37,6 @@ ac$get_point(1)
 }
 \seealso{
 Other filtrations and reconstructions: 
-\code{\link{CoverComplex}},
 \code{\link{RipsComplex}},
 \code{\link{TangentialComplex}},
 \code{\link{WitnessComplex}}

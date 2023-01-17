@@ -27,7 +27,6 @@ st <- rc$create_simplex_tree(1)
 \seealso{
 Other filtrations and reconstructions: 
 \code{\link{AlphaComplex}},
-\code{\link{CoverComplex}},
 \code{\link{TangentialComplex}},
 \code{\link{WitnessComplex}}
 }

@@ -71,7 +71,6 @@ tc$set_max_squared_edge_length(1)
 \seealso{
 Other filtrations and reconstructions: 
 \code{\link{AlphaComplex}},
-\code{\link{CoverComplex}},
 \code{\link{RipsComplex}},
 \code{\link{WitnessComplex}}
 }
