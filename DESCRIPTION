@@ -47,6 +47,7 @@ Imports:
     withr
 Suggests: 
     covr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    vdiffr
 Config/testthat/edition: 3
 RdMacros: Rdpack

@@ -73,6 +73,7 @@ reference:
     - SpectralClustering
     - SpectralBiclustering
     - SpectralCoclustering
+    - Tomato
   - title: Data sets
   - contents:
     - seq_circle
