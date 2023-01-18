@@ -82,7 +82,8 @@ number of clusters.}
 of a cluster so it doesn’t get merged. Defaults to \code{NULL}, i.e. no
 merging occurs and we get the maximal number of clusters.}
 
-\item{\code{...}}{e}
+\item{\code{...}}{Extra parameters passed to \code{KNearestNeighbors} and
+\code{DTMDensity}.}
 }
 \if{html}{\out{</div>}}
 }

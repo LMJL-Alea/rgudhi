@@ -26,7 +26,8 @@ Tomato <- R6::R6Class(
     #' @param merge_threshold A numeric value specifying the minimum prominence
     #'   of a cluster so it doesn’t get merged. Defaults to `NULL`, i.e. no
     #'   merging occurs and we get the maximal number of clusters.
-    #' @param ... e
+    #' @param ... Extra parameters passed to `KNearestNeighbors` and
+    #'   `DTMDensity`.
     #'
     #' @return An object of class [`Tomato`].
     #'
