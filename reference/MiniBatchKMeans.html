@@ -106,7 +106,7 @@ form as well as the number of centroids to generate. Defaults to <code>2L</code>
 method for initialization. If a string, choices are:</p><ul><li><p><code>"k-means++"</code>: selects initial cluster centroids using sampling based
 on an empirical probability distribution of the points’ contribution to
 the overall inertia. This technique speeds up convergence, and is
-theoretically proven to be \(\mathcal{O}(\log ⁡k\))-optimal. See the
+theoretically proven to be \(\mathcal{O}(\log(k))\)-optimal. See the
 description of <code>n_init</code> for more details;</p></li>
 <li><p><code>"random"</code>: chooses <code>n_clusters</code> observations (rows) at random from
 data for the initial centroids.
