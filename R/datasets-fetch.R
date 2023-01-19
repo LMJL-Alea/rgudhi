@@ -11,7 +11,7 @@
 #' @return A numeric array storing the points of the corresponding data set.
 #' @name fetch
 #'
-#' @examplesIf requireNamespace("withr", quiet = TRUE) && reticulate::py_module_available("gudhi")
+#' @examplesIf reticulate::py_module_available("gudhi")
 #' b <- withr::with_tempdir({fetch_bunny(getwd())})
 #' s <- withr::with_tempdir({fetch_spiral_2d(getwd())})
 NULL
