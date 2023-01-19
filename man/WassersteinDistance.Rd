@@ -69,8 +69,8 @@ The \code{\link{WassersteinDistance}} constructor.
 distance. Defaults to \code{1.0}.}
 
 \item{\code{internal_p}}{An integer value specifying the ground metric on the
-(upper-half) plane (i.e. the norm \eqn{\ell_p} in
-\eqn{\mathbb{R}^2}{R^2}). Defaults to \code{Inf}.}
+(upper-half) plane (i.e. the norm \eqn{\ell_p} in \eqn{R^2}). Defaults
+to \code{Inf}.}
 
 \item{\code{mode}}{A string specifying the method for computing the Wasserstein
 distance. Choices are either \code{"pot"} or \code{"hera"}. Defaults to \code{"hera"}.}

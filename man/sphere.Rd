@@ -22,10 +22,10 @@ sphere of dimension \code{ambient_dim - 1}.
 }
 \description{
 The function \code{\link[=sphere]{sphere()}} enables uniform sampling of random \emph{i.i.d.} points on
-a \eqn{(d-1)}-sphere in \eqn{\mathbb{R}^d}{R^d}. The user should provide the
-number of points \code{n_samples} to be generated on the sphere and the ambient
-dimension \code{ambient_dim}. The radius of the sphere is optional and is equal to
-\code{1} by default. Only random points generation is currently available.
+a \eqn{(d-1)}-sphere in \eqn{R^d}. The user should provide the number of
+points \code{n_samples} to be generated on the sphere and the ambient dimension
+\code{ambient_dim}. The radius of the sphere is optional and is equal to \code{1} by
+default. Only random points generation is currently available.
 }
 \examples{
 \dontshow{if (reticulate::py_module_available("gudhi")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

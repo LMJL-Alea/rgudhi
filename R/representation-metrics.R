@@ -229,8 +229,8 @@ WassersteinDistance <- R6::R6Class(
     #' @param order An integer value specifying the exponent of the Wasserstein
     #'   distance. Defaults to `1.0`.
     #' @param internal_p An integer value specifying the ground metric on the
-    #'   (upper-half) plane (i.e. the norm \eqn{\ell_p} in
-    #'   \eqn{\mathbb{R}^2}{R^2}). Defaults to `Inf`.
+    #'   (upper-half) plane (i.e. the norm \eqn{\ell_p} in \eqn{R^2}). Defaults
+    #'   to `Inf`.
     #' @param mode A string specifying the method for computing the Wasserstein
     #'   distance. Choices are either `"pot"` or `"hera"`. Defaults to `"hera"`.
     #' @param delta A numeric value specifying the relative error

@@ -5,9 +5,8 @@
 \title{R6 Class for Witness Complex}
 \description{
 A Witness complex \eqn{\mathrm{Wit}(W,L)} is a simplicial
-complex defined on two sets of points in \eqn{\mathbb{R}^D}{R^D}. The data
-structure is described in
-\insertCite{boissonnat2014simplex;textual}{rgudhi}.
+complex defined on two sets of points in \eqn{R^D}. The data structure is
+described in \insertCite{boissonnat2014simplex;textual}{rgudhi}.
 }
 \details{
 The class constructs a (weak) witness complex for a given table of

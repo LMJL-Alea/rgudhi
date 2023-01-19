@@ -9,25 +9,22 @@ torus(n_samples, dim, sample = c("random", "grid"))
 \arguments{
 \item{n_samples}{An integer value specifying the sample size.}
 
-\item{dim}{An integer value specifying the dimension \eqn{\mathbb{R}^{2
-\mathrm{dim}}}{R^{2 \mathrm{dim}}} of the torus.}
+\item{dim}{An integer value specifying the dimension \eqn{R^{2 \mathrm{dim}}}
+of the torus.}
 
 \item{sample}{A string specifying the sampling type. Choices are \code{"random"}
 or \code{"grid"}. Defaults to \code{"random"}.}
 }
 \value{
-A numeric array of shape \eqn{n_\mathrm{samples} \times \mathbb{R}^{2
-  \mathrm{dim}}}{n_\mathrm{samples} \times R^{2 \mathrm{dim}}} storing the
-sampled points.
+A numeric array of shape \eqn{n_\mathrm{samples} \times R^{2
+  \mathrm{dim}}} storing the sampled points.
 }
 \description{
 The user should provide the number of points \code{n_samples} to be generated on
 the torus and the dimension \code{dim} of the torus on which points would be
-generated in \eqn{\mathbb{R}^{2 \mathrm{dim}}}{R^{2 \mathrm{dim}}}. The
-\code{sample} argument is optional and is set to \code{"random"} by default. The
-generated points are
-returned as an array of shape \eqn{n_\mathrm{samples} \times \mathbb{R}^{2
-\mathrm{dim}}}{n_\mathrm{samples} \times R^{2
+generated in \eqn{R^{2 \mathrm{dim}}}. The \code{sample} argument is optional and
+is set to \code{"random"} by default. The generated points are
+returned as an array of shape \eqn{n_\mathrm{samples} \times R^{2
 \mathrm{dim}}}.
 }
 \examples{
