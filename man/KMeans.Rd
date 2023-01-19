@@ -68,7 +68,7 @@ method for initialization. If a string, choices are:
 \item \code{"k-means++"}: selects initial cluster centroids using sampling based
 on an empirical probability distribution of the points’ contribution to
 the overall inertia. This technique speeds up convergence, and is
-theoretically proven to be \eqn{\mathcal{O}(\log ⁡k})-optimal. See the
+theoretically proven to be \eqn{\mathcal{O}(\log(k))}-optimal. See the
 description of \code{n_init} for more details;
 \item \code{"random"}: chooses \code{n_clusters} observations (rows) at random from
 data for the initial centroids.

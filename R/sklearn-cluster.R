@@ -500,7 +500,7 @@ KMeans <- R6::R6Class(
     #'   - `"k-means++"`: selects initial cluster centroids using sampling based
     #'   on an empirical probability distribution of the points’ contribution to
     #'   the overall inertia. This technique speeds up convergence, and is
-    #'   theoretically proven to be \eqn{\mathcal{O}(\log ⁡k})-optimal. See the
+    #'   theoretically proven to be \eqn{\mathcal{O}(\log(k))}-optimal. See the
     #'   description of `n_init` for more details;
     #'   - `"random"`: chooses `n_clusters` observations (rows) at random from
     #'   data for the initial centroids.
@@ -601,7 +601,7 @@ BisectingKMeans <- R6::R6Class(
     #'   - `"k-means++"`: selects initial cluster centroids using sampling based
     #'   on an empirical probability distribution of the points’ contribution to
     #'   the overall inertia. This technique speeds up convergence, and is
-    #'   theoretically proven to be \eqn{\mathcal{O}(\log ⁡k})-optimal. See the
+    #'   theoretically proven to be \eqn{\mathcal{O}(\log(k))}-optimal. See the
     #'   description of `n_init` for more details;
     #'   - `"random"`: chooses `n_clusters` observations (rows) at random from
     #'   data for the initial centroids.
@@ -714,7 +714,7 @@ MiniBatchKMeans <- R6::R6Class(
     #'   - `"k-means++"`: selects initial cluster centroids using sampling based
     #'   on an empirical probability distribution of the points’ contribution to
     #'   the overall inertia. This technique speeds up convergence, and is
-    #'   theoretically proven to be \eqn{\mathcal{O}(\log ⁡k})-optimal. See the
+    #'   theoretically proven to be \eqn{\mathcal{O}(\log(k))}-optimal. See the
     #'   description of `n_init` for more details;
     #'   - `"random"`: chooses `n_clusters` observations (rows) at random from
     #'   data for the initial centroids.
