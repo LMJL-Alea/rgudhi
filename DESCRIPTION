@@ -1,6 +1,6 @@
 Package: rgudhi
 Title: An Interface to the GUDHI Library for Topological Data Analysis
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: c(
   person(
     given = "Aymeric", 
