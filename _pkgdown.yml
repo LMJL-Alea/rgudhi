@@ -52,6 +52,11 @@ reference:
     - PersistenceFisherDistance
     - SlicedWassersteinDistance
     - WassersteinDistance
+  - title: Persistence diagram sample class
+  - contents:
+    - as_persistence_diagram_sample
+    - is_persistence_diagram_sample
+    - mean.persistence_diagram_sample
   - title: Data Scalers
   - contents:
     - MaxAbsScaler
