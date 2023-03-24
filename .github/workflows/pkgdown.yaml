@@ -39,6 +39,7 @@ jobs:
         shell: Rscript {0}
         run: |
           reticulate::virtualenv_create("r-reticulate", Sys.which("python"))
+          reticulate::virtualenv_install("r-reticulate", "POT==0.8.2")
           reticulate::virtualenv_install("r-reticulate", "scikit-learn==1.2.0")
           reticulate::virtualenv_install("r-reticulate", "gudhi==3.7.1")
           python <- reticulate::virtualenv_python("r-reticulate")
