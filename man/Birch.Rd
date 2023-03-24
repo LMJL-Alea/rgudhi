@@ -20,7 +20,7 @@ cl <- Birch$new()
 \itemize{
 \item Tian Zhang, Raghu Ramakrishnan, Maron Livny (1996). \emph{BIRCH: An efficient
 data clustering method for large databases},
-\url{https://www.cs.sfu.ca/CourseCentral/459/han/papers/zhang96.pdf}.
+\url{https://www2.cs.sfu.ca/CourseCentral/459/han/papers/zhang96.pdf}.
 \item Roberto Perdisci J. \emph{Birch - Java implementation of BIRCH clustering
 algorithm}, \url{https://code.google.com/archive/p/jbirch}.
 }

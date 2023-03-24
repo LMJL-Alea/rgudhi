@@ -8,7 +8,7 @@ This is a wrapper around the Python class
 \href{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.BisectingKMeans.html#sklearn.cluster.BisectingKMeans}{sklearn.cluster.BisectingKMeans}.
 }
 \examples{
-\dontshow{if (reticulate::py_module_available("sklearn.cluster")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (reticulate::py_module_available("sklearn.cluster") && getRversion() >= "4.2") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 cl <- BisectingKMeans$new()
 \dontshow{\}) # examplesIf}
 }

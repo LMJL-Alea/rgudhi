@@ -202,7 +202,7 @@ AgglomerativeClustering <- R6::R6Class(
 #' @references
 #' - Tian Zhang, Raghu Ramakrishnan, Maron Livny (1996). *BIRCH: An efficient
 #' data clustering method for large databases*,
-#' <https://www.cs.sfu.ca/CourseCentral/459/han/papers/zhang96.pdf>.
+#' <https://www2.cs.sfu.ca/CourseCentral/459/han/papers/zhang96.pdf>.
 #' - Roberto Perdisci J. *Birch - Java implementation of BIRCH clustering
 #' algorithm*, <https://code.google.com/archive/p/jbirch>.
 #'
@@ -651,7 +651,7 @@ BisectingKMeans <- R6::R6Class(
     #'
     #' @return An object of class [BisectingKMeans].
     #'
-    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster") && getRversion() >= "4.2"
     #' cl <- BisectingKMeans$new()
     initialize = function(n_clusters = 2L,
                           init = c("k-means++", "random"),
@@ -974,7 +974,7 @@ OPTICS <- R6::R6Class(
     #' ## References
     #' \insertCited{}
     #'
-    #' @examplesIf reticulate::py_module_available("sklearn.cluster")
+    #' @examplesIf reticulate::py_module_available("sklearn.cluster") && getRversion() >= "4.2"
     #' cl <- OPTICS$new()
     initialize = function(min_samples = 5L,
                           max_eps = Inf,
