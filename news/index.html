@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">rgudhi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,8 +45,16 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1.0.9000" id="rgudhi-0109000">rgudhi 0.1.0.9000<a class="anchor" aria-label="anchor" href="#rgudhi-0109000"></a></h2>
-</div>
+<h2 class="pkg-version" data-toc-text="0.2.0" id="rgudhi-020">rgudhi 0.2.0<a class="anchor" aria-label="anchor" href="#rgudhi-020"></a></h2>
+<p>In this minor release, I:</p>
+<ul><li><p>Added the <code>persistence_diagram_sample</code> class;</p></li>
+<li><p>Implemented the Lagragian formulation to compute the Wasserstein barycenters of a sample of persistence diagrams;</p></li>
+<li>
+<p>Fixed CRAN warnings:</p>
+<ul><li>Incoherence of <code>autoplot</code> method implementation following renaming of main argument <code>x</code> into <code>object</code>.</li>
+<li>Rectify an invalid URL pointing to the paper for BIRCH clustering.</li>
+</ul></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="rgudhi-010">rgudhi 0.1.0<a class="anchor" aria-label="anchor" href="#rgudhi-010"></a></h2><p class="text-muted">CRAN release: 2023-01-19</p>
 <p><strong>rgudhi</strong> <code>v0.1.0</code> provides an almost full wrapper of the <code>v3.7.1</code> of the GUDHI library for topological data analysis. Only the cover complex class is missing due to non-reproducibility issues with random number generators. With GUDHI accessible from R, <strong>rgudhi</strong> <code>v0.1.0</code> features:</p>
@@ -55,7 +63,7 @@
 <li>various usual preprocessing tools for persistence diagrams;</li>
 <li>a dedicated <code>S3</code> class <code>persistence_diagram</code> for persistence diagram;</li>
 <li>
-<code><a href="../reference/plot.html">plot()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">ggplot2::autoplot()</a></code> methods for <code>persistence_diagram</code> objects;</li>
+<code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> and <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">ggplot2::autoplot()</a></code> methods for <code>persistence_diagram</code> objects;</li>
 <li>vector and kernel representations of persistence diagrams;</li>
 <li>a number of metrics to quantify distances between persistence diagrams (Bottleneck, Persistence Fisher, Wasserstein, Slice-Wasserstein).</li>
 <li>functions to sample points from sphere (<code><a href="../reference/sphere.html">sphere()</a></code>) and torus (<code><a href="../reference/torus.html">torus()</a></code>);</li>
