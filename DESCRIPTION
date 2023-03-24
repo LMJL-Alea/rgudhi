@@ -1,6 +1,6 @@
 Package: rgudhi
 Title: An Interface to the GUDHI Library for Topological Data Analysis
-Version: 0.1.0.9000
+Version: 0.2.0
 Authors@R: c(
   person(
     given = "Aymeric", 
@@ -28,6 +28,7 @@ BugReports: https://github.com/lmjl-alea/rgudhi/issues
 Config/reticulate:
   list(
     packages = list(
+      list(package = "POT", version = "0.8.2"),
       list(package = "scikit-learn", version = "1.2.0"), 
       list(package = "gudhi", version = "3.7.1")
     )
