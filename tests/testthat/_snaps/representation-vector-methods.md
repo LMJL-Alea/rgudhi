@@ -38,7 +38,7 @@
        8     1         0
        9     1         0
       10     1         0
-      # ... with 90 more rows
+      # i 90 more rows
 
 ---
 
@@ -58,7 +58,7 @@
        8     1 <dbl [1]>
        9     1 <dbl [1]>
       10     1 <dbl [1]>
-      # ... with 90 more rows
+      # i 90 more rows
 
 ---
 
@@ -78,7 +78,7 @@
        8     1 <dbl [1]>
        9     1 <dbl [1]>
       10     1 <dbl [1]>
-      # ... with 90 more rows
+      # i 90 more rows
 
 # The ComplexPolynomial class works
 
@@ -185,7 +185,7 @@
        8 0.00756            1   0.0107 
        9 0.00851            1   0.0120 
       10 0.00945            1   0.0134 
-      # ... with 490 more rows
+      # i 490 more rows
 
 ---
 
@@ -205,7 +205,7 @@
        8 0.00756            1 <dbl [1]>
        9 0.00851            1 <dbl [1]>
       10 0.00945            1 <dbl [1]>
-      # ... with 490 more rows
+      # i 490 more rows
 
 ---
 
@@ -225,7 +225,7 @@
        8 0.00756            1 <dbl [1]>
        9 0.00851            1 <dbl [1]>
       10 0.00945            1 <dbl [1]>
-      # ... with 490 more rows
+      # i 490 more rows
 
 # The PersistenceImage class works
 
@@ -249,7 +249,7 @@
        8 0.0352      0      1.43
        9 0.0402      0      1.43
       10 0.0452      0      1.43
-      # ... with 390 more rows
+      # i 390 more rows
 
 ---
 
@@ -273,7 +273,7 @@
        8 0.0352      0 <dbl [1]>
        9 0.0402      0 <dbl [1]>
       10 0.0452      0 <dbl [1]>
-      # ... with 390 more rows
+      # i 390 more rows
 
 ---
 
@@ -297,7 +297,7 @@
        8 0.0352      0 <dbl [1]>
        9 0.0402      0 <dbl [1]>
       10 0.0452      0 <dbl [1]>
-      # ... with 390 more rows
+      # i 390 more rows
 
 # The Silhouette class works
 
@@ -317,7 +317,7 @@
        8 0.00756    0.0107 
        9 0.00851    0.0120 
       10 0.00945    0.0134 
-      # ... with 90 more rows
+      # i 90 more rows
 
 ---
 
@@ -337,7 +337,7 @@
        8 0.00756  <dbl [1]>
        9 0.00851  <dbl [1]>
       10 0.00945  <dbl [1]>
-      # ... with 90 more rows
+      # i 90 more rows
 
 ---
 
@@ -357,7 +357,7 @@
        8 0.00756  <dbl [1]>
        9 0.00851  <dbl [1]>
       10 0.00945  <dbl [1]>
-      # ... with 90 more rows
+      # i 90 more rows
 
 # The TopologicalVector class works
 

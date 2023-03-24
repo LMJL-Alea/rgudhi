@@ -116,7 +116,7 @@
        8 <int [1]>         -2
        9 <int [2]>         -2
       10 <int [1]>         -2
-      # ... with 31 more rows
+      # i 31 more rows
 
 ---
 
@@ -136,7 +136,7 @@
        8 <int [2]>         -1
        9 <int [2]>          1
       10 <int [1]>         -1
-      # ... with 31 more rows
+      # i 31 more rows
 
 ---
 
