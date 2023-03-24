@@ -1,6 +1,6 @@
 ## Test environments
 
-- local macOS R installation, R 4.2.2
+- local macOS R installation, R 4.2.3
 - continuous integration via GH actions:
     - macOS latest release
     - windows latest release
@@ -12,10 +12,13 @@
     - Windows Server 2022, R-devel, 64 bit
     - Ubuntu Linux 20.04.1 LTS, R-release, GCC
     - Fedora Linux, R-devel, clang, gfortran
-    - Debian Linux, R-devel, GCC ASAN/UBSAN
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 2 notes
 
-* This is a new release.
+    * checking HTML version of manual ... [13s] NOTE
+    
+    * checking for detritus in the temp directory ... NOTE
+    Found the following files/directories:
+      'lastMiKTeXException'
