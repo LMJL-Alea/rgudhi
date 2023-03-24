@@ -37,6 +37,7 @@ NULL
 #' @rdname persistence_diagram
 #' @export
 as_persistence_diagram <- function(x) {
+  if (is_persistence_diagram(x)) return(x)
   if (!tibble::is_tibble(x))
     cli::cli_abort("Only tibbles are coercible into persistence diagrams.")
   if (!("birth" %in% names(x)))
@@ -55,15 +56,13 @@ is_persistence_diagram <- function(x) {
   "persistence_diagram" %in% class(x)
 }
 
-#' Visualization of persistence diagrams
+#' Plot for [`persistence_diagram`] objects
 #'
-#' The [plot.persistence_diagram()] function only displays the plot while the
-#' [autoplot.persistence_diagram()] in addition outputs the [ggplot2::ggplot]
-#' object. If one wishes to control graphical properties, it is recommended to
-#' use the latter to retrieve the [ggplot2::ggplot] object and modify and/or add
-#' layers as desired.
+#' This function creates a visualization of a persistence diagram and returns
+#' the corresponding [ggplot2::ggplot] object which enable further customization
+#' of the plot.
 #'
-#' @param x An object of class [persistence_diagram].
+#' @param object An object of class [`persistence_diagram`].
 #' @param dimension An integer value specifying the homology dimension to
 #'   visualize. Defaults to `NULL` in which case the dimension is retrieved
 #'   directly in the [persistence_diagram] object.
@@ -83,40 +82,19 @@ is_persistence_diagram <- function(x) {
 #'   `"barcode"`, `"diagram"` or `"density"`. Defaults to `"barcode"`.
 #' @param ... Other parameters to be passed on to next methods.
 #'
-#' @return For [plot.persistence_diagram()], `NULL`. Otherwise a
-#'   [ggplot2::ggplot] object.
+#' @return A [ggplot2::ggplot] object.
 #'
-#' @name plot
-NULL
-
-#' @rdname plot
-#' @importFrom graphics plot
-#' @export
-plot.persistence_diagram <- function(x,
-                                     dimension = NULL,
-                                     alpha = 0.6,
-                                     max_intervals = 20000,
-                                     legend = FALSE,
-                                     greyblock = TRUE,
-                                     type = c("barcode", "diagram"),
-                                     ...) {
-  print(autoplot(
-    x = x,
-    dimension = dimension,
-    alpha = alpha,
-    max_intervals = max_intervals,
-    legend = legend,
-    greyblock = greyblock,
-    type = type,
-    ...
-  ))
-}
-
-#' @rdname plot
 #' @importFrom ggplot2 autoplot
 #' @importFrom rlang .data
 #' @export
-autoplot.persistence_diagram <- function(x,
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE) && requireNamespace("tibble", quietly = TRUE)
+#' pd <- as_persistence_diagram(tibble::tibble(
+#'   birth = 0,
+#'   death = 1,
+#'   dimension = 0
+#' ))
+#' ggplot2::autoplot(pd)
+autoplot.persistence_diagram <- function(object,
                                          dimension = NULL,
                                          alpha = 0.6,
                                          max_intervals = 20000,
@@ -129,14 +107,14 @@ autoplot.persistence_diagram <- function(x,
   switch(
     type,
     barcode = .plot_persistence_barcode(
-      persistence = x,
+      persistence = object,
       dimension = dimension,
       alpha = alpha,
       max_intervals = max_intervals,
       legend = legend
     ),
     diagram = .plot_persistence_diagram(
-      persistence = x,
+      persistence = object,
       dimension = dimension,
       alpha = alpha,
       max_intervals = max_intervals,
@@ -144,7 +122,7 @@ autoplot.persistence_diagram <- function(x,
       greyblock = greyblock
     ),
     density = .plot_persistence_density(
-      persistence = x,
+      persistence = object,
       dimension = dimension,
       alpha = alpha,
       max_intervals = max_intervals,
@@ -153,6 +131,45 @@ autoplot.persistence_diagram <- function(x,
       n = n
     )
   )
+}
+
+#' Plot for [`persistence_diagram`] objects
+#'
+#' This function creates a visualization of a persistence diagram **without**
+#' returning the corresponding [ggplot2::ggplot] object.
+#'
+#' @param x An object of class [`persistence_diagram`].
+#' @inheritParams autoplot.persistence_diagram
+#'
+#' @return NULL
+#'
+#' @importFrom graphics plot
+#' @export
+#' @examplesIf requireNamespace("tibble", quietly = TRUE)
+#' pd <- as_persistence_diagram(tibble::tibble(
+#'   birth = 0,
+#'   death = 1,
+#'   dimension = 0
+#' ))
+#' plot(pd)
+plot.persistence_diagram <- function(x,
+                                     dimension = NULL,
+                                     alpha = 0.6,
+                                     max_intervals = 20000,
+                                     legend = FALSE,
+                                     greyblock = TRUE,
+                                     type = c("barcode", "diagram", "density"),
+                                     ...) {
+  print(autoplot(
+    object = x,
+    dimension = dimension,
+    alpha = alpha,
+    max_intervals = max_intervals,
+    legend = legend,
+    greyblock = greyblock,
+    type = type,
+    ...
+  ))
 }
 
 .plot_persistence_barcode <- function(persistence,
