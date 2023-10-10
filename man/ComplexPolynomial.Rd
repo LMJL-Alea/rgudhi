@@ -33,6 +33,7 @@ Mathieu Carrière
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-ComplexPolynomial-new}{\code{ComplexPolynomial$new()}}
+\item \href{#method-ComplexPolynomial-apply}{\code{ComplexPolynomial$apply()}}
 \item \href{#method-ComplexPolynomial-clone}{\code{ComplexPolynomial$clone()}}
 }
 }
@@ -43,7 +44,6 @@ Mathieu Carrière
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="get_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-get_params'><code>rgudhi::SKLearnClass$get_params()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="set_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-set_params'><code>rgudhi::SKLearnClass$set_params()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="apply"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-apply'><code>rgudhi::VectorRepresentationStep$apply()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="fit"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-fit'><code>rgudhi::VectorRepresentationStep$fit()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="fit_transform"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-fit_transform'><code>rgudhi::VectorRepresentationStep$fit_transform()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="transform"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-transform'><code>rgudhi::VectorRepresentationStep$transform()</code></a></span></li>
@@ -79,6 +79,28 @@ coefficients as threshold. Defaults to \code{10L}.}
 }
 \subsection{Returns}{
 An object of class \code{\link{ComplexPolynomial}}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ComplexPolynomial-apply"></a>}}
+\if{latex}{\out{\hypertarget{method-ComplexPolynomial-apply}{}}}
+\subsection{Method \code{apply()}}{
+Applies the \code{ComplexPolnomial} class on a single persistence
+diagram and outputs the result.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{ComplexPolynomial$apply(diag)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{diag}}{A 2-column \link[tibble:tibble]{tibble::tibble} specifying a persistence diagram.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \link[tibble:tibble]{tibble::tibble} storing the complex polynomial representation
+of the persistence diagram in a table suitable for visualization.
 }
 }
 \if{html}{\out{<hr>}}

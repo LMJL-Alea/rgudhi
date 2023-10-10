@@ -20,7 +20,10 @@ SKLearnClass <- R6::R6Class(
       super$get_python_class()$transform(X)
     },
     fit_transform = function(X, y = NULL) {
-      super$get_python_class()$fit_transform(X, y)
+      if (is.null(y))
+        super$get_python_class()$fit_transform(X)
+      else
+        super$get_python_class()$fit_transform(X, y)
     }
   )
 )

@@ -21,6 +21,7 @@ VectorRepresentationStep <- R6::R6Class(
       diag |>
         as.matrix() |>
         super$apply() |>
+        matrix(nrow = 1) |>
         private$convert_output()
     },
 
@@ -54,18 +55,17 @@ VectorRepresentationStep <- R6::R6Class(
     #'   representations of the persistence diagrams in a table suitable for
     #'   visualization.
     fit_transform = function(X, y = NULL) {
-      X <- purrr::map(X, as.matrix)
-      super$fit(X, y)
-      X |>
-        super$transform() |>
-        private$convert_output()
+      X <- X |>
+        purrr::map(as.matrix) |>
+        super$fit_transform()
+      private$convert_output(X)
     }
   ),
   private = list(
     convert_output = function(x) {
-      if (is.list(x)) purrr::map(x, private$convert_output)
-      repr_values <- if (length(dim(x)) == 1) x else purrr::array_tree(x, margin = 2)
       py_cls <- super$get_python_class()
+
+      # Define grid of values
       if ("grid_" %in% names(py_cls))
         grid <- as.numeric(py_cls$grid_)
       else if ("sample_range" %in% names(py_cls) && !anyNA(py_cls$sample_range))
@@ -74,37 +74,41 @@ VectorRepresentationStep <- R6::R6Class(
           to = py_cls$sample_range[2],
           length.out = py_cls$resolution
         )
-      else if ("im_range" %in% names(py_cls))
-        grid <- purrr::cross_df(list(
+      else if ("im_range_fixed_" %in% names(py_cls))
+        grid <- expand.grid(
           X = seq(
-            from = py_cls$im_range[1],
-            to = py_cls$im_range[3],
+            from = py_cls$im_range_fixed_[1],
+            to = py_cls$im_range_fixed_[3],
             length.out = py_cls$resolution[1]
           ),
           Y = seq(
-            from = py_cls$im_range[2],
-            to = py_cls$im_range[4],
+            from = py_cls$im_range_fixed_[2],
+            to = py_cls$im_range_fixed_[4],
             length.out = py_cls$resolution[2]
           )
-        ))
+        )
+      else if ("quantiser" %in% names(py_cls))
+        grid <- paste0("Center", 1:py_cls$quantiser$n_clusters)
+      else if ("threshold" %in% names(py_cls))
+        grid <- paste0("Coefficient", 1:py_cls$threshold)
       else
-        grid <- 1:length(repr_values)
+        grid <- 1:length(ncol(x))
 
+      # Create tibbles for DGM representations
       if ("num_landscapes" %in% names(py_cls)) {
         num_landscapes <- py_cls$num_landscapes
         out <- tibble::tibble(
           Grid = rep(grid, times = num_landscapes),
-          LandscapeId = rep(1:num_landscapes, each = py_cls$resolution),
-          Value = repr_values
+          LandscapeId = rep(1:num_landscapes, each = length(grid))
         )
-      }
-      else if ("im_range" %in% names(py_cls)) {
-        out <- grid
-        out$Value <- repr_values
-      }
+      } else if ("im_range_fixed_" %in% names(py_cls))
+        out <- tibble::tibble(X = grid$X, Y = grid$Y)
       else
-        out <- tibble::tibble(Grid = grid, Value = repr_values)
-      out
+        out <- tibble::tibble(Grid = grid)
+
+      x <- t(x)
+      colnames(x) <- paste0("Diagram", 1:ncol(x))
+      tibble::as_tibble(cbind(out, x))
     }
   )
 )
@@ -154,22 +158,46 @@ Atol <- R6::R6Class(
     #' dgm <- ds$apply(dgm)
     #' km <- KMeans$new(n_clusters = 2, random_state = 202006)
     #' vr <- Atol$new(quantiser = km)
-    #' # vr$apply(dgm) # TODO: needs fix in python
+    #' vr$apply(dgm)
     #' vr$fit_transform(list(dgm))
     initialize = function(quantiser,
                           weighting_method = c("cloud", "iidproba"),
                           contrast = c("gaussian", "laplacian", "indicator")) {
-      quantiser <- quantiser$get_python_class()
       weighting_method <- rlang::arg_match(weighting_method)
       contrast <- rlang::arg_match(contrast)
+      private$m_Quantiser <- quantiser
+      private$m_WeightingMethod <- weighting_method
+      private$m_Contrast <- contrast
       super$set_python_class(
         gd$representations$Atol(
-          quantiser = quantiser,
+          quantiser = quantiser$get_python_class(),
           weighting_method = weighting_method,
           contrast = contrast
         )
       )
+    },
+
+    #' @description Applies the `Atol` class on a single persistence diagram
+    #'   and outputs the result.
+    #'
+    #' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the ATol representation of the
+    #'   persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- Atol$new(
+        quantiser = private$m_Quantiser,
+        weighting_method = private$m_WeightingMethod,
+        contrast = private$m_Contrast
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+  private = list(
+    m_Quantiser = NULL,
+    m_WeightingMethod = "cloud",
+    m_Contrast = "gaussian"
   )
 )
 
@@ -224,9 +252,12 @@ BettiCurve <- R6::R6Class(
     #' bc$apply(dgm)
     #' bc$fit_transform(list(dgm))
     initialize = function(resolution = 100,
-                          sample_range = rep(NA, 2),
+                          sample_range = rep(NA_real_, 2),
                           predefined_grid = NULL) {
-      resolution <- as.integer(resolution)
+      if (!is.null(resolution)) resolution <- as.integer(resolution)
+      private$m_Resolution <- resolution
+      private$m_SampleRange <- sample_range
+      private$m_PredefinedGrid <- predefined_grid
       super$set_python_class(
         gd$representations$BettiCurve(
           resolution = resolution,
@@ -234,7 +265,30 @@ BettiCurve <- R6::R6Class(
           predefined_grid = predefined_grid
         )
       )
+    },
+
+    #' @description Applies the `BettiCurve` class on a single persistence
+    #'   diagram and outputs the result.
+    #'
+    #' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the Betti curve representation of the
+    #'   persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- BettiCurve$new(
+        resolution = private$m_Resolution,
+        sample_range = private$m_SampleRange,
+        predefined_grid = private$m_PredefinedGrid
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+
+  private = list(
+    m_Resolution = 100,
+    m_SampleRange = rep(NA_real_, 2),
+    m_PredefinedGrid = NULL
   )
 )
 
@@ -281,13 +335,36 @@ ComplexPolynomial <- R6::R6Class(
     initialize = function(polynomial_type = c("R", "S", "T"), threshold = 10) {
       polynomial_type <- rlang::arg_match(polynomial_type)
       threshold <- as.integer(threshold)
+      private$m_PolynomialType <- polynomial_type
+      private$m_Threshold <- threshold
       super$set_python_class(
         gd$representations$ComplexPolynomial(
           polynomial_type = polynomial_type,
           threshold = threshold
         )
       )
+    },
+
+    #' @description Applies the `ComplexPolnomial` class on a single persistence
+    #'   diagram and outputs the result.
+    #'
+    #' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the complex polynomial representation
+    #'   of the persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- ComplexPolynomial$new(
+        polynomial_type = private$m_PolynomialType,
+        threshold = private$m_Threshold
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+
+  private = list(
+    m_PolynomialType = "R",
+    m_Threshold = 10
   )
 )
 

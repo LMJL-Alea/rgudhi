@@ -47,7 +47,7 @@ test_that("The Padding class works", {
   dgm_padded <- dgm
   dgm_padded$original <- 1
   expect_equal(pad$apply(dgm), dgm_padded)
-  expect_equal(pad$transform(list(dgm)), list(dgm_padded))
+  expect_equal(pad$fit(list(dgm))$transform(list(dgm)), list(dgm_padded))
   expect_equal(pad$fit_transform(list(dgm)), list(dgm_padded))
 })
 
