@@ -19,6 +19,8 @@ jobs:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
 
@@ -30,20 +32,26 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::.
+          extra-packages: reticulate pkgdown
           needs: website
 
       - uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
 
       - name: setup r-reticulate venv
         shell: Rscript {0}
         run: |
-          reticulate::virtualenv_create("r-reticulate", Sys.which("python"))
-          reticulate::virtualenv_install("r-reticulate", "POT==0.8.2")
-          reticulate::virtualenv_install("r-reticulate", "scikit-learn==1.2.0")
-          reticulate::virtualenv_install("r-reticulate", "gudhi==3.7.1")
-          python <- reticulate::virtualenv_python("r-reticulate")
-          writeLines(sprintf("RETICULATE_PYTHON=%s", python),
+
+          path_to_python <- reticulate::virtualenv_create(
+            envname = "r-reticulate",
+            python = Sys.which("python"), # placed on PATH by the setup-python action
+            packages = c(
+              "POT==0.9.1", "scikit-learn==1.3.1", "gudhi==3.8.0"
+            )
+          )
+
+          writeLines(sprintf("RETICULATE_PYTHON=%s", path_to_python),
                      Sys.getenv("GITHUB_ENV"))
 
       - name: Build site

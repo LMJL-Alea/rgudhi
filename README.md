@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `rgudhi`
+# rgudhi
 
 <!-- badges: start -->
 
-[![check-standard](https://github.com/LMJL-Alea/rgudhi/workflows/R-CMD-check/badge.svg)](https://github.com/LMJL-Alea/rgudhi/actions)
+[![R-CMD-check](https://github.com/LMJL-Alea/rgudhi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/LMJL-Alea/rgudhi/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/LMJL-Alea/rgudhi/workflows/test-coverage/badge.svg)](https://github.com/LMJL-Alea/rgudhi/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/LMJL-Alea/rgudhi/branch/master/graph/badge.svg)](https://app.codecov.io/gh/LMJL-Alea/rgudhi?branch=master)
