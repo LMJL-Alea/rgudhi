@@ -33,6 +33,7 @@ Mathieu Carrière
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-PersistenceImage-new}{\code{PersistenceImage$new()}}
+\item \href{#method-PersistenceImage-apply}{\code{PersistenceImage$apply()}}
 \item \href{#method-PersistenceImage-clone}{\code{PersistenceImage$clone()}}
 }
 }
@@ -43,7 +44,6 @@ Mathieu Carrière
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href='../../rgudhi/html/PythonClass.html#method-PythonClass-set_python_class'><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="get_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-get_params'><code>rgudhi::SKLearnClass$get_params()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="set_params"><a href='../../rgudhi/html/SKLearnClass.html#method-SKLearnClass-set_params'><code>rgudhi::SKLearnClass$set_params()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="apply"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-apply'><code>rgudhi::VectorRepresentationStep$apply()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="fit"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-fit'><code>rgudhi::VectorRepresentationStep$fit()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="fit_transform"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-fit_transform'><code>rgudhi::VectorRepresentationStep$fit_transform()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="transform"><a href='../../rgudhi/html/VectorRepresentationStep.html#method-VectorRepresentationStep-transform'><code>rgudhi::VectorRepresentationStep$transform()</code></a></span></li>
@@ -58,7 +58,7 @@ The \code{\link{PersistenceImage}} constructor.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PersistenceImage$new(
   bandwidth = 1,
-  weight = ~1,
+  weight = function(x) 1,
   resolution = c(20, 20),
   im_range = rep(NA_real_, 4)
 )}\if{html}{\out{</div>}}
@@ -89,6 +89,28 @@ domain for the persistence image, of the form \eqn{[x_{\min}, y_{\min},
 }
 \subsection{Returns}{
 An object of class \code{\link{PersistenceImage}}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-PersistenceImage-apply"></a>}}
+\if{latex}{\out{\hypertarget{method-PersistenceImage-apply}{}}}
+\subsection{Method \code{apply()}}{
+Applies the \code{PersistenceImage} class on a single persistence
+diagram and outputs the result.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PersistenceImage$apply(diag)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{diag}}{A 3-column \link[tibble:tibble]{tibble::tibble} specifying a persistence diagram.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \link[tibble:tibble]{tibble::tibble} storing the persistence image representation
+of the persistence diagram in a table suitable for visualization.
 }
 }
 \if{html}{\out{<hr>}}

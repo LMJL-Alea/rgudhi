@@ -34,37 +34,42 @@ test_that("The ComplexPolynomial class works", {
   expect_equal(cls$fit_transform(list(dgm)), out)
 })
 
-# test_that("The Entropy class works", {
-#   ent <- Entropy$new()
-#   expect_snapshot(ent$apply(dgm))
-#   expect_snapshot(ent$fit(list(dgm))$transform(list(dgm)))
-#   expect_snapshot(ent$fit_transform(list(dgm)))
-# })
-#
-# test_that("The Landscape class works", {
-#   land <- Landscape$new()
-#   expect_snapshot(land$apply(dgm))
-#   expect_snapshot(land$fit(list(dgm))$transform(list(dgm)))
-#   expect_snapshot(land$fit_transform(list(dgm)))
-# })
-#
-# test_that("The PersistenceImage class works", {
-#   pei <- PersistenceImage$new()
-#   expect_snapshot(pei$apply(dgm))
-#   expect_snapshot(pei$fit(list(dgm))$transform(list(dgm)))
-#   expect_snapshot(pei$fit_transform(list(dgm)))
-# })
-#
-# test_that("The Silhouette class works", {
-#   sil <- Silhouette$new()
-#   expect_snapshot(sil$apply(dgm))
-#   expect_snapshot(sil$fit(list(dgm))$transform(list(dgm)))
-#   expect_snapshot(sil$fit_transform(list(dgm)))
-# })
-#
-# test_that("The TopologicalVector class works", {
-#   tov <- TopologicalVector$new()
-#   expect_snapshot(tov$apply(dgm))
-#   expect_snapshot(tov$fit(list(dgm))$transform(list(dgm)))
-#   expect_snapshot(tov$fit_transform(list(dgm)))
-# })
+test_that("The Entropy class works", {
+  cls <- Entropy$new(mode = "vector")
+  out <- cls$apply(dgm)
+  expect_snapshot(out)
+  expect_equal(cls$fit(list(dgm))$transform(list(dgm)), out)
+  expect_equal(cls$fit_transform(list(dgm)), out)
+})
+
+test_that("The Landscape class works", {
+  cls <- Landscape$new()
+  out <- cls$apply(dgm)
+  expect_snapshot(out)
+  expect_equal(cls$fit(list(dgm))$transform(list(dgm)), out)
+  expect_equal(cls$fit_transform(list(dgm)), out)
+})
+
+test_that("The PersistenceImage class works", {
+  cls <- PersistenceImage$new()
+  out <- cls$apply(dgm)
+  expect_snapshot(out)
+  expect_equal(cls$fit(list(dgm))$transform(list(dgm)), out)
+  expect_equal(cls$fit_transform(list(dgm)), out)
+})
+
+test_that("The Silhouette class works", {
+  cls <- Silhouette$new()
+  out <- cls$apply(dgm)
+  expect_snapshot(out)
+  expect_equal(cls$fit(list(dgm))$transform(list(dgm)), out)
+  expect_equal(cls$fit_transform(list(dgm)), out)
+})
+
+test_that("The TopologicalVector class works", {
+  cls <- TopologicalVector$new()
+  out <- cls$apply(dgm)
+  expect_snapshot(out)
+  expect_equal(cls$fit(list(dgm))$transform(list(dgm)), out)
+  expect_equal(cls$fit_transform(list(dgm)), out)
+})

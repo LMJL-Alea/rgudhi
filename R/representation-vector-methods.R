@@ -90,9 +90,9 @@ VectorRepresentationStep <- R6::R6Class(
       else if ("quantiser" %in% names(py_cls))
         grid <- paste0("Center", 1:py_cls$quantiser$n_clusters)
       else if ("threshold" %in% names(py_cls))
-        grid <- paste0("Coefficient", 1:py_cls$threshold)
+        grid <- paste0("Coefficient", 1:ncol(x))
       else
-        grid <- 1:length(ncol(x))
+        grid <- 1:ncol(x)
 
       # Create tibbles for DGM representations
       if ("num_landscapes" %in% names(py_cls)) {
@@ -418,6 +418,10 @@ Entropy <- R6::R6Class(
                           sample_range = rep(NA_real_, 2)) {
       mode <- rlang::arg_match(mode)
       resolution <- as.integer(resolution)
+      private$m_Mode <- mode
+      private$m_Normalized <- normalized
+      private$m_Resolution <- resolution
+      private$m_SampleRange <- sample_range
       super$set_python_class(
         gd$representations$Entropy(
           mode = mode,
@@ -426,7 +430,32 @@ Entropy <- R6::R6Class(
           sample_range = sample_range
         )
       )
+    },
+
+    #' @description Applies the `Entropy` class on a single persistence diagram
+    #'   and outputs the result.
+    #'
+    #' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the entropy representation of the
+    #'   persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- Entropy$new(
+        mode = private$m_Mode,
+        normalized = private$m_Normalized,
+        resolution = private$m_Resolution,
+        sample_range = private$m_SampleRange
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+
+  private = list(
+    m_Mode = "scalar",
+    m_Normalized = TRUE,
+    m_Resolution = 100L,
+    m_SampleRange = rep(NA_real_, 2L)
   )
 )
 
@@ -474,6 +503,9 @@ Landscape <- R6::R6Class(
                           sample_range = rep(NA_real_, 2)) {
       num_landscapes <- as.integer(num_landscapes)
       resolution <- as.integer(resolution)
+      private$m_NumLandscapes = num_landscapes
+      private$m_Resolution <- resolution
+      private$m_SampleRange <- sample_range
       super$set_python_class(
         gd$representations$Landscape(
           num_landscapes = num_landscapes,
@@ -481,7 +513,30 @@ Landscape <- R6::R6Class(
           sample_range = sample_range
         )
       )
+    },
+
+    #' @description Applies the `Landscape` class on a single persistence
+    #'   diagram and outputs the result.
+    #'
+    #' @param diag A 3-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the landscape representation of the
+    #'   persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- Landscape$new(
+        num_landscapes = private$m_NumLandscapes,
+        resolution = private$m_Resolution,
+        sample_range = private$m_SampleRange
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+
+  private = list(
+    m_NumLandscapes = 5L,
+    m_Resolution = 100L,
+    m_SampleRange = rep(NA_real_, 2)
   )
 )
 
@@ -529,11 +584,15 @@ PersistenceImage <- R6::R6Class(
     #' pei$apply(dgm)
     #' pei$fit_transform(list(dgm))
     initialize = function(bandwidth = 1.0,
-                          weight = ~ 1,
+                          weight = \(x) 1.0,
                           resolution = c(20, 20),
                           im_range = rep(NA_real_, 4)) {
       weight <- rlang::as_function(weight)
       resolution <- as.integer(resolution)
+      private$m_Bandwidth <- bandwidth
+      private$m_Weight <- list(weight)
+      private$m_Resolution <- resolution
+      private$m_ImRange <- im_range
       super$set_python_class(
         gd$representations$PersistenceImage(
           bandwidth = bandwidth,
@@ -542,7 +601,32 @@ PersistenceImage <- R6::R6Class(
           im_range = im_range
         )
       )
+    },
+
+    #' @description Applies the `PersistenceImage` class on a single persistence
+    #'   diagram and outputs the result.
+    #'
+    #' @param diag A 3-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the persistence image representation
+    #'   of the persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- PersistenceImage$new(
+        bandwidth = private$m_Bandwidth,
+        weight = private$m_Weight[[1]],
+        resolution = private$m_Resolution,
+        im_range = private$m_ImRange
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+
+  private = list(
+    m_Bandwidth = 1.0,
+    m_Weight = list(\(x) 1.0),
+    m_Resolution = c(20L, 20L),
+    m_ImRange = rep(NA_real_, 4)
   )
 )
 
@@ -588,11 +672,14 @@ Silhouette <- R6::R6Class(
     #' sil <- Silhouette$new()
     #' sil$apply(dgm) # TO DO: fix gd because it does not set sample_range automatically
     #' sil$fit_transform(list(dgm))
-    initialize = function(weight = ~ 1,
+    initialize = function(weight = \(x) 1.0,
                           resolution = 100,
                           sample_range = rep(NA_real_, 2)) {
       weight <- rlang::as_function(weight)
       resolution <- as.integer(resolution)
+      private$m_Weight <- list(weight)
+      private$m_Resolution <- resolution
+      private$m_SampleRange <- sample_range
       super$set_python_class(
         gd$representations$Silhouette(
           weight = weight,
@@ -600,7 +687,30 @@ Silhouette <- R6::R6Class(
           sample_range = sample_range
         )
       )
+    },
+
+    #' @description Applies the `Silhouette` class on a single persistence
+    #'   diagram and outputs the result.
+    #'
+    #' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the silhouette representation of the
+    #'   persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- Silhouette$new(
+        weight = private$m_Weight[[1]],
+        resolution = private$m_Resolution,
+        sample_range = private$m_SampleRange
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+
+  private = list(
+    m_Weight = list(\(x) 1.0),
+    m_Resolution = 100L,
+    m_SampleRange = rep(NA_real_, 2)
   )
 )
 
@@ -641,11 +751,31 @@ TopologicalVector <- R6::R6Class(
     #' tv$fit_transform(list(dgm))
     initialize = function(threshold = 10) {
       threshold <- as.integer(threshold)
+      private$m_Threshold <- threshold
       super$set_python_class(
         gd$representations$TopologicalVector(
           threshold = threshold
         )
       )
+    },
+
+    #' @description Applies the `TopologicalVector` class on a single
+    #'   persistence diagram and outputs the result.
+    #'
+    #' @param diag A 2-column [tibble::tibble] specifying a persistence diagram.
+    #'
+    #' @return A [tibble::tibble] storing the topological vector representation
+    #'   of the persistence diagram in a table suitable for visualization.
+    apply = function(diag) {
+      cls <- TopologicalVector$new(
+        threshold = private$m_Threshold
+      )
+      diag <- list(as.matrix(diag))
+      cls$fit_transform(diag)
     }
+  ),
+
+  private = list(
+    m_Threshold = 10L
   )
 )
