@@ -125,7 +125,8 @@ Witness complex.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_seed.html" class="external-link">with_seed</a></span><span class="op">(</span><span class="fl">1234</span>, <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># reticulate::py_module_available("gudhi")</span></span></span>
+<span class="r-in"><span><span class="fu">withr</span><span class="fu">::</span><span class="fu"><a href="https://withr.r-lib.org/reference/with_seed.html" class="external-link">with_seed</a></span><span class="op">(</span><span class="fl">1234</span>, <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>      nearest_landmark <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample.int</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,</span></span>
@@ -139,17 +140,7 @@ Witness complex.</p>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">wc</span> <span class="op">&lt;-</span> <span class="va">StrongWitnessComplex</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>nearest_landmark_table <span class="op">=</span> <span class="va">l</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">wc</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;StrongWitnessComplex&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Inherits from: &lt;WitnessComplex&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Public:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     clone: function (deep = FALSE) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     create_simplex_tree: function (max_alpha_square = Inf) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     get_python_class: function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     initialize: function (nearest_landmark_table) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     set_python_class: function (py_class) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Private:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     m_ComputedSimplexTree: FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     python_class: gudhi.strong_witness_complex.StrongWitnessComplex, python.builtin.object</span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -77,12 +77,12 @@ that a previous implementation was contributed by Manuel Soriano-Trigueros.</p>
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-Entropy-new"><code>Entropy$new()</code></a></p></li>
+<li><p><a href="#method-Entropy-apply"><code>Entropy$apply()</code></a></p></li>
 <li><p><a href="#method-Entropy-clone"><code>Entropy$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="get_python_class"><a href="PythonClass.html#method-get_python_class"><code>rgudhi::PythonClass$get_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="PythonClass" data-id="set_python_class"><a href="PythonClass.html#method-set_python_class"><code>rgudhi::PythonClass$set_python_class()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="get_params"><a href="SKLearnClass.html#method-get_params"><code>rgudhi::SKLearnClass$get_params()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="SKLearnClass" data-id="set_params"><a href="SKLearnClass.html#method-set_params"><code>rgudhi::SKLearnClass$set_params()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="apply"><a href="VectorRepresentationStep.html#method-apply"><code>rgudhi::VectorRepresentationStep$apply()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="fit"><a href="VectorRepresentationStep.html#method-fit"><code>rgudhi::VectorRepresentationStep$fit()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="fit_transform"><a href="VectorRepresentationStep.html#method-fit_transform"><code>rgudhi::VectorRepresentationStep$fit_transform()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="rgudhi" data-topic="VectorRepresentationStep" data-id="transform"><a href="VectorRepresentationStep.html#method-transform"><code>rgudhi::VectorRepresentationStep$transform()</code></a></span></li>
@@ -131,15 +131,37 @@ persistence diagrams with the <code>$fit()</code> method. Used only if <code>mod
 <p>An object of class <code>Entropy</code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-Entropy-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-Entropy-apply"></a><div class="section">
+<h3 id="method-apply-">Method <code><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply()</a></code><a class="anchor" aria-label="anchor" href="#method-apply-"></a></h3>
+<p>Applies the <code>Entropy</code> class on a single persistence diagram
+and outputs the result.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Entropy</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Entropy</span><span class="op">$</span><span class="fu">apply</span><span class="op">(</span><span class="va">diag</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>diag</code></dt>
+<dd><p>A 2-column <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a> specifying a persistence diagram.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<p>A <a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a> storing the entropy representation of the
+persistence diagram in a table suitable for visualization.</p>
+</div>
+
+</div><p></p><hr><a id="method-Entropy-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Entropy</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -153,7 +175,8 @@ persistence diagrams with the <code>$fit()</code> method. Used only if <code>mod
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="seq_circle.html">seq_circle</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># reticulate::py_module_available("gudhi")</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="seq_circle.html">seq_circle</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ac</span> <span class="op">&lt;-</span> <span class="va"><a href="AlphaComplex.html">AlphaComplex</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>points <span class="op">=</span> <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">st</span> <span class="op">&lt;-</span> <span class="va">ac</span><span class="op">$</span><span class="fu">create_simplex_tree</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">st</span><span class="op">$</span><span class="fu">compute_persistence</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">persistence_intervals_in_dimension</span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span></span>
@@ -161,15 +184,8 @@ persistence diagrams with the <code>$fit()</code> method. Used only if <code>mod
 <span class="r-in"><span><span class="va">dgm</span> <span class="op">&lt;-</span> <span class="va">ds</span><span class="op">$</span><span class="fu">apply</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ent</span> <span class="op">&lt;-</span> <span class="va">Entropy</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ent</span><span class="op">$</span><span class="fu">apply</span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Grid     Value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl[1d]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1      2.20</span>
 <span class="r-in"><span><span class="va">ent</span><span class="op">$</span><span class="fu">fit_transform</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">dgm</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Grid Value    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
