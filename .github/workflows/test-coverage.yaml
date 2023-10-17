@@ -23,7 +23,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: reticulate covr
+          extra-packages: covr
           needs: coverage
 
       - uses: actions/setup-python@v4

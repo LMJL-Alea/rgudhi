@@ -32,7 +32,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: reticulate pkgdown
+          extra-packages: pkgdown
           needs: website
 
       - uses: actions/setup-python@v4
