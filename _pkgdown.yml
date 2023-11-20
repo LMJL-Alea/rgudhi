@@ -64,8 +64,10 @@ reference:
     - RobustScaler
     - StandardScaler
   - title: Perslay
-  - subtitle: Main algorithm
+  - subtitle: Tensorflow layer
   - contents:
+    - tf
+    - to_ragged_tensor
     - Perslay
   - subtitle: Weight functions
   - contents:
