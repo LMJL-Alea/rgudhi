@@ -63,6 +63,20 @@ reference:
     - MinMaxScaler
     - RobustScaler
     - StandardScaler
+  - title: Perslay
+  - subtitle: Main algorithm
+  - contents:
+    - Perslay
+  - subtitle: Weight functions
+  - contents:
+    - GaussianMixturePerslayWeight
+    - GridPerslayWeight
+    - PowerPerslayWeight
+  - subtitle: Phi functions
+  - contents:
+    - FlatPerslayPhi
+    - GaussianPerslayPhi
+    - TentPerslayPhi
   - title: Clustering
   - contents:
     - AffinityPropagation
