@@ -63,7 +63,9 @@ jobs:
           writeLines(sprintf("RETICULATE_PYTHON=%s", path_to_python),
                      Sys.getenv("GITHUB_ENV"))
           install.packages("tensorflow")
-          tensorflow::install_tensorflow(envname = "r-reticulate")
+          tensorflow::install_tensorflow(
+            envname = "r-reticulate", version = "2.14-cpu"
+          )
 
       - uses: r-lib/actions/check-r-package@v2
         with:
