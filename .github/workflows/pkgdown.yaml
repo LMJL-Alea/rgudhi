@@ -35,33 +35,13 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-
-      - name: setup r-reticulate venv
-        shell: Rscript {0}
-        run: |
-
-          path_to_python <- reticulate::virtualenv_create(
-            envname = "r-reticulate",
-            python = Sys.which("python"), # placed on PATH by the setup-python action
-            packages = c(
-              "POT==0.9.1", "scikit-learn==1.3.1",
-              "tensorflow==2.14.0", "gudhi==3.8.0"
-            )
-          )
-
-          writeLines(sprintf("RETICULATE_PYTHON=%s", path_to_python),
-                     Sys.getenv("GITHUB_ENV"))
-
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           clean: false
           branch: gh-pages
