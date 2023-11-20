@@ -9,7 +9,7 @@ Vector Representation Step
 Vector Representation Step
 }
 \author{
-Mathieu Carrière
+Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
 }
 \keyword{internal}
 \section{Super classes}{

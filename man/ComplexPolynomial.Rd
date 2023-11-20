@@ -24,7 +24,7 @@ cp$fit_transform(list(dgm))
 \dontshow{\}) # examplesIf}
 }
 \author{
-Mathieu Carrière
+Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
 }
 \section{Super classes}{
 \code{rgudhi::PythonClass} -> \code{rgudhi::SKLearnClass} -> \code{\link[rgudhi:VectorRepresentationStep]{rgudhi::VectorRepresentationStep}} -> \code{ComplexPolynomial}

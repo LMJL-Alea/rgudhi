@@ -30,6 +30,7 @@ Config/reticulate:
     packages = list(
       list(package = "POT", version = "0.9.1"),
       list(package = "scikit-learn", version = "1.3.1"), 
+      list(package = "tensorflow", version = "2.14.0"),
       list(package = "gudhi", version = "3.8.0")
     )
   )

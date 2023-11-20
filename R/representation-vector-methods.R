@@ -6,7 +6,7 @@
 #' @param y An integer vector specifying persistence diagram labels (unused for
 #'   now).
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
 #' @keywords internal
 VectorRepresentationStep <- R6::R6Class(
   classname = "VectorRepresentationStep",
@@ -122,7 +122,7 @@ VectorRepresentationStep <- R6::R6Class(
 #' ## References
 #' \insertCited{}
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
 #'
 #' @export
 Atol <- R6::R6Class(
@@ -216,7 +216,8 @@ Atol <- R6::R6Class(
 #'   the Betti curve is obtained by sampling evenly using either the given
 #'   `sample_range` or based on the persistence diagrams.
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
+#'
 #' @export
 BettiCurve <- R6::R6Class(
   classname = "BettiCurve",
@@ -300,7 +301,8 @@ BettiCurve <- R6::R6Class(
 #'   See https://link.springer.com/chapter/10.1007%2F978-3-319-23231-7_27 for
 #'   more details.
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
+#'
 #' @export
 ComplexPolynomial <- R6::R6Class(
   classname = "ComplexPolynomial",
@@ -376,7 +378,8 @@ ComplexPolynomial <- R6::R6Class(
 #'   function. See https://arxiv.org/pdf/1803.08304.pdf for more details. Note
 #'   that a previous implementation was contributed by Manuel Soriano-Trigueros.
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
+#'
 #' @export
 Entropy <- R6::R6Class(
   classname = "Entropy",
@@ -468,7 +471,8 @@ Entropy <- R6::R6Class(
 #'   given range and the corresponding vectors of samples are concatenated and
 #'   returned. See http://jmlr.org/papers/v16/bubenik15a.html for more details.
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
+#'
 #' @export
 Landscape <- R6::R6Class(
   classname = "Landscape",
@@ -548,7 +552,8 @@ Landscape <- R6::R6Class(
 #'   then discretized into an image with pixels, which is flattened and returned
 #'   as a vector. See http://jmlr.org/papers/v18/16-337.html for more details.
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
+#'
 #' @export
 PersistenceImage <- R6::R6Class(
   classname = "PersistenceImage",
@@ -639,7 +644,8 @@ PersistenceImage <- R6::R6Class(
 #'   Finally, the corresponding vector of samples is returned. See
 #'   https://arxiv.org/abs/1312.0308 for more details.
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
+#'
 #' @export
 Silhouette <- R6::R6Class(
   classname = "Silhouette",
@@ -722,7 +728,8 @@ Silhouette <- R6::R6Class(
 #'   the persistence diagram points. See
 #'   https://diglib.eg.org/handle/10.1111/cgf12692 for more details.
 #'
-#' @author Mathieu Carrière
+#' @author Mathieu Carrière, Martin Royer, Gard Spreemann, Wojciech Reise
+#'
 #' @export
 TopologicalVector <- R6::R6Class(
   classname = "TopologicalVector",
