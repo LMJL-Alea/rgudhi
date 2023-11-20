@@ -135,6 +135,13 @@ DiagramScaler <- R6::R6Class(
     #' ds$fit_transform(list(dgm))
     initialize = function(use = FALSE, scalers = list()) {
       private$variable_names <- c("birth", "death")
+      if (length(scalers) > 0) {
+        scalers <- purrr::map(scalers, \(.scaler) {
+          .scaler[[1]] <- as.integer(.scaler[[1]])
+          .scaler[[2]] <- .scaler[[2]]$get_python_class()
+          .scaler
+        })
+      }
       super$set_python_class(
         gd$representations$DiagramScaler(use = use, scalers = scalers)
       )

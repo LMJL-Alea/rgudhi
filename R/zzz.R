@@ -4,13 +4,34 @@ skl_preprocessing <- NULL
 skl_cluster <- NULL
 # global reference to gudhi (will be initialized in .onLoad)
 gd <- NULL
+# global reference to tensorflow interface (will be initialized in .onLoad)
+tfInterface <- NULL
 
 .onLoad <- function(libname, pkgname) {
   reticulate::configure_environment(pkgname)
   # use superassignment to update global reference to sklearn.preprocessing
-  skl_preprocessing <<- reticulate::import("sklearn.preprocessing", delay_load = TRUE, convert = TRUE)
+  skl_preprocessing <<- reticulate::import(
+    module = "sklearn.preprocessing",
+    delay_load = TRUE,
+    convert = TRUE
+  )
   # use superassignment to update global reference to sklearn.preprocessing
-  skl_cluster <<- reticulate::import("sklearn.cluster", delay_load = TRUE, convert = TRUE)
+  skl_cluster <<- reticulate::import(
+    module = "sklearn.cluster",
+    delay_load = TRUE,
+    convert = TRUE
+  )
   # use superassignment to update global reference to gudhi
-  gd <<- reticulate::import("gudhi", delay_load = TRUE, convert = TRUE)
+  gd <<- reticulate::import(
+    module = "gudhi",
+    delay_load = TRUE,
+    convert = TRUE
+  )
+  # use superassignment to update global reference to tf interface
+  tfInterface <<- reticulate::import(
+    module = "gudhi.tensorflow",
+    delay_load = TRUE,
+    convert = TRUE
+  )
+  tf <<- tfInterface$perslay$tf
 }
